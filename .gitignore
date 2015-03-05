@@ -1,6 +1,7 @@
 *~
 Makefile
 autom4te.cache
+config.h
 *.o
 *.dylib
 *.la
