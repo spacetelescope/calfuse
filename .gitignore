@@ -8,5 +8,8 @@ config.h
 *.dylib
 *.la
 *.a
-calfiles/
-!calfiles/.gitkeep
+calfiles/*.fit
+calfiles/*.dat
+calfiles/*.TLE
+parmfiles/*.fit
+parmfiles/*.dat
