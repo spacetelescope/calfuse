@@ -19,7 +19,7 @@ AC_PROG_LN_S
 # Checks for header files.
 AC_FUNC_ALLOCA
 AC_CHECK_HEADERS([fcntl.h limits.h malloc.h stddef.h stdlib.h string.h strings.h unistd.h])
-
+PKG_CHECK_MODULES([cfitsio], [cfitsio >= 3])
 # Checks for typedefs, structures, and compiler characteristics.
 AC_CHECK_HEADER_STDBOOL
 AC_TYPE_SIZE_T
@@ -29,4 +29,6 @@ AC_FUNC_ERROR_AT_LINE
 AC_FUNC_MALLOC
 AC_CHECK_FUNCS([floor memchr memset modf pow sqrt strcasecmp strerror strncasecmp strrchr strtol])
 
-AC_OUTPUT([Makefile src/Makefile src/slalib/Makefile])
+AC_OUTPUT([Makefile src/Makefile src/libcf/Makefile src/slalib/Makefile \
+		   src/fes/Makefile src/fuv/Makefile src/analysis/Makefile \
+		   src/cal/Makefile src/cal/jitter/Makefile])
