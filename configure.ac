@@ -6,8 +6,8 @@ AC_INIT([calfuse], [3.2.3], [archive@stsci.edu])
 AM_INIT_AUTOMAKE([foreign])
 LT_INIT
 AC_CONFIG_MACRO_DIRS([m4])
-AC_CONFIG_SRCDIR([include/calfitsio.h])
-AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_SRCDIR([src])
+AC_CONFIG_HEADERS([src/include/config.h])
 
 # Checks for programs.
 AC_PROG_CC
@@ -31,4 +31,6 @@ AC_CHECK_FUNCS([floor memchr memset modf pow sqrt strcasecmp strerror strncasecm
 
 AC_OUTPUT([Makefile src/Makefile src/libcf/Makefile src/slalib/Makefile \
 		   src/fes/Makefile src/fuv/Makefile src/analysis/Makefile \
-		   src/cal/Makefile src/cal/jitter/Makefile])
+		   src/cal/Makefile src/cal/jitter/Makefile scripts/Makefile \
+	       doc/Makefile])
+

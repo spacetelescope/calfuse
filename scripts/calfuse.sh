@@ -40,11 +40,11 @@ ttag=`echo $froot | grep -c ttag`
 
 # Put a timestamp in the log file (the OPUS trailer file).
 if [ $ttag = 1 ]; then
-    echo `date '+%Y %b %e %T'` "calfuse.csh-1.15: Begin TTAG file $1"
-    echo `date '+%Y %b %e %T'` "calfuse.csh-1.15: Begin TTAG file $1" >> $logfile 2>&1
+    echo `date '+%Y %b %e %T'` "calfuse.sh-1.15: Begin TTAG file $1"
+    echo `date '+%Y %b %e %T'` "calfuse.sh-1.15: Begin TTAG file $1" >> $logfile 2>&1
 else
-    echo `date '+%Y %b %e %T'` "calfuse.csh-1.15: Begin HIST file $1"
-    echo `date '+%Y %b %e %T'` "calfuse.csh-1.15: Begin HIST file $1" >> $logfile 2>&1
+    echo `date '+%Y %b %e %T'` "calfuse.sh-1.15: Begin HIST file $1"
+    echo `date '+%Y %b %e %T'` "calfuse.sh-1.15: Begin HIST file $1" >> $logfile 2>&1
 fi
 
 cfstat=1
@@ -126,15 +126,15 @@ fi
 
 if [ $cfstat = 0 ]; then
  if [ $ttag = 1 ]; then
-  echo `date '+%Y %b %e %T'` "calfuse.csh-1.15: End   TTAG file $1"
-  echo `date '+%Y %b %e %T'` "calfuse.csh-1.15: End   TTAG file $1"  >> $logfile 2>&1
+  echo `date '+%Y %b %e %T'` "calfuse.sh-1.15: End   TTAG file $1"
+  echo `date '+%Y %b %e %T'` "calfuse.sh-1.15: End   TTAG file $1"  >> $logfile 2>&1
  else
-  echo `date '+%Y %b %e %T'` "calfuse.csh-1.15: End   HIST file $1"
-  echo `date '+%Y %b %e %T'` "calfuse.csh-1.15: End   HIST file $1"  >> $logfile 2>&1
+  echo `date '+%Y %b %e %T'` "calfuse.sh-1.15: End   HIST file $1"
+  echo `date '+%Y %b %e %T'` "calfuse.sh-1.15: End   HIST file $1"  >> $logfile 2>&1
  fi
 else
-  echo `date '+%Y %b %e %T'` "calfuse.csh-1.15: Error processing $1"
-  echo `date '+%Y %b %e %T'` "calfuse.csh-1.15: Error processing $1" >> $logfile 2>&1
+  echo `date '+%Y %b %e %T'` "calfuse.sh-1.15: Error processing $1"
+  echo `date '+%Y %b %e %T'` "calfuse.sh-1.15: Error processing $1" >> $logfile 2>&1
 fi
 
 exit $cfstat

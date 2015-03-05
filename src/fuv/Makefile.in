@@ -104,14 +104,14 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
 mkinstalldirs = $(install_sh) -d
-CONFIG_HEADER = $(top_builddir)/config.h
+CONFIG_HEADER = $(top_builddir)/src/include/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_cf_assign_wavelength_OBJECTS =  \
-	cf_assign_wavelength-cf_assign_wavelength.$(OBJEXT)
+am_cf_assign_wavelength_OBJECTS = cf_assign_wavelength.$(OBJEXT)
 cf_assign_wavelength_OBJECTS = $(am_cf_assign_wavelength_OBJECTS)
+cf_assign_wavelength_LDADD = $(LDADD)
 am__DEPENDENCIES_1 =
 am__DEPENDENCIES_2 = ../slalib/libsla.la ../libcf/libcf.la \
 	$(am__DEPENDENCIES_1)
@@ -120,80 +120,46 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-cf_assign_wavelength_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(cf_assign_wavelength_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_cf_bad_pixels_OBJECTS = cf_bad_pixels-cf_bad_pixels.$(OBJEXT)
+am_cf_bad_pixels_OBJECTS = cf_bad_pixels.$(OBJEXT)
 cf_bad_pixels_OBJECTS = $(am_cf_bad_pixels_OBJECTS)
+cf_bad_pixels_LDADD = $(LDADD)
 cf_bad_pixels_DEPENDENCIES = $(am__DEPENDENCIES_2)
-cf_bad_pixels_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(cf_bad_pixels_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-am_cf_convert_to_farf_OBJECTS =  \
-	cf_convert_to_farf-cf_convert_to_farf.$(OBJEXT)
+am_cf_convert_to_farf_OBJECTS = cf_convert_to_farf.$(OBJEXT)
 cf_convert_to_farf_OBJECTS = $(am_cf_convert_to_farf_OBJECTS)
+cf_convert_to_farf_LDADD = $(LDADD)
 cf_convert_to_farf_DEPENDENCIES = $(am__DEPENDENCIES_2)
-cf_convert_to_farf_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(cf_convert_to_farf_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_cf_countmap_OBJECTS = cf_countmap-cf_countmap.$(OBJEXT)
+am_cf_countmap_OBJECTS = cf_countmap.$(OBJEXT)
 cf_countmap_OBJECTS = $(am_cf_countmap_OBJECTS)
+cf_countmap_LDADD = $(LDADD)
 cf_countmap_DEPENDENCIES = $(am__DEPENDENCIES_2)
-cf_countmap_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(cf_countmap_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-am_cf_extract_spectra_OBJECTS =  \
-	cf_extract_spectra-cf_extract_spectra.$(OBJEXT)
+am_cf_extract_spectra_OBJECTS = cf_extract_spectra.$(OBJEXT)
 cf_extract_spectra_OBJECTS = $(am_cf_extract_spectra_OBJECTS)
+cf_extract_spectra_LDADD = $(LDADD)
 cf_extract_spectra_DEPENDENCIES = $(am__DEPENDENCIES_2)
-cf_extract_spectra_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(cf_extract_spectra_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_cf_flux_calibrate_OBJECTS =  \
-	cf_flux_calibrate-cf_flux_calibrate.$(OBJEXT)
+am_cf_flux_calibrate_OBJECTS = cf_flux_calibrate.$(OBJEXT)
 cf_flux_calibrate_OBJECTS = $(am_cf_flux_calibrate_OBJECTS)
+cf_flux_calibrate_LDADD = $(LDADD)
 cf_flux_calibrate_DEPENDENCIES = $(am__DEPENDENCIES_2)
-cf_flux_calibrate_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(cf_flux_calibrate_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
-	-o $@
-am_cf_gainmap_OBJECTS = cf_gainmap-cf_gainmap.$(OBJEXT)
+am_cf_gainmap_OBJECTS = cf_gainmap.$(OBJEXT)
 cf_gainmap_OBJECTS = $(am_cf_gainmap_OBJECTS)
+cf_gainmap_LDADD = $(LDADD)
 cf_gainmap_DEPENDENCIES = $(am__DEPENDENCIES_2)
-cf_gainmap_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(cf_gainmap_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-am_cf_hist_init_OBJECTS = cf_hist_init-cf_hist_init.$(OBJEXT)
+am_cf_hist_init_OBJECTS = cf_hist_init.$(OBJEXT)
 cf_hist_init_OBJECTS = $(am_cf_hist_init_OBJECTS)
+cf_hist_init_LDADD = $(LDADD)
 cf_hist_init_DEPENDENCIES = $(am__DEPENDENCIES_2)
-cf_hist_init_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(cf_hist_init_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-am_cf_remove_motions_OBJECTS =  \
-	cf_remove_motions-cf_remove_motions.$(OBJEXT)
+am_cf_remove_motions_OBJECTS = cf_remove_motions.$(OBJEXT)
 cf_remove_motions_OBJECTS = $(am_cf_remove_motions_OBJECTS)
+cf_remove_motions_LDADD = $(LDADD)
 cf_remove_motions_DEPENDENCIES = $(am__DEPENDENCIES_2)
-cf_remove_motions_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(cf_remove_motions_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
-	-o $@
-am_cf_screen_photons_OBJECTS =  \
-	cf_screen_photons-cf_screen_photons.$(OBJEXT)
+am_cf_screen_photons_OBJECTS = cf_screen_photons.$(OBJEXT)
 cf_screen_photons_OBJECTS = $(am_cf_screen_photons_OBJECTS)
+cf_screen_photons_LDADD = $(LDADD)
 cf_screen_photons_DEPENDENCIES = $(am__DEPENDENCIES_2)
-cf_screen_photons_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(cf_screen_photons_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
-	-o $@
-am_cf_ttag_init_OBJECTS = cf_ttag_init-cf_ttag_init.$(OBJEXT)
+am_cf_ttag_init_OBJECTS = cf_ttag_init.$(OBJEXT)
 cf_ttag_init_OBJECTS = $(am_cf_ttag_init_OBJECTS)
+cf_ttag_init_LDADD = $(LDADD)
 cf_ttag_init_DEPENDENCIES = $(am__DEPENDENCIES_2)
-cf_ttag_init_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(cf_ttag_init_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -206,7 +172,7 @@ AM_V_at = $(am__v_at_@AM_V@)
 am__v_at_ = $(am__v_at_@AM_DEFAULT_V@)
 am__v_at_0 = @
 am__v_at_1 = 
-DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
+DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/src/include
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
@@ -434,7 +400,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = .
 BUILD_LIBS = ../slalib/libsla.la ../libcf/libcf.la $(cfitsio_LIBS)
-BUILD_FLAGS = -I../../include -I./ $(cfitsio_CFLAGS)
+BUILD_FLAGS = -I../include -I./ $(cfitsio_CFLAGS)
 cf_assign_wavelength_SOURCES = cf_assign_wavelength.c
 cf_bad_pixels_SOURCES = cf_bad_pixels.c
 cf_convert_to_farf_SOURCES = cf_convert_to_farf.c
@@ -446,28 +412,8 @@ cf_hist_init_SOURCES = cf_hist_init.c
 cf_remove_motions_SOURCES = cf_remove_motions.c
 cf_screen_photons_SOURCES = cf_screen_photons.c
 cf_ttag_init_SOURCES = cf_ttag_init.c
-cf_assign_wavelength_LDADD = $(BUILD_LIBS)
-cf_bad_pixels_LDADD = $(BUILD_LIBS)
-cf_convert_to_farf_LDADD = $(BUILD_LIBS)
-cf_countmap_LDADD = $(BUILD_LIBS)
-cf_extract_spectra_LDADD = $(BUILD_LIBS)
-cf_flux_calibrate_LDADD = $(BUILD_LIBS)
-cf_gainmap_LDADD = $(BUILD_LIBS)
-cf_hist_init_LDADD = $(BUILD_LIBS)
-cf_remove_motions_LDADD = $(BUILD_LIBS)
-cf_screen_photons_LDADD = $(BUILD_LIBS)
-cf_ttag_init_LDADD = $(BUILD_LIBS)
-cf_assign_wavelength_CFLAGS = $(BUILD_FLAGS)
-cf_bad_pixels_CFLAGS = $(BUILD_FLAGS)
-cf_convert_to_farf_CFLAGS = $(BUILD_FLAGS)
-cf_countmap_CFLAGS = $(BUILD_FLAGS)
-cf_extract_spectra_CFLAGS = $(BUILD_FLAGS)
-cf_flux_calibrate_CFLAGS = $(BUILD_FLAGS)
-cf_gainmap_CFLAGS = $(BUILD_FLAGS)
-cf_hist_init_CFLAGS = $(BUILD_FLAGS)
-cf_remove_motions_CFLAGS = $(BUILD_FLAGS)
-cf_screen_photons_CFLAGS = $(BUILD_FLAGS)
-cf_ttag_init_CFLAGS = $(BUILD_FLAGS)
+LDADD = $(BUILD_LIBS)
+AM_CFLAGS = $(BUILD_FLAGS)
 all: all-recursive
 
 .SUFFIXES:
@@ -553,47 +499,47 @@ clean-binPROGRAMS:
 
 cf_assign_wavelength$(EXEEXT): $(cf_assign_wavelength_OBJECTS) $(cf_assign_wavelength_DEPENDENCIES) $(EXTRA_cf_assign_wavelength_DEPENDENCIES) 
 	@rm -f cf_assign_wavelength$(EXEEXT)
-	$(AM_V_CCLD)$(cf_assign_wavelength_LINK) $(cf_assign_wavelength_OBJECTS) $(cf_assign_wavelength_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) $(cf_assign_wavelength_OBJECTS) $(cf_assign_wavelength_LDADD) $(LIBS)
 
 cf_bad_pixels$(EXEEXT): $(cf_bad_pixels_OBJECTS) $(cf_bad_pixels_DEPENDENCIES) $(EXTRA_cf_bad_pixels_DEPENDENCIES) 
 	@rm -f cf_bad_pixels$(EXEEXT)
-	$(AM_V_CCLD)$(cf_bad_pixels_LINK) $(cf_bad_pixels_OBJECTS) $(cf_bad_pixels_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) $(cf_bad_pixels_OBJECTS) $(cf_bad_pixels_LDADD) $(LIBS)
 
 cf_convert_to_farf$(EXEEXT): $(cf_convert_to_farf_OBJECTS) $(cf_convert_to_farf_DEPENDENCIES) $(EXTRA_cf_convert_to_farf_DEPENDENCIES) 
 	@rm -f cf_convert_to_farf$(EXEEXT)
-	$(AM_V_CCLD)$(cf_convert_to_farf_LINK) $(cf_convert_to_farf_OBJECTS) $(cf_convert_to_farf_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) $(cf_convert_to_farf_OBJECTS) $(cf_convert_to_farf_LDADD) $(LIBS)
 
 cf_countmap$(EXEEXT): $(cf_countmap_OBJECTS) $(cf_countmap_DEPENDENCIES) $(EXTRA_cf_countmap_DEPENDENCIES) 
 	@rm -f cf_countmap$(EXEEXT)
-	$(AM_V_CCLD)$(cf_countmap_LINK) $(cf_countmap_OBJECTS) $(cf_countmap_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) $(cf_countmap_OBJECTS) $(cf_countmap_LDADD) $(LIBS)
 
 cf_extract_spectra$(EXEEXT): $(cf_extract_spectra_OBJECTS) $(cf_extract_spectra_DEPENDENCIES) $(EXTRA_cf_extract_spectra_DEPENDENCIES) 
 	@rm -f cf_extract_spectra$(EXEEXT)
-	$(AM_V_CCLD)$(cf_extract_spectra_LINK) $(cf_extract_spectra_OBJECTS) $(cf_extract_spectra_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) $(cf_extract_spectra_OBJECTS) $(cf_extract_spectra_LDADD) $(LIBS)
 
 cf_flux_calibrate$(EXEEXT): $(cf_flux_calibrate_OBJECTS) $(cf_flux_calibrate_DEPENDENCIES) $(EXTRA_cf_flux_calibrate_DEPENDENCIES) 
 	@rm -f cf_flux_calibrate$(EXEEXT)
-	$(AM_V_CCLD)$(cf_flux_calibrate_LINK) $(cf_flux_calibrate_OBJECTS) $(cf_flux_calibrate_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) $(cf_flux_calibrate_OBJECTS) $(cf_flux_calibrate_LDADD) $(LIBS)
 
 cf_gainmap$(EXEEXT): $(cf_gainmap_OBJECTS) $(cf_gainmap_DEPENDENCIES) $(EXTRA_cf_gainmap_DEPENDENCIES) 
 	@rm -f cf_gainmap$(EXEEXT)
-	$(AM_V_CCLD)$(cf_gainmap_LINK) $(cf_gainmap_OBJECTS) $(cf_gainmap_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) $(cf_gainmap_OBJECTS) $(cf_gainmap_LDADD) $(LIBS)
 
 cf_hist_init$(EXEEXT): $(cf_hist_init_OBJECTS) $(cf_hist_init_DEPENDENCIES) $(EXTRA_cf_hist_init_DEPENDENCIES) 
 	@rm -f cf_hist_init$(EXEEXT)
-	$(AM_V_CCLD)$(cf_hist_init_LINK) $(cf_hist_init_OBJECTS) $(cf_hist_init_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) $(cf_hist_init_OBJECTS) $(cf_hist_init_LDADD) $(LIBS)
 
 cf_remove_motions$(EXEEXT): $(cf_remove_motions_OBJECTS) $(cf_remove_motions_DEPENDENCIES) $(EXTRA_cf_remove_motions_DEPENDENCIES) 
 	@rm -f cf_remove_motions$(EXEEXT)
-	$(AM_V_CCLD)$(cf_remove_motions_LINK) $(cf_remove_motions_OBJECTS) $(cf_remove_motions_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) $(cf_remove_motions_OBJECTS) $(cf_remove_motions_LDADD) $(LIBS)
 
 cf_screen_photons$(EXEEXT): $(cf_screen_photons_OBJECTS) $(cf_screen_photons_DEPENDENCIES) $(EXTRA_cf_screen_photons_DEPENDENCIES) 
 	@rm -f cf_screen_photons$(EXEEXT)
-	$(AM_V_CCLD)$(cf_screen_photons_LINK) $(cf_screen_photons_OBJECTS) $(cf_screen_photons_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) $(cf_screen_photons_OBJECTS) $(cf_screen_photons_LDADD) $(LIBS)
 
 cf_ttag_init$(EXEEXT): $(cf_ttag_init_OBJECTS) $(cf_ttag_init_DEPENDENCIES) $(EXTRA_cf_ttag_init_DEPENDENCIES) 
 	@rm -f cf_ttag_init$(EXEEXT)
-	$(AM_V_CCLD)$(cf_ttag_init_LINK) $(cf_ttag_init_OBJECTS) $(cf_ttag_init_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) $(cf_ttag_init_OBJECTS) $(cf_ttag_init_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -601,17 +547,17 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_assign_wavelength-cf_assign_wavelength.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_bad_pixels-cf_bad_pixels.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_convert_to_farf-cf_convert_to_farf.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_countmap-cf_countmap.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_extract_spectra-cf_extract_spectra.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_flux_calibrate-cf_flux_calibrate.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_gainmap-cf_gainmap.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_hist_init-cf_hist_init.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_remove_motions-cf_remove_motions.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_screen_photons-cf_screen_photons.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_ttag_init-cf_ttag_init.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_assign_wavelength.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_bad_pixels.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_convert_to_farf.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_countmap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_extract_spectra.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_flux_calibrate.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_gainmap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_hist_init.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_remove_motions.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_screen_photons.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cf_ttag_init.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -633,160 +579,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
-
-cf_assign_wavelength-cf_assign_wavelength.o: cf_assign_wavelength.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_assign_wavelength_CFLAGS) $(CFLAGS) -MT cf_assign_wavelength-cf_assign_wavelength.o -MD -MP -MF $(DEPDIR)/cf_assign_wavelength-cf_assign_wavelength.Tpo -c -o cf_assign_wavelength-cf_assign_wavelength.o `test -f 'cf_assign_wavelength.c' || echo '$(srcdir)/'`cf_assign_wavelength.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_assign_wavelength-cf_assign_wavelength.Tpo $(DEPDIR)/cf_assign_wavelength-cf_assign_wavelength.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_assign_wavelength.c' object='cf_assign_wavelength-cf_assign_wavelength.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_assign_wavelength_CFLAGS) $(CFLAGS) -c -o cf_assign_wavelength-cf_assign_wavelength.o `test -f 'cf_assign_wavelength.c' || echo '$(srcdir)/'`cf_assign_wavelength.c
-
-cf_assign_wavelength-cf_assign_wavelength.obj: cf_assign_wavelength.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_assign_wavelength_CFLAGS) $(CFLAGS) -MT cf_assign_wavelength-cf_assign_wavelength.obj -MD -MP -MF $(DEPDIR)/cf_assign_wavelength-cf_assign_wavelength.Tpo -c -o cf_assign_wavelength-cf_assign_wavelength.obj `if test -f 'cf_assign_wavelength.c'; then $(CYGPATH_W) 'cf_assign_wavelength.c'; else $(CYGPATH_W) '$(srcdir)/cf_assign_wavelength.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_assign_wavelength-cf_assign_wavelength.Tpo $(DEPDIR)/cf_assign_wavelength-cf_assign_wavelength.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_assign_wavelength.c' object='cf_assign_wavelength-cf_assign_wavelength.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_assign_wavelength_CFLAGS) $(CFLAGS) -c -o cf_assign_wavelength-cf_assign_wavelength.obj `if test -f 'cf_assign_wavelength.c'; then $(CYGPATH_W) 'cf_assign_wavelength.c'; else $(CYGPATH_W) '$(srcdir)/cf_assign_wavelength.c'; fi`
-
-cf_bad_pixels-cf_bad_pixels.o: cf_bad_pixels.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_bad_pixels_CFLAGS) $(CFLAGS) -MT cf_bad_pixels-cf_bad_pixels.o -MD -MP -MF $(DEPDIR)/cf_bad_pixels-cf_bad_pixels.Tpo -c -o cf_bad_pixels-cf_bad_pixels.o `test -f 'cf_bad_pixels.c' || echo '$(srcdir)/'`cf_bad_pixels.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_bad_pixels-cf_bad_pixels.Tpo $(DEPDIR)/cf_bad_pixels-cf_bad_pixels.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_bad_pixels.c' object='cf_bad_pixels-cf_bad_pixels.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_bad_pixels_CFLAGS) $(CFLAGS) -c -o cf_bad_pixels-cf_bad_pixels.o `test -f 'cf_bad_pixels.c' || echo '$(srcdir)/'`cf_bad_pixels.c
-
-cf_bad_pixels-cf_bad_pixels.obj: cf_bad_pixels.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_bad_pixels_CFLAGS) $(CFLAGS) -MT cf_bad_pixels-cf_bad_pixels.obj -MD -MP -MF $(DEPDIR)/cf_bad_pixels-cf_bad_pixels.Tpo -c -o cf_bad_pixels-cf_bad_pixels.obj `if test -f 'cf_bad_pixels.c'; then $(CYGPATH_W) 'cf_bad_pixels.c'; else $(CYGPATH_W) '$(srcdir)/cf_bad_pixels.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_bad_pixels-cf_bad_pixels.Tpo $(DEPDIR)/cf_bad_pixels-cf_bad_pixels.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_bad_pixels.c' object='cf_bad_pixels-cf_bad_pixels.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_bad_pixels_CFLAGS) $(CFLAGS) -c -o cf_bad_pixels-cf_bad_pixels.obj `if test -f 'cf_bad_pixels.c'; then $(CYGPATH_W) 'cf_bad_pixels.c'; else $(CYGPATH_W) '$(srcdir)/cf_bad_pixels.c'; fi`
-
-cf_convert_to_farf-cf_convert_to_farf.o: cf_convert_to_farf.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_convert_to_farf_CFLAGS) $(CFLAGS) -MT cf_convert_to_farf-cf_convert_to_farf.o -MD -MP -MF $(DEPDIR)/cf_convert_to_farf-cf_convert_to_farf.Tpo -c -o cf_convert_to_farf-cf_convert_to_farf.o `test -f 'cf_convert_to_farf.c' || echo '$(srcdir)/'`cf_convert_to_farf.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_convert_to_farf-cf_convert_to_farf.Tpo $(DEPDIR)/cf_convert_to_farf-cf_convert_to_farf.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_convert_to_farf.c' object='cf_convert_to_farf-cf_convert_to_farf.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_convert_to_farf_CFLAGS) $(CFLAGS) -c -o cf_convert_to_farf-cf_convert_to_farf.o `test -f 'cf_convert_to_farf.c' || echo '$(srcdir)/'`cf_convert_to_farf.c
-
-cf_convert_to_farf-cf_convert_to_farf.obj: cf_convert_to_farf.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_convert_to_farf_CFLAGS) $(CFLAGS) -MT cf_convert_to_farf-cf_convert_to_farf.obj -MD -MP -MF $(DEPDIR)/cf_convert_to_farf-cf_convert_to_farf.Tpo -c -o cf_convert_to_farf-cf_convert_to_farf.obj `if test -f 'cf_convert_to_farf.c'; then $(CYGPATH_W) 'cf_convert_to_farf.c'; else $(CYGPATH_W) '$(srcdir)/cf_convert_to_farf.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_convert_to_farf-cf_convert_to_farf.Tpo $(DEPDIR)/cf_convert_to_farf-cf_convert_to_farf.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_convert_to_farf.c' object='cf_convert_to_farf-cf_convert_to_farf.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_convert_to_farf_CFLAGS) $(CFLAGS) -c -o cf_convert_to_farf-cf_convert_to_farf.obj `if test -f 'cf_convert_to_farf.c'; then $(CYGPATH_W) 'cf_convert_to_farf.c'; else $(CYGPATH_W) '$(srcdir)/cf_convert_to_farf.c'; fi`
-
-cf_countmap-cf_countmap.o: cf_countmap.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_countmap_CFLAGS) $(CFLAGS) -MT cf_countmap-cf_countmap.o -MD -MP -MF $(DEPDIR)/cf_countmap-cf_countmap.Tpo -c -o cf_countmap-cf_countmap.o `test -f 'cf_countmap.c' || echo '$(srcdir)/'`cf_countmap.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_countmap-cf_countmap.Tpo $(DEPDIR)/cf_countmap-cf_countmap.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_countmap.c' object='cf_countmap-cf_countmap.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_countmap_CFLAGS) $(CFLAGS) -c -o cf_countmap-cf_countmap.o `test -f 'cf_countmap.c' || echo '$(srcdir)/'`cf_countmap.c
-
-cf_countmap-cf_countmap.obj: cf_countmap.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_countmap_CFLAGS) $(CFLAGS) -MT cf_countmap-cf_countmap.obj -MD -MP -MF $(DEPDIR)/cf_countmap-cf_countmap.Tpo -c -o cf_countmap-cf_countmap.obj `if test -f 'cf_countmap.c'; then $(CYGPATH_W) 'cf_countmap.c'; else $(CYGPATH_W) '$(srcdir)/cf_countmap.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_countmap-cf_countmap.Tpo $(DEPDIR)/cf_countmap-cf_countmap.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_countmap.c' object='cf_countmap-cf_countmap.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_countmap_CFLAGS) $(CFLAGS) -c -o cf_countmap-cf_countmap.obj `if test -f 'cf_countmap.c'; then $(CYGPATH_W) 'cf_countmap.c'; else $(CYGPATH_W) '$(srcdir)/cf_countmap.c'; fi`
-
-cf_extract_spectra-cf_extract_spectra.o: cf_extract_spectra.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_extract_spectra_CFLAGS) $(CFLAGS) -MT cf_extract_spectra-cf_extract_spectra.o -MD -MP -MF $(DEPDIR)/cf_extract_spectra-cf_extract_spectra.Tpo -c -o cf_extract_spectra-cf_extract_spectra.o `test -f 'cf_extract_spectra.c' || echo '$(srcdir)/'`cf_extract_spectra.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_extract_spectra-cf_extract_spectra.Tpo $(DEPDIR)/cf_extract_spectra-cf_extract_spectra.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_extract_spectra.c' object='cf_extract_spectra-cf_extract_spectra.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_extract_spectra_CFLAGS) $(CFLAGS) -c -o cf_extract_spectra-cf_extract_spectra.o `test -f 'cf_extract_spectra.c' || echo '$(srcdir)/'`cf_extract_spectra.c
-
-cf_extract_spectra-cf_extract_spectra.obj: cf_extract_spectra.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_extract_spectra_CFLAGS) $(CFLAGS) -MT cf_extract_spectra-cf_extract_spectra.obj -MD -MP -MF $(DEPDIR)/cf_extract_spectra-cf_extract_spectra.Tpo -c -o cf_extract_spectra-cf_extract_spectra.obj `if test -f 'cf_extract_spectra.c'; then $(CYGPATH_W) 'cf_extract_spectra.c'; else $(CYGPATH_W) '$(srcdir)/cf_extract_spectra.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_extract_spectra-cf_extract_spectra.Tpo $(DEPDIR)/cf_extract_spectra-cf_extract_spectra.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_extract_spectra.c' object='cf_extract_spectra-cf_extract_spectra.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_extract_spectra_CFLAGS) $(CFLAGS) -c -o cf_extract_spectra-cf_extract_spectra.obj `if test -f 'cf_extract_spectra.c'; then $(CYGPATH_W) 'cf_extract_spectra.c'; else $(CYGPATH_W) '$(srcdir)/cf_extract_spectra.c'; fi`
-
-cf_flux_calibrate-cf_flux_calibrate.o: cf_flux_calibrate.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_flux_calibrate_CFLAGS) $(CFLAGS) -MT cf_flux_calibrate-cf_flux_calibrate.o -MD -MP -MF $(DEPDIR)/cf_flux_calibrate-cf_flux_calibrate.Tpo -c -o cf_flux_calibrate-cf_flux_calibrate.o `test -f 'cf_flux_calibrate.c' || echo '$(srcdir)/'`cf_flux_calibrate.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_flux_calibrate-cf_flux_calibrate.Tpo $(DEPDIR)/cf_flux_calibrate-cf_flux_calibrate.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_flux_calibrate.c' object='cf_flux_calibrate-cf_flux_calibrate.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_flux_calibrate_CFLAGS) $(CFLAGS) -c -o cf_flux_calibrate-cf_flux_calibrate.o `test -f 'cf_flux_calibrate.c' || echo '$(srcdir)/'`cf_flux_calibrate.c
-
-cf_flux_calibrate-cf_flux_calibrate.obj: cf_flux_calibrate.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_flux_calibrate_CFLAGS) $(CFLAGS) -MT cf_flux_calibrate-cf_flux_calibrate.obj -MD -MP -MF $(DEPDIR)/cf_flux_calibrate-cf_flux_calibrate.Tpo -c -o cf_flux_calibrate-cf_flux_calibrate.obj `if test -f 'cf_flux_calibrate.c'; then $(CYGPATH_W) 'cf_flux_calibrate.c'; else $(CYGPATH_W) '$(srcdir)/cf_flux_calibrate.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_flux_calibrate-cf_flux_calibrate.Tpo $(DEPDIR)/cf_flux_calibrate-cf_flux_calibrate.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_flux_calibrate.c' object='cf_flux_calibrate-cf_flux_calibrate.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_flux_calibrate_CFLAGS) $(CFLAGS) -c -o cf_flux_calibrate-cf_flux_calibrate.obj `if test -f 'cf_flux_calibrate.c'; then $(CYGPATH_W) 'cf_flux_calibrate.c'; else $(CYGPATH_W) '$(srcdir)/cf_flux_calibrate.c'; fi`
-
-cf_gainmap-cf_gainmap.o: cf_gainmap.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_gainmap_CFLAGS) $(CFLAGS) -MT cf_gainmap-cf_gainmap.o -MD -MP -MF $(DEPDIR)/cf_gainmap-cf_gainmap.Tpo -c -o cf_gainmap-cf_gainmap.o `test -f 'cf_gainmap.c' || echo '$(srcdir)/'`cf_gainmap.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_gainmap-cf_gainmap.Tpo $(DEPDIR)/cf_gainmap-cf_gainmap.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_gainmap.c' object='cf_gainmap-cf_gainmap.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_gainmap_CFLAGS) $(CFLAGS) -c -o cf_gainmap-cf_gainmap.o `test -f 'cf_gainmap.c' || echo '$(srcdir)/'`cf_gainmap.c
-
-cf_gainmap-cf_gainmap.obj: cf_gainmap.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_gainmap_CFLAGS) $(CFLAGS) -MT cf_gainmap-cf_gainmap.obj -MD -MP -MF $(DEPDIR)/cf_gainmap-cf_gainmap.Tpo -c -o cf_gainmap-cf_gainmap.obj `if test -f 'cf_gainmap.c'; then $(CYGPATH_W) 'cf_gainmap.c'; else $(CYGPATH_W) '$(srcdir)/cf_gainmap.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_gainmap-cf_gainmap.Tpo $(DEPDIR)/cf_gainmap-cf_gainmap.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_gainmap.c' object='cf_gainmap-cf_gainmap.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_gainmap_CFLAGS) $(CFLAGS) -c -o cf_gainmap-cf_gainmap.obj `if test -f 'cf_gainmap.c'; then $(CYGPATH_W) 'cf_gainmap.c'; else $(CYGPATH_W) '$(srcdir)/cf_gainmap.c'; fi`
-
-cf_hist_init-cf_hist_init.o: cf_hist_init.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_hist_init_CFLAGS) $(CFLAGS) -MT cf_hist_init-cf_hist_init.o -MD -MP -MF $(DEPDIR)/cf_hist_init-cf_hist_init.Tpo -c -o cf_hist_init-cf_hist_init.o `test -f 'cf_hist_init.c' || echo '$(srcdir)/'`cf_hist_init.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_hist_init-cf_hist_init.Tpo $(DEPDIR)/cf_hist_init-cf_hist_init.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_hist_init.c' object='cf_hist_init-cf_hist_init.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_hist_init_CFLAGS) $(CFLAGS) -c -o cf_hist_init-cf_hist_init.o `test -f 'cf_hist_init.c' || echo '$(srcdir)/'`cf_hist_init.c
-
-cf_hist_init-cf_hist_init.obj: cf_hist_init.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_hist_init_CFLAGS) $(CFLAGS) -MT cf_hist_init-cf_hist_init.obj -MD -MP -MF $(DEPDIR)/cf_hist_init-cf_hist_init.Tpo -c -o cf_hist_init-cf_hist_init.obj `if test -f 'cf_hist_init.c'; then $(CYGPATH_W) 'cf_hist_init.c'; else $(CYGPATH_W) '$(srcdir)/cf_hist_init.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_hist_init-cf_hist_init.Tpo $(DEPDIR)/cf_hist_init-cf_hist_init.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_hist_init.c' object='cf_hist_init-cf_hist_init.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_hist_init_CFLAGS) $(CFLAGS) -c -o cf_hist_init-cf_hist_init.obj `if test -f 'cf_hist_init.c'; then $(CYGPATH_W) 'cf_hist_init.c'; else $(CYGPATH_W) '$(srcdir)/cf_hist_init.c'; fi`
-
-cf_remove_motions-cf_remove_motions.o: cf_remove_motions.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_remove_motions_CFLAGS) $(CFLAGS) -MT cf_remove_motions-cf_remove_motions.o -MD -MP -MF $(DEPDIR)/cf_remove_motions-cf_remove_motions.Tpo -c -o cf_remove_motions-cf_remove_motions.o `test -f 'cf_remove_motions.c' || echo '$(srcdir)/'`cf_remove_motions.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_remove_motions-cf_remove_motions.Tpo $(DEPDIR)/cf_remove_motions-cf_remove_motions.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_remove_motions.c' object='cf_remove_motions-cf_remove_motions.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_remove_motions_CFLAGS) $(CFLAGS) -c -o cf_remove_motions-cf_remove_motions.o `test -f 'cf_remove_motions.c' || echo '$(srcdir)/'`cf_remove_motions.c
-
-cf_remove_motions-cf_remove_motions.obj: cf_remove_motions.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_remove_motions_CFLAGS) $(CFLAGS) -MT cf_remove_motions-cf_remove_motions.obj -MD -MP -MF $(DEPDIR)/cf_remove_motions-cf_remove_motions.Tpo -c -o cf_remove_motions-cf_remove_motions.obj `if test -f 'cf_remove_motions.c'; then $(CYGPATH_W) 'cf_remove_motions.c'; else $(CYGPATH_W) '$(srcdir)/cf_remove_motions.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_remove_motions-cf_remove_motions.Tpo $(DEPDIR)/cf_remove_motions-cf_remove_motions.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_remove_motions.c' object='cf_remove_motions-cf_remove_motions.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_remove_motions_CFLAGS) $(CFLAGS) -c -o cf_remove_motions-cf_remove_motions.obj `if test -f 'cf_remove_motions.c'; then $(CYGPATH_W) 'cf_remove_motions.c'; else $(CYGPATH_W) '$(srcdir)/cf_remove_motions.c'; fi`
-
-cf_screen_photons-cf_screen_photons.o: cf_screen_photons.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_screen_photons_CFLAGS) $(CFLAGS) -MT cf_screen_photons-cf_screen_photons.o -MD -MP -MF $(DEPDIR)/cf_screen_photons-cf_screen_photons.Tpo -c -o cf_screen_photons-cf_screen_photons.o `test -f 'cf_screen_photons.c' || echo '$(srcdir)/'`cf_screen_photons.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_screen_photons-cf_screen_photons.Tpo $(DEPDIR)/cf_screen_photons-cf_screen_photons.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_screen_photons.c' object='cf_screen_photons-cf_screen_photons.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_screen_photons_CFLAGS) $(CFLAGS) -c -o cf_screen_photons-cf_screen_photons.o `test -f 'cf_screen_photons.c' || echo '$(srcdir)/'`cf_screen_photons.c
-
-cf_screen_photons-cf_screen_photons.obj: cf_screen_photons.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_screen_photons_CFLAGS) $(CFLAGS) -MT cf_screen_photons-cf_screen_photons.obj -MD -MP -MF $(DEPDIR)/cf_screen_photons-cf_screen_photons.Tpo -c -o cf_screen_photons-cf_screen_photons.obj `if test -f 'cf_screen_photons.c'; then $(CYGPATH_W) 'cf_screen_photons.c'; else $(CYGPATH_W) '$(srcdir)/cf_screen_photons.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_screen_photons-cf_screen_photons.Tpo $(DEPDIR)/cf_screen_photons-cf_screen_photons.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_screen_photons.c' object='cf_screen_photons-cf_screen_photons.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_screen_photons_CFLAGS) $(CFLAGS) -c -o cf_screen_photons-cf_screen_photons.obj `if test -f 'cf_screen_photons.c'; then $(CYGPATH_W) 'cf_screen_photons.c'; else $(CYGPATH_W) '$(srcdir)/cf_screen_photons.c'; fi`
-
-cf_ttag_init-cf_ttag_init.o: cf_ttag_init.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_ttag_init_CFLAGS) $(CFLAGS) -MT cf_ttag_init-cf_ttag_init.o -MD -MP -MF $(DEPDIR)/cf_ttag_init-cf_ttag_init.Tpo -c -o cf_ttag_init-cf_ttag_init.o `test -f 'cf_ttag_init.c' || echo '$(srcdir)/'`cf_ttag_init.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_ttag_init-cf_ttag_init.Tpo $(DEPDIR)/cf_ttag_init-cf_ttag_init.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_ttag_init.c' object='cf_ttag_init-cf_ttag_init.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_ttag_init_CFLAGS) $(CFLAGS) -c -o cf_ttag_init-cf_ttag_init.o `test -f 'cf_ttag_init.c' || echo '$(srcdir)/'`cf_ttag_init.c
-
-cf_ttag_init-cf_ttag_init.obj: cf_ttag_init.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_ttag_init_CFLAGS) $(CFLAGS) -MT cf_ttag_init-cf_ttag_init.obj -MD -MP -MF $(DEPDIR)/cf_ttag_init-cf_ttag_init.Tpo -c -o cf_ttag_init-cf_ttag_init.obj `if test -f 'cf_ttag_init.c'; then $(CYGPATH_W) 'cf_ttag_init.c'; else $(CYGPATH_W) '$(srcdir)/cf_ttag_init.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cf_ttag_init-cf_ttag_init.Tpo $(DEPDIR)/cf_ttag_init-cf_ttag_init.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cf_ttag_init.c' object='cf_ttag_init-cf_ttag_init.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cf_ttag_init_CFLAGS) $(CFLAGS) -c -o cf_ttag_init-cf_ttag_init.obj `if test -f 'cf_ttag_init.c'; then $(CYGPATH_W) 'cf_ttag_init.c'; else $(CYGPATH_W) '$(srcdir)/cf_ttag_init.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

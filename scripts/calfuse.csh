@@ -1,4 +1,4 @@
-#!/usr/local/bin/tcsh -f
+#!/usr/bin/env tcsh -f
 #******************************************************************************
 #*              Johns Hopkins University 
 #*              Center For Astrophysical Sciences

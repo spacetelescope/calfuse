@@ -69,7 +69,6 @@ am__make_running_with_option = \
   test $$has_opt = yes
 am__make_dryrun = (target_option=n; $(am__make_running_with_option))
 am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
-pkgdatadir = $(datadir)/@PACKAGE@
 pkgincludedir = $(includedir)/@PACKAGE@
 pkglibdir = $(libdir)/@PACKAGE@
 pkglibexecdir = $(libexecdir)/@PACKAGE@
@@ -100,7 +99,7 @@ DIST_COMMON = $(srcdir)/Makefile.am $(top_srcdir)/configure \
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
-CONFIG_HEADER = config.h
+CONFIG_HEADER = $(top_builddir)/src/include/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 AM_V_P = $(am__v_P_@AM_V@)
@@ -138,8 +137,7 @@ am__recursive_targets = \
   $(am__extra_recursive_targets)
 AM_RECURSIVE_TARGETS = $(am__recursive_targets:-recursive=) TAGS CTAGS \
 	cscope distdir dist dist-all distcheck
-am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) \
-	$(LISP)config.h.in
+am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
 # and print each of them once, without duplicates.  Input order is
 # *not* preserved.
@@ -160,8 +158,9 @@ ETAGS = etags
 CTAGS = ctags
 CSCOPE = cscope
 DIST_SUBDIRS = $(SUBDIRS)
-am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in compile \
-	config.guess config.sub depcomp install-sh ltmain.sh missing
+am__DIST_COMMON = $(srcdir)/Makefile.in \
+	$(top_srcdir)/src/include/config.h.in compile config.guess \
+	config.sub depcomp install-sh ltmain.sh missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -204,6 +203,7 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
+pkgdatadir = $(datadir)/@PACKAGE@-@VERSION@
 ACLOCAL = @ACLOCAL@
 ALLOCA = @ALLOCA@
 AMTAR = @AMTAR@
@@ -328,10 +328,33 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+SUBDIRS = . src scripts doc
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = . src
-all: config.h
-	$(MAKE) $(AM_MAKEFLAGS) all-recursive
+DATADIRS = calfiles parmfiles idl
+EXTRA_DIST = $(DATADIRS) \
+			 src/fes/cf_calfes.h \
+			 src/include/calfitsio.h \
+			 src/include/calfuse.h \
+			 src/include/cfortran.h \
+			 src/include/compress.h \
+			 src/include/config.h \
+			 src/include/drvrsmem.h \
+			 src/include/eval_defs.h \
+			 src/include/eval_tab.h \
+			 src/include/f77_wrap.h \
+			 src/include/fusebuf.h \
+			 src/include/group.h \
+			 src/include/grparser.h \
+			 src/include/imcompress.h \
+			 src/include/longnam.h \
+			 src/include/pctype.h \
+			 src/include/region.h \
+			 src/include/ricecomp.h \
+			 src/include/sgp4.h \
+			 src/include/slalib.h \
+			 src/include/slamac.h
+
+all: all-recursive
 
 .SUFFIXES:
 am--refresh: Makefile
@@ -368,20 +391,20 @@ $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
 
-config.h: stamp-h1
-	@test -f $@ || rm -f stamp-h1
-	@test -f $@ || $(MAKE) $(AM_MAKEFLAGS) stamp-h1
+src/include/config.h: src/include/stamp-h1
+	@test -f $@ || rm -f src/include/stamp-h1
+	@test -f $@ || $(MAKE) $(AM_MAKEFLAGS) src/include/stamp-h1
 
-stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
-	@rm -f stamp-h1
-	cd $(top_builddir) && $(SHELL) ./config.status config.h
-$(srcdir)/config.h.in:  $(am__configure_deps) 
+src/include/stamp-h1: $(top_srcdir)/src/include/config.h.in $(top_builddir)/config.status
+	@rm -f src/include/stamp-h1
+	cd $(top_builddir) && $(SHELL) ./config.status src/include/config.h
+$(top_srcdir)/src/include/config.h.in:  $(am__configure_deps) 
 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
-	rm -f stamp-h1
+	rm -f src/include/stamp-h1
 	touch $@
 
 distclean-hdr:
-	-rm -f config.h stamp-h1
+	-rm -f src/include/config.h src/include/stamp-h1
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -688,7 +711,7 @@ distcleancheck: distclean
 	       exit 1; } >&2
 check-am: all-am
 check: check-recursive
-all-am: Makefile config.h
+all-am: Makefile
 installdirs: installdirs-recursive
 installdirs-am:
 install: install-recursive
@@ -743,7 +766,7 @@ info: info-recursive
 
 info-am:
 
-install-data-am:
+install-data-am: install-data-local
 
 install-dvi: install-dvi-recursive
 
@@ -791,7 +814,7 @@ ps-am:
 
 uninstall-am:
 
-.MAKE: $(am__recursive_targets) all install-am install-strip
+.MAKE: $(am__recursive_targets) install-am install-strip
 
 .PHONY: $(am__recursive_targets) CTAGS GTAGS TAGS all all-am \
 	am--refresh check check-am clean clean-cscope clean-generic \
@@ -801,17 +824,31 @@ uninstall-am:
 	distclean-hdr distclean-libtool distclean-tags distcleancheck \
 	distdir distuninstallcheck dvi dvi-am html html-am info \
 	info-am install install-am install-data install-data-am \
-	install-dvi install-dvi-am install-exec install-exec-am \
-	install-html install-html-am install-info install-info-am \
-	install-man install-pdf install-pdf-am install-ps \
-	install-ps-am install-strip installcheck installcheck-am \
-	installdirs installdirs-am maintainer-clean \
+	install-data-local install-dvi install-dvi-am install-exec \
+	install-exec-am install-html install-html-am install-info \
+	install-info-am install-man install-pdf install-pdf-am \
+	install-ps install-ps-am install-strip installcheck \
+	installcheck-am installdirs installdirs-am maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic \
 	mostlyclean-libtool pdf pdf-am ps ps-am tags tags-am uninstall \
 	uninstall-am
 
 .PRECIOUS: Makefile
 
+
+#			 scripts/calfuse.wavecal \
+#			 scripts/cf_make_900_obs.csh \
+#			 scripts/cf_make_all.csh \
+#			 scripts/cf_make_all_obs.csh \
+#			 scripts/idl_obsplot.pl \
+#			 scripts/idlplot_rate.pl \
+#			 scripts/idlplot_spex.pl \
+#			 scripts/listhead \
+#			 scripts/listtra
+
+install-data-local: $(DATADIRS)
+	mkdir -p $(DESTDIR)$(pkgdatadir)
+	cp -a $(DATADIRS) $(DESTDIR)$(pkgdatadir)
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

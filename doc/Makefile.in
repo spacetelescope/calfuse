@@ -282,6 +282,7 @@ doc_DATA = FIXING_SELINUX_ISSUES \
 		   INTRO_TO_CalFUSEv3.2.3 \
 		   pipeline_status.html
 
+EXTRA_DIST = $(doc_DATA)
 all: all-am
 
 .SUFFIXES:

@@ -3,8 +3,8 @@
 CF_DIR="@PREFIX@"
 CF_VERSION="@VERSION@"
 export PATH="${CF_DIR}/bin:${PATH}"
-export CF_CALDIR="${CF_DIR}/calfiles"
-export CF_PARMDIR="${CF_DIR}/parmfiles"
-export CF_IDLDIR="${CF_DIR}/idl"
+export CF_CALDIR="@DATADIR@/calfiles"
+export CF_PARMDIR="@DATADIR@/parmfiles"
+export CF_IDLDIR="@DATADIR@/idl"
 export CF_HISTDIR=`pwd`
 

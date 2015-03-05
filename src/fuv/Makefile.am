@@ -1,6 +1,6 @@
 SUBDIRS = .
 BUILD_LIBS = ../slalib/libsla.la ../libcf/libcf.la $(cfitsio_LIBS)
-BUILD_FLAGS = -I../../include -I./ $(cfitsio_CFLAGS)
+BUILD_FLAGS = -I../include -I./ $(cfitsio_CFLAGS)
 bin_PROGRAMS = cf_assign_wavelength \
 			   cf_bad_pixels \
 			   cf_convert_to_farf \
@@ -24,26 +24,5 @@ cf_remove_motions_SOURCES = cf_remove_motions.c
 cf_screen_photons_SOURCES = cf_screen_photons.c
 cf_ttag_init_SOURCES = cf_ttag_init.c
 
-cf_assign_wavelength_LDADD = $(BUILD_LIBS)
-cf_bad_pixels_LDADD = $(BUILD_LIBS)
-cf_convert_to_farf_LDADD = $(BUILD_LIBS)
-cf_countmap_LDADD = $(BUILD_LIBS)
-cf_extract_spectra_LDADD = $(BUILD_LIBS)
-cf_flux_calibrate_LDADD = $(BUILD_LIBS)
-cf_gainmap_LDADD = $(BUILD_LIBS)
-cf_hist_init_LDADD = $(BUILD_LIBS)
-cf_remove_motions_LDADD = $(BUILD_LIBS)
-cf_screen_photons_LDADD = $(BUILD_LIBS)
-cf_ttag_init_LDADD = $(BUILD_LIBS)
-
-cf_assign_wavelength_CFLAGS = $(BUILD_FLAGS)
-cf_bad_pixels_CFLAGS = $(BUILD_FLAGS)
-cf_convert_to_farf_CFLAGS = $(BUILD_FLAGS)
-cf_countmap_CFLAGS = $(BUILD_FLAGS)
-cf_extract_spectra_CFLAGS = $(BUILD_FLAGS)
-cf_flux_calibrate_CFLAGS = $(BUILD_FLAGS)
-cf_gainmap_CFLAGS = $(BUILD_FLAGS)
-cf_hist_init_CFLAGS = $(BUILD_FLAGS)
-cf_remove_motions_CFLAGS = $(BUILD_FLAGS)
-cf_screen_photons_CFLAGS = $(BUILD_FLAGS)
-cf_ttag_init_CFLAGS = $(BUILD_FLAGS)
+LDADD = $(BUILD_LIBS)
+AM_CFLAGS = $(BUILD_FLAGS)

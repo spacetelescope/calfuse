@@ -1,4 +1,4 @@
-#!/usr/local/bin/tcsh -f
+#!/usr/bin/env tcsh -f
 
 #******************************************************************************
 #*              Johns Hopkins University 
@@ -69,7 +69,7 @@
 #set DELETE_BPM                 # Delete bad-pixel map files
 
 # Set program path
-set rm = "/bin/rm -f"
+set rm = "rm -f"
 
 set cf_xcorr = cf_xcorr
 set cf_combine = cf_combine

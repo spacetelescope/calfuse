@@ -110,7 +110,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
 mkinstalldirs = $(install_sh) -d
-CONFIG_HEADER = $(top_builddir)/config.h
+CONFIG_HEADER = $(top_builddir)/src/include/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
@@ -263,7 +263,7 @@ AM_V_at = $(am__v_at_@AM_V@)
 am__v_at_ = $(am__v_at_@AM_DEFAULT_V@)
 am__v_at_0 = @
 am__v_at_1 = 
-DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
+DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/src/include
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
@@ -531,7 +531,7 @@ ttag_lightcurve_combine_SOURCES = ttag_lightcurve_combine.c
 ttag_lightcurve_mjd2hmjd_SOURCES = ttag_lightcurve_mjd2hmjd.c gethmjd.c
 ttag_lightcurve_periodogram_SOURCES = ttag_lightcurve_periodogram.c
 LDADD = ../libcf/libcf.la ../slalib/libsla.la $(cfitsio_LIBS)
-AM_CFLAGS = -I../../include -I./ -DCFORTRAN -Df2cFortran
+AM_CFLAGS = -I$(top_srcdir)/include -I./ -DCFORTRAN -Df2cFortran
 all: all-recursive
 
 .SUFFIXES:

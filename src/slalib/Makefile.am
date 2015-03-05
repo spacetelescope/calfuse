@@ -184,4 +184,4 @@ libsla_la_SOURCES = \
         xy2xy.f  \
         zd.f
 
-AM_CFLAGS = -I../include -I./
+AM_CFLAGS = -I$(top_srcdir)/include -I./

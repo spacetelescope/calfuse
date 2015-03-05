@@ -631,7 +631,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_unique_file="include/calfitsio.h"
+ac_unique_file="src"
 ac_subst_vars='am__EXEEXT_FALSE
 am__EXEEXT_TRUE
 LTLIBOBJS
@@ -12086,7 +12086,7 @@ CC=$lt_save_CC
 
 
 
-ac_config_headers="$ac_config_headers config.h"
+ac_config_headers="$ac_config_headers src/include/config.h"
 
 
 # Checks for programs.
@@ -16617,7 +16617,7 @@ fi
 done
 
 
-ac_config_files="$ac_config_files Makefile src/Makefile src/libcf/Makefile src/slalib/Makefile src/fes/Makefile src/fuv/Makefile src/analysis/Makefile src/cal/Makefile src/cal/jitter/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile src/libcf/Makefile src/slalib/Makefile src/fes/Makefile src/fuv/Makefile src/analysis/Makefile src/cal/Makefile src/cal/jitter/Makefile scripts/Makefile doc/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -17705,7 +17705,7 @@ do
   case $ac_config_target in
     "depfiles") CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
     "libtool") CONFIG_COMMANDS="$CONFIG_COMMANDS libtool" ;;
-    "config.h") CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
+    "src/include/config.h") CONFIG_HEADERS="$CONFIG_HEADERS src/include/config.h" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "src/libcf/Makefile") CONFIG_FILES="$CONFIG_FILES src/libcf/Makefile" ;;
@@ -17715,6 +17715,8 @@ do
     "src/analysis/Makefile") CONFIG_FILES="$CONFIG_FILES src/analysis/Makefile" ;;
     "src/cal/Makefile") CONFIG_FILES="$CONFIG_FILES src/cal/Makefile" ;;
     "src/cal/jitter/Makefile") CONFIG_FILES="$CONFIG_FILES src/cal/jitter/Makefile" ;;
+    "scripts/Makefile") CONFIG_FILES="$CONFIG_FILES scripts/Makefile" ;;
+    "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -19118,4 +19120,5 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
 $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
+
 
