@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Atomic Time: TAI</TITLE>
+<META NAME="description" CONTENT="Atomic Time: TAI">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node219.html">
+<LINK REL="previous" HREF="node217.html">
+<LINK REL="up" HREF="node217.html">
+<LINK REL="next" HREF="node219.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2635" HREF="node219.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2633" HREF="node217.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2627" HREF="node217.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2636" HREF="node219.html">Universal Time: UTC, UT1</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2634" HREF="node217.html">Timescales</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2628" HREF="node217.html">Timescales</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H3><A NAME="SECTION000515100000000000000">
+Atomic Time: TAI</A>
+</H3>
+<I>International Atomic Time</I> TAI is a laboratory timescale.  Its
+unit is the SI second, which is defined in terms of a
+defined number
+of wavelengths of the radiation produced by a certain electronic
+transition in the caesium 133 atom.  It
+is realized through a changing
+population of high-precision atomic clocks held
+at standards institutes in various countries.  There is an
+elaborate process of continuous intercomparison, leading to
+a weighted average of all the clocks involved.
+<P>
+Though TAI shares the same second as the more familiar UTC, the
+two timescales are noticeably separated in epoch because of the
+build-up of leap seconds.  At the time of writing, UTC
+lags about half a minute behind TAI.
+<P>
+For any given date, the difference TAI-UTC
+can be obtained by calling the SLALIB routine
+sla_DAT.
+Note, however, that an up-to-date copy of the routine must be used if
+the most recent leap seconds are required.  For applications
+where this is critical, mechanisms independent of SLALIB
+and under local control must
+be set up;  in such cases
+sla_DAT
+can be useful as an
+independent check, for test dates within the range of the
+available version.  Up-to-date information on TAI-UTC is available
+from <TT>ftp://maia.usno.navy.mil/ser7/tai-utc.dat</TT>.
+<P>
+<BR> <HR>
+<A NAME="tex2html2635" HREF="node219.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2633" HREF="node217.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2627" HREF="node217.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2636" HREF="node219.html">Universal Time: UTC, UT1</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2634" HREF="node217.html">Timescales</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2628" HREF="node217.html">Timescales</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

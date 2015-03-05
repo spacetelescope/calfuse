@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Universal Time: UTC, UT1</TITLE>
+<META NAME="description" CONTENT="Universal Time: UTC, UT1">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node220.html">
+<LINK REL="previous" HREF="node218.html">
+<LINK REL="up" HREF="node217.html">
+<LINK REL="next" HREF="node220.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2645" HREF="node220.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2643" HREF="node217.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2637" HREF="node218.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2646" HREF="node220.html">Sidereal Time: GMST, LAST</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2644" HREF="node217.html">Timescales</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2638" HREF="node218.html">Atomic Time: TAI</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H3><A NAME="SECTION000515200000000000000">
+Universal Time: UTC, UT1</A>
+</H3>
+<I>Coordinated Universal Time</I> UTC is the basis of civil timekeeping.
+Most time zones differ from UTC by an integer number
+of hours, though a few (<I>e.g.</I> parts of Canada and Australia) differ
+by <I>n</I>+0.5&nbsp;hours.  The UTC second is the same as the SI second,
+as for TAI.  In the long term, UTC keeps in step with the
+Sun.  It does so even though the Earth's rotation is slightly
+variable (due to large scale movements of water and atmosphere
+among other things) by occasionally introducing a <I>leap
+second</I>.
+<P><I>Universal Time</I> UT, or more specifically UT1,
+is in effect the mean solar time.  It is continuous
+(<I>i.e.</I> there are no leap seconds) but has a variable
+rate because of the Earth's non-uniform rotation period.  It is
+needed for computing the sidereal time, an essential part of
+pointing a telescope at a celestial source.  To obtain UT1, you
+have to look up the value of UT1-UTC for the date concerned
+in tables published by the International Earth Rotation
+Service;  this quantity, kept in the range
+<IMG WIDTH="15" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.gif"
+ ALT="$\pm$"><IMG WIDTH="24" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img31.gif"
+ ALT="$0^{\rm s}\hspace{-0.3em}.9$"> by means of UTC leap
+seconds, is then added to the UTC.  The quantity UT1-UTC,
+which typically changes by 1 or 2&nbsp;ms per day,
+can only be obtained by observation, though seasonal trends
+are known and the IERS listings are able to predict some way into
+the future with adequate accuracy for pointing telescopes.
+<P>
+UTC leap seconds are introduced as necessary,
+usually at the end of December or June.
+On the average the solar day is slightly longer
+than the nominal 86,400&nbsp;SI&nbsp;seconds and so leap seconds are always positive;
+however, provision exists for negative leap seconds if needed.
+The form of a leap second can be seen from the
+following description of the end of June&nbsp;1994:
+<P><A NAME="27722">&#160;</A>
+<TABLE CELLPADDING=3>
+<CAPTION><STRONG>Figure 1:</STRONG>
+Relationship Between Celestial Coordinates</CAPTION>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>UTC</TD>
+<TD ALIGN="CENTER" NOWRAP>UT1-UTC</TD>
+<TD ALIGN="CENTER" NOWRAP>UT1</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>1994</TD>
+<TD ALIGN="LEFT" NOWRAP>June</TD>
+<TD ALIGN="RIGHT" NOWRAP>30</TD>
+<TD ALIGN="CENTER" NOWRAP>23 59 58</TD>
+<TD ALIGN="CENTER" NOWRAP>-0.218</TD>
+<TD ALIGN="CENTER" NOWRAP>23 59 57.782</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>23 59 59</TD>
+<TD ALIGN="CENTER" NOWRAP>-0.218</TD>
+<TD ALIGN="CENTER" NOWRAP>23 59 58.782</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>23 59 60</TD>
+<TD ALIGN="CENTER" NOWRAP>-0.218</TD>
+<TD ALIGN="CENTER" NOWRAP>23 59 59.782</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>July</TD>
+<TD ALIGN="RIGHT" NOWRAP>1</TD>
+<TD ALIGN="CENTER" NOWRAP>00 00 00</TD>
+<TD ALIGN="CENTER" NOWRAP>+0.782</TD>
+<TD ALIGN="CENTER" NOWRAP>00 00 00.782</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>00 00 01</TD>
+<TD ALIGN="CENTER" NOWRAP>+0.782</TD>
+<TD ALIGN="CENTER" NOWRAP>00 00 01.782</TD>
+</TR>
+</TABLE>
+<P>
+Note that UTC has to be expressed as hours, minutes and
+seconds (or at least in seconds for a given date) if leap seconds
+are to be taken into account.  It is improper to express a UTC as a
+Julian Date, for example, because there will be an ambiguity
+during a leap second (in the above example,
+1994&nbsp;June&nbsp;30 <IMG WIDTH="96" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img308.gif"
+ ALT="$23^{h}\,59^{m}\,60^{s}.0$"> and
+1994&nbsp;July&nbsp;1 <IMG WIDTH="96" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img309.gif"
+ ALT="$00^{h}\,00^{m}\,00^{s}.0$"> would <I>both</I> come out as
+MJD&nbsp;49534.00000).  Although in the vast majority of
+cases this won't matter, there are potential problems in
+on-line data acquisition systems and in applications involving
+taking the difference between two times.  Note that although the routines
+sla_DAT
+and
+sla_DTT
+expect UTC in the form of an MJD, the meaning here is really a
+whole-number <I>date</I> rather than a time.  Though the routines will accept
+a fractional part and will almost always function correctly, on a day
+which ends with a leap
+second incorrect results would be obtained during the leap second
+itself because by then the MJD would have moved into the next day.
+<P>
+<BR> <HR>
+<A NAME="tex2html2645" HREF="node220.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2643" HREF="node217.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2637" HREF="node218.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2646" HREF="node220.html">Sidereal Time: GMST, LAST</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2644" HREF="node217.html">Timescales</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2638" HREF="node218.html">Atomic Time: TAI</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

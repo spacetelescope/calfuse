@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_AOPPA - Appt-to-Obs Parameters</TITLE>
+<META NAME="description" CONTENT="SLA_AOPPA - Appt-to-Obs Parameters">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node22.html">
+<LINK REL="previous" HREF="node20.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node22.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html636" HREF="node22.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html634" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html628" HREF="node20.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html637" HREF="node22.html">SLA_AOPPAT - Update Appt-to-Obs Parameters</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html635" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html629" HREF="node20.html">SLA_AOP - Apparent to Observed</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00048000000000000000">SLA_AOPPA - Appt-to-Obs Parameters</A>
+<A NAME="xref_SLA_AOPPA">&#160;</A><A NAME="SLA_AOPPA">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Pre-compute the set of apparent to observed place parameters
+required by the ``quick'' routines sla_AOPQK and sla_OAPQK.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_AOPPA (
+          DATE, DUT, ELONGM, PHIM, HM, XP, YP,
+          TDK, PMB, RH, WL, TLR, AOPRMS)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>UTC date/time (Modified Julian Date, JD-2400000.5)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DUT</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\Delta$">UT:  UT1-UTC (UTC seconds)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ELONGM</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>observer's mean longitude (radians, east +ve)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PHIM</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>observer's mean geodetic latitude (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>HM</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>observer's height above sea level (metres)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XP,YP</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>polar motion <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> coordinates (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>TDK</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>local ambient temperature (degrees K; std=273.155D0)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PMB</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>local atmospheric pressure (mB; std=1013.25D0)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RH</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>local relative humidity (in the range 0D0-1D0)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>WL</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>effective wavelength (<IMG WIDTH="26" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif"
+ ALT="$\mu{\rm m}$">, <I>e.g.</I> 0.55D0)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>TLR</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>tropospheric lapse rate (degrees K per metre,
+<I>e.g.</I> 0.0065D0)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AOPRMS</EM></TD>
+<TH ALIGN="LEFT"><B>D(14)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>star-independent apparent-to-observed parameters:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(1)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>geodetic latitude (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(2,3)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>sine and cosine of geodetic latitude</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(4)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>magnitude of diurnal aberration vector</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(5)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>height (HM)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(6)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>ambient temperature (TDK)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(7)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>pressure (PMB)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(8)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>relative humidity (RH)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(9)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>wavelength (WL)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(10)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>lapse rate (TLR)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(11,12)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>refraction constants A and B (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(13)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>longitude + eqn of equinoxes +
+``sidereal <IMG WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\Delta$">UT'' (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(14)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>local apparent sidereal time (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>It is advisable to take great care with units, as even
+unlikely values of the input parameters are accepted and
+processed in accordance with the models used.
+  <DT>2.
+<DD>The DATE argument is UTC expressed as an MJD.  This is,
+        strictly speaking, wrong, because of leap seconds.  However,
+        as long as the <IMG WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\Delta$">UT and the UTC are consistent there
+        are no difficulties, except during a leap second.  In this
+        case, the start of the 61st second of the final minute should
+        begin a new MJD day and the old pre-leap <IMG WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\Delta$">UT should
+        continue to be used.  As the 61st second completes, the MJD
+        should revert to the start of the day as, simultaneously,
+        the <IMG WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\Delta$">UT changes by one second to its post-leap new value.
+  <DT>3.
+<DD>The <IMG WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\Delta$">UT (UT1-UTC) is tabulated in IERS circulars and
+        elsewhere.  It increases by exactly one second at the end of
+        each UTC leap second, introduced in order to keep <IMG WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\Delta$">UT
+        within <IMG WIDTH="15" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.gif"
+ ALT="$\pm$"><IMG WIDTH="24" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img31.gif"
+ ALT="$0^{\rm s}\hspace{-0.3em}.9$">.  The ``sidereal <IMG WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\Delta$">UT'' which forms
+        part of AOPRMS(13) is the same quantity, but converted from solar
+        to sidereal seconds and expressed in radians.
+  <DT>4.
+<DD>IMPORTANT - TAKE CARE WITH THE LONGITUDE SIGN CONVENTION.  The
+        longitude required by the present routine is <B>east-positive</B>,
+        in accordance with geographical convention (and right-handed).
+        In particular, note that the longitudes returned by the
+        sla_OBS routine are west-positive (as in the <I>Astronomical
+        Almanac</I> before 1984) and must be reversed in sign before use in
+        the present routine.
+  <DT>5.
+<DD>The polar coordinates XP,YP can be obtained from IERS
+        circulars and equivalent publications.  The
+        maximum amplitude is about 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img32.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.3$">   .  If XP,YP values
+        are unavailable, use XP=YP=0D0.  See page B60 of the 1988
+        <I>Astronomical Almanac</I> for a definition of the two angles.
+  <DT>6.
+<DD>The height above sea level of the observing station, HM,
+        can be obtained from the <I>Astronomical Almanac</I> (Section J
+        in the 1988 edition), or via the routine sla_OBS.  If P,
+        the pressure in mB, is available, an adequate
+        estimate of HM can be obtained from the following expression:
+        <BLOCKQUOTE><TT>HM=-29.3D0*TSL*LOG(P/1013.25D0)</TT>
+        </BLOCKQUOTE>
+        where TSL is the approximate sea-level air temperature in degrees K
+        (see <I>Astrophysical Quantities</I>, C.W.Allen, 3rd&nbsp;edition,
+        &#167;52).  Similarly, if the pressure P is not known,
+        it can be estimated from the height of the observing
+        station, HM as follows:
+        <BLOCKQUOTE><TT>P=1013.25D0*EXP(-HM/(29.3D0*TSL))</TT>
+        </BLOCKQUOTE>
+        Note, however, that the refraction is proportional to the
+        pressure and that an accurate P value is important for
+        precise work.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html636" HREF="node22.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html634" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html628" HREF="node20.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html637" HREF="node22.html">SLA_AOPPAT - Update Appt-to-Obs Parameters</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html635" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html629" HREF="node20.html">SLA_AOP - Apparent to Observed</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

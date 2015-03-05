@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_HFK5Z - Hipparcos to FK5, no P.M.</TITLE>
+<META NAME="description" CONTENT="SLA_HFK5Z - Hipparcos to FK5, no P.M.">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node121.html">
+<LINK REL="previous" HREF="node119.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node121.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1626" HREF="node121.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1624" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1618" HREF="node119.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1627" HREF="node121.html">SLA_IMXV - Apply 3D Reverse Rotation</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1625" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1619" HREF="node119.html">SLA_H2FK5 - Hipparcos to FK5</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004107000000000000000">SLA_HFK5Z - Hipparcos to FK5, no P.M.</A>
+<A NAME="xref_SLA_HFK5Z">&#160;</A><A NAME="SLA_HFK5Z">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Transform a Hipparcos star position
+into the FK5 (J2000) frame assuming zero Hipparcos proper motion.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_HFK5Z (RH,DH,EPOCH,R5,D5,DR5,DD5)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RH</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>Hipparcos <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DH</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>Hipparcos <IMG WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\delta$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EPOCH</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>Julian epoch (TDB)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>R5</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>J2000.0 FK5 <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>D5</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>J2000.0 FK5 <IMG WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\delta$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DR5</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>J2000.0 FK5 proper motion in <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">(radians per Julian year)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DD5</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>FK5 J2000.0 proper motion in <IMG WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\delta$">(radians per Julian year)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> proper motions are <IMG WIDTH="13" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img115.gif"
+ ALT="$\dot{\alpha}$"> rather than
+<IMG WIDTH="48" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img116.gif"
+ ALT="$\dot{\alpha}\cos\delta$">, and are per year rather than per century.
+<DT>2.
+<DD>The FK5 to Hipparcos
+        transformation consists of a pure rotation and spin;
+        zonal errors in the FK5 catalogue are not taken into account.
+  <DT>3.
+<DD>The adopted epoch J2000.0 FK5 to Hipparcos orientation and spin
+        values are as follows (see reference):
+<P>        <BR>
+<BR>
+<BR>
+<P>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>&nbsp;</TD>
+<TH ALIGN="CENTER" NOWRAP COLSPAN=1><I>orientation</I></TH>
+<TH ALIGN="CENTER" NOWRAP COLSPAN=1><I>&nbsp;&nbsp;&nbsp;spin&nbsp;&nbsp;&nbsp;</I></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP><I>x</I></TD>
+<TD ALIGN="RIGHT" NOWRAP>-19.9&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP>&nbsp;-0.30&nbsp;&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP><I>y</I></TD>
+<TD ALIGN="RIGHT" NOWRAP>-9.1&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP>&nbsp;+0.60&nbsp;&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP><I>z</I></TD>
+<TD ALIGN="RIGHT" NOWRAP>+22.9&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP>&nbsp;+0.70&nbsp;&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP><I>mas</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP>&nbsp;<I>mas/y</I>&nbsp;</TD>
+</TR>
+</TABLE>
+<P>        <BR>
+<BR>
+<BR>
+<BR>
+<P>
+These orientation and spin components are interpreted as
+        <I>axial vectors.</I>  An axial vector points at the pole of
+        the rotation and its length is the amount of rotation in radians.
+        The order of the rotations, which are very small,
+  <DT>4.
+<DD>It was the intention that Hipparcos should be a close
+        approximation to an inertial frame, so that distant objects
+        have zero proper motion;  such objects have (in general)
+        non-zero proper motion in FK5, and this routine returns those
+        <I>fictitious proper motions.</I>
+  <DT>5.
+<DD>The position returned by this routine is in the FK5 J2000
+        reference frame but at Julian epoch EPOCH.
+  <DT>6.
+<DD>See also sla_FK52H, sla_FK5HZ, sla_H2FK5.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>Feissel, M. &amp; Mignard, F., 1998.,  <I>Astron.Astrophys.</I> <B>331</B>, L33-L36.
+     </DL>
+<BR> <HR>
+<A NAME="tex2html1626" HREF="node121.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1624" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1618" HREF="node119.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1627" HREF="node121.html">SLA_IMXV - Apply 3D Reverse Rotation</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1625" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1619" HREF="node119.html">SLA_H2FK5 - Hipparcos to FK5</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_EQEQX - Equation of the Equinoxes</TITLE>
+<META NAME="description" CONTENT="SLA_EQEQX - Equation of the Equinoxes">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node99.html">
+<LINK REL="previous" HREF="node97.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node99.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1406" HREF="node99.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1404" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1398" HREF="node97.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1407" HREF="node99.html">SLA_EQGAL - J2000 to Galactic</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1405" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1399" HREF="node97.html">SLA_EQECL - J2000 to Ecliptic</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000485000000000000000">SLA_EQEQX - Equation of the Equinoxes</A>
+<A NAME="xref_SLA_EQEQX">&#160;</A><A NAME="SLA_EQEQX">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Equation of the equinoxes (IAU 1994).
+<DT><STRONG>CALL:</STRONG>
+<DD><TT>D&nbsp;=&nbsp;sla_EQEQX (DATE)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>TDB (formerly ET) as Modified Julian Date (JD-2400000.5)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>sla_EQEQX</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>The equation of the equinoxes (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The equation of the equinoxes is defined here as GAST&nbsp;-&nbsp;GMST:
+it is added to a <I>mean</I> sidereal time to give the
+<I>apparent</I> sidereal time.
+  <DT>2.
+<DD>The change from the classic ``textbook'' expression
+        <IMG WIDTH="62" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img108.gif"
+ ALT="$\Delta\psi\,cos\,\epsilon$"> occurred with IAU Resolution C7,
+        Recommendation&nbsp;3 (1994).  The new formulation takes into
+        account cross-terms between the various precession and
+        nutation quantities, amounting to about 3&nbsp;milliarcsec.
+        The transition from the old to the new model officially
+        takes place on 1997 February&nbsp;27.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>Capitaine, N. &amp; Gontier, A.-M. (1993),
+<I>Astron. Astrophys.</I>,
+      <B>275</B>, 645-650.
+     </DL>
+<BR> <HR>
+<A NAME="tex2html1406" HREF="node99.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1404" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1398" HREF="node97.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1407" HREF="node99.html">SLA_EQGAL - J2000 to Galactic</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1405" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1399" HREF="node97.html">SLA_EQECL - J2000 to Ecliptic</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

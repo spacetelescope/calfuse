@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Dynamical Time: TT, TDB</TITLE>
+<META NAME="description" CONTENT="Dynamical Time: TT, TDB">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="previous" HREF="node220.html">
+<LINK REL="up" HREF="node217.html">
+<LINK REL="next" HREF="node222.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2663" HREF="node222.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2661" HREF="node217.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2657" HREF="node220.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2664" HREF="node222.html">Calendars</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2662" HREF="node217.html">Timescales</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2658" HREF="node220.html">Sidereal Time: GMST, LAST</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H3><A NAME="SECTION000515400000000000000">
+Dynamical Time: TT, TDB</A>
+</H3>
+Dynamical time is the independent variable in the theories
+which describe the motions of bodies in the solar system.  When
+you use published formulae which model the position of the
+Earth in its orbit, for example, or look up
+the Moon's position in a precomputed ephemeris, the date and time
+you use must be in terms of one of the dynamical timescales.  It
+is a common but understandable mistake to use UT directly, in which
+case the results will be about 1&nbsp;minute out (in the present
+era).
+<P>
+It is not hard to see why such timescales are necessary.
+UTC would clearly be unsuitable as the argument of an
+ephemeris because of leap seconds.
+A solar-system ephemeris based on UT1 or sidereal time would somehow
+have to include the unpredictable variations of the Earth's rotation.
+TAI would work, but eventually
+the ephemeris and the ensemble of atomic clocks would drift apart.
+In effect, the ephemeris <I>is</I> a clock, with the bodies of
+the solar system the hands.
+<P>
+Only two of the dynamical timescales are of any great importance to
+observational astronomers, TT and TDB.  (The obsolete
+timescale ET, ephemeris time, was more or less the same as TT.)
+<P><I>Terrestrial Time</I> TT is
+the theoretical timescale of apparent geocentric ephemerides of solar
+system bodies.  It applies, in principle,
+to an Earthbound clock, at sea-level, and for practical purposes
+it is tied to
+Atomic Time TAI through the formula TT&nbsp;=&nbsp;TAI&nbsp;+&nbsp;<IMG WIDTH="48" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img311.gif"
+ ALT="$32^{\rm s}\hspace{-0.3em}.184$">.In practice, therefore, the units of TT are ordinary SI seconds, and
+the offset of <IMG WIDTH="48" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img311.gif"
+ ALT="$32^{\rm s}\hspace{-0.3em}.184$"> with respect to TAI is fixed.
+The SLALIB routine
+sla_DTT
+returns TT-UTC for a given UTC 
+(<I>n.b.</I>  sla_DTT
+calls
+sla_DAT,
+and the latter must be an up-to-date version if recent leap seconds are
+to be taken into account).
+<P><I>Barycentric Dynamical Time</I> TDB differs from TT by an amount which
+cycles back and forth by a millisecond or two due to
+relativistic effects.  The variation is
+negligible for most purposes, but unless taken into
+account would swamp
+long-term analysis of pulse arrival times from the
+millisecond pulsars.  It is a consequence of
+the TT clock being on the Earth rather than in empty
+space:  the ellipticity of
+the Earth's orbit means that the TT clock's speed and
+gravitational potential vary slightly
+during the course of the year, and as a consequence
+its rate as seen from an outside observer
+varies due to transverse Doppler effect and gravitational
+redshift.  By definition, TDB and TT differ only
+by periodic terms, and the main effect
+is a sinusoidal variation of amplitude <IMG WIDTH="48" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img312.gif"
+ ALT="$0^{\rm s}\hspace{-0.3em}.0016$">;  the
+largest planetary terms are nearly two orders of magnitude
+smaller.  The SLALIB routine
+sla_RCC
+provides a model of
+TDB-TT accurate to a few nanoseconds.
+There are other dynamical timescales, not supported by
+SLALIB routines, which include allowance also for the secular terms.
+These timescales gain on TT and TDB by about <IMG WIDTH="48" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img313.gif"
+ ALT="$0^{\rm s}\hspace{-0.3em}.0013$">/day.
+<P>
+For most purposes the more accessible TT is the timescale to use,
+for example when calling
+sla_PRENUT
+to generate a precession/nutation matrix or when calling
+sla_EVP
+to predict the
+Earth's position and velocity.  For some purposes TDB is the
+correct timescale, for example when interrogating the JPL planetary
+ephemeris (see <I>Starlink User Note&nbsp;87</I>), though in most cases
+TT will be near enough and will involve less computation.
+<P>
+Investigations of topocentric solar-system phenomena such as
+occultations and eclipses require solar time as well as dynamical
+time.  TT/TDB/ET is all that is required in order to compute the geocentric
+circumstances, but if horizon coordinates or geocentric parallax
+are to be tackled UT is also needed.  A rough estimate
+of <IMG WIDTH="117" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img314.gif"
+ ALT="$\Delta {\rm T} = {\rm ET} - {\rm UT}$"> is
+available via the routine
+sla_DT.
+For a given epoch (<I>e.g.</I> 1650) this returns an approximation
+to <IMG WIDTH="28" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img315.gif"
+ ALT="$\Delta {\rm T}$"> in seconds.
+<P>
+<BR> <HR>
+<A NAME="tex2html2663" HREF="node222.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2661" HREF="node217.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2657" HREF="node220.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2664" HREF="node222.html">Calendars</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2662" HREF="node217.html">Timescales</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2658" HREF="node220.html">Sidereal Time: GMST, LAST</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

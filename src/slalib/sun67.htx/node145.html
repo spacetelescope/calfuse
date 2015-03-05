@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PERTUE - Perturbed Universal Elements</TITLE>
+<META NAME="description" CONTENT="SLA_PERTUE - Perturbed Universal Elements">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node146.html">
+<LINK REL="previous" HREF="node144.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node146.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1876" HREF="node146.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1874" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1868" HREF="node144.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1877" HREF="node146.html">SLA_PLANEL - Planet Position from Elements</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1875" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1869" HREF="node144.html">SLA_PERTEL - Perturbed Orbital Elements</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004132000000000000000">SLA_PERTUE - Perturbed Universal Elements</A>
+<A NAME="xref_SLA_PERTUE">&#160;</A><A NAME="SLA_PERTUE">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Update the universal elements of an asteroid or comet by
+applying planetary perturbations.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_PERTUE (DATE, U, JSTAT)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE1</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>final epoch (TT MJD) for the updated elements</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>GIVEN and RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>U</EM></TD>
+<TH ALIGN="LEFT"><B>D(13)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>universal elements (updated in place)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(1)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>combined mass (<I>M</I>+<I>m</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(2)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>total energy of the orbit (<IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(3)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>reference (osculating) epoch (<I>t<SUB>0</SUB></I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(4-6)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>position at reference epoch (<IMG WIDTH="17" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img102.gif"
+ ALT="${\rm \bf r}_0$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(7-9)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>velocity at reference epoch (<IMG WIDTH="19" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.gif"
+ ALT="${\rm \bf v}_0$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(10)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>heliocentric distance at reference epoch</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(11)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="39" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.gif"
+ ALT="${\rm \bf r}_0.{\rm \bf v}_0$"></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(12)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>date (<I>t</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(13)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>universal eccentric anomaly (<IMG WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif"
+ ALT="$\psi$">) of date, approx</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JSTAT</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP> +102 = warning, distant epoch</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP> +101 = warning, large timespan
+(&gt;100 years)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP> +1 to +8 = coincident with major planet
+(Note&nbsp;5)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>        0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     -1 = numerical error</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The ``universal'' elements are those which define the orbit for the
+purposes of the method of universal variables (see reference 2).
+They consist of the combined mass of the two bodies, an epoch,
+        and the position and velocity vectors (arbitrary reference frame)
+        at that epoch.  The parameter set used here includes also various
+        quantities that can, in fact, be derived from the other
+        information.  This approach is taken to avoiding unnecessary
+        computation and loss of accuracy.  The supplementary quantities
+        are (i)&nbsp;<IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">, which is proportional to the total energy of the
+        orbit, (ii)&nbsp;the heliocentric distance at epoch,
+        (iii)&nbsp;the outwards component of the velocity at the given epoch,
+        (iv)&nbsp;an estimate of <IMG WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif"
+ ALT="$\psi$">, the ``universal eccentric anomaly'' at a
+        given date and (v)&nbsp;that date.
+  <DT>2.
+<DD>The universal elements are with respect to the J2000 equator and
+        equinox.
+  <DT>3.
+<DD>The epochs DATE, U(3) and U(12) are all Modified Julian Dates
+        (JD-2400000.5).
+  <DT>4.
+<DD>The algorithm is a simplified form of Encke's method.  It takes as
+        a basis the unperturbed motion of the body, and numerically
+        integrates the perturbing accelerations from the major planets.
+        The expression used is essentially Sterne's 6.7-2 (reference 1).
+        Everhart and Pitkin (reference 2) suggest rectifying the orbit at
+        each integration step by propagating the new perturbed position
+        and velocity as the new universal variables.  In the present
+        routine the orbit is rectified less frequently than this, in order
+        to gain a slight speed advantage.  However, the rectification is
+        done directly in terms of position and velocity, as suggested by
+        Everhart and Pitkin, bypassing the use of conventional orbital
+        elements.
+<P>
+The <I>f</I>(<I>q</I>) part of the full Encke method is not used.  The purpose
+        of this part is to avoid subtracting two nearly equal quantities
+        when calculating the ``indirect member'', which takes account of the
+        small change in the Sun's attraction due to the slightly displaced
+        position of the perturbed body.  A simpler, direct calculation in
+        double precision proves to be faster and not significantly less
+        accurate.
+<P>
+Apart from employing a variable timestep, and occasionally
+        ``rectifying the orbit'' to keep the indirect member small, the
+        integration is done in a fairly straightforward way.  The
+        acceleration estimated for the middle of the timestep is assumed
+        to apply throughout that timestep;  it is also used in the
+        extrapolation of the perturbations to the middle of the next
+        timestep, to predict the new disturbed position.  There is no
+        iteration within a timestep.
+<P>
+Measures are taken to reach a compromise between execution time
+        and accuracy.  The starting-point is the goal of achieving
+        arcsecond accuracy for ordinary minor planets over a ten-year
+        timespan.  This goal dictates how large the timesteps can be,
+        which in turn dictates how frequently the unperturbed motion has
+        to be recalculated from the osculating elements.
+<P>
+Within predetermined limits, the timestep for the numerical
+        integration is varied in length in inverse proportion to the
+        magnitude of the net acceleration on the body from the major
+        planets.
+<P>
+The numerical integration requires estimates of the major-planet
+        motions.  Approximate positions for the major planets (Pluto
+        alone is omitted) are obtained from the routine sla_PLANET.  Two
+        levels of interpolation are used, to enhance speed without
+        significantly degrading accuracy.  At a low frequency, the routine
+        sla_PLANET is called to generate updated position+velocity ``state
+        vectors''.  The only task remaining to be carried out at the full
+        frequency (<I>i.e.</I> at each integration step) is to use the state
+        vectors to extrapolate the planetary positions.  In place of a
+        strictly linear extrapolation, some allowance is made for the
+        curvature of the orbit by scaling back the radius vector as the
+        linear extrapolation goes off at a tangent.
+<P>
+Various other approximations are made.  For example, perturbations
+        by Pluto and the minor planets are neglected, relativistic effects
+        are not taken into account and the Earth-Moon system is treated as
+        a single body.
+<P>
+In the interests of simplicity, the background calculations for
+        the major planets are carried out <I>en masse.</I>
+        The mean elements and
+        state vectors for all the planets are refreshed at the same time,
+        without regard for orbit curvature, mass or proximity.
+<P>  <DT>5.
+<DD>This routine is not intended to be used for major planets.
+        However, if major-planet elements are supplied, sensible results
+        will, in fact, be produced.  This happens because the routine
+        checks the separation between the body and each of the planets and
+        interprets a suspiciously small value (0.001&nbsp;AU) as an attempt to
+        apply the routine to the planet concerned.  If this condition
+        is detected, the
+        contribution from that planet is ignored, and the status is set to
+        the planet number (Mercury=1,...,Neptune=8) as a warning.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Sterne, Theodore E., <I>An Introduction to Celestial Mechanics,</I>
+Interscience Publishers, 1960.  Section 6.7, p199.
+<DT>2.
+<DD>Everhart, E. &amp; Pitkin, E.T., Am.&nbsp;J.&nbsp;Phys.&nbsp;51, 712, 1983.
+   </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1876" HREF="node146.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1874" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1868" HREF="node144.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1877" HREF="node146.html">SLA_PLANEL - Planet Position from Elements</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1875" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1869" HREF="node144.html">SLA_PERTEL - Perturbed Orbital Elements</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

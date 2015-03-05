@@ -1,0 +1,696 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SUMMARY OF CALLS</TITLE>
+<META NAME="description" CONTENT="SUMMARY OF CALLS">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node229.html">
+<LINK REL="previous" HREF="node197.html">
+<LINK REL="up" HREF="sun67.html">
+<LINK REL="next" HREF="node229.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2731" HREF="node229.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2729" HREF="sun67.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2723" HREF="node227.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2732" HREF="node229.html">About this document ...</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2730" HREF="sun67.html">SLALIB   Positional Astronomy Library</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2724" HREF="node227.html">Numerical Methods</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H1><A NAME="SECTION00060000000000000000">
+SUMMARY OF CALLS</A>
+</H1>
+The basic trigonometrical and numerical facilities are supplied in both single
+and double precision versions.
+Most of the more esoteric position and time routines use double precision
+arguments only, even in cases where single precision would normally be adequate
+in practice.
+Certain routines with modest accuracy objectives are supplied in
+single precision versions only.
+In the calling sequences which follow, no attempt has been made
+to distinguish between single and double precision argument names,
+and frequently the same name is used on different occasions to
+mean different things.
+However, none of the routines uses a mixture of single and
+double precision arguments;  each routine is either wholly
+single precision or wholly double precision.
+<P>
+In the classified list, below,
+<I>subroutine</I> subprograms are those whose names and argument lists
+are preceded by `CALL', whereas <I>function</I> subprograms are
+those beginning `R=' (when the result is REAL) or `D=' (when
+the result is DOUBLE&nbsp;PRECISION).
+<P>
+The list is, of course, merely for quick reference;  inexperienced
+users <B>must</B> refer to the detailed specifications given later.
+In particular, <B>don't guess</B> whether arguments are single or
+double precision; the result could be a program that happens to
+works on one sort of machine but not on another.
+<P>
+<BR><BIG><B>String Decoding</BIG></B><UL>
+<LI> CALL sla_INTIN (STRING, NSTRT, IRESLT, JFLAG)
+<BR>
+Convert free-format string into integer
+<LI> CALL sla_FLOTIN (STRING, NSTRT, RESLT, JFLAG)
+<BR>
+CALL sla_DFLTIN (STRING, NSTRT, DRESLT, JFLAG)
+<BR>
+Convert free-format string into floating-point number
+<LI> CALL sla_AFIN (STRING, NSTRT, RESLT, JFLAG)
+<BR>
+CALL sla_DAFIN (STRING, NSTRT, DRESLT, JFLAG)
+<BR>
+Convert free-format string from deg,arcmin,arcsec to radians</UL>
+<BR><BIG><B>Sexagesimal Conversions</BIG></B><UL>
+<LI> CALL sla_CTF2D (IHOUR, IMIN, SEC, DAYS, J)
+<BR>
+CALL sla_DTF2D (IHOUR, IMIN, SEC, DAYS, J)
+<BR>
+Hours, minutes, seconds to days
+<LI> CALL sla_CD2TF (NDP, DAYS, SIGN, IHMSF)
+<BR>
+CALL sla_DD2TF (NDP, DAYS, SIGN, IHMSF)
+<BR>
+Days to hours, minutes, seconds
+<LI> CALL sla_CTF2R (IHOUR, IMIN, SEC, RAD, J)
+<BR>
+CALL sla_DTF2R (IHOUR, IMIN, SEC, RAD, J)
+<BR>
+Hours, minutes, seconds to radians
+<LI> CALL sla_CR2TF (NDP, ANGLE, SIGN, IHMSF)
+<BR>
+CALL sla_DR2TF (NDP, ANGLE, SIGN, IHMSF)
+<BR>
+Radians to hours, minutes, seconds
+<LI> CALL sla_CAF2R (IDEG, IAMIN, ASEC, RAD, J)
+<BR>
+CALL sla_DAF2R (IDEG, IAMIN, ASEC, RAD, J)
+<BR>
+Degrees, arcminutes, arcseconds to radians
+<LI> CALL sla_CR2AF (NDP, ANGLE, SIGN, IDMSF)
+<BR>
+CALL sla_DR2AF (NDP, ANGLE, SIGN, IDMSF)
+<BR>
+Radians to degrees, arcminutes, arcseconds</UL>
+<BR><BIG><B>Angles, Vectors and Rotation Matrices</BIG></B><UL>
+<LI> R&nbsp;=&nbsp;sla_RANGE (ANGLE)
+<BR>
+D&nbsp;=&nbsp;sla_DRANGE (ANGLE)
+<BR>
+Normalize angle into range <IMG WIDTH="25" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif"
+ ALT="$\pm \pi$"><LI> R&nbsp;=&nbsp;sla_RANORM (ANGLE)
+<BR>
+D&nbsp;=&nbsp;sla_DRANRM (ANGLE)
+<BR>
+Normalize angle into range <IMG WIDTH="43" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.gif"
+ ALT="$0\!-\!2\pi$"><LI> CALL sla_CS2C (A, B, V)
+<BR>
+CALL sla_DCS2C (A, B, V)
+<BR>
+Spherical coordinates to <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"><LI> CALL sla_CC2S (V, A, B)
+<BR>
+CALL sla_DCC2S (V, A, B)
+<BR>
+   <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"> to spherical coordinates
+<LI> R&nbsp;=&nbsp;sla_VDV (VA, VB)
+<BR>
+D&nbsp;=&nbsp;sla_DVDV (VA, VB)
+<BR>
+Scalar product of two 3-vectors
+<LI> CALL sla_VXV (VA, VB, VC)
+<BR>
+CALL sla_DVXV (VA, VB, VC)
+<BR>
+Vector product of two 3-vectors
+<LI> CALL sla_VN (V, UV, VM)
+<BR>
+CALL sla_DVN (V, UV, VM)
+<BR>
+Normalize a 3-vector also giving the modulus
+<LI> R&nbsp;=&nbsp;sla_SEP (A1, B1, A2, B2)
+<BR>
+D&nbsp;=&nbsp;sla_DSEP (A1, B1, A2, B2)
+<BR>
+Angle between two points on a sphere
+<LI> R&nbsp;=&nbsp;sla_BEAR (A1, B1, A2, B2)
+<BR>
+D&nbsp;=&nbsp;sla_DBEAR (A1, B1, A2, B2)
+<BR>
+Direction of one point on a sphere seen from another
+<LI> R&nbsp;=&nbsp;sla_PAV (V1, V2)
+<BR>
+D&nbsp;=&nbsp;sla_DPAV (V1, V2)
+<BR>
+Position-angle of one <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"> with respect to another
+<LI> CALL sla_EULER (ORDER, PHI, THETA, PSI, RMAT)
+<BR>
+CALL sla_DEULER (ORDER, PHI, THETA, PSI, RMAT)
+<BR>
+Form rotation matrix from three Euler angles
+<LI> CALL sla_AV2M (AXVEC, RMAT)
+<BR>
+CALL sla_DAV2M (AXVEC, RMAT)
+<BR>
+Form rotation matrix from axial vector
+<LI> CALL sla_M2AV (RMAT, AXVEC)
+<BR>
+CALL sla_DM2AV (RMAT, AXVEC)
+<BR>
+Determine axial vector from rotation matrix
+<LI> CALL sla_MXV (RM, VA, VB)
+<BR>
+CALL sla_DMXV (DM, VA, VB)
+<BR>
+Rotate vector forwards
+<LI> CALL sla_IMXV (RM, VA, VB)
+<BR>
+CALL sla_DIMXV (DM, VA, VB)
+<BR>
+Rotate vector backwards
+<LI> CALL sla_MXM (A, B, C)
+<BR>
+CALL sla_DMXM (A, B, C)
+<BR>
+Product of two 3x3 matrices
+<LI> CALL sla_CS2C6 (A, B, R, AD, BD, RD, V)
+<BR>
+CALL sla_DS2C6 (A, B, R, AD, BD, RD, V)
+<BR>
+Conversion of position and velocity in spherical
+     coordinates to Cartesian coordinates
+<LI> CALL sla_CC62S (V, A, B, R, AD, BD, RD)
+<BR>
+CALL sla_DC62S (V, A, B, R, AD, BD, RD)
+<BR>
+Conversion of position and velocity in Cartesian
+     coordinates to spherical coordinates</UL>
+<BR><BIG><B>Calendars</BIG></B><UL>
+<LI> CALL sla_CLDJ (IY, IM, ID, DJM, J)
+<BR>
+Gregorian Calendar to Modified Julian Date
+<LI> CALL sla_CALDJ (IY, IM, ID, DJM, J)
+<BR>
+Gregorian Calendar to Modified Julian Date,
+     permitting century default
+<LI> CALL sla_DJCAL (NDP, DJM, IYMDF, J)
+<BR>
+Modified Julian Date to Gregorian Calendar,
+     in a form convenient for formatted output
+<LI> CALL sla_DJCL (DJM, IY, IM, ID, FD, J)
+<BR>
+Modified Julian Date to Gregorian Year, Month, Day, Fraction
+<LI> CALL sla_CALYD (IY, IM, ID, NY, ND, J)
+<BR>
+Calendar to year and day in year, permitting century default
+<LI> CALL sla_CLYD (IY, IM, ID, NY, ND, J)
+<BR>
+Calendar to year and day in year
+<LI> D&nbsp;=&nbsp;sla_EPB (DATE)
+<BR>
+Modified Julian Date to Besselian Epoch
+<LI> D&nbsp;=&nbsp;sla_EPB2D (EPB)
+<BR>
+Besselian Epoch to Modified Julian Date
+<LI> D&nbsp;=&nbsp;sla_EPJ (DATE)
+<BR>
+Modified Julian Date to Julian Epoch
+<LI> D&nbsp;=&nbsp;sla_EPJ2D (EPJ)
+<BR>
+Julian Epoch to Modified Julian Date</UL>
+<BR><BIG><B>Timescales</BIG></B><UL>
+<LI> D&nbsp;=&nbsp;sla_GMST (UT1)
+<BR>
+Conversion from Universal Time to sidereal time
+<LI> D&nbsp;=&nbsp;sla_GMSTA (DATE, UT1)
+<BR>
+Conversion from Universal Time to sidereal time, rounding errors minimized
+<LI> D&nbsp;=&nbsp;sla_EQEQX (DATE)
+<BR>
+Equation of the equinoxes
+<LI> D&nbsp;=&nbsp;sla_DAT (DJU)
+<BR>
+Offset of Atomic Time from Coordinated Universal Time: TAI-UTC
+<LI> D&nbsp;=&nbsp;sla_DT (EPOCH)
+<BR>
+Approximate offset between dynamical time and universal time
+<LI> D&nbsp;=&nbsp;sla_DTT (DJU)
+<BR>
+Offset of Terrestrial Time from Coordinated Universal Time: TT-UTC
+<LI> D&nbsp;=&nbsp;sla_RCC (TDB, UT1, WL, U, V)
+<BR>
+Relativistic clock correction: TDB-TT</UL>
+<BR><BIG><B>Precession and Nutation</BIG></B><UL>
+<LI> CALL sla_NUT (DATE, RMATN)
+<BR>
+Nutation matrix
+<LI> CALL sla_NUTC (DATE, DPSI, DEPS, EPS0)
+<BR>
+Longitude and obliquity components of nutation, and
+     mean obliquity
+<LI> CALL sla_PREC (EP0, EP1, RMATP)
+<BR>
+Precession matrix (IAU)
+<LI> CALL sla_PRECL (EP0, EP1, RMATP)
+<BR>
+Precession matrix (suitable for long periods)
+<LI> CALL sla_PRENUT (EPOCH, DATE, RMATPN)
+<BR>
+Combined precession/nutation matrix
+<LI> CALL sla_PREBN (BEP0, BEP1, RMATP)
+<BR>
+Precession matrix, old system
+<LI> CALL sla_PRECES (SYSTEM, EP0, EP1, RA, DC)
+<BR>
+Precession, in either the old or the new system</UL>
+<BR><BIG><B>Proper Motion</BIG></B><UL>
+<LI> CALL sla_PM (R0, D0, PR, PD, PX, RV, EP0, EP1, R1, D1)
+<BR>
+Adjust for proper motion</UL>
+<BR><BIG><B>FK4/FK5/Hipparcos Conversions</BIG></B><UL>
+<LI> CALL sla_FK425 (
+                       R1950, D1950, DR1950, DD1950, P1950, V1950,
+                        R2000, D2000, DR2000, DD2000, P2000, V2000)
+<BR>
+Convert B1950.0 FK4 star data to J2000.0 FK5
+<LI> CALL sla_FK45Z (R1950, D1950, EPOCH, R2000, D2000)
+<BR>
+Convert B1950.0 FK4 position to J2000.0 FK5 assuming zero
+   FK5 proper motion and no parallax
+<LI> CALL sla_FK524 (
+                       R2000, D2000, DR2000, DD2000, P2000, V2000,
+                        R1950, D1950, DR1950, DD1950, P1950, V1950)
+<BR>
+Convert J2000.0 FK5 star data to B1950.0 FK4
+<LI> CALL sla_FK54Z (R2000, D2000, BEPOCH,
+               R1950, D1950, DR1950, DD1950)
+<BR>
+Convert J2000.0 FK5 position to B1950.0 FK4 assuming zero
+   FK5 proper motion and no parallax
+<LI> CALL sla_FK52H (R5, D5, DR5, DD5, RH, DH, DRH, DDH)
+<BR>
+Convert J2000.0 FK5 star data to Hipparcos
+<LI> CALL sla_FK5HZ (R5, D5, EPOCH, RH, DH )
+<BR>
+Convert J2000.0 FK5 position to Hipparcos assuming zero Hipparcos
+   proper motion
+<LI> CALL sla_H2FK5 (RH, DH, DRH, DDH, R5, D5, DR5, DD5)
+<BR>
+Convert Hipparcos star data to J2000.0 FK5
+<LI> CALL sla_HFK5Z (RH, DH, EPOCH, R5, D5, DR5, DD5)
+<BR>
+Convert Hipparcos position to J2000.0 FK5 assuming zero Hipparcos
+   proper motion
+<LI> CALL sla_DBJIN (STRING, NSTRT, DRESLT, J1, J2)
+<BR>
+Like sla_DFLTIN but with extensions to accept leading `B' and `J'
+<LI> CALL sla_KBJ (JB, E, K, J)
+<BR>
+Select epoch prefix `B' or `J'
+<LI> D&nbsp;=&nbsp;sla_EPCO (K0, K, E)
+<BR>
+Convert an epoch into the appropriate form - `B' or `J'</UL>
+<BR><BIG><B>Elliptic Aberration</BIG></B><UL>
+<LI> CALL sla_ETRMS (EP, EV)
+<BR>
+E-terms
+<LI> CALL sla_SUBET (RC, DC, EQ, RM, DM)
+<BR>
+Remove the E-terms
+<LI> CALL sla_ADDET (RM, DM, EQ, RC, DC)
+<BR>
+Add the E-terms</UL>
+<BR><BIG><B>Geographical and Geocentric Coordinates</BIG></B><UL>
+<LI> CALL sla_OBS (NUMBER, ID, NAME, WLONG, PHI, HEIGHT)
+<BR>
+Interrogate list of observatory parameters
+<LI> CALL sla_GEOC (P, H, R, Z)
+<BR>
+Convert geodetic position to geocentric
+<LI> CALL sla_POLMO (ELONGM, PHIM, XP, YP, ELONG, PHI, DAZ)
+<BR>
+Polar motion
+<LI> CALL sla_PVOBS (P, H, STL, PV)
+<BR>
+Position and velocity of observatory</UL>
+<BR><BIG><B>Apparent and Observed Place</BIG></B><UL>
+<LI> CALL sla_MAP (RM, DM, PR, PD, PX, RV, EQ, DATE, RA, DA)
+<BR>
+Mean place to geocentric apparent place
+<LI> CALL sla_MAPPA (EQ, DATE, AMPRMS)
+<BR>
+Precompute mean to apparent parameters
+<LI> CALL sla_MAPQK (RM, DM, PR, PD, PX, RV, AMPRMS, RA, DA)
+<BR>
+Mean to apparent using precomputed parameters
+<LI> CALL sla_MAPQKZ (RM, DM, AMPRMS, RA, DA)
+<BR>
+Mean to apparent using precomputed parameters, for zero proper
+     motion, parallax and radial velocity
+<LI> CALL sla_AMP (RA, DA, DATE, EQ, RM, DM)
+<BR>
+Geocentric apparent place to mean place
+<LI> CALL sla_AMPQK (RA, DA, AOPRMS, RM, DM)
+<BR>
+Apparent to mean using precomputed parameters
+<LI> CALL sla_AOP (
+                      RAP, DAP, UTC, DUT, ELONGM, PHIM, HM, XP, YP,
+                       TDK, PMB, RH, WL, TLR, AOB, ZOB, HOB, DOB, ROB)
+<BR>
+Apparent place to observed place
+<LI> CALL sla_AOPPA (
+                        UTC, DUT, ELONGM, PHIM, HM, XP, YP,
+                         TDK, PMB, RH, WL, TLR, AOPRMS)
+<BR>
+Precompute apparent to observed parameters
+<LI> CALL sla_AOPPAT (UTC, AOPRMS)
+<BR>
+Update sidereal time in apparent to observed parameters
+<LI> CALL sla_AOPQK (RAP, DAP, AOPRMS, AOB, ZOB, HOB, DOB, ROB)
+<BR>
+Apparent to observed using precomputed parameters
+<LI> CALL sla_OAP (
+                     TYPE, OB1, OB2, UTC, DUT, ELONGM, PHIM, HM, XP, YP,
+                      TDK, PMB, RH, WL, TLR, RAP, DAP)
+<BR>
+Observed to apparent
+<LI> CALL sla_OAPQK (TYPE, OB1, OB2, AOPRMS, RA, DA)
+<BR>
+Observed to apparent using precomputed parameters</UL>
+<BR><BIG><B>Azimuth and Elevation</BIG></B><UL>
+<LI> CALL sla_ALTAZ (
+               HA, DEC, PHI,
+                AZ, AZD, AZDD, EL, ELD, ELDD, PA, PAD, PADD)
+<BR>
+Positions, velocities <I>etc.</I> for an altazimuth mount
+<LI> CALL sla_E2H (HA, DEC, PHI, AZ, EL)
+<BR>
+CALL sla_DE2H (HA, DEC, PHI, AZ, EL)
+<BR>
+   <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> to <IMG WIDTH="66" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$[\,Az,El~]$"><LI> CALL sla_H2E (AZ, EL, PHI, HA, DEC)
+<BR>
+CALL sla_DH2E (AZ, EL, PHI, HA, DEC)
+<BR>
+   <IMG WIDTH="66" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$[\,Az,El~]$"> to <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"><LI> CALL sla_PDA2H (P, D, A, H1, J1, H2, J2)
+<BR>
+Hour Angle corresponding to a given azimuth
+<LI> CALL sla_PDQ2H (P, D, Q, H1, J1, H2, J2)
+<BR>
+Hour Angle corresponding to a given parallactic angle
+<LI> D&nbsp;=&nbsp;sla_PA (HA, DEC, PHI)
+<BR>
+   <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> to parallactic angle
+<LI> D&nbsp;=&nbsp;sla_ZD (HA, DEC, PHI)
+<BR>
+   <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> to zenith distance</UL>
+<BR><BIG><B>Refraction and Air Mass</BIG></B><UL>
+<LI> CALL sla_REFRO (ZOBS, HM, TDK, PMB, RH, WL, PHI, TLR, EPS, REF)
+<BR>
+Change in zenith distance due to refraction
+<LI> CALL sla_REFCO (HM, TDK, PMB, RH, WL, PHI, TLR, EPS, REFA, REFB)
+<BR>
+Constants for simple refraction model (accurate)
+<LI> CALL sla_REFCOQ (TDK, PMB, RH, WL, REFA, REFB)
+<BR>
+Constants for simple refraction model (fast)
+<LI> CALL sla_ATMDSP ( TDK, PMB, RH, WL1, REFA1, REFB1, WL2, REFA2, REFB2 )
+<BR>
+Adjust refraction constants for colour
+<LI> CALL sla_REFZ (ZU, REFA, REFB, ZR)
+<BR>
+Unrefracted to refracted ZD, simple model
+<LI> CALL sla_REFV (VU, REFA, REFB, VR)
+<BR>
+Unrefracted to refracted <IMG WIDTH="66" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$[\,Az,El~]$"> vector, simple model
+<LI> D&nbsp;=&nbsp;sla_AIRMAS (ZD)
+<BR>
+Air mass</UL>
+<BR><BIG><B>Ecliptic Coordinates</BIG></B><UL>
+<LI> CALL sla_ECMAT (DATE, RMAT)
+<BR>
+Equatorial to ecliptic rotation matrix
+<LI> CALL sla_EQECL (DR, DD, DATE, DL, DB)
+<BR>
+J2000.0 `FK5' to ecliptic coordinates
+<LI> CALL sla_ECLEQ (DL, DB, DATE, DR, DD)
+<BR>
+Ecliptic coordinates to J2000.0 `FK5'</UL>
+<BR><BIG><B>Galactic Coordinates</BIG></B><UL>
+<LI> CALL sla_EG50 (DR, DD, DL, DB)
+<BR>
+B1950.0 `FK4' to galactic
+<LI> CALL sla_GE50 (DL, DB, DR, DD)
+<BR>
+Galactic to B1950.0 `FK4'
+<LI> CALL sla_EQGAL (DR, DD, DL, DB)
+<BR>
+J2000.0 `FK5' to galactic
+<LI> CALL sla_GALEQ (DL, DB, DR, DD)
+<BR>
+Galactic to J2000.0 `FK5'</UL>
+<BR><BIG><B>Supergalactic Coordinates</BIG></B><UL>
+<LI> CALL sla_GALSUP (DL, DB, DSL, DSB)
+<BR>
+Galactic to supergalactic
+<LI> CALL sla_SUPGAL (DSL, DSB, DL, DB)
+<BR>
+Supergalactic to galactic</UL>
+<BR><BIG><B>Ephemerides</BIG></B><UL>
+<LI> CALL sla_DMOON (DATE, PV)
+<BR>
+Approximate geocentric position and velocity of the Moon
+<LI> CALL sla_EARTH (IY, ID, FD, PV)
+<BR>
+Approximate heliocentric position and velocity of the Earth
+<LI> CALL sla_EVP (DATE, DEQX, DVB, DPB, DVH, DPH)
+<BR>
+Barycentric and heliocentric velocity and position of the Earth
+<LI> CALL sla_MOON (IY, ID, FD, PV)
+<BR>
+Approximate geocentric position and velocity of the Moon
+<LI> CALL sla_PLANET (DATE, NP, PV, JSTAT)
+<BR>
+Approximate heliocentric position and velocity of a planet
+<LI> CALL sla_RDPLAN (DATE, NP, ELONG, PHI, RA, DEC, DIAM)
+<BR>
+Approximate topocentric apparent place of a planet
+<LI> CALL sla_PLANEL (
+                       DATE, JFORM, EPOCH, ORBINC, ANODE, PERIH,
+                      AORQ, E, AORL, DM, PV, JSTAT)
+<BR>
+Heliocentric position and velocity of a planet, asteroid or
+   comet, starting from orbital elements
+<LI> CALL sla_PLANTE (
+                       DATE, ELONG, PHI, JFORM, EPOCH, ORBINC, ANODE,
+                      PERIH, AORQ, E, AORL, DM, RA, DEC, R, JSTAT)
+<BR>
+Topocentric apparent place of a Solar-System object whose
+   heliocentric orbital elements are known
+<LI> CALL sla_PV2EL (
+                      PV, DATE, PMASS, JFORMR, JFORM, EPOCH, ORBINC,
+                     ANODE, PERIH, AORQ, E, AORL, DM, JSTAT)
+<BR>
+Orbital elements of a planet from instantaneous position and velocity
+<LI> CALL sla_PERTEL (
+                       JFORM, DATE0, DATE1,
+                     EPOCH0, ORBI0, ANODE0, PERIH0, AORQ0, E0, AM0,
+                     EPOCH1, ORBI1, ANODE1, PERIH1, AORQ1, E1, AM1,
+                     JSTAT)
+<BR>
+Update elements by applying perturbations
+<LI> CALL sla_EL2UE (
+                      DATE, JFORM, EPOCH, ORBINC, ANODE,
+                     PERIH, AORQ, E, AORL, DM,
+                     U, JSTAT)
+<BR>
+Transform conventional elements to universal elements
+<LI> CALL sla_UE2EL (
+                      U, JFORMR,
+                     JFORM, EPOCH, ORBINC, ANODE, PERIH,
+                     AORQ, E, AORL, DM, JSTAT)
+<BR>
+Transform universal elements to conventional elements
+<LI> CALL sla_PV2UE (PV, DATE, PMASS, U, JSTAT)
+<BR>
+Package a position and velocity for use as universal elements
+<LI> CALL sla_UE2PV (DATE, U, PV, JSTAT)
+<BR>
+Extract the position and velocity from universal elements
+<LI> CALL sla_PERTUE (DATE, U, JSTAT)
+<BR>
+Update universal elements by applying perturbations
+<LI> R&nbsp;=&nbsp;sla_RVEROT (PHI, RA, DA, ST)
+<BR>
+Velocity component due to rotation of the Earth
+<LI> CALL sla_ECOR (RM, DM, IY, ID, FD, RV, TL)
+<BR>
+Components of velocity and light time due to Earth orbital motion
+<LI> R&nbsp;=&nbsp;sla_RVLSRD (R2000, D2000)
+<BR>
+Velocity component due to solar motion wrt dynamical LSR
+<LI> R&nbsp;=&nbsp;sla_RVLSRK (R2000, D2000)
+<BR>
+Velocity component due to solar motion wrt kinematical LSR
+<LI> R&nbsp;=&nbsp;sla_RVGALC (R2000, D2000)
+<BR>
+Velocity component due to rotation of the Galaxy
+<LI> R&nbsp;=&nbsp;sla_RVLG (R2000, D2000)
+<BR>
+Velocity component due to rotation and translation of the
+   Galaxy, relative to the mean motion of the local group</UL>
+<BR><BIG><B>Astrometry</BIG></B><UL>
+<LI> CALL sla_S2TP (RA, DEC, RAZ, DECZ, XI, ETA, J)
+<BR>
+CALL sla_DS2TP (RA, DEC, RAZ, DECZ, XI, ETA, J)
+<BR>
+Transform spherical coordinates into tangent plane
+<LI> CALL sla_V2TP (V, V0, XI, ETA, J)
+<BR>
+CALL sla_DV2TP (V, V0, XI, ETA, J)
+<BR>
+Transform <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"> into tangent plane coordinates
+<LI> CALL sla_DTP2S (XI, ETA, RAZ, DECZ, RA, DEC)
+<BR>
+CALL sla_TP2S (XI, ETA, RAZ, DECZ, RA, DEC)
+<BR>
+Transform tangent plane coordinates into spherical coordinates
+<LI> CALL sla_DTP2V (XI, ETA, V0, V)
+<BR>
+CALL sla_TP2V (XI, ETA, V0, V)
+<BR>
+Transform tangent plane coordinates into <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"><LI> CALL sla_DTPS2C (XI, ETA, RA, DEC, RAZ1, DECZ1, RAZ2, DECZ2, N)
+<BR>
+CALL sla_TPS2C (XI, ETA, RA, DEC, RAZ1, DECZ1, RAZ2, DECZ2, N)
+<BR>
+Get plate centre from star <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> and tangent plane coordinates
+<LI> CALL sla_DTPV2C (XI, ETA, V, V01, V02, N)
+<BR>
+CALL sla_TPV2C (XI, ETA, V, V01, V02, N)
+<BR>
+Get plate centre from star <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"> and tangent plane coordinates
+<LI> CALL sla_PCD (DISCO, X, Y)
+<BR>
+Apply pincushion/barrel distortion
+<LI> CALL sla_UNPCD (DISCO, X, Y)
+<BR>
+Remove pincushion/barrel distortion
+<LI> CALL sla_FITXY (ITYPE, NP, XYE, XYM, COEFFS, J)
+<BR>
+Fit a linear model to relate two sets of <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> coordinates
+<LI> CALL sla_PXY (NP, XYE, XYM, COEFFS, XYP, XRMS, YRMS, RRMS)
+<BR>
+Compute predicted coordinates and residuals
+<LI> CALL sla_INVF (FWDS, BKWDS, J)
+<BR>
+Invert a linear model
+<LI> CALL sla_XY2XY (X1, Y1, COEFFS, X2, Y2)
+<BR>
+Transform one <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"><LI> CALL sla_DCMPF (COEFFS, XZ, YZ, XS, YS, PERP, ORIENT)
+<BR>
+Decompose a linear fit into scales <I>etc.</I></UL>
+<BR><BIG><B>Numerical Methods</BIG></B><UL>
+<LI> CALL sla_COMBN (NSEL, NCAND, LIST, J)
+<BR>
+Next combination (subset from a specified number of items)
+<LI> CALL sla_PERMUT (N, ISTATE, IORDER, J)
+<BR>
+Next permutation of a specified number of items
+<LI> CALL sla_SMAT (N, A, Y, D, JF, IW)
+<BR>
+CALL sla_DMAT (N, A, Y, D, JF, IW)
+<BR>
+Matrix inversion and solution of simultaneous equations
+<LI> CALL sla_SVD (M, N, MP, NP, A, W, V, WORK, JSTAT)
+<BR>
+Singular value decomposition of a matrix
+<LI> CALL sla_SVDSOL (M, N, MP, NP, B, U, W, V, WORK, X)
+<BR>
+Solution from given vector plus SVD
+<LI> CALL sla_SVDCOV (N, NP, NC, W, V, WORK, CVM)
+<BR>
+Covariance matrix from SVD
+<LI> R&nbsp;=&nbsp;sla_RANDOM (SEED)
+<BR>
+Generate pseudo-random real number in the range <IMG WIDTH="72" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img145.gif"
+ ALT="$0 \leq x < 1$"><LI> R&nbsp;=&nbsp;sla_GRESID (S)
+<BR>
+Generate pseudo-random normal deviate (<IMG WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img251.gif"
+ ALT="$\equiv$"> `Gaussian residual')</UL>
+<BR><BIG><B>Real-time</BIG></B><UL>
+<LI> CALL sla_WAIT (DELAY)
+<BR>
+Interval wait</UL>
+<BR> <HR>
+<A NAME="tex2html2731" HREF="node229.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2729" HREF="sun67.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2723" HREF="node227.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2732" HREF="node229.html">About this document ...</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2730" HREF="sun67.html">SLALIB   Positional Astronomy Library</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2724" HREF="node227.html">Numerical Methods</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

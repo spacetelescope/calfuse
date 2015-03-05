@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_DV2TP - Direction Cosines to Tangent Plane</TITLE>
+<META NAME="description" CONTENT="SLA_DV2TP - Direction Cosines to Tangent Plane">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node82.html">
+<LINK REL="previous" HREF="node80.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node82.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1236" HREF="node82.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1234" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1228" HREF="node80.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1237" HREF="node82.html">SLA_DVDV - Scalar Product</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1235" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1229" HREF="node80.html">SLA_DTT - TT minus UTC</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000468000000000000000">SLA_DV2TP - Direction Cosines to Tangent Plane</A>
+<A NAME="xref_SLA_DV2TP">&#160;</A><A NAME="SLA_DV2TP">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Given the direction cosines of a star and of the tangent point,
+determine the star's tangent-plane coordinates
+         (double precision).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_DV2TP (V, V0, XI, ETA, J)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>V</EM></TD>
+<TH ALIGN="LEFT"><B>D(3)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>direction cosines of star</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>V0</EM></TD>
+<TD ALIGN="LEFT"><B>D(3)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>direction cosines of tangent point</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XI,ETA</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>tangent plane coordinates (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>J</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  0 = OK, star on tangent plane</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  1 = error, star too far from axis</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  2 = error, antistar on tangent plane</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  3 = error, antistar too far from axis</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>If vector V0 is not of unit length, or if vector V is of zero
+length, the results will be wrong.
+<DT>2.
+<DD>If V0 points at a pole, the returned <IMG WIDTH="26" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img90.gif"
+ ALT="$\xi,\eta$">        will be based on the
+        arbitrary assumption that <IMG WIDTH="43" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img89.gif"
+ ALT="$\alpha=0$"> at the tangent point.
+  <DT>3.
+<DD>The projection is called the <I>gnomonic</I> projection;  the
+        Cartesian coordinates <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img85.gif"
+ ALT="$[\,\xi,\eta\,]$"> are called 
+        <I>standard coordinates.</I>  The latter
+        are in units of the distance from the tangent plane to the projection
+        point, <I>i.e.</I> radians near the origin.
+  <DT>4.
+<DD>This routine is the Cartesian equivalent of the routine sla_DS2TP.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1236" HREF="node82.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1234" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1228" HREF="node80.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1237" HREF="node82.html">SLA_DVDV - Scalar Product</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1235" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1229" HREF="node80.html">SLA_DTT - TT minus UTC</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

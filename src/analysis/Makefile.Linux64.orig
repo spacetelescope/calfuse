@@ -1,0 +1,141 @@
+
+CALFUSEDIR=	${PWD}/../..
+
+# Symbols for include directories
+FUSEINCLDIR=	-I${CALFUSEDIR}/include
+
+# Symbols used for compiling
+CC=		cc
+OPT=		-g -Wall -DCFORTRAN -Dg77Fortran -Df2cFortran
+CFLAGS=		${OPT} ${FUSEINCLDIR}
+
+# Symbols used for creating shared binaries
+FUSEBINDIR=	${CALFUSEDIR}/bin
+FUSELIBDIR=	-L${CALFUSEDIR}/lib
+LIBDIR=		-L/opt/SUNWspro/lib
+FUSELIBS=	-lsla -lcf
+LIBS=		-lc -lm -lnsl -ldl -lgfortran -lcfitsio
+LDFLAGS=	-Wl,-R${CALFUSEDIR}/lib
+
+# Binaries to be made
+
+BINS=		cf_ttag_to_hist get_shift mjd2hjd cf_reflux \
+		idf_screen extract_jitter modhead \
+		cf_arith cf_combine cf_nvo cf_pack cf_xcorr \
+		idf_combine bpm_combine ttag_combine \
+		cf_coadd cf_make_all_exp \
+                remove_target_orbital_motion idf_cut \
+		ttag_lightcurve \
+		ttag_lightcurve_channel_sum \
+		ttag_lightcurve_mjd2hmjd \
+		ttag_lightcurve_combine \
+		ttag_lightcurve_periodogram 
+
+all:		${BINS}
+		chmod g+rw ${BINS}
+
+install:	all
+		/bin/cp ${BINS} cf_make_all_obs.csh cf_make_900_obs.csh ${FUSEBINDIR}
+
+clean:
+		/bin/rm -f *.o ${BINS}
+
+distclean:
+		/bin/rm -f *.o ${BINS}
+		cd ../../bin; /bin/rm -f ${BINS}
+
+cf_arith: cf_arith.c cf_wrspec7.c cf_wrspec_cf2.c
+		${CC} ${CFLAGS} -o cf_arith cf_arith.c cf_wrspec7.c cf_wrspec_cf2.c\
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_coadd: cf_coadd.c
+		${CC} ${CFLAGS} -o cf_coadd cf_coadd.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_combine: cf_combine.c cf_wrspec7.c
+		${CC} ${CFLAGS} -o cf_combine cf_combine.c cf_wrspec7.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_make_all_exp:
+		${CC} ${CFLAGS} -o cf_make_all_exp cf_make_all_exp.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_ttag_to_hist:
+		${CC} ${CFLAGS} -o cf_ttag_to_hist cf_ttag_to_hist.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+ttag_combine:
+		${CC} ${CFLAGS} -o ttag_combine ttag_combine.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+idf_combine:
+		${CC} ${CFLAGS} -o idf_combine idf_combine.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+bpm_combine:
+		${CC} ${CFLAGS} -o bpm_combine bpm_combine.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+get_shift:
+		${CC} ${CFLAGS} -o get_shift get_shift.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_pack:
+		${CC} ${CFLAGS} -o cf_pack cf_pack.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_nvo:
+		${CC} ${CFLAGS} -o cf_nvo cf_nvo.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_reflux:
+		${CC} ${CFLAGS} -o cf_reflux cf_reflux.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_xcorr:
+		${CC} ${CFLAGS} -o cf_xcorr cf_xcorr.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+modhead:
+		${CC} ${CFLAGS} -o modhead modhead.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+ttag_lightcurve:
+		${CC} ${CFLAGS} -o ttag_lightcurve ttag_lightcurve.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+ttag_lightcurve_periodogram:
+		${CC} ${CFLAGS} -o ttag_lightcurve_periodogram ttag_lightcurve_periodogram.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+mjd2hjd: mjd2hjd.c gethmjd.c
+		${CC} ${CFLAGS} -o mjd2hjd mjd2hjd.c gethmjd.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+ttag_lightcurve_channel_sum:
+		${CC} ${CFLAGS} -o ttag_lightcurve_channel_sum ttag_lightcurve_channel_sum.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+ttag_lightcurve_mjd2hmjd : ttag_lightcurve_mjd2hmjd.c gethmjd.c
+		${CC} ${CFLAGS} -o ttag_lightcurve_mjd2hmjd ttag_lightcurve_mjd2hmjd.c gethmjd.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+ttag_lightcurve_combine:
+		${CC} ${CFLAGS} -o ttag_lightcurve_combine ttag_lightcurve_combine.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+idf_screen:
+		${CC} ${CFLAGS} -o idf_screen idf_screen.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+remove_target_orbital_motion: remove_target_orbital_motion.c gethmjd.c
+		${CC} ${CFLAGS} -o remove_target_orbital_motion remove_target_orbital_motion.c gethmjd.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+idf_cut:
+		${CC} ${CFLAGS} -o idf_cut idf_cut.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+extract_jitter:
+		${CC} ${CFLAGS} -o extract_jitter extract_jitter.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}

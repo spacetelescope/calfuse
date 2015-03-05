@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PM - Proper Motion</TITLE>
+<META NAME="description" CONTENT="SLA_PM - Proper Motion">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node150.html">
+<LINK REL="previous" HREF="node148.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node150.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1916" HREF="node150.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1914" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1908" HREF="node148.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1917" HREF="node150.html">SLA_POLMO - Polar Motion</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1915" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1909" HREF="node148.html">SLA_PLANTE - of Planet from Elements</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004136000000000000000">SLA_PM - Proper Motion</A>
+<A NAME="xref_SLA_PM">&#160;</A><A NAME="SLA_PM">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Apply corrections for proper motion to a star <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">.<DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_PM (R0, D0, PR, PD, PX, RV, EP0, EP1, R1, D1)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>R0,D0</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> at epoch EP0 (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PR,PD</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>proper motions:  rate of change of 
+<IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">  (radians per year)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PX</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>parallax (arcsec)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RV</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>radial velocity (km&nbsp;s<SUP>-1</SUP>, +ve if receding)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EP0</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>start epoch in years (<I>e.g.</I> Julian epoch)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EP1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>end epoch in years (same system as EP0)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>R1,D1</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> at epoch EP1 (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTE:</STRONG>
+<DD>The <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> proper motions are <IMG WIDTH="13" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img115.gif"
+ ALT="$\dot{\alpha}$"> rather than
+<IMG WIDTH="48" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img116.gif"
+ ALT="$\dot{\alpha}\cos\delta$">, and are in the same coordinate
+       system as R0,D0.
+      </DL>
+<P>     <DL>
+<DT><STRONG>REFERENCES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>1984 <I>Astronomical Almanac</I>, pp B39-B41.
+<DT>2.
+<DD>Lederle &amp; Schwan, 1984. <I>Astr. Astrophys.</I> <B>134</B>, 1-6.
+</DL></DL>
+<BR> <HR>
+<A NAME="tex2html1916" HREF="node150.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1914" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1908" HREF="node148.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1917" HREF="node150.html">SLA_POLMO - Polar Motion</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1915" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1909" HREF="node148.html">SLA_PLANTE - of Planet from Elements</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

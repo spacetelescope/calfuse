@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_CALYD - Calendar to Year, Day</TITLE>
+<META NAME="description" CONTENT="SLA_CALYD - Calendar to Year, Day">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node30.html">
+<LINK REL="previous" HREF="node28.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node30.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html716" HREF="node30.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html714" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html708" HREF="node28.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html717" HREF="node30.html">SLA_CC2S - Cartesian to Spherical</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html715" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html709" HREF="node28.html">SLA_CALDJ - Calendar Date to MJD</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000416000000000000000">SLA_CALYD - Calendar to Year, Day</A>
+<A NAME="xref_SLA_CALYD">&#160;</A><A NAME="SLA_CALYD">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Gregorian calendar date to year and day in year, in a Julian
+calendar aligned to the 20th/21st century Gregorian calendar,
+         with century default.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_CALYD (IY, IM, ID, NY, ND, J)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>IY,IM,ID</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>year, month, day in Gregorian calendar:
+year may optionally omit the century</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NY</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>year (re-aligned Julian calendar)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ND</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>day in year (1 = January 1st)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>J</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>   0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>   1 = bad year (before -4711)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>   2 = bad month</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>   3 = bad day</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>This routine supports the <I>century default</I> feature.
+Acceptable years are:
+<UL>
+<LI> 00-49, interpreted as 2000-2049,
+<LI> 50-99, interpreted as 1950-1999, and
+<LI> other years after -4712 , interpreted literally.
+        </UL>
+        Use sla_CLYD for years before 100AD.
+  <DT>2.
+<DD>The purpose of sla_CALDJ is to support
+        sla_EARTH, sla_MOON and sla_ECOR.
+  <DT>3.
+<DD>Between 1900&nbsp;March&nbsp;1 and 2100&nbsp;February&nbsp;28 it returns answers
+        which are consistent with the ordinary Gregorian calendar.
+        Outside this range there will be a discrepancy which increases
+        by one day for every non-leap century year.
+  <DT>4.
+<DD>When an invalid year or month is supplied (status J&nbsp;=&nbsp;1 or J&nbsp;=&nbsp;2)
+        the results are <B>not</B> computed.  When a day is
+        supplied which is outside the conventional range (status J&nbsp;=&nbsp;3)
+        the results <B>are</B> computed.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html716" HREF="node30.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html714" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html708" HREF="node28.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html717" HREF="node30.html">SLA_CC2S - Cartesian to Spherical</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html715" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html709" HREF="node28.html">SLA_CALDJ - Calendar Date to MJD</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Vectors and Matrices</TITLE>
+<META NAME="description" CONTENT="Vectors and Matrices">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node202.html">
+<LINK REL="previous" HREF="node198.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node201.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2453" HREF="node201.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2451" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2445" HREF="node199.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2454" HREF="node201.html">Using vectors</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2452" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2446" HREF="node199.html">Formatting angles</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00052000000000000000">
+Vectors and Matrices</A>
+</H2>
+As an alternative to employing a spherical polar coordinate system,
+the direction of an object can be defined in terms of the sum of any
+three vectors as long as they are different and
+not coplanar.  In practice, three vectors at right angles are
+usually chosen, forming a system
+of <I>Cartesian coordinates</I>.  The <I>x</I>- and <I>y</I>-axes
+lie in the fundamental plane (<I>e.g.</I> the equator in the
+case of <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">), with the <I>x</I>-axis pointing to zero longitude.
+The <I>z</I>-axis is normal to the fundamental plane and points
+towards positive latitudes.  The <I>y</I>-axis can lie in either
+of the two possible directions, depending on whether the
+coordinate system is right-handed or left-handed.
+The three axes are sometimes called
+a <I>triad</I>.  For most applications involving arbitrarily
+distant objects such as stars, the vector which defines
+the direction concerned is constrained to have unit length.
+The <I>x</I>-, <I>y-</I> and <I>z-</I>components
+can be regarded as the scalar (dot) product of this vector
+onto the three axes of the triad in turn.  Because the vector
+is a unit vector,
+each of the three dot-products is simply the cosine of the angle
+between the unit vector and the axis concerned, and the
+<I>x</I>-, <I>y-</I> and <I>z-</I>components are sometimes
+called <I>direction cosines</I>.
+<P>
+For some applications involving objects
+with the Solar System, unit vectors are inappropriate, and
+it is necessary to use vectors scaled in length-units such as
+AU, km <I>etc.</I>
+In these cases the origin of the coordinate system may not be
+the observer, but instead might be the Sun, the Solar-System
+barycentre, the centre of the Earth <I>etc.</I>  But whatever the application,
+the final direction in which the observer sees the object can be
+expressed as direction cosines.
+<P>
+But where has this got us?  Instead of two numbers - a longitude and
+a latitude - we now have three numbers to look after
+- the <I>x</I>-, <I>y-</I> and
+<I>z-</I>components - whose quadratic sum we have somehow to contrive to
+be unity.  And, in addition to this apparent redundancy,
+most people find it harder to visualize
+problems in terms of <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"> than in <IMG WIDTH="45" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img238.gif"
+ ALT="$[\,\theta,\phi~]$">.Despite these objections, the vector approach turns out to have
+significant advantages over the spherical trigonometry approach:
+<UL>
+<LI> Vector formulae tend to be much more succinct;  one vector
+      operation is the equivalent of strings of sines and cosines.
+<LI> The formulae are as a rule rigorous, even at the poles.
+<LI> Accuracy is maintained all over the celestial sphere.
+      When one Cartesian component is nearly unity and
+      therefore insensitive to direction, the others become small
+      and therefore more precise.
+<LI> Formulations usually deliver the quadrant of the result
+      without the need for any inspection (except within the
+      library function ATAN2).
+</UL>
+A number of important transformations in positional
+astronomy turn out to be nothing more than changes of coordinate
+system, something which is especially convenient if
+the vector approach is used.  A direction with respect
+to one triad can be expressed relative to another triad simply
+by multiplying the <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"> column vector by the appropriate
+<IMG WIDTH="39" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif"
+ ALT="$3\times3$"> orthogonal matrix
+(a tensor of Rank&nbsp;2, or <I>dyadic</I>).  The three rows of this
+<I>rotation matrix</I>
+are the vectors in the old coordinate system of the three
+new axes, and the transformation amounts to obtaining the
+dot-product of the direction-vector with each of the three
+new axes.  Precession, nutation, <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> to <IMG WIDTH="66" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$[\,Az,El~]$">,<IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> to <IMG WIDTH="59" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.gif"
+ ALT="$[\,l^{I\!I},b^{I\!I}\,]$"> and so on are typical examples of the
+technique.  A useful property of the rotation matrices
+is that they can be inverted simply by taking the transpose.
+<P>
+The elements of these vectors and matrices are assorted combinations of
+the sines and cosines of the various angles involved (hour angle,
+declination and so on, depending on which transformation is
+being applied).  If you write out the matrix multiplications
+in full you get expressions which are essentially the same as the
+equivalent spherical trigonometry formulae.  Indeed, many of the
+standard formulae of spherical trigonometry are most easily
+derived by expressing the problem initially in
+terms of vectors.
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html2455" HREF="node201.html#SECTION00052100000000000000">
+Using vectors</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR> <HR>
+<A NAME="tex2html2453" HREF="node201.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2451" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2445" HREF="node199.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2454" HREF="node201.html">Using vectors</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2452" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2446" HREF="node199.html">Formatting angles</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

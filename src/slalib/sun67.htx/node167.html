@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_REFRO - Refraction</TITLE>
+<META NAME="description" CONTENT="SLA_REFRO - Refraction">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node168.html">
+<LINK REL="previous" HREF="node166.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node168.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2096" HREF="node168.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2094" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2088" HREF="node166.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2097" HREF="node168.html">SLA_REFV - Apply Refraction to Vector</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2095" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2089" HREF="node166.html">SLA_REFCOQ - Refraction Constants (fast)</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004154000000000000000">SLA_REFRO - Refraction</A>
+<A NAME="xref_SLA_REFRO">&#160;</A><A NAME="SLA_REFRO">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Atmospheric refraction, for radio or optical/IR wavelengths.
+<DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_REFRO (ZOBS, HM, TDK, PMB, RH, WL, PHI, TLR, EPS, REF)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ZOBS</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>observed zenith distance of the source (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>HM</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>height of the observer above sea level (metre)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>TDK</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>ambient temperature at the observer (degrees K)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PMB</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>pressure at the observer (mB)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RH</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>relative humidity at the observer (range 0-1)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>WL</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>effective wavelength of the source (<IMG WIDTH="26" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif"
+ ALT="$\mu{\rm m}$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PHI</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>latitude of the observer (radian, astronomical)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>TLR</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>temperature lapse rate in the troposphere
+(degrees K per metre)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EPS</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>precision required to terminate iteration (radian)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>REF</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TH ALIGN="LEFT" NOWRAP>refraction: <I>in vacuo</I> ZD minus observed ZD (radians)</TH>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>A suggested value for the TLR argument is 0.0065D0.  The
+refraction is significantly affected by TLR, and if studies
+of the local atmosphere have been carried out a better TLR
+        value may be available.
+  <DT>2.
+<DD>A suggested value for the EPS argument is 1D-8.  The result is
+        usually at least two orders of magnitude more computationally
+        precise than the supplied EPS value.
+  <DT>3.
+<DD>The routine computes the refraction for zenith distances up
+        to and a little beyond <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$90^{\circ}$"> using the method of Hohenkerk
+        &amp; Sinclair (NAO Technical Notes 59 and 63, subsequently adopted
+        in the <I>Explanatory Supplement to the Astronomical Almanac,</I>
+        1992 - see section 3.281).
+  <DT>4.
+<DD>The code is based on the AREF optical/IR refraction subroutine
+        of C.Hohenkerk (HMNAO, September 1984), with extensions to
+        support the radio case.  The modifications to the original HMNAO
+        optical/IR refraction code which affect the results are:
+        <UL>
+<LI> Murray's values for the gas constants have been used
+               (<I>Vectorial Astrometry,</I> Adam Hilger, 1983).
+<LI> A better model for <I>P</I><SUB><I>s</I></SUB>(<I>T</I>) has been adopted (taken from
+               Gill, <I>Atmosphere-Ocean Dynamics,</I> Academic Press, 1982).
+<LI> More accurate expressions for <I>Pw</I><SUB><I>o</I></SUB> have been adopted
+               (again from Gill 1982).
+<LI> Provision for radio wavelengths has been added using
+               expressions devised by A.T.Sinclair, RGO (private
+               communication 1989), based on the Essen &amp; Froome
+               refractivity formula adopted in Resolution&nbsp;1 of the
+               12th International Geodesy Association General Assembly
+               (Bulletin G&#233;od&#233;sique <B>70</B> p390, 1963).
+        </UL>
+        None of the changes significantly affects the optical/IR results
+        with respect to the algorithm given in the 1992 <I>Explanatory
+        Supplement.</I>  For example, at <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img174.gif"
+ ALT="$70^\circ$"> zenith distance the present
+        routine agrees with the ES algorithm to better than 
+      <IMG WIDTH="31" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img175.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.05$"><P>
+for any reasonable combination of parameters.  However, the
+        improved water-vapour expressions do make a significant difference
+        in the radio band, at <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img174.gif"
+ ALT="$70^\circ$"> zenith distance reaching almost
+        <IMG WIDTH="17" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img130.gif"
+ ALT="$4\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> for a hot, humid, low-altitude site during a period of
+        low pressure.
+  <DT>5.
+<DD>The radio refraction is chosen by specifying WL &gt;100&nbsp;<IMG WIDTH="26" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif"
+ ALT="$\mu{\rm m}$">.        Because the algorithm takes no account of the ionosphere, the
+        accuracy deteriorates at low frequencies, below about 30MHz.
+  <DT>6.
+<DD>Before use, the value of ZOBS is expressed in the range <IMG WIDTH="25" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif"
+ ALT="$\pm \pi$">.        If this ranged ZOBS is negative, the result REF is computed from its
+        absolute value before being made negative to match.  In addition, if
+        it has an absolute value greater than <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img176.gif"
+ ALT="$93^\circ$">, a fixed REF value
+        equal to the result for ZOBS&nbsp;<IMG WIDTH="43" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img177.gif"
+ ALT="$=93^\circ$"> is returned, appropriately
+        signed.
+  <DT>7.
+<DD>As in the original Hohenkerk and Sinclair algorithm, fixed values
+        of the water vapour polytrope exponent, the height of the
+        tropopause, and the height at which refraction is negligible are
+        used.
+  <DT>8.
+<DD>The radio refraction has been tested against work done by
+        Iain&nbsp;Coulson, JACH, (private communication 1995) for the
+        James Clerk Maxwell Telescope, Mauna Kea.  For typical conditions,
+        agreement at the 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img25.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.1$">    level is achieved for moderate ZD,
+        worsening to perhaps 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img83.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.5$">   -
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img178.gif"
+ ALT="$1\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.0$">    at ZD <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img179.gif"
+ ALT="$80^\circ$">.        At hot and humid sea-level sites the accuracy will not be as good.
+  <DT>9.
+<DD>It should be noted that the relative humidity RH is formally
+        defined in terms of ``mixing ratio'' rather than pressures or
+        densities as is often stated.  It is the mass of water per unit
+        mass of dry air divided by that for saturated air at the same
+        temperature and pressure (see Gill 1982).  The familiar
+        <IMG WIDTH="75" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif"
+ ALT="$\nu=p_w/p_s$"> or <IMG WIDTH="75" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img181.gif"
+ ALT="$\nu=\rho_w/\rho_s$"> expressions can differ from
+        the formal definition by several percent, significant in the
+        radio case.
+  </DL></DL>
+<BR> <HR>
+<A NAME="tex2html2096" HREF="node168.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2094" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2088" HREF="node166.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2097" HREF="node168.html">SLA_REFV - Apply Refraction to Vector</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2095" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2089" HREF="node166.html">SLA_REFCOQ - Refraction Constants (fast)</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_SVDCOV - Covariance Matrix from SVD</TITLE>
+<META NAME="description" CONTENT="SLA_SVDCOV - Covariance Matrix from SVD">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node182.html">
+<LINK REL="previous" HREF="node180.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node182.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2236" HREF="node182.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2234" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2228" HREF="node180.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2237" HREF="node182.html">SLA_SVDSOL - Solution Vector from SVD</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2235" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2229" HREF="node180.html">SLA_SVD - Singular Value Decomposition</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004168000000000000000">SLA_SVDCOV - Covariance Matrix from SVD</A>
+<A NAME="xref_SLA_SVDCOV">&#160;</A><A NAME="SLA_SVDCOV">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>From the <B>W</B> and <B>V</B> matrices from the SVD
+factorization of a matrix
+         (as obtained from the sla_SVD routine), obtain
+         the covariance matrix.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_SVDCOV (N, NP, NC, W, V, WORK, CVM)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>N</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TH ALIGN="LEFT" NOWRAP><I>n</I>, the number of rows and columns in
+matrices <B>W</B> and <B>V</B></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NP</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>first dimension of array containing <IMG WIDTH="42" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif"
+ ALT="$n \times n$">matrix <B>V</B></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NC</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>first dimension of array CVM</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>W</EM></TD>
+<TD ALIGN="LEFT"><B>D(N)</B></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="42" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif"
+ ALT="$n \times n$"> diagonal matrix <B>W</B>
+(diagonal elements only)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>V</EM></TD>
+<TD ALIGN="LEFT"><B>D(NP,NP)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>array containing <IMG WIDTH="42" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif"
+ ALT="$n \times n$"> orthogonal matrix <B>V</B></TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>WORK</EM></TD>
+<TH ALIGN="LEFT"><B>D(N)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>workspace</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>CVM</EM></TD>
+<TD ALIGN="LEFT"><B>D(NC,NC)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>array to receive covariance matrix</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD><I>Numerical Recipes</I>, section 14.3.
+</DL>
+<BR> <HR>
+<A NAME="tex2html2236" HREF="node182.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2234" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2228" HREF="node180.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2237" HREF="node182.html">SLA_SVDSOL - Solution Vector from SVD</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2235" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2229" HREF="node180.html">SLA_SVD - Singular Value Decomposition</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

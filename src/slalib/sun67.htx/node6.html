@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Objectives</TITLE>
+<META NAME="description" CONTENT="Objectives">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node7.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="node2.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html305" HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html303" HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html297" HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html306" HREF="node7.html">Fortran Version</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html304" HREF="node2.html">INTRODUCTION</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html298" HREF="node5.html">Scope</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00024000000000000000">
+Objectives</A>
+</H2>
+SLALIB was designed to give application programmers
+a basic set of positional-astronomy tools which were
+accurate and easy to use.  To this end, the library is:
+<UL>
+<LI> Readily available, including source code and documentation.
+<LI> Supported and maintained.
+<LI> Portable - coded in standard languages and available for
+multiple computers and operating systems.
+<LI> Thoroughly commented, both for maintainability and to
+assist those wishing to cannibalize the code.
+<LI> Stable.
+<LI> Trustworthy - some care has gone into
+testing SLALIB, both by comparison with published data and
+by checks for internal consistency.
+<LI> Rigorous - corners are not cut,
+even where the practical consequences would, as a rule, be
+negligible.
+<LI> Comprehensive, without including too many esoteric features
+required only by specialists.
+<LI> Practical - almost all the routines have been written to
+satisfy real needs encountered during the development of
+real-life applications.
+<LI> Environment-independent - the package is
+completely free of pauses, stops, I/O <I>etc</I>.
+<LI> Self-contained - SLALIB calls no other libraries.
+</UL>
+A few <I>caveats</I>:
+<UL>
+<LI> SLALIB does not pretend to be canonical.  It is in essence
+an anthology, and the adopted algorithms are liable
+to change as more up-to-date ones become available.
+<LI> The functions aren't orthogonal - there are several
+cases of different
+routines doing similar things, and many examples where
+sequences of SLALIB calls have simply been packaged, all to
+make applications less trouble to write.
+<LI> There are omissions - for example there are no
+routines for calculating physical ephemerides of
+Solar-System bodies.
+<LI> SLALIB is not homogeneous, though important subsets
+(for example the FK4/FK5 routines) are.
+<LI> The library is not foolproof.  You have to know what
+you are trying to do (<I>e.g.</I> by reading textbooks on positional
+astronomy), and it is the caller's responsibility to supply
+sensible arguments (although enough internal validation is done to
+avoid arithmetic errors).
+<LI> Without being written in a wasteful
+manner, SLALIB is nonetheless optimized for maintainability
+rather than speed.  In addition, there are many places
+where considerable simplification would be possible if some
+specified amount of accuracy could be sacrificed;  such
+compromises are left to the individual programmer and
+are not allowed to limit SLALIB's value as a source
+of comparison results.
+</UL>
+<BR> <HR>
+<A NAME="tex2html305" HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html303" HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html297" HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html306" HREF="node7.html">Fortran Version</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html304" HREF="node2.html">INTRODUCTION</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html298" HREF="node5.html">Scope</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PV2UE - Position/Velocity to Universal Elements</TITLE>
+<META NAME="description" CONTENT="SLA_PV2UE - Position/Velocity to Universal Elements">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node158.html">
+<LINK REL="previous" HREF="node156.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node158.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1996" HREF="node158.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1994" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1988" HREF="node156.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1997" HREF="node158.html">SLA_PVOBS - Observatory Position &amp; Velocity</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1995" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1989" HREF="node156.html">SLA_PV2EL - Orbital Elements from Position/Velocity</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004144000000000000000">SLA_PV2UE - Position/Velocity to Universal Elements</A>
+<A NAME="xref_SLA_PV2UE">&#160;</A><A NAME="SLA_PV2UE">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Construct a universal element set based on an instantaneous
+position and velocity.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_PV2UE (PV, DATE, PMASS, U, JSTAT)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PV</EM></TD>
+<TH ALIGN="LEFT"><B>D(6)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>heliocentric <IMG WIDTH="106" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.gif"
+ ALT="$[\,x,y,z,\dot{x},\dot{y},\dot{z}\,]$">, equatorial, J2000</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  (AU, AU/s; Note&nbsp;1)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>date (TT Modified Julian Date = JD-2400000.5)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PMASS</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>mass of the planet (Sun = 1; Note&nbsp;2)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>U</EM></TD>
+<TH ALIGN="LEFT"><B>D(13)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>universal orbital elements (Note&nbsp;3)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(1)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>combined mass (<I>M</I>+<I>m</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(2)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>total energy of the orbit (<IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(3)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>reference (osculating) epoch (<I>t<SUB>0</SUB></I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(4-6)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>position at reference epoch (<IMG WIDTH="17" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img102.gif"
+ ALT="${\rm \bf r}_0$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(7-9)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>velocity at reference epoch (<IMG WIDTH="19" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.gif"
+ ALT="${\rm \bf v}_0$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(10)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>heliocentric distance at reference epoch</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(11)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="39" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.gif"
+ ALT="${\rm \bf r}_0.{\rm \bf v}_0$"></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(12)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>date (<I>t</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(13)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>universal eccentric anomaly (<IMG WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif"
+ ALT="$\psi$">) of date, approx</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JSTAT</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>       0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     -1 = illegal PMASS</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     -2 = too close to Sun</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     -3 = too slow</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The PV 6-vector can be with respect to any chosen inertial frame,
+and the resulting universal-element set will be with respect to
+the same frame.  A common choice will be mean equator and ecliptic
+        of epoch J2000.
+  <DT>2.
+<DD>The mass, PMASS, is important only for the larger planets.  For
+        most purposes (<I>e.g.</I>&nbsp;asteroids) use 0D0.  Values less than zero
+        are illegal.
+  <DT>3.
+<DD>The ``universal'' elements are those which define the orbit for the
+        purposes of the method of universal variables (see reference).
+        They consist of the combined mass of the two bodies, an epoch,
+        and the position and velocity vectors (arbitrary reference frame)
+        at that epoch.  The parameter set used here includes also various
+        quantities that can, in fact, be derived from the other
+        information.  This approach is taken to avoiding unnecessary
+        computation and loss of accuracy.  The supplementary quantities
+        are (i)&nbsp;<IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">, which is proportional to the total energy of the
+        orbit, (ii)&nbsp;the heliocentric distance at epoch,
+        (iii)&nbsp;the outwards component of the velocity at the given epoch,
+        (iv)&nbsp;an estimate of <IMG WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif"
+ ALT="$\psi$">, the ``universal eccentric anomaly'' at a
+        given date and (v)&nbsp;that date.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>Everhart, E. &amp; Pitkin, E.T., Am.&nbsp;J.&nbsp;Phys.&nbsp;51, 712, 1983.
+</DL>
+<BR> <HR>
+<A NAME="tex2html1996" HREF="node158.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1994" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1988" HREF="node156.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1997" HREF="node158.html">SLA_PVOBS - Observatory Position &amp; Velocity</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1995" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1989" HREF="node156.html">SLA_PV2EL - Orbital Elements from Position/Velocity</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

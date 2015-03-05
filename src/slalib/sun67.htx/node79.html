@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_DTPV2C - Plate centre from and x,y,z</TITLE>
+<META NAME="description" CONTENT="SLA_DTPV2C - Plate centre from and x,y,z">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node80.html">
+<LINK REL="previous" HREF="node78.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node80.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1216" HREF="node80.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1214" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1208" HREF="node78.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1217" HREF="node80.html">SLA_DTT - TT minus UTC</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1215" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1209" HREF="node78.html">SLA_DTPS2C - Plate centre from and</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000466000000000000000">&#160;</A><A NAME="xref_SLA_DTPV2C">&#160;</A><A NAME="SLA_DTPV2C">&#160;</A>
+<BR>
+SLA_DTPV2C - Plate centre from <IMG WIDTH="26" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img90.gif"
+ ALT="$\xi,\eta$"> and <I>x</I>,<I>y</I>,<I>z</I>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>From the tangent plane coordinates of a star of known
+direction cosines, determine the direction cosines
+         of the tangent point (double precision)
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_DTPV2C (XI, ETA, V, V01, V02, N)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XI,ETA</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>tangent plane coordinates of star (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>V</EM></TD>
+<TD ALIGN="LEFT"><B>D(3)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>direction cosines of star</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>V01</EM></TD>
+<TH ALIGN="LEFT"><B>D(3)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>direction cosines of tangent point, solution 1</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>V01</EM></TD>
+<TD ALIGN="LEFT"><B>D(3)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>direction cosines of tangent point, solution 2</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>N</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>number of solutions:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  0 = no solutions returned  (note 2)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  1 = only the first solution is useful (note 3)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  2 = there are two useful solutions (note 3)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The vector V must be of unit length or the result will be wrong.
+<DT>2.
+<DD>Cases where there is no solution can only arise near the poles.
+For example, it is clearly impossible for a star at the pole
+        itself to have a non-zero XI value.
+  <DT>3.
+<DD>Also near the poles, cases can arise where there are two useful
+        solutions.  The argument N indicates whether the second of the
+        two solutions returned is useful.
+        N=1
+        indicates only one useful solution, the usual case;  under these
+        circumstances, the second solution can be regarded as valid if
+        the vector V02 is interpreted as the ``over-the-pole'' case.
+  <DT>4.
+<DD>The projection is called the <I>gnomonic</I> projection;  the
+        Cartesian coordinates <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img85.gif"
+ ALT="$[\,\xi,\eta\,]$"> are called 
+        <I>standard coordinates.</I>  The latter
+        are in units of the distance from the tangent plane to the projection
+        point, <I>i.e.</I> radians near the origin.
+  <DT>5.
+<DD>This routine is the Cartesian equivalent of the routine sla_DTPS2C.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1216" HREF="node80.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1214" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1208" HREF="node78.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1217" HREF="node80.html">SLA_DTT - TT minus UTC</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1215" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1209" HREF="node78.html">SLA_DTPS2C - Plate centre from and</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

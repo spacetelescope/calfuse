@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_DMOON - Approx Moon Pos/Vel</TITLE>
+<META NAME="description" CONTENT="SLA_DMOON - Approx Moon Pos/Vel">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node63.html">
+<LINK REL="previous" HREF="node61.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node63.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1046" HREF="node63.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1044" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1038" HREF="node61.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1047" HREF="node63.html">SLA_DMXM - Multiply Matrices</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1045" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1039" HREF="node61.html">SLA_DMAT - Solve Simultaneous Equations</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000449000000000000000">SLA_DMOON - Approx Moon Pos/Vel</A>
+<A NAME="xref_SLA_DMOON">&#160;</A><A NAME="SLA_DMOON">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Approximate geocentric position and velocity of the Moon
+(double precision).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_DMOON (DATE, PV)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>TDB (loosely ET) as a Modified Julian Date (JD-2400000.5)
+</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PV</EM></TD>
+<TH ALIGN="LEFT"><B>D(6)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>Moon <IMG WIDTH="106" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.gif"
+ ALT="$[\,x,y,z,\dot{x},\dot{y},\dot{z}\,]$">, mean equator and equinox
+of date (AU, AU&nbsp;s<SUP>-1</SUP>)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>This routine is a full implementation of the algorithm
+published by Meeus (see reference).
+<DT>2.
+<DD>Meeus quotes accuracies of <IMG WIDTH="25" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img74.gif"
+ ALT="$10\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> in longitude,
+        <IMG WIDTH="17" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img75.gif"
+ ALT="$3\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> in latitude and 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img76.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.2$">    arcsec in HP
+        (equivalent to about 20&nbsp;km in distance).  Comparison with
+        JPL&nbsp;DE200 over the interval 1960-2025 gives RMS errors of
+<P>      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img77.gif"
+ ALT="$3\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.7$">    and 83&nbsp;mas/hour in longitude,
+<P>      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img78.gif"
+ ALT="$2\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.3$">    arcsec and 48&nbsp;mas/hour in latitude,
+        11&nbsp;km and 81&nbsp;mm/s in distance.
+        The maximum errors over the same interval are
+        <IMG WIDTH="25" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img79.gif"
+ ALT="$18\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> and 
+      <IMG WIDTH="31" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img80.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.50$">   /hour in longitude,
+        <IMG WIDTH="25" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.gif"
+ ALT="$11\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> and 
+      <IMG WIDTH="31" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img81.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.24$">   /hour in latitude,
+        40&nbsp;km and 0.29&nbsp;m/s in distance.
+  <DT>3.
+<DD>The original algorithm is expressed in terms of the obsolete
+        timescale <I>Ephemeris Time</I>.  Either TDB or TT can be used,
+        but not UT without incurring significant errors (<IMG WIDTH="25" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img82.gif"
+ ALT="$30\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> at
+        the present time) due to the Moon's 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img83.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.5$">   /s movement.
+  <DT>4.
+<DD>The algorithm is based on pre IAU 1976 standards.  However,
+        the result has been moved onto the new (FK5) equinox, an
+        adjustment which is in any case much smaller than the
+        intrinsic accuracy of the procedure.
+  <DT>5.
+<DD>Velocity is obtained by a complete analytical differentiation
+        of the Meeus model.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>Meeus, <I>l'Astronomie</I>, June 1984, p348.
+</DL>
+<BR> <HR>
+<A NAME="tex2html1046" HREF="node63.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1044" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1038" HREF="node61.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1047" HREF="node63.html">SLA_DMXM - Multiply Matrices</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1045" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1039" HREF="node61.html">SLA_DMAT - Solve Simultaneous Equations</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

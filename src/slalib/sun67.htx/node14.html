@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_ADDET - Add E-terms of Aberration</TITLE>
+<META NAME="description" CONTENT="SLA_ADDET - Add E-terms of Aberration">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node15.html">
+<LINK REL="previous" HREF="node13.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node15.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html566" HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html564" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html558" HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html567" HREF="node15.html">SLA_AFIN - Sexagesimal character string to angle</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html565" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html559" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00041000000000000000">SLA_ADDET - Add E-terms of Aberration</A>
+<A NAME="xref_SLA_ADDET">&#160;</A><A NAME="SLA_ADDET">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Add the E-terms (elliptic component of annual aberration) to a
+pre IAU 1976 mean place to conform to the old catalogue convention.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_ADDET (RM, DM, EQ, RC, DC)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RM,DM</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> without E-terms (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EQ</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>Besselian epoch of mean equator and equinox</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RC,DC</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> with E-terms included (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTE:</STRONG>
+<DD>Most star positions from pre-1984 optical catalogues (or
+obtained by astrometry with respect to such stars) have the
+       E-terms built-in.  If it is necessary to convert a formal mean
+       place (for example a pulsar timing position) to one
+       consistent with such a star catalogue, then the 
+       <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> should be adjusted using this routine.
+      </DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD><I>Explanatory Supplement to the Astronomical Ephemeris</I>,
+section 2D, page 48.
+     </DL>
+<BR> <HR>
+<A NAME="tex2html566" HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html564" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html558" HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html567" HREF="node15.html">SLA_AFIN - Sexagesimal character string to angle</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html565" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html559" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_COMBN - Next Combination</TITLE>
+<META NAME="description" CONTENT="SLA_COMBN - Next Combination">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node36.html">
+<LINK REL="previous" HREF="node34.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node36.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html776" HREF="node36.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html774" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html768" HREF="node34.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html777" HREF="node36.html">SLA_CR2AF - Radians to Deg,Arcmin,Arcsec</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html775" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html769" HREF="node34.html">SLA_CLYD - Calendar to Year, Day</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000422000000000000000">SLA_COMBN - Next Combination</A>
+<A NAME="xref_SLA_COMBN">&#160;</A><A NAME="SLA_COMBN">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Generate the next combination, a subset of a specified size chosen
+from a specified number of items.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_COMBN (NSEL, NCAND, LIST, J)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NSEL</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>number of items (subset size)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NCAND</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>number of candidates (set size)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>GIVEN and RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>LIST</EM></TD>
+<TH ALIGN="LEFT"><B>I(NSEL)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>latest combination, LIST(1)=0 to initialize</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>J</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -1 = illegal NSEL or NCAND</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  +1 = no more combinations available</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>NSEL and NCAND must both be at least 1, and NSEL must be less
+than or equal to NCAND.
+<DT>2.
+<DD>This routine returns, in the LIST array, a subset of NSEL integers
+        chosen from the range 1 to NCAND inclusive, in ascending order.
+        Before calling the routine for the first time, the caller must set
+        the first element of the LIST array to zero (any value less than 1
+        will do) to cause initialization.
+  <DT>3.
+<DD>The first combination to be generated is:
+        <BLOCKQUOTE>LIST(1)=1, LIST(2)=2, ..., LIST(NSEL)=NSEL
+        </BLOCKQUOTE>
+        This is also the combination returned for the ``finished'' (J=1) case.
+        The final permutation to be generated is:
+        <BLOCKQUOTE>LIST(1)=NCAND, LIST(2)=NCAND-1, ..., <BR>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LIST(NSEL)=NCAND-NSEL+1
+        </BLOCKQUOTE>
+  <DT>4.
+<DD>If the ``finished'' (J=1) status is ignored, the routine
+        continues to deliver combinations, the pattern repeating
+        every NCAND!/(NSEL!(NCAND-NSEL)!) calls.
+  <DT>5.
+<DD>The algorithm is by R.F.Warren-Smith (private communication).
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html776" HREF="node36.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html774" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html768" HREF="node34.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html777" HREF="node36.html">SLA_CR2AF - Radians to Deg,Arcmin,Arcsec</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html775" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html769" HREF="node34.html">SLA_CLYD - Calendar to Year, Day</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

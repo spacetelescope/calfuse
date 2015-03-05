@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Radial Velocity and Light-Time Corrections</TITLE>
+<META NAME="description" CONTENT="Radial Velocity and Light-Time Corrections">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node226.html">
+<LINK REL="previous" HREF="node224.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node226.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2703" HREF="node226.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2701" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2695" HREF="node224.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2704" HREF="node226.html">Focal-Plane Astrometry</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2702" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2696" HREF="node224.html">Ephemerides</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000519000000000000000">
+Radial Velocity and Light-Time Corrections</A>
+</H2>
+When publishing high-resolution spectral observations
+it is necessary to refer them to a specified standard of rest.
+This involves knowing the component in the direction of the
+source of the velocity of the observer.  SLALIB provides a number
+of routines for this purpose, allowing observations to be
+referred to the Earth's centre, the Sun, a Local Standard of Rest
+(either dynamical or kinematical), the centre of the Galaxy, and
+the mean motion of the Local Group.
+<P>
+The routine
+sla_RVEROT
+corrects for the diurnal rotation of
+the observer around the Earth's axis.  This is always less than 0.5&nbsp;km/s.
+<P>
+No specific routine is provided to correct a radial velocity
+from geocentric to heliocentric, but this can easily be done by calling
+sla_EVP
+as follows (array declarations <I>etc</I>. omitted):
+<P><PRE>
+             :
+      *  Star vector, J2000
+            CALL sla_DCS2C(RM,DM,V)
+
+      *  Earth/Sun velocity and position, J2000
+            CALL sla_EVP(TDB,2000D0,DVB,DPB,DVH,DPH)
+
+      *  Radial velocity correction due to Earth orbit (km/s)
+            VCORB = -sla_DVDV(V,DVH)*149.597870D6
+             :
+</PRE>
+<P>
+The maximum value of this correction is the Earth's orbital speed
+of about 30&nbsp;km/s.  A related routine,
+sla_ECOR,
+computes the light-time correction with respect to the Sun.  It
+would be used when reducing observations of a rapid variable-star
+for instance.
+Note, however, that the accuracy objectives for pulsar work are
+beyond the scope of these SLALIB routines, and even the superior
+sla_EVP
+routine is unsuitable for arrival-time calculations of better
+than 25&nbsp;millisecond accuracy.
+<P>
+To remove the intrinsic <IMG WIDTH="36" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img324.gif"
+ ALT="$\sim20$">&nbsp;km/s motion of the Sun relative
+to other stars in the solar neighbourhood,
+a velocity correction to a
+<I>local standard of rest</I> (LSR) is required.  There are
+opportunities for mistakes here.  There are two sorts of LSR,
+<I>dynamical</I> and <I>kinematical</I>, and
+multiple definitions exist for the latter.  The
+dynamical LSR is a point near the Sun which is in a circular
+orbit around the Galactic centre;  the Sun has a ``peculiar''
+motion relative to the dynamical LSR.  A kinematical LSR is
+the mean standard of rest of specified star catalogues or stellar
+populations, and its precise definition depends on which
+catalogues or populations were used and how the analysis was
+carried out.  The Sun's motion with respect to a kinematical
+LSR is called the ``standard'' solar motion.  Radial
+velocity corrections to the dynamical LSR are produced by the routine
+sla_RVLSRD
+and to the adopted kinematical LSR by
+sla_RVLSRK.
+See the individual specifications for these routines for the
+precise definition of the LSR in each case.
+<P>
+For extragalactic sources, the centre of the Galaxy can be used as
+a standard of rest.  The radial velocity correction from the
+dynamical LSR to the Galactic centre can be obtained by calling
+sla_RVGALC.
+Its maximum value is 220&nbsp;km/s.
+<P>
+For very distant sources it is appropriate to work relative
+to the mean motion of the Local Group.  The routine for
+computing the radial velocity correction in this case is
+sla_RVLG.
+Note that in this case the correction is with respect to the
+dynamical LSR, not the Galactic centre as might be expected.
+This conforms to the IAU definition, and confers immunity from
+revisions of the Galactic rotation speed.
+<P>
+<BR> <HR>
+<A NAME="tex2html2703" HREF="node226.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2701" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2695" HREF="node224.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2704" HREF="node226.html">Focal-Plane Astrometry</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2702" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2696" HREF="node224.html">Ephemerides</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

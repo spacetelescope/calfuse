@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PCD - Apply Radial Distortion</TITLE>
+<META NAME="description" CONTENT="SLA_PCD - Apply Radial Distortion">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node141.html">
+<LINK REL="previous" HREF="node139.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node141.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1826" HREF="node141.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1824" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1818" HREF="node139.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1827" HREF="node141.html">SLA_PDA2H - H.A. for a Given Azimuth</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1825" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1819" HREF="node139.html">SLA_PAV - Position-Angle Between Two Directions</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004127000000000000000">SLA_PCD - Apply Radial Distortion</A>
+<A NAME="xref_SLA_PCD">&#160;</A><A NAME="SLA_PCD">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Apply pincushion/barrel distortion to a tangent-plane <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$">.<DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_PCD (DISCO,X,Y)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DISCO</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>pincushion/barrel distortion coefficient</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>X,Y</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>tangent-plane <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"></TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>X,Y</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>distorted <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"></TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The distortion is of the form <IMG WIDTH="103" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img128.gif"
+ ALT="$\rho = r (1 + c r^{2})$">, where <I>r</I> is
+the radial distance from the tangent point, <I>c</I> is the DISCO
+argument, and <IMG WIDTH="11" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img129.gif"
+ ALT="$\rho$"> is the radial distance in the presence of
+        the distortion.
+  <DT>2.
+<DD>For <I>pincushion</I> distortion, C is +ve;  for
+        <I>barrel</I> distortion, C is -ve.
+  <DT>3.
+<DD>For X,Y in units of one projection radius (in the case of
+        a photographic plate, the focal length), the following
+        DISCO values apply:
+<P>        <BR>
+<BR>
+<BR>
+<P>        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>Geometry</TD>
+<TD ALIGN="CENTER" NOWRAP>DISCO</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>astrograph</TD>
+<TD ALIGN="CENTER" NOWRAP>0.0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>Schmidt</TD>
+<TD ALIGN="CENTER" NOWRAP>-0.3333</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>AAT PF doublet</TD>
+<TD ALIGN="CENTER" NOWRAP>+147.069</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>AAT PF triplet</TD>
+<TD ALIGN="CENTER" NOWRAP>+178.585</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>AAT f/8</TD>
+<TD ALIGN="CENTER" NOWRAP>+21.20</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>JKT f/8</TD>
+<TD ALIGN="CENTER" NOWRAP>+14.6</TD>
+</TR>
+</TABLE>
+<P>        <BR>
+<BR>
+<BR>
+<P>  <DT>4.
+<DD>There is a companion routine, sla_UNPCD, which performs
+        an approximately inverse operation.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1826" HREF="node141.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1824" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1818" HREF="node139.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1827" HREF="node141.html">SLA_PDA2H - H.A. for a Given Azimuth</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1825" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1819" HREF="node139.html">SLA_PAV - Position-Angle Between Two Directions</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

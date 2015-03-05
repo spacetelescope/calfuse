@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_GMSTA - UT to GMST (extra precision)</TITLE>
+<META NAME="description" CONTENT="SLA_GMSTA - UT to GMST (extra precision)">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node117.html">
+<LINK REL="previous" HREF="node115.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node117.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1586" HREF="node117.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1584" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1578" HREF="node115.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1587" HREF="node117.html">SLA_GRESID - Gaussian Residual</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1585" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1579" HREF="node115.html">SLA_GMST - UT to GMST</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004103000000000000000">SLA_GMSTA - UT to GMST (extra precision)</A>
+<A NAME="xref_SLA_GMSTA">&#160;</A><A NAME="SLA_GMSTA">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Conversion from universal time UT1 to Greenwich Mean
+sidereal time, with rounding errors minimized.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>D&nbsp;=&nbsp;sla_GMSTA (DATE, UT1)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>UT1 date as Modified Julian Date (integer part
+of JD-2400000.5)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>UT1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>UT1 time (fraction of a day)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>sla_GMST</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>Greenwich mean sidereal time (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The algorithm is derived from the IAU 1982 expression
+(see page&nbsp;S15 of the 1984 Astronomical Almanac).
+<DT>2.
+<DD>There is no restriction on how the UT is apportioned between the
+       DATE and UT1 arguments.  Either of the two arguments could, for
+       example, be zero and the entire date+time supplied in the other.
+       However, the routine is designed to deliver maximum accuracy when
+       the DATE argument is a whole number and the UT1 argument
+       lies in the range <IMG WIDTH="43" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img121.gif"
+ ALT="$[\,0,\,1\,]$">, or <I>vice versa</I>.
+       <DT>3.
+<DD>See also the routine sla_GMST, which accepts the UT1 as a single
+       argument.  Compared with sla_GMST, the extra numerical precision
+       delivered by the present routine is unlikely to be important in
+       an absolute sense, but may be useful when critically comparing
+       algorithms and in applications where two sidereal times close
+       together are differenced.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1586" HREF="node117.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1584" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1578" HREF="node115.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1587" HREF="node117.html">SLA_GRESID - Gaussian Residual</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1585" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1579" HREF="node115.html">SLA_GMST - UT to GMST</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

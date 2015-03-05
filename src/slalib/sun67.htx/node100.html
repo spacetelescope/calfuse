@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_ETRMS - E-terms of Aberration</TITLE>
+<META NAME="description" CONTENT="SLA_ETRMS - E-terms of Aberration">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node101.html">
+<LINK REL="previous" HREF="node99.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node101.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1426" HREF="node101.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1424" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1418" HREF="node99.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1427" HREF="node101.html">SLA_EULER - Rotation Matrix from Euler Angles</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1425" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1419" HREF="node99.html">SLA_EQGAL - J2000 to Galactic</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000487000000000000000">SLA_ETRMS - E-terms of Aberration</A>
+<A NAME="xref_SLA_ETRMS">&#160;</A><A NAME="SLA_ETRMS">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Compute the E-terms vector - the part of the annual
+aberration which arises from the eccentricity of the
+         Earth's orbit.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_ETRMS (EP, EV)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EP</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>Besselian epoch</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EV</EM></TD>
+<TH ALIGN="LEFT"><B>D(3)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>E-terms as <IMG WIDTH="96" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img109.gif"
+ ALT="$[\Delta x, \Delta y, \Delta z\,]$"></TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTE:</STRONG>
+<DD>Note the use of the J2000 aberration constant (
+<IMG WIDTH="64" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img110.gif"
+ ALT="$20\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.49552$">   ).
+       This is a reflection of the fact that the E-terms embodied in
+       existing star catalogues were computed from a variety of
+       aberration constants.  Rather than adopting one of the old
+       constants the latest value is used here.
+      </DL>
+<P>     <DL>
+<DT><STRONG>REFERENCES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Smith, C.A. <I>et al.</I>, 1989.  <I>Astr.J.</I> <B>97</B>, 265.
+<DT>2.
+<DD>Yallop, B.D. <I>et al.</I>, 1989.  <I>Astr.J.</I> <B>97</B>, 274.
+</DL></DL>
+<BR> <HR>
+<A NAME="tex2html1426" HREF="node101.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1424" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1418" HREF="node99.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1427" HREF="node101.html">SLA_EULER - Rotation Matrix from Euler Angles</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1425" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1419" HREF="node99.html">SLA_EQGAL - J2000 to Galactic</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,143 @@
+
+# Master Makefile for Mac OS X Version 10.2 or higher
+# Slalib installation requires the command "make -e install"
+# Leave PLATFORM = ix86_Linux; required by slalib.
+# FITSVER is not used; library is always called libcfitsio.dylib.
+
+CALFUSEDIR=	${PWD}/..
+PLATFORM=       ix86_Linux
+SHARED=         -dynamiclib
+FITSVER=	2.470
+MACOSX_DEPLOYMENT_TARGET=	10.2
+
+# Symbols for make
+MAKE=		make
+
+#Symbols used for compiling
+CC=		cc
+OPT=		-O3 -Wall -DCFORTRAN -Dg77Fortran -Df2cFortran
+CFLAGS=		${OPT} -I${CALFUSEDIR}/include
+LIBS=		-L/sw/lib/ -lgfortran
+
+all:		lib bin fes jitter
+
+lib:		libcfitsio libsla libfuse
+
+install:	libinstall bininstall analinstall jitinstall # fesinstall
+
+libinstall:	libcfitsioinstall libslainstall libfuseinstall
+
+clean:		binclean fesclean analclean libclean jitclean
+
+distclean:	bindistclean fesdistclean analdistclean libdistclean jitdistclean
+
+libclean:	libcfitsioclean libslaclean libfuseclean
+
+libdistclean:	libcfitsiodistclean libsladistclean libfusedistclean
+
+cfitsio/Makefile:
+		cd cfitsio; CC="${CC}"; export CC; ./configure;
+
+libcfitsio:	cfitsio/Makefile
+		cd cfitsio; ${MAKE} shared
+
+libsla:		
+	-	SYSTEM="${PLATFORM}"; export SYSTEM; \
+		cd slalib; ./mk build; \
+		${CC} ${SHARED} -o libsla.dylib *.o ${LIBS}
+
+libfuse:
+		cd libcf; ${MAKE} CALFUSEDIR="${CALFUSEDIR}" \
+		CC="${CC}" OPT="${OPT}" FITSVER=${FITSVER} all
+
+bin:
+		MACOSX_DEPLOYMENT_TARGET="${MACOSX_DEPLOYMENT_TARGET}"; \
+		export MACOSX_DEPLOYMENT_TARGET; \
+		cd fuv; ${MAKE} CALFUSEDIR="${CALFUSEDIR}" \
+		CC="${CC}" OPT="${OPT}" FITSVER=${FITSVER} all
+
+fes:
+		cd fes; ${MAKE} CALFUSEDIR="${CALFUSEDIR}" \
+		CC="${CC}" OPT="${OPT}" FITSVER=${FITSVER} all
+
+analysis:
+		cd analysis; ${MAKE} CALFUSEDIR="${CALFUSEDIR}" \
+		CC="${CC}" OPT="${OPT}" FITSVER=${FITSVER} all
+
+jitter:
+		cd cal/jitter; ${MAKE} CALFUSEDIR="${CALFUSEDIR}" \
+		CC="${CC}" OPT="${OPT}" FITSVER=${FITSVER} all
+
+libcfitsioinstall: libcfitsio
+		cd cfitsio; cp libcfitsio.dylib ${CALFUSEDIR}/lib
+
+libslainstall:	libsla
+		cd slalib; cp libsla.dylib ${CALFUSEDIR}/lib
+
+libfuseinstall:	libfuse
+		cd libcf; ${MAKE} CALFUSEDIR="${CALFUSEDIR}" \
+		CC="${CC}" OPT="${OPT}" install
+
+bininstall:	bin
+		cd fuv; ${MAKE} CALFUSEDIR="${CALFUSEDIR}" \
+		CC="${CC}" OPT="${OPT}" install
+
+fesinstall:	fes
+		cd fes; ${MAKE} CALFUSEDIR="${CALFUSEDIR}" \
+		CC="${CC}" OPT="${OPT}" install
+
+analinstall:	analysis
+		cd analysis; ${MAKE} CALFUSEDIR="${CALFUSEDIR}" \
+		CC="${CC}" OPT="${OPT}" install
+
+jitinstall:	jitter
+		cd cal/jitter; ${MAKE} CALFUSEDIR="${CALFUSEDIR}" \
+		CC="${CC}" OPT="${OPT}" install
+
+libcfitsioclean:
+	-	cd cfitsio; ${MAKE} clean; /bin/rm -f libcfitsio.dylib
+
+libcfitsiodistclean:
+	-	cd cfitsio; ${MAKE} distclean; /bin/rm -f libcfitsio.dylib
+		/bin/rm -f ../lib/libcfitsio.dylib
+		# cd ../lib; /bin/rm libcfitsio-${FITSVER}.dylib
+
+libslaclean:
+	-	SYSTEM="${PLATFORM}"; export SYSTEM; \
+		cd slalib; ./mk clean; /bin/rm -f libsla.a libsla.dylib
+
+libsladistclean:
+	-	SYSTEM="${PLATFORM}"; export SYSTEM; \
+		cd slalib; ./mk unbuild
+		cd ../lib; /bin/rm -f libsla.dylib
+
+libfuseclean:
+		cd libcf; ${MAKE} clean
+
+libfusedistclean:
+		cd libcf; ${MAKE} distclean
+
+binclean:
+		cd fuv; ${MAKE} clean
+
+bindistclean:
+		cd fuv; ${MAKE} distclean
+
+fesclean:
+		cd fes; ${MAKE} clean
+
+fesdistclean:
+		cd fes; ${MAKE} distclean
+
+analclean:
+		cd analysis; ${MAKE} clean
+
+analdistclean:
+		cd analysis; ${MAKE} distclean
+
+jitclean:
+		cd cal/jitter; ${MAKE} clean
+
+jitdistclean:
+		cd cal/jitter; ${MAKE} distclean
+

@@ -1,0 +1,453 @@
+#  This is an example of the master calibration database file that
+#       lists the valid dates of each calibration file.  
+#  This file is read by cf_fuv_init.  
+#  Though it is not strictly required by cf_fuv_init, this file 
+#       should be kept in time order.
+#  There should be no blank lines in this file.
+#  Reminder:
+#       interp flag of 0 => stepwise
+#       interp flag of 1 => interpolate
+#
+#  The items must appear in the following columns: 
+#  Columns    Item
+#   1- 4      Keyword name
+#   5- 6      Blank
+#      7      Detector number (or blank)
+#      8      Detector segment (or blank) 
+#   9-10      Blank
+#  11-23      Filename
+#  24-25      Blank
+#  26-34      Modified Julian Date
+#  35-36      Blank
+#     37      Interpolation method
+#
+#  03/15/2001 wvd  Change ASTG files to version 5
+#  03/19/2001 wvd  Change SCRN files to version 4
+#  03/27/2001 wvd  Change BKGD files to version 2
+#		   Change SCRN files to version 5
+#		      Add AIRG files
+#  03/28/2001 wvd  Change WGTS files to version 7
+#  03/29/2001 wvd  Change PARM files to version 5
+#  04/02/2001 wvd     Add WALK files
+#  04/09/2001 wvd  Change WAVE files to version 10
+#		   Change QUAL files to version 2
+#  04/10/2001 wvd     Add PHAM files
+#		   Change WGTS files to version 8
+#  04/11/2001 wvd  Add multiple PHAM files
+#  04/17/2001 wvd  Change WGTS files to version 9
+#  04/24/2001 wvd  Change WALK files to version 2
+#  05/23/2001 wvd  Delete DRFT files; not used
+#  06/12/2001 wvd  Change ASTG files to version 6
+#  07/03/2001 wvd  Delete AIRG files; not used
+#		   Change BKGD files to versions 3&4
+#		   Change SCRN files to version 7
+#  07/25/2001 wvd  Change PHAM files to versions 72-84
+#		   Change SCRN files to version 8
+#  07/26/2001 wvd  Change WAVE files to version 11
+#		   Change FLUX files to version 7
+#  08/15/2001 wvd  Added  GAIN files versions 17-22
+#		   Added  TCNT files version 10
+#  08/23/2001 wvd  Change PARM files to version 6
+#  08/30/2001 wvd  Change WAVE files to version 12
+#  09/12/2001 wvd  Change WALK files to version 3
+#  09/13/2001 wvd  Change WAVE files to version 13
+#  09/14/2001 wvd  Change SCRN files to version 9
+#  09/21/2001 wvd  Change SCRN files to version 10
+#  10/02/2001 wvd  Change WAVE files to version 14
+#  10/10/2001 wvd  Change FLUX files to version 8
+#  11/20/2001 wvd  Added  QUAL files versions 3-10
+#  11/27/2001 wvd  Change SCRN files to version 11
+#  11/29/2001 wvd  Change PARM files to version 7
+#  12/07/2001 wvd     Add YSTR files 
+#  02/11/2002 wvd     Add VOLT files 
+#  02/19/2002 wvd  Change VOLT files to version 2
+#  03/29/2002 wvd  Added  BKGD files versions 5-8
+#                  Change SCRN files to version 12
+#  04/02/2002 wvd  Added  BCHR files
+#  04/10/2002 wvd  Change SCRN files to version 13
+#  04/15/2002 wvd  Change PARM files to version 8
+#		   Remove SPEX files version 1
+#  05/02/2002 wvd  Change VOLT files to version 3
+#  05/17/2002 wvd  Change WAVE files to version 15
+#  05/29/2002 wvd  Change GEOM files to version 8
+#                  Change QUAL files to versions 11-19
+#                  Change YSTR files to version 2
+#  06/12/2002 wvd  Added  BKGD files version 9
+#  18/12/2002 rdr  added  AIRG files
+#                  change BCHR files
+#  01/14/2003 wvd  Change VOLT files to version 5
+#  01/17/2003 wvd  Change WAVE files to version 14
+#		   Added  DIGI file  version 1
+#		   Added  SPEC file  version 1
+#  02/07/2003 wvd  Added  FLUX files versions 9-13
+#  02/11/2003 wvd  Change VOLT files to version 6
+#  02/13/2003 wvd  Replace FLUX files with AEFF files
+#  02/14/2003 wvd  Change effective date of aeff*008.fit files
+#			to 51403, which was HV first turned on.
+#  02/25/2003 wvd  Change PARM files to version 10
+#  02/28/2003 wvd  Added  AEFF files versions 8-13 
+#  03/07/2003 peb  Change GEOM files to version 12
+#  03/25/2003 wvd  Change CHID files to version 10 
+#			for SIDE 2 ONLY!!!
+#  04/07/2003 wvd  Change ASTG files to version 7 
+#			for SIDE 2 ONLY!!!
+#  04/09/2003 rdr  Added QUAL files to CalFUSE v3.0
+#  06/17/2003 wvd  Change AIRG files to version 2 
+#  06/25/2003 djs  Change GEOM files to version 13 for 1B only
+#  07/09/2003 rdr  Change all GEOM files to version 13 
+#  07/23/2003 rdr  Change all CHID files to version 11  
+#  07/31/2003 wvd  Change ELEC file to version 2  
+#  08/19/2003 wvd  Added  AEFF files versions 14-15
+#  08/20/2003 wvd  Change ELEC file to version 3  
+#  08/20/2003 wvd  Change VOLT files to version 7
+#  08/21/2003 wvd  Change SPEC file to version 2
+#  08/27/2003 wvd  Change SAAC file to version 4
+#  09/05/2003 wvd  Change BCHR file to version 3
+#                  Change BKGD files to versions 11-16
+#  09/10/2003 djs  Change ASTG files to version 8
+#  09/17/2003 wvd  Change ASTG files to version 9
+#  09/22/2003 wvd  Change WAVE files to version 15
+#  10/02/2003 wvd  Change WGTS files to version 10
+#  10/10/2003 rdr  Change QUAL files to version 20
+#  10/14/2003 wvd  Change PHAX files to version 4
+#  02/09/2004 wvd  Change ELEC file to version 4
+#  02/20/2004 rdr  Change CHID files to version 12
+#  03/03/2004 rdr  Change WGTS files to version 11
+#  03/26/2004 rdr  Change GEOM files to version 14  
+#  03/30/2004 wvd  Change WAVE files to version 16
+#  04/21/2003 rdr  Added  BKGD files version 17
+#  04/27/2004 wvd  Change PARM files to version 11
+#  06/08/2004 wvd  Change PHAX files to version 5
+#                  Change ASTG files to version 10
+#  07/02/2004 wvd  Added  AEFF files versions 16-21
+#  07/07/2004 rdr  Change MIRR file to version 2
+#  07/28/2004 wvd  Change VOLT files to version 8
+#  08/11/2004 wvd  Change GEOM files to version 15
+#  08/11/2004 wvd  Change WAVE files to version 17
+#  08/20/2004 wvd  Change SCRN files to version 14
+#  08/24/2004 wvd  Change GEOM files to version 16
+#  10/21/2004 wvd  Change PARM files to version 12
+#  01/21/2005 wvd  Change ASTG files to version 11
+#  02/22/2005 wvd  Change WAVE files to version 18
+#  03/02/2005 wvd  Added  PHAH files
+#                  Added  STIM files 
+#  03/10/2005 wvd  Change AIRG files to version 03
+#                  Change MJD of initial AEFF_CAL
+#                       file to 50000.
+#  03/14/2005 wvd  Change CHID files to version 13
+#  03/16/2005 wvd  Added  BKGD files version 18
+#  03/24/2005 wvd  Change VOLT files to version 9
+#  04/07/2005 wvd  Change SCRN files to version 15
+#  06/01/2005 wvd  Change WAVE files to version 19
+#  06/13/2005 wvd  Change AEFF files to versions 100-119
+#  06/22/2005 wvd  Change WAVE files to version 20
+#  07/06/2005 wvd  Change PARM files to version 13
+#  07/19/2005 wvd  Change GRAT file to version 02
+#  09/07/2005 wvd  Change WAVE files to version 21
+#  02/22/2006 wvd  Change WAVE files to version 22
+#  05/11/2006 wvd  Add    AEFF files    version 120
+#  05/23/2006 wvd  Change AIRG files to version 04
+#  06/14/2006 wvd  Change PARM files to version 14
+#  07/06/2006 wvd  Change GRAT file to version 03
+#  10/24/2006 wvd  Change PARM files to version 15
+#  11/02/2006 wvd  Add    TMXY files 
+#  11/22/2006 wvd  Change TMXY files to version 001
+#  11/28/2006 wvd  Change GRAT file to version 04
+#  12/29/2006 wvd  Change ELEC file to version 05
+#  01/19/2007 wvd  Change TMXY files to version 002
+#  01/24/2007 wvd  Change GRAT file to version 05
+#  02/16/2007 wvd  Add    AEFF files    version 121
+#  03/02/2007 wvd  Change WAVE files to version 23
+#  04/06/2007 wvd  Change CHID files to version 14
+#  08/15/2007 wvd  Add    AEFF files    version 122
+#  09/12/2007 wvd  Add    BKGD files    version 019
+#  09/17/2007 wvd  Change use-after date for bkgd 019
+#  02/08/2008 wvd  Change PHAH files to version 02
+#                  Change STIM files to version 02
+#  03/07/2008 wvd  Change PHAX files to version 06
+#
+#        1         2         3         4
+#234567890123456789012345678901234567890
+#
+#                        Use after  Interp
+#Key Seg    Filename        MJD     method
+#
+AIRG  1A  airg1a004.fit  50000.000  0
+#
+AIRG  1B  airg1b004.fit  50000.000  0
+#
+AIRG  2A  airg2a004.fit  50000.000  0
+#
+AIRG  2B  airg2b004.fit  50000.000  0
+#
+BKGD  1A  bkgd1a011.fit  50000.000  0
+BKGD  1A  bkgd1a012.fit  51911.000  0
+BKGD  1A  bkgd1a013.fit  52120.000  0
+BKGD  1A  bkgd1a014.fit  52202.000  0
+BKGD  1A  bkgd1a015.fit  52324.000  0
+BKGD  1A  bkgd1a016.fit  52426.000  0
+BKGD  1A  bkgd1a017.fit  52845.000  0
+BKGD  1A  bkgd1a018.fit  53118.000  0
+BKGD  1A  bkgd1a019.fit  53371.500  0
+#
+BKGD  1B  bkgd1b011.fit  50000.000  0
+BKGD  1B  bkgd1b012.fit  51911.000  0
+BKGD  1B  bkgd1b013.fit  52120.000  0
+BKGD  1B  bkgd1b014.fit  52202.000  0
+BKGD  1B  bkgd1b015.fit  52324.000  0
+BKGD  1B  bkgd1b016.fit  52426.000  0
+BKGD  1B  bkgd1b017.fit  52845.000  0
+BKGD  1B  bkgd1b018.fit  53118.000  0
+BKGD  1B  bkgd1b019.fit  53371.500  0
+#
+BKGD  2A  bkgd2a011.fit  50000.000  0
+BKGD  2A  bkgd2a012.fit  51911.000  0
+BKGD  2A  bkgd2a013.fit  52120.000  0
+BKGD  2A  bkgd2a014.fit  52202.000  0
+BKGD  2A  bkgd2a015.fit  52324.000  0
+BKGD  2A  bkgd2a016.fit  52426.000  0
+BKGD  2A  bkgd2a017.fit  52845.000  0
+BKGD  2A  bkgd2a018.fit  53118.000  0
+BKGD  2A  bkgd2a019.fit  53371.500  0
+#
+BKGD  2B  bkgd2b011.fit  50000.000  0
+BKGD  2B  bkgd2b012.fit  51911.000  0
+BKGD  2B  bkgd2b013.fit  52120.000  0
+BKGD  2B  bkgd2b014.fit  52202.000  0
+BKGD  2B  bkgd2b015.fit  52324.000  0
+BKGD  2B  bkgd2b016.fit  52426.000  0
+BKGD  2B  bkgd2b017.fit  52845.000  0
+BKGD  2B  bkgd2b018.fit  53118.000  0
+BKGD  2B  bkgd2b019.fit  53371.500  0
+#
+DIGI      digi001.fit    50000.000  0
+#
+ELEC      elec005.fit    50000.000  0
+#
+RATE  1A  rate1a002.fit  50000.000  0
+#
+RATE  1B  rate1b002.fit  50000.000  0
+#
+RATE  2A  rate2a002.fit  50000.000  0
+#
+RATE  2B  rate2b002.fit  50000.000  0
+#
+TMXY  1A  tmxy1a002.fit  50000.000  0
+#
+TMXY  1B  tmxy1b002.fit  50000.000  0
+#
+TMXY  2A  tmxy2a002.fit  50000.000  0
+#
+TMXY  2B  tmxy2b002.fit  50000.000  0
+#
+GEOM  1A  geom1a016.fit  50000.000  0 
+#
+GEOM  1B  geom1b016.fit  50000.000  0
+#
+GEOM  2A  geom2a016.fit  50000.000  0
+#
+GEOM  2B  geom2b016.fit  50000.000  0
+#
+PHAX  1A  phax1a006.fit  50000.000  0
+#
+PHAX  1B  phax1b006.fit  50000.000  0
+#
+PHAX  2A  phax2a006.fit  50000.000  0
+#
+PHAX  2B  phax2b006.fit  50000.000  0
+#
+CHID  1A  chid1a014.fit  50000.000  0
+#
+CHID  1B  chid1b014.fit  50000.000  0
+#
+CHID  2A  chid2a014.fit  50000.000  0
+#
+CHID  2B  chid2b014.fit  50000.000  0
+#
+GRAT      grat005.fit    50000.000  0
+#
+WAVE  1A  wave1a023.fit  50000.000  0
+#
+WAVE  1B  wave1b023.fit  50000.000  0
+#
+WAVE  2A  wave2a023.fit  50000.000  0
+#
+WAVE  2B  wave2b023.fit  50000.000  0
+#
+MIRR      mirr002.fit    50000.000  0
+#
+ASTG  1A  astg1a011.fit  50000.000  0
+#
+ASTG  1B  astg1b011.fit  50000.000  0
+#
+ASTG  2A  astg2a011.fit  50000.000  0
+#
+ASTG  2B  astg2b011.fit  50000.000  0
+#
+VOLT  1A  volt1a009.fit  50000.000  0
+#
+VOLT  1B  volt1b009.fit  50000.000  0
+#
+VOLT  2A  volt2a009.fit  50000.000  0
+#
+VOLT  2B  volt2b009.fit  50000.000  0
+#
+BCHR  1A  bchr1a003.fit  50000.000  0
+#
+BCHR  1B  bchr1b003.fit  50000.000  0
+#
+BCHR  2A  bchr2a003.fit  50000.000  0
+#
+BCHR  2B  bchr2b003.fit  50000.000  0
+#
+PARM  1A  parm1a015.fit  50000.000  0
+#
+PARM  1B  parm1b015.fit  50000.000  0
+#
+PARM  2A  parm2a015.fit  50000.000  0
+#
+PARM  2B  parm2b015.fit  50000.000  0
+#
+PHAH  1A  phah1a002.fit  50000.000  0
+#
+PHAH  1B  phah1b002.fit  50000.000  0
+#
+PHAH  2A  phah2a002.fit  50000.000  0
+#
+PHAH  2B  phah2b002.fit  50000.000  0
+#
+SAAC      saac004.fit    50000.000  0
+#
+SCRN  1A  scrn1a015.fit  50000.000  0
+#
+SCRN  1B  scrn1b015.fit  50000.000  0
+#
+SCRN  2A  scrn2a015.fit  50000.000  0
+#
+SCRN  2B  scrn2b015.fit  50000.000  0
+#
+SPEC      spec002.fit    50000.000  0
+#
+STIM  1A  stim1a002.fit  50000.000  0
+#
+STIM  1B  stim1b002.fit  50000.000  0
+#
+STIM  2A  stim2a002.fit  50000.000  0
+#
+STIM  2B  stim2b002.fit  50000.000  0
+#
+QUAL  1A  qual1a020.fit  50000.000  0
+#
+QUAL  1B  qual1b020.fit  50000.000  0
+#
+QUAL  2A  qual2a020.fit  50000.000  0
+#
+QUAL  2B  qual2b020.fit  50000.000  0
+#
+WGTS  1A  wgts1a011.fit  50000.000  0
+#
+WGTS  1B  wgts1b011.fit  50000.000  0
+#
+WGTS  2A  wgts2a011.fit  50000.000  0
+#
+WGTS  2B  wgts2b011.fit  50000.000  0
+#
+AEFF  1A  aeff1a100.fit  50000.000  1
+AEFF  1A  aeff1a100.fit  51543.000  1
+AEFF  1A  aeff1a101.fit  51634.000  1
+AEFF  1A  aeff1a102.fit  51725.000  1
+AEFF  1A  aeff1a103.fit  51817.000  1
+AEFF  1A  aeff1a104.fit  51909.000  1
+AEFF  1A  aeff1a105.fit  51999.000  1
+AEFF  1A  aeff1a106.fit  52090.000  1
+AEFF  1A  aeff1a107.fit  52182.000  1
+AEFF  1A  aeff1a108.fit  52274.000  1
+AEFF  1A  aeff1a109.fit  52364.000  1
+AEFF  1A  aeff1a110.fit  52455.000  1
+AEFF  1A  aeff1a111.fit  52547.000  1
+AEFF  1A  aeff1a112.fit  52639.000  1
+AEFF  1A  aeff1a113.fit  52729.000  1
+AEFF  1A  aeff1a114.fit  52820.000  1
+AEFF  1A  aeff1a115.fit  52912.000  1
+AEFF  1A  aeff1a116.fit  53004.000  1
+AEFF  1A  aeff1a117.fit  53095.000  1
+AEFF  1A  aeff1a118.fit  53186.000  1
+AEFF  1A  aeff1a119.fit  53278.000  1
+AEFF  1A  aeff1a120.fit  53818.000  1
+AEFF  1A  aeff1a121.fit  54046.800  1
+AEFF  1A  aeff1a122.fit  54179.800  1
+#
+AEFF  1B  aeff1b100.fit  50000.000  1
+AEFF  1B  aeff1b100.fit  51543.000  1
+AEFF  1B  aeff1b101.fit  51634.000  1
+AEFF  1B  aeff1b102.fit  51725.000  1
+AEFF  1B  aeff1b103.fit  51817.000  1
+AEFF  1B  aeff1b104.fit  51909.000  1
+AEFF  1B  aeff1b105.fit  51999.000  1
+AEFF  1B  aeff1b106.fit  52090.000  1
+AEFF  1B  aeff1b107.fit  52182.000  1
+AEFF  1B  aeff1b108.fit  52274.000  1
+AEFF  1B  aeff1b109.fit  52364.000  1
+AEFF  1B  aeff1b110.fit  52455.000  1
+AEFF  1B  aeff1b111.fit  52547.000  1
+AEFF  1B  aeff1b112.fit  52639.000  1
+AEFF  1B  aeff1b113.fit  52729.000  1
+AEFF  1B  aeff1b114.fit  52820.000  1
+AEFF  1B  aeff1b115.fit  52912.000  1
+AEFF  1B  aeff1b116.fit  53004.000  1
+AEFF  1B  aeff1b117.fit  53095.000  1
+AEFF  1B  aeff1b118.fit  53186.000  1
+AEFF  1B  aeff1b119.fit  53278.000  1
+AEFF  1B  aeff1b120.fit  53818.000  1
+AEFF  1B  aeff1b121.fit  54046.800  1
+AEFF  1B  aeff1b122.fit  54179.800  1
+#
+AEFF  2A  aeff2a100.fit  50000.000  1
+AEFF  2A  aeff2a100.fit  51543.000  1
+AEFF  2A  aeff2a101.fit  51634.000  1
+AEFF  2A  aeff2a102.fit  51725.000  1
+AEFF  2A  aeff2a103.fit  51817.000  1
+AEFF  2A  aeff2a104.fit  51909.000  1
+AEFF  2A  aeff2a105.fit  51999.000  1
+AEFF  2A  aeff2a106.fit  52090.000  1
+AEFF  2A  aeff2a107.fit  52182.000  1
+AEFF  2A  aeff2a108.fit  52274.000  1
+AEFF  2A  aeff2a109.fit  52364.000  1
+AEFF  2A  aeff2a110.fit  52455.000  1
+AEFF  2A  aeff2a111.fit  52547.000  1
+AEFF  2A  aeff2a112.fit  52639.000  1
+AEFF  2A  aeff2a113.fit  52729.000  1
+AEFF  2A  aeff2a114.fit  52820.000  1
+AEFF  2A  aeff2a115.fit  52912.000  1
+AEFF  2A  aeff2a116.fit  53004.000  1
+AEFF  2A  aeff2a117.fit  53095.000  1
+AEFF  2A  aeff2a118.fit  53186.000  1
+AEFF  2A  aeff2a119.fit  53278.000  1
+AEFF  2A  aeff2a120.fit  53818.000  1
+AEFF  2A  aeff2a121.fit  54046.800  1
+AEFF  2A  aeff2a122.fit  54179.800  1
+#
+AEFF  2B  aeff2b100.fit  50000.000  1
+AEFF  2B  aeff2b100.fit  51543.000  1
+AEFF  2B  aeff2b101.fit  51634.000  1
+AEFF  2B  aeff2b102.fit  51725.000  1
+AEFF  2B  aeff2b103.fit  51817.000  1
+AEFF  2B  aeff2b104.fit  51909.000  1
+AEFF  2B  aeff2b105.fit  51999.000  1
+AEFF  2B  aeff2b106.fit  52090.000  1
+AEFF  2B  aeff2b107.fit  52182.000  1
+AEFF  2B  aeff2b108.fit  52274.000  1
+AEFF  2B  aeff2b109.fit  52364.000  1
+AEFF  2B  aeff2b110.fit  52455.000  1
+AEFF  2B  aeff2b111.fit  52547.000  1
+AEFF  2B  aeff2b112.fit  52639.000  1
+AEFF  2B  aeff2b113.fit  52729.000  1
+AEFF  2B  aeff2b114.fit  52820.000  1
+AEFF  2B  aeff2b115.fit  52912.000  1
+AEFF  2B  aeff2b116.fit  53004.000  1
+AEFF  2B  aeff2b117.fit  53095.000  1
+AEFF  2B  aeff2b118.fit  53186.000  1
+AEFF  2B  aeff2b119.fit  53278.000  1
+AEFF  2B  aeff2b120.fit  53818.000  1
+AEFF  2B  aeff2b121.fit  54046.800  1
+AEFF  2B  aeff2b122.fit  54179.800  1

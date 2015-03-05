@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_RVLSRK - RV Corrn to Kinematical LSR</TITLE>
+<META NAME="description" CONTENT="SLA_RVLSRK - RV Corrn to Kinematical LSR">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node175.html">
+<LINK REL="previous" HREF="node173.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node175.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2166" HREF="node175.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2164" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2158" HREF="node173.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2167" HREF="node175.html">SLA_S2TP - Spherical to Tangent Plane</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2165" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2159" HREF="node173.html">SLA_RVLSRD - RV Corrn to Dynamical LSR</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004161000000000000000">SLA_RVLSRK - RV Corrn to Kinematical LSR</A>
+<A NAME="xref_SLA_RVLSRK">&#160;</A><A NAME="SLA_RVLSRK">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Velocity component in a given direction due to the Sun's
+motion with respect to a kinematical Local Standard of Rest.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>R&nbsp;=&nbsp;sla_RVLSRK (R2000, D2000)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>R2000,D2000</EM></TD>
+<TH ALIGN="LEFT"><B>R</B></TH>
+<TD ALIGN="LEFT" NOWRAP>J2000.0 mean <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>sla_RVLSRK</EM></TD>
+<TH ALIGN="LEFT"><B>R</B></TH>
+<TH ALIGN="LEFT" NOWRAP>Component of <I>standard</I> solar motion
+in direction R2000,D2000 (km&nbsp;s<SUP>-1</SUP>)</TH>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Sign convention: the result is positive when
+the Sun is receding from the given point on the sky.
+<DT>2.
+<DD>The Local Standard of Rest used here is one of several
+        <I>kinematical</I> LSRs in common use.  A kinematical LSR is the
+        mean standard of rest of specified star catalogues or stellar
+        populations.  The Sun's motion with respect to a kinematical
+        LSR is known as the <I>standard</I> solar motion.
+  <DT>3.
+<DD>There is another sort of LSR, seldom used by observational
+        astronomers, called the <I>dynamical</I> LSR.  This is a
+        point in the vicinity of the Sun which is in a circular orbit
+        around the Galactic centre.  The Sun's motion with respect to
+        the dynamical LSR is called the <I>peculiar</I> solar motion.  To
+        obtain a radial velocity correction with respect to the
+        dynamical LSR use the routine sla_RVLSRD.
+  <DT>4.
+<DD>The adopted standard solar motion is 20&nbsp;km&nbsp;s<SUP>-1</SUP>
+        towards <IMG WIDTH="132" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.gif"
+ ALT="$\alpha=18^{\rm h},\delta=+30^{\circ}$"> (1900).
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Delhaye (1965), in <I>Stars and Stellar Systems</I>, vol&nbsp;5, p73.
+<DT>2.
+<DD><I>Methods of Experimental Physics</I> (ed Meeks), vol&nbsp;12,
+part&nbsp;C, sec&nbsp;6.1.5.2, p281.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html2166" HREF="node175.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2164" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2158" HREF="node173.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2167" HREF="node175.html">SLA_S2TP - Spherical to Tangent Plane</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2165" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2159" HREF="node173.html">SLA_RVLSRD - RV Corrn to Dynamical LSR</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

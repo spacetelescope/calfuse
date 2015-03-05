@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_AIRMAS - Air Mass</TITLE>
+<META NAME="description" CONTENT="SLA_AIRMAS - Air Mass">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node17.html">
+<LINK REL="previous" HREF="node15.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node17.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html586" HREF="node17.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html584" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html578" HREF="node15.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html587" HREF="node17.html">SLA_ALTAZ - Velocities etc. for Altazimuth Mount</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html585" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html579" HREF="node15.html">SLA_AFIN - Sexagesimal character string to angle</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00043000000000000000">SLA_AIRMAS - Air Mass</A>
+<A NAME="xref_SLA_AIRMAS">&#160;</A><A NAME="SLA_AIRMAS">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Air mass at given zenith distance (double precision).
+<DT><STRONG>CALL:</STRONG>
+<DD><TT>D&nbsp;=&nbsp;sla_AIRMAS (ZD)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ZD</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>observed zenith distance (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>sla_AIRMAS</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>air mass (1 at zenith)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The <I>observed</I> zenith distance referred to above means
+``as affected by refraction''.
+<DT>2.
+<DD>The routine uses Hardie's (1962) polynomial fit to Bemporad's
+        data for the relative air mass, <I>X</I>, in units of thickness at the
+        zenith as tabulated by Schoenberg (1929). This is adequate for all
+        normal needs as it is accurate to better than
+        0.1% up to <I>X</I> = 6.8 and better than 1% up to <I>X</I> = 10.
+        Bemporad's tabulated values are unlikely to be trustworthy
+        to such accuracy
+        because of variations in density, pressure and other
+        conditions in the atmosphere from those assumed in his work.
+  <DT>3.
+<DD>The sign of the ZD is ignored.
+  <DT>4.
+<DD>At zenith distances greater than about <IMG WIDTH="56" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.gif"
+ ALT="$\zeta = 87^{\circ}$"> the
+        air mass is held constant to avoid arithmetic overflows.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Hardie, R.H., 1962, in <I>Astronomical Techniques</I>
+ed. W.A. Hiltner, University of Chicago Press, p180.
+<DT>2.
+<DD>Schoenberg, E., 1929, Hdb. d. Ap.,
+        Berlin, Julius Springer, 2, 268.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html586" HREF="node17.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html584" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html578" HREF="node15.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html587" HREF="node17.html">SLA_ALTAZ - Velocities etc. for Altazimuth Mount</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html585" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html579" HREF="node15.html">SLA_AFIN - Sexagesimal character string to angle</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

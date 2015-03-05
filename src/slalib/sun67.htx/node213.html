@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Apparent Place to Observed Place</TITLE>
+<META NAME="description" CONTENT="Apparent Place to Observed Place">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node216.html">
+<LINK REL="previous" HREF="node212.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node214.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2581" HREF="node214.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2579" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2573" HREF="node212.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2582" HREF="node214.html">Refraction</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2580" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2574" HREF="node212.html">Mean Place to Apparent Place</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000513000000000000000">
+Apparent Place to Observed Place</A>
+</H2>
+The <I>observed place</I> of a source is its position as
+seen by a perfect theodolite at the location of the
+observer.  Transformation of an apparent <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> to observed 
+place involves the following effects:
+<P><UL>
+<LI> <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> to <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$">.<LI> Diurnal aberration.
+<LI> <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> to <IMG WIDTH="66" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$[\,Az,El~]$">.<LI> Refraction.
+</UL>
+The transformation from apparent <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> to
+apparent <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> is made by allowing for
+<I>Earth rotation</I> through the <I>sidereal time</I>, <IMG WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img298.gif"
+ ALT="$\theta$">:
+<P ALIGN="CENTER"><IMG WIDTH="70" HEIGHT="25"
+ SRC="img299.gif"
+ ALT="\begin{displaymath}
+h = \theta - \alpha \end{displaymath}"></P>
+For this equation to work, <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> must be the apparent right
+ascension for the time of observation, and <IMG WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img298.gif"
+ ALT="$\theta$"> must be
+the <I>local apparent sidereal time</I>.  The latter is obtained
+as follows:
+<DL COMPACT>
+<DT>1.
+<DD>from civil time obtain the coordinated universal time, UTC
+(more later on this);
+<DT>2.
+<DD>add the UT1-UTC (typically a few tenths of a second) to
+      give the UT;
+<DT>3.
+<DD>from the UT compute the Greenwich mean sidereal time (using
+sla_GMST);
+<DT>4.
+<DD>add the observer's (east) longitude, giving the local mean
+      sidereal time;
+<DT>5.
+<DD>add the equation of the equinoxes (using
+sla_EQEQX).
+</DL>
+The <I>equation of the equinoxes</I>&nbsp;(<IMG WIDTH="78" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img300.gif"
+ ALT="$=\Delta\psi\cos\epsilon$"> plus
+small terms)
+is the effect of nutation on the sidereal time.
+Its value is typically a second or less.  It is
+interesting to note that if the object of the exercise is to
+transform a mean place all the way into an observed place (very
+often the case),
+then the equation of the
+equinoxes and the longitude component of nutation can both be
+omitted, removing a great deal of computation.  However, SLALIB
+follows the normal convention and  works <I>via</I> the apparent place.
+<P>
+Note that for very precise work the observer's longitude should
+be corrected for <I>polar motion</I>.  This can be done with
+sla_POLMO.
+The corrections are always less than about 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img32.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.3$">   , and
+are futile unless the position of the observer's telescope is known
+to better than a few metres.
+<P>
+Tables of observed and
+predicted UT1-UTC corrections and polar motion data
+are published every few weeks by the International Earth Rotation Service.
+<P>
+The transformation from apparent <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> to <I>topocentric</I>
+<IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> consists of allowing for
+<I>diurnal aberration</I>.  This effect, maximum amplitude 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img76.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.2$">   ,
+was described earlier.  There is no specific SLALIB routine
+for computing the diurnal aberration,
+though the routines
+sla_AOP <I>etc.</I> include it, and the required velocity vector can be
+determined by calling
+sla_GEOC.
+<P>
+The next stage is the major coordinate rotation from local equatorial
+coordinates <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> into horizon coordinates.  The SLALIB routines
+sla_E2H
+<I>etc.</I> can be used for this.  For high-precision
+applications the mean geodetic latitude should be corrected for polar
+motion.
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html2583" HREF="node214.html#SECTION000513100000000000000">
+Refraction</A>
+<LI><A NAME="tex2html2584" HREF="node215.html#SECTION000513200000000000000">
+Efficiency considerations</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR> <HR>
+<A NAME="tex2html2581" HREF="node214.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2579" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2573" HREF="node212.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2582" HREF="node214.html">Refraction</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2580" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2574" HREF="node212.html">Mean Place to Apparent Place</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Formatting angles</TITLE>
+<META NAME="description" CONTENT="Formatting angles">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="previous" HREF="node198.html">
+<LINK REL="up" HREF="node198.html">
+<LINK REL="next" HREF="node200.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2443" HREF="node200.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2441" HREF="node198.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2437" HREF="node198.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2444" HREF="node200.html">Vectors and Matrices</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2442" HREF="node198.html">Spherical Trigonometry</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2438" HREF="node198.html">Spherical Trigonometry</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H3><A NAME="SECTION00051100000000000000">
+Formatting angles</A>
+</H3>
+SLALIB has routines for decoding decimal numbers
+from character form and for converting angles to and from
+sexagesimal form (hours, minutes, seconds or degrees,
+arcminutes, arcseconds).  These apparently straightforward
+operations contain hidden traps which the SLALIB routines
+avoid.
+<P>
+There are five routines for decoding numbers from a character
+string, such as might be entered using a keyboard.
+They all work in the same style, and successive calls
+can work their way along a single string decoding
+a sequence of numbers of assorted types.  Number
+fields can be separated by spaces or commas, and can be defaulted
+to previous values or to preset defaults.
+<P>
+Three of the routines decode single numbers:
+sla_INTIN
+(integer),
+sla_FLOTIN
+(single precision floating point) and
+sla_DFLTIN
+(double precision).  A minus sign can be
+detected even when the number is zero;  this avoids
+the frequently-encountered ``minus zero'' bug, where
+declinations <I>etc.</I> in
+the range <IMG WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$0^{\circ}$"> to <IMG WIDTH="30" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$-1^{\circ}$"> mysteriously migrate to
+the range <IMG WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$0^{\circ}$"> to <IMG WIDTH="30" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img236.gif"
+ ALT="$+1^{\circ}$">.Here is an example (in Fortran) where we wish to
+read two numbers, and integer <TT>IX</TT> and a real, <TT>Y</TT>,
+with <TT>X</TT> defaulting to zero and <TT>Y</TT> defaulting to
+<TT>X</TT>:
+<P><PRE>
+            DOUBLE PRECISION Y
+            CHARACTER*80 A
+            INTEGER IX,I,J
+
+      *  Input the string to be decoded
+            READ (*,'(A)') A
+
+      *  Preset IX to its default value
+            IX = 0
+
+      *  Point to the start of the string
+            I = 1
+
+      *  Decode an integer
+            CALL sla_INTIN(A,I,IX,J)
+            IF (J.GT.1) GO TO ... (bad IX)
+
+      *  Preset Y to its default value
+            Y = DBLE(IX)
+
+      *  Decode a double precision number
+            CALL sla_DFLTIN(A,I,Y,J)
+            IF (J.GT.1) GO TO ... (bad Y)
+</PRE>
+<P>
+Two additional routines decode a 3-field sexagesimal number:
+sla_AFIN
+(degrees, arcminutes, arcseconds to single
+precision radians) and
+sla_DAFIN
+(the same but double precision).  They also
+work using other units such as hours <I>etc</I>. if
+you multiply the result by the appropriate factor.  An example
+Fortran program which uses
+sla_DAFIN
+was given earlier, in section 1.2.
+<P>
+SLALIB provides four routines for expressing an angle in radians
+in a preferred range.  The function
+sla_RANGE
+expresses an angle
+in the range <IMG WIDTH="25" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif"
+ ALT="$\pm \pi$">;sla_RANORM
+expresses an angle in the range
+<IMG WIDTH="48" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img143.gif"
+ ALT="$0-2\pi$">.  The functions
+sla_DRANGE
+and
+sla_DRANRM
+are double precision versions.
+<P>
+Several routines
+(sla_CTF2D,
+sla_CR2AF
+<I>etc.</I>) are provided to convert
+angles to and from
+sexagesimal form (hours, minute, seconds or degrees,
+arcminutes and arcseconds).
+They avoid the common
+``converting from integer to real at the wrong time''
+bug, which produces angles like <IMG WIDTH="113" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img237.gif"
+ ALT="$24^{h}\,59^{m}\,59^{s}.999$">.Here is a program which displays an hour angle
+stored in radians:
+<P><PRE>
+            DOUBLE PRECISION HA
+            CHARACTER SIGN
+            INTEGER IHMSF(4)
+            :
+            CALL sla_DR2TF(3,HA,SIGN,IHMSF)
+            WRITE (*,'(1X,A,3I3.2,''.'',I3.3)') SIGN,IHMSF
+</PRE>
+<P>
+<BR> <HR>
+<A NAME="tex2html2443" HREF="node200.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2441" HREF="node198.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2437" HREF="node198.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2444" HREF="node200.html">Vectors and Matrices</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2442" HREF="node198.html">Spherical Trigonometry</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2438" HREF="node198.html">Spherical Trigonometry</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

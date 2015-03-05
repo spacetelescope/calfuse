@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>EXPLANATION AND EXAMPLES</TITLE>
+<META NAME="description" CONTENT="EXPLANATION AND EXAMPLES">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node228.html">
+<LINK REL="previous" HREF="node13.html">
+<LINK REL="up" HREF="sun67.html">
+<LINK REL="next" HREF="node198.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2394" HREF="node198.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2392" HREF="sun67.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2386" HREF="node196.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2395" HREF="node198.html">Spherical Trigonometry</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2393" HREF="sun67.html">SLALIB   Positional Astronomy Library</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2387" HREF="node196.html">SLA_ZD - to Zenith Distance</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H1><A NAME="SECTION00050000000000000000">
+EXPLANATION AND EXAMPLES</A>
+</H1>
+To guide the writer of positional-astronomy applications software,
+this final chapter puts the SLALIB routines into the context of
+astronomical phenomena and techniques, and presents a few
+``cookbook'' examples
+of the SLALIB calls in action.  The astronomical content of the chapter
+is not, of course, intended to be a substitute for specialist text-books on
+positional astronomy, but may help bridge the gap between
+such books and the SLALIB routines.  For further reading, the following
+cover a wide range of material and styles:
+<UL>
+<LI> <I>Explanatory Supplement to the Astronomical Almanac</I>,
+      ed. P.Kenneth&nbsp;Seidelmann (1992), University Science Books.
+<LI> <I>Vectorial Astrometry</I>, C.A.Murray (1983), Adam Hilger.
+<LI> <I>Spherical Astronomy</I>, Robin&nbsp;M.Green (1985), Cambridge
+      University Press.
+<LI> <I>Spacecraft Attitude Determination and Control</I>,
+      ed. James&nbsp;R.Wertz (1986), Reidel.
+<LI> <I>Practical Astronomy with your Calculator</I>,
+      Peter&nbsp;Duffett-Smith (1981), Cambridge University Press.
+</UL>
+Also of considerable value, though out of date in places, are:
+<UL>
+<LI> <I>Explanatory Supplement to the Astronomical Ephemeris
+      and the American Ephemeris and Nautical Almanac</I>, RGO/USNO (1974),
+      HMSO.
+<LI> <I>Textbook on Spherical Astronomy</I>, W.M.Smart (1977),
+      Cambridge University Press.
+</UL>
+Only brief details of individual SLALIB routines are given here, and
+readers will find it useful to refer to the subprogram specifications
+elsewhere in this document.  The source code for the SLALIB routines
+(available in both Fortran and C) is also intended to be used as
+documentation.
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html2396" HREF="node198.html#SECTION00051000000000000000">
+Spherical Trigonometry</A>
+<UL>
+<LI><A NAME="tex2html2397" HREF="node199.html#SECTION00051100000000000000">
+Formatting angles</A>
+</UL>
+<LI><A NAME="tex2html2398" HREF="node200.html#SECTION00052000000000000000">
+Vectors and Matrices</A>
+<UL>
+<LI><A NAME="tex2html2399" HREF="node201.html#SECTION00052100000000000000">
+Using vectors</A>
+</UL>
+<LI><A NAME="tex2html2400" HREF="node202.html#SECTION00053000000000000000">
+Celestial Coordinate Systems</A>
+<LI><A NAME="tex2html2401" HREF="node203.html#SECTION00054000000000000000">
+Precession and Nutation</A>
+<UL>
+<LI><A NAME="tex2html2402" HREF="node204.html#SECTION00054100000000000000">
+SLALIB support for precession and nutation</A>
+</UL>
+<LI><A NAME="tex2html2403" HREF="node205.html#SECTION00055000000000000000">
+Mean Places</A>
+<LI><A NAME="tex2html2404" HREF="node206.html#SECTION00056000000000000000">
+Epoch</A>
+<LI><A NAME="tex2html2405" HREF="node207.html#SECTION00057000000000000000">
+Proper Motion</A>
+<LI><A NAME="tex2html2406" HREF="node208.html#SECTION00058000000000000000">
+Parallax and Radial Velocity</A>
+<LI><A NAME="tex2html2407" HREF="node209.html#SECTION00059000000000000000">
+Aberration</A>
+<LI><A NAME="tex2html2408" HREF="node210.html#SECTION000510000000000000000">
+Different Sorts of Mean Place</A>
+<LI><A NAME="tex2html2409" HREF="node211.html#SECTION000511000000000000000">
+Mean Place Transformations</A>
+<LI><A NAME="tex2html2410" HREF="node212.html#SECTION000512000000000000000">
+Mean Place to Apparent Place</A>
+<LI><A NAME="tex2html2411" HREF="node213.html#SECTION000513000000000000000">
+Apparent Place to Observed Place</A>
+<UL>
+<LI><A NAME="tex2html2412" HREF="node214.html#SECTION000513100000000000000">
+Refraction</A>
+<LI><A NAME="tex2html2413" HREF="node215.html#SECTION000513200000000000000">
+Efficiency considerations</A>
+</UL>
+<LI><A NAME="tex2html2414" HREF="node216.html#SECTION000514000000000000000">
+The Hipparcos Catalogue and the ICRS</A>
+<LI><A NAME="tex2html2415" HREF="node217.html#SECTION000515000000000000000">
+Timescales</A>
+<UL>
+<LI><A NAME="tex2html2416" HREF="node218.html#SECTION000515100000000000000">
+Atomic Time: TAI</A>
+<LI><A NAME="tex2html2417" HREF="node219.html#SECTION000515200000000000000">
+Universal Time: UTC, UT1</A>
+<LI><A NAME="tex2html2418" HREF="node220.html#SECTION000515300000000000000">
+Sidereal Time: GMST, LAST</A>
+<LI><A NAME="tex2html2419" HREF="node221.html#SECTION000515400000000000000">
+Dynamical Time: TT, TDB</A>
+</UL>
+<LI><A NAME="tex2html2420" HREF="node222.html#SECTION000516000000000000000">
+Calendars</A>
+<LI><A NAME="tex2html2421" HREF="node223.html#SECTION000517000000000000000">
+Geocentric Coordinates</A>
+<LI><A NAME="tex2html2422" HREF="node224.html#SECTION000518000000000000000">
+Ephemerides</A>
+<LI><A NAME="tex2html2423" HREF="node225.html#SECTION000519000000000000000">
+Radial Velocity and Light-Time Corrections</A>
+<LI><A NAME="tex2html2424" HREF="node226.html#SECTION000520000000000000000">
+Focal-Plane Astrometry</A>
+<LI><A NAME="tex2html2425" HREF="node227.html#SECTION000521000000000000000">
+Numerical Methods</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR> <HR>
+<A NAME="tex2html2394" HREF="node198.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2392" HREF="sun67.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2386" HREF="node196.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2395" HREF="node198.html">Spherical Trigonometry</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2393" HREF="sun67.html">SLALIB   Positional Astronomy Library</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2387" HREF="node196.html">SLA_ZD - to Zenith Distance</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

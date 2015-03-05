@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_FLOTIN - Decode a Real Number</TITLE>
+<META NAME="description" CONTENT="SLA_FLOTIN - Decode a Real Number">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node111.html">
+<LINK REL="previous" HREF="node109.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node111.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1526" HREF="node111.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1524" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1518" HREF="node109.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1527" HREF="node111.html">SLA_GALEQ - Galactic to J2000</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1525" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1519" HREF="node109.html">SLA_FK5HZ - FK5 to Hipparcos, no P.M.</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000497000000000000000">SLA_FLOTIN - Decode a Real Number</A>
+<A NAME="xref_SLA_FLOTIN">&#160;</A><A NAME="SLA_FLOTIN">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Convert free-format input into single precision floating point.
+<DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_FLOTIN (STRING, NSTRT, RESLT, JFLAG)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>STRING</EM></TD>
+<TH ALIGN="LEFT"><B>C</B></TH>
+<TD ALIGN="LEFT" NOWRAP>string containing number to be decoded</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NSTRT</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>pointer to where decoding is to commence</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RESLT</EM></TD>
+<TD ALIGN="LEFT"><B>R</B></TD>
+<TD ALIGN="LEFT" NOWRAP>current value of result</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NSTRT</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>advanced to next number</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RESLT</EM></TD>
+<TD ALIGN="LEFT"><B>R</B></TD>
+<TD ALIGN="LEFT" NOWRAP>result</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JFLAG</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status: -1&nbsp;=&nbsp;-OK, 0&nbsp;=&nbsp;+OK, 1&nbsp;=&nbsp;null result, 2&nbsp;=&nbsp;error</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The reason sla_FLOTIN has separate `OK' status values
+for + and - is to enable minus zero to be detected.
+This is of crucial importance
+       when decoding mixed-radix numbers.  For example, an angle
+       expressed as degrees, arcminutes and arcseconds may have a
+       leading minus sign but a zero degrees field.
+ <DT>2.
+<DD>A TAB is interpreted as a space, and lowercase characters are
+       interpreted as uppercase.  <I>n.b.</I> The test for TAB is
+       ASCII-specific.
+ <DT>3.
+<DD>The basic format is the sequence of fields <IMG WIDTH="78" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.gif"
+ ALT="$\pm n.n x \pm n$">,       where <IMG WIDTH="15" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.gif"
+ ALT="$\pm$"> is a sign
+       character `+' or `-', <I>n</I> means a string of decimal digits,
+       `.' is a decimal point, and <I>x</I>, which indicates an exponent,
+       means `D' or `E'.  Various combinations of these fields can be
+       omitted, and embedded blanks are permissible in certain places.
+ <DT>4.
+<DD>Spaces:
+       <UL>
+<LI> Leading spaces are ignored.
+<LI> Embedded spaces are allowed only after +, -, D or E,
+             and after the decimal point if the first sequence of
+             digits is absent.
+<LI> Trailing spaces are ignored;  the first signifies
+             end of decoding and subsequent ones are skipped.
+       </UL>
+ <DT>5.
+<DD>Delimiters:
+       <UL>
+<LI> Any character other than +,-,0-9,.,D,E or space may be
+             used to signal the end of the number and terminate decoding.
+<LI> Comma is recognized by sla_FLOTIN as a special case; it
+             is skipped, leaving the pointer on the next character.  See
+             13, below.
+<LI> Decoding will in all cases terminate if end of string
+             is reached.
+       </UL>
+ <DT>6.
+<DD>Both signs are optional.  The default is +.
+ <DT>7.
+<DD>The mantissa <I>n</I>.<I>n</I> defaults to unity.
+ <DT>8.
+<DD>The exponent <IMG WIDTH="36" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img69.gif"
+ ALT="$x\!\pm\!n$"> defaults to `E0'.
+ <DT>9.
+<DD>The strings of decimal digits may be of any length.
+ <DT>10.
+<DD>The decimal point is optional for whole numbers.
+ <DT>11.
+<DD>A <I>null result</I> occurs when the string of characters
+       being decoded does not begin with +,-,0-9,.,D or E, or
+       consists entirely of spaces.  When this condition is
+       detected, JFLAG is set to 1 and RESLT is left untouched.
+ <DT>12.
+<DD>NSTRT = 1 for the first character in the string.
+ <DT>13.
+<DD>On return from sla_FLOTIN, NSTRT is set ready for the next
+       decode - following trailing blanks and any comma.  If a
+       delimiter other than comma is being used, NSTRT must be
+       incremented before the next call to sla_FLOTIN, otherwise
+       all subsequent calls will return a null result.
+ <DT>14.
+<DD>Errors (JFLAG=2) occur when:
+       <UL>
+<LI> a +, -, D or E is left unsatisfied; or
+<LI> the decimal point is present without at least
+             one decimal digit before or after it; or
+<LI> an exponent more than 100 has been presented.
+       </UL>
+ <DT>15.
+<DD>When an error has been detected, NSTRT is left
+       pointing to the character following the last
+       one used before the error came to light.  This
+       may be after the point at which a more sophisticated
+       program could have detected the error.  For example,
+       sla_FLOTIN does not detect that `1E999' is unacceptable
+       (on a computer where this is so)
+       until the entire number has been decoded.
+ <DT>16.
+<DD>Certain highly unlikely combinations of mantissa and
+       exponent can cause arithmetic faults during the
+       decode, in some cases despite the fact that they
+       together could be construed as a valid number.
+ <DT>17.
+<DD>Decoding is left to right, one pass.
+ <DT>18.
+<DD>See also sla_DFLTIN and sla_INTIN.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1526" HREF="node111.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1524" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1518" HREF="node109.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1527" HREF="node111.html">SLA_GALEQ - Galactic to J2000</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1525" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1519" HREF="node109.html">SLA_FK5HZ - FK5 to Hipparcos, no P.M.</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

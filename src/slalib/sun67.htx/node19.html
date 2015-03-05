@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_AMPQK - Quick Apparent to Mean</TITLE>
+<META NAME="description" CONTENT="SLA_AMPQK - Quick Apparent to Mean">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node20.html">
+<LINK REL="previous" HREF="node18.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node20.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html616" HREF="node20.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html614" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html608" HREF="node18.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html617" HREF="node20.html">SLA_AOP - Apparent to Observed</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html615" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html609" HREF="node18.html">SLA_AMP - Apparent to Mean</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00046000000000000000">SLA_AMPQK - Quick Apparent to Mean</A>
+<A NAME="xref_SLA_AMPQK">&#160;</A><A NAME="SLA_AMPQK">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Convert star <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> from geocentric apparent to mean place
+(post IAU 1976).  Use of this routine is appropriate when
+         efficiency is important and where many star positions are
+         all to be transformed for one epoch and equinox.  The
+         star-independent parameters can be obtained by calling
+         the sla_MAPPA routine.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_AMPQK (RA, DA, AMPRMS, RM, DM)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RA,DA</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>apparent <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AMPRMS</EM></TD>
+<TD ALIGN="LEFT"><B>D(21)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>star-independent mean-to-apparent parameters:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(1)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>time interval for proper motion (Julian years)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(2-4)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>barycentric position of the Earth (AU)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(5-7)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>heliocentric direction of the Earth (unit vector)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(8)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>(gravitational radius of
+Sun)<IMG WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.gif"
+ ALT="$\times 2 / $">(Sun-Earth distance)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(9-11)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP><B>v</B>: barycentric Earth velocity in units of c</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(12)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="72" HEIGHT="45" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\sqrt{1-\left\vert\mbox{\bf v}\right\vert^2}$"></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(13-21)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>precession/nutation <IMG WIDTH="39" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif"
+ ALT="$3\times3$"> matrix</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RM,DM</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>mean <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The accuracy is limited by the routine sla_EVP, called
+by sla_MAPPA, which computes the Earth position and
+velocity using the methods of Stumpff.  The maximum
+        error is about 0.3&nbsp;milliarcsecond.
+  <DT>2.
+<DD>Iterative techniques are used for the aberration and
+        light deflection corrections so that the routines
+        sla_AMP (or sla_AMPQK) and sla_MAP (or sla_MAPQK) are
+        accurate inverses;  even at the edge of the Sun's disc
+        the discrepancy is only about 1&nbsp;nanoarcsecond.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>1984 <I>Astronomical Almanac</I>, pp B39-B41.
+<DT>2.
+<DD>Lederle &amp; Schwan, 1984. <I>Astr.Astrophys.</I> <B>134</B>, 1-6.
+</DL></DL>
+<BR> <HR>
+<A NAME="tex2html616" HREF="node20.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html614" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html608" HREF="node18.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html617" HREF="node20.html">SLA_AOP - Apparent to Observed</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html615" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html609" HREF="node18.html">SLA_AMP - Apparent to Mean</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

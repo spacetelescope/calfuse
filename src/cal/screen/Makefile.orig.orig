@@ -1,0 +1,28 @@
+VERSION=	v1.7
+
+CFDIR=		/usr/local/fusesw/calfuse/$(VERSION)
+BIN=		${CFDIR}/bin
+FITSINCLDIR=	/usr/local/include
+FUSEINCLDIR=	$(CFDIR)/include
+CC=		cc
+OPT=		-O -KPIC
+CFLAGS=		$(OPT) -I${FUSEINCLDIR} -I$(FITSINCLDIR)
+
+LDSHARED=	ld
+FUSELIBDIR=	$(CFDIR)/lib
+FUSELIBS=	-lcf -lsla -lcalfits -lcfitsio
+LIBS=		-lm -lsocket -lnsl -ldl
+
+#       -  <<-- ignore error code
+
+all:		make_screen_file
+
+make_screen_file:
+		${CC} $(CFLAGS) -o make_screen_file make_screen_file.c \
+		-L$(FUSELIBDIR) $(FUSELIBS) $(LIBS) $(LDFLAGS)
+
+clean:
+	-	/bin/rm -f *.o make_screen_file
+
+install:	all
+	-	/bin/cp make_screen_file 	${BIN}/make_screen_file

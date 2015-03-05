@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_FITXY - Fit Linear Model to Two Sets</TITLE>
+<META NAME="description" CONTENT="SLA_FITXY - Fit Linear Model to Two Sets">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node104.html">
+<LINK REL="previous" HREF="node102.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node104.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1456" HREF="node104.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1454" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1448" HREF="node102.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1457" HREF="node104.html">SLA_FK425 - FK4 to FK5</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1455" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1449" HREF="node102.html">SLA_EVP - Earth Position &amp; Velocity</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000490000000000000000">&#160;</A><A NAME="xref_SLA_FITXY">&#160;</A><A NAME="SLA_FITXY">&#160;</A>
+<BR>
+SLA_FITXY - Fit Linear Model to Two <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> Sets
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Fit a linear model to relate two sets of <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> coordinates.
+<DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_FITXY (ITYPE,NP,XYE,XYM,COEFFS,J)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ITYPE</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>type of model: 4 or 6 (note 1)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NP</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>number of samples (note 2)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XYE</EM></TD>
+<TD ALIGN="LEFT"><B>D(2,NP)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>expected <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> for each sample</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XYM</EM></TD>
+<TD ALIGN="LEFT"><B>D(2,NP)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>measured <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> for each sample</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>COEFFS</EM></TD>
+<TH ALIGN="LEFT"><B>D(6)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>coefficients of model (note 3)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>J</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -1 = illegal ITYPE</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -2 = insufficient data</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -3 = singular solution</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>ITYPE, which must be either 4 or 6, selects the type of model
+fitted.  Both allowed ITYPE values produce a model COEFFS which
+consists of six coefficients, namely the zero points and, for
+        each of XE and YE, the coefficient of XM and YM.  For ITYPE=6,
+        all six coefficients are independent, modelling squash and shear
+        as well as origin, scale, and orientation.  However, ITYPE=4
+        selects the <I>solid body rotation</I> option;  the model COEFFS
+        still consists of the same six coefficients, but now two of
+        them are used twice (appropriately signed).  Origin, scale
+        and orientation are still modelled, but not squash or shear -
+        the units of X and Y have to be the same.
+  <DT>2.
+<DD>For NC=4, NP must be at least 2.  For NC=6, NP must be at
+        least 3.
+  <DT>3.
+<DD>The model is returned in the array COEFFS.  Naming the
+        six elements of COEFFS <I>a</I>,<I>b</I>,<I>c</I>,<I>d</I>,<I>e</I> &amp; <I>f</I>,
+        the model transforms <I>measured</I> coordinates
+        <IMG WIDTH="63" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img113.gif"
+ ALT="$[x_{m},y_{m}\,]$"> into <I>expected</I> coordinates
+        <IMG WIDTH="52" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img114.gif"
+ ALT="$[x_{e},y_{e}\,]$"> as follows:
+        <BLOCKQUOTE><I>x</I><SUB><I>e</I></SUB> = <I>a</I> + <I>bx</I><SUB><I>m</I></SUB> + <I>cy</I><SUB><I>m</I></SUB> <BR>
+         <I>y</I><SUB><I>e</I></SUB> = <I>d</I> + <I>ex</I><SUB><I>m</I></SUB> + <I>fy</I><SUB><I>m</I></SUB></BLOCKQUOTE>
+        For the <I>solid body rotation</I> option (ITYPE=4), the
+        magnitudes of <I>b</I> and <I>f</I>, and of <I>c</I> and <I>e</I>, are equal.  The
+        signs of these coefficients depend on whether there is a
+        sign reversal between [<I>x</I><SUB><I>e</I></SUB>,<I>y</I><SUB><I>e</I></SUB>] and [<I>x</I><SUB><I>m</I></SUB>,<I>y</I><SUB><I>m</I></SUB>];
+        fits are performed
+        with and without a sign reversal and the best one chosen.
+  <DT>4.
+<DD>Error status values J=-1 and -2 leave COEFFS unchanged;
+        if J=-3 COEFFS may have been changed.
+  <DT>5.
+<DD>See also sla_PXY, sla_INVF, sla_XY2XY, sla_DCMPF.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1456" HREF="node104.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1454" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1448" HREF="node102.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1457" HREF="node104.html">SLA_FK425 - FK4 to FK5</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1455" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1449" HREF="node102.html">SLA_EVP - Earth Position &amp; Velocity</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

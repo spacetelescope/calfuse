@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_DAFIN - Sexagesimal character string to angle</TITLE>
+<META NAME="description" CONTENT="SLA_DAFIN - Sexagesimal character string to angle">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node44.html">
+<LINK REL="previous" HREF="node42.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node44.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html856" HREF="node44.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html854" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html848" HREF="node42.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html857" HREF="node44.html">SLA_DAT - TAI-UTC</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html855" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html849" HREF="node42.html">SLA_DAF2R - Deg,Arcmin,Arcsec to Radians</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000430000000000000000">SLA_DAFIN - Sexagesimal character string to angle</A>
+<A NAME="xref_SLA_DAFIN">&#160;</A><A NAME="SLA_DAFIN">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Decode a free-format sexagesimal string (degrees, arcminutes,
+arcseconds) into a double precision floating point
+         number (radians).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_DAFIN (STRING, NSTRT, DRESLT, JF)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>STRING</EM></TD>
+<TH ALIGN="LEFT"><B>C*(*)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>string containing deg, arcmin, arcsec fields</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NSTRT</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>pointer to start of decode (beginning of STRING = 1)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NSTRT</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>advanced past the decoded angle</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DRESLT</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>angle in radians</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JF</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>    0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  +1 = default, DRESLT unchanged (note 2)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -1 = bad degrees (note 3)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -2 = bad arcminutes (note 3)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -3 = bad arcseconds (note 3)</TD>
+</TR>
+</TABLE></DL>
+<P><DL>
+<DT><STRONG>EXAMPLE</STRONG>
+<DD>: <BR>
+<BR>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TH ALIGN="LEFT"><I>argument</I></TH>
+<TH ALIGN="LEFT"><I>before</I></TH>
+<TH ALIGN="LEFT"><I>after</I></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT">STRING</TD>
+<TD ALIGN="LEFT">'<code>-57 17 44.806  12 34 56.7</code>'</TD>
+<TD ALIGN="LEFT">unchanged</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT">NSTRT</TD>
+<TD ALIGN="LEFT">1</TD>
+<TD ALIGN="LEFT">16 (<I>i.e.</I> pointing to 12...)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT">RESLT</TD>
+<TD ALIGN="LEFT">-</TD>
+<TD ALIGN="LEFT">-1.00000<TT>D0</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT">JF</TD>
+<TD ALIGN="LEFT">-</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+ <DT><DD> A further call to sla_DAFIN, without adjustment of NSTRT, will
+       decode the second angle, <IMG WIDTH="90" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.gif"
+ ALT="$12^{\circ}\,34^{'}\,56^{''}.7$">.</DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The first three ``fields'' in STRING are degrees, arcminutes,
+arcseconds, separated by spaces or commas.  The degrees field
+may be signed, but not the others.  The decoding is carried
+   out by the sla_DFLTIN routine and is free-format.
+  <DT>2.
+<DD>Successive fields may be absent, defaulting to zero.  For
+   zero status, the only combinations allowed are degrees alone,
+   degrees and arcminutes, and all three fields present.  If all
+   three fields are omitted, a status of +1 is returned and DRESLT is
+   unchanged.  In all other cases DRESLT is changed.
+  <DT>3.
+<DD>Range checking:
+   <UL>
+<LI> The degrees field is not range checked.  However, it is
+     expected to be integral unless the other two fields are absent.
+<LI> The arcminutes field is expected to be 0-59, and integral if
+     the arcseconds field is present.  If the arcseconds field
+     is absent, the arcminutes is expected to be 0-59.9999...
+<LI> The arcseconds field is expected to be 0-59.9999...
+<LI> Decoding continues even when a check has failed.  Under these
+     circumstances the field takes the supplied value, defaulting to
+     zero, and the result DRESLT is computed and returned.
+   </UL>
+   <DT>4.
+<DD>Further fields after the three expected ones are not treated as
+    an error.  The pointer NSTRT is left in the correct state for
+    further decoding with the present routine or with sla_DFLTIN
+    <I>etc</I>.  See the example, above.
+   <DT>5.
+<DD>If STRING contains hours, minutes, seconds instead of
+    degrees <I>etc</I>,
+    or if the required units are turns (or days) instead of radians,
+    the result DRESLT should be multiplied as follows: <BR>
+<BR>
+<BR>
+    <TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TH ALIGN="LEFT"><I>for STRING</I></TH>
+<TH ALIGN="LEFT"><I>to obtain</I></TH>
+<TH ALIGN="LEFT"><I>multiply DRESLT by</I></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><IMG WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="${\circ}$">&nbsp;&nbsp;'&nbsp;&nbsp;''</TD>
+<TD ALIGN="LEFT">radians</TD>
+<TD ALIGN="LEFT">1.0<TT>D0</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><IMG WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif"
+ ALT="${\circ}$">&nbsp;&nbsp;'&nbsp;&nbsp;''</TD>
+<TD ALIGN="LEFT">turns</TD>
+<TD ALIGN="LEFT"><IMG WIDTH="227" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.gif"
+ ALT="$1/{2 \pi} = 0.1591549430918953358$"><TT>D0</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT">h m s</TD>
+<TD ALIGN="LEFT">radians</TD>
+<TD ALIGN="LEFT">15.0<TT>D0</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT">h m s</TD>
+<TD ALIGN="LEFT">days</TD>
+<TD ALIGN="LEFT"><IMG WIDTH="235" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.gif"
+ ALT="$15/{2\pi} = 2.3873241463784300365$"><TT>D0</TT></TD>
+</TR>
+</TABLE></DL></DL>
+<BR> <HR>
+<A NAME="tex2html856" HREF="node44.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html854" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html848" HREF="node42.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html857" HREF="node44.html">SLA_DAT - TAI-UTC</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html855" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html849" HREF="node42.html">SLA_DAF2R - Deg,Arcmin,Arcsec to Radians</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

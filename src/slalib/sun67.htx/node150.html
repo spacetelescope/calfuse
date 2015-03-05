@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_POLMO - Polar Motion</TITLE>
+<META NAME="description" CONTENT="SLA_POLMO - Polar Motion">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node151.html">
+<LINK REL="previous" HREF="node149.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node151.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1926" HREF="node151.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1924" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1918" HREF="node149.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1927" HREF="node151.html">SLA_PREBN - Precession Matrix (FK4)</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1925" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1919" HREF="node149.html">SLA_PM - Proper Motion</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004137000000000000000">SLA_POLMO - Polar Motion</A>
+<A NAME="xref_SLA_POLMO">&#160;</A><A NAME="SLA_POLMO">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Polar motion:  correct site longitude and latitude for polar
+motion and calculate azimuth difference between celestial and
+         terrestrial poles.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_POLMO (ELONGM, PHIM, XP, YP, ELONG, PHI, DAZ)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ELONGM</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>mean longitude of the site (radians, east +ve)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PHIM</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>mean geodetic latitude of the site (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XP</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>polar motion <I>x</I>-coordinate (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>YP</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>polar motion <I>y</I>-coordinate (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ELONG</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>true longitude of the site (radians, east +ve)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PHI</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>true geodetic latitude of the site (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DAZ</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>azimuth correction (terrestrial-celestial, radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>``Mean'' longitude and latitude are the (fixed) values for the
+site's location with respect to the IERS terrestrial reference
+frame;  the latitude is geodetic.  TAKE CARE WITH THE LONGITUDE
+      SIGN CONVENTION.  The longitudes used by the present routine
+      are east-positive, in accordance with geographical convention
+      (and right-handed).  In particular, note that the longitudes
+      returned by the sla_OBS routine are west-positive, following
+      astronomical usage, and must be reversed in sign before use in
+      the present routine.
+<DT>2.
+<DD>XP and YP are the (changing) coordinates of the Celestial
+      Ephemeris Pole with respect to the IERS Reference Pole.
+      XP is positive along the meridian at longitude <IMG WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$0^{\circ}$">,      and YP is positive along the meridian at longitude
+      <IMG WIDTH="34" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img139.gif"
+ ALT="$270^\circ$"> (<I>i.e.</I> <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$90^{\circ}$"> west).  Values for XP,YP can
+      be obtained from IERS circulars and equivalent publications;
+      the maximum amplitude observed so far is about 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img32.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.3$">   .
+<DT>3.
+<DD>``True'' longitude and latitude are the (moving) values for
+      the site's location with respect to the celestial ephemeris
+      pole and the meridian which corresponds to the Greenwich
+      apparent sidereal time.  The true longitude and latitude
+      link the terrestrial coordinates with the standard celestial
+      models (for precession, nutation, sidereal time <I>etc</I>).
+<DT>4.
+<DD>The azimuths produced by sla_AOP and sla_AOPQK are with
+      respect to due north as defined by the Celestial Ephemeris
+      Pole, and can therefore be called ``celestial azimuths''.
+      However, a telescope fixed to the Earth measures azimuth
+      essentially with respect to due north as defined by the
+      IERS Reference Pole, and can therefore be called ``terrestrial
+      azimuth''.  Uncorrected, this would manifest itself as a
+      changing ``azimuth zero-point error''.  The value DAZ is the
+      correction to be added to a celestial azimuth to produce
+      a terrestrial azimuth.
+<DT>5.
+<DD>The present routine is rigorous.  For most practical
+      purposes, the following simplified formulae provide an
+      adequate approximation: <BR>
+<BR>
+<BR>
+       <TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>ELONG</TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>=</TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>ELONGM+XP*COS(ELONGM)-YP*SIN(ELONGM)</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>PHI  </TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>=</TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>PHIM+(XP*SIN(ELONGM)+YP*COS(ELONGM))*TAN(PHIM)</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>DAZ  </TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>=</TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>-SQRT(XP*XP+YP*YP)*COS(ELONGM-ATAN2(XP,YP))/COS(PHIM)</TT></TD>
+</TR>
+</TABLE> <BR>
+<BR>
+<BR>
+An alternative formulation for DAZ is:
+<BR>
+<BR>
+<BR>
+       <TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>X  </TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>=</TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>COS(ELONGM)*COS(PHIM)</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>Y  </TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>=</TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>SIN(ELONGM)*COS(PHIM)</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>DAZ</TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>=</TT></TD>
+<TD ALIGN="LEFT" NOWRAP><TT>ATAN2(-X*YP-Y*XP,X*X+Y*Y)</TT></TD>
+</TR>
+</TABLE></DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>Seidelmann, P.K. (ed), 1992.  <I>Explanatory
+Supplement to the Astronomical Almanac,</I> ISBN&nbsp;0-935702-68-7,
+      sections 3.27, 4.25, 4.52.
+     </DL>
+<BR> <HR>
+<A NAME="tex2html1926" HREF="node151.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1924" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1918" HREF="node149.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1927" HREF="node151.html">SLA_PREBN - Precession Matrix (FK4)</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1925" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1919" HREF="node149.html">SLA_PM - Proper Motion</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

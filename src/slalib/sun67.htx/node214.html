@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Refraction</TITLE>
+<META NAME="description" CONTENT="Refraction">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node215.html">
+<LINK REL="previous" HREF="node213.html">
+<LINK REL="up" HREF="node213.html">
+<LINK REL="next" HREF="node215.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2593" HREF="node215.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2591" HREF="node213.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2585" HREF="node213.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2594" HREF="node215.html">Efficiency considerations</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2592" HREF="node213.html">Apparent Place to Observed Place</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2586" HREF="node213.html">Apparent Place to Observed Place</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H3><A NAME="SECTION000513100000000000000">
+Refraction</A>
+</H3>
+The final correction is for atmospheric refraction.
+This effect, which depends on local meteorological conditions and
+the effective colour of the source/detector combination,
+increases the observed elevation of the source by a
+significant effect even at moderate zenith distances, and near the
+horizon by over <IMG WIDTH="25" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img301.gif"
+ ALT="$0^{\circ}
+ \hspace{-0.37em}.\hspace{0.02em}5$">.  The amount of refraction can by
+computed by calling the SLALIB routine
+sla_REFRO;
+however,
+this requires as input the observed zenith distance, which is what
+we are trying to predict.  For high precision it is
+therefore necessary to iterate, using the topocentric
+zenith distance as the initial estimate of the
+observed zenith distance.
+<P>
+The full
+sla_REFRO refraction calculation is onerous, and for
+zenith distances of less than, say, <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img164.gif"
+ ALT="$75^\circ$"> the following
+model can be used instead:
+<P>
+<P ALIGN="CENTER"><IMG WIDTH="255" HEIGHT="27"
+ SRC="img302.gif"
+ ALT="\begin{displaymath}
+\zeta _{vac} \approx \zeta _{obs}
+ + A \tan \zeta _{obs}
+ + B \tan ^{3}\zeta _{obs} \end{displaymath}"></P>
+where <IMG WIDTH="29" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img303.gif"
+ ALT="$\zeta _{vac}$"> is the topocentric
+zenith distance (i.e. <I>in vacuo</I>),
+<IMG WIDTH="28" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img184.gif"
+ ALT="$\zeta_{obs}$"> is the observed
+zenith distance (i.e. affected by refraction), and <I>A</I> and <I>B</I> are
+constants, about <IMG WIDTH="25" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img304.gif"
+ ALT="$60\hspace{-0.05em}^{'\hspace{-0.1em}'}$">and 
+      <IMG WIDTH="44" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img305.gif"
+ ALT="$-0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.06$">    respectively for a sea-level site.
+The two constants can be calculated for a given set of conditions
+by calling either
+sla_REFCO or
+sla_REFCOQ.
+<P>
+sla_REFCO works by calling
+sla_REFRO for two zenith distances and fitting <I>A</I> and <I>B</I>
+to match.  The calculation is onerous, but delivers accurate
+results whatever the conditions.
+sla_REFCOQ uses a direct formulation of <I>A</I> and <I>B</I> and
+is much faster;  it is slightly less accurate than
+sla_REFCO but more than adequate for most practical purposes.
+<P>
+Like the full refraction model, the two-term formulation works in the wrong
+direction for our purposes, predicting
+the <I>in vacuo</I> (topocentric) zenith distance
+given the refracted (observed) zenith distance,
+rather than <I>vice versa</I>.  The obvious approach of
+interchanging <IMG WIDTH="29" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img303.gif"
+ ALT="$\zeta _{vac}$"> and <IMG WIDTH="28" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img184.gif"
+ ALT="$\zeta_{obs}$"> and
+reversing the signs, though approximately
+correct, gives avoidable errors which are just significant in
+some applications;  for
+example about 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img76.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.2$">    at <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img174.gif"
+ ALT="$70^\circ$"> zenith distance.  A
+much better result can easily be obtained, by using one Newton-Raphson
+iteration as follows:
+<P>
+<P ALIGN="CENTER"><IMG WIDTH="313" HEIGHT="45"
+ SRC="img306.gif"
+ ALT="\begin{displaymath}
+\zeta _{obs} \approx \zeta _{vac}
+ - \frac{A \tan \zeta _{va...
+ ...
+ {1 + ( A + 3 B \tan ^{2}\zeta _{vac} ) \sec ^{2}\zeta _{vac}}\end{displaymath}"></P>
+<P>
+The effect of refraction can be applied to an unrefracted
+zenith distance by calling
+sla_REFZ or to an unrefracted
+<IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"> by calling
+sla_REFV.
+Over most of the sky these two routines deliver almost identical
+results, but beyond <IMG WIDTH="56" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img209.gif"
+ ALT="$\zeta=83^\circ$">sla_REFV
+becomes unacceptably inaccurate while
+sla_REFZ
+remains usable.  (However
+sla_REFV
+is significantly faster, which may be important in some applications.)
+SLALIB also provides a routine for computing the airmass, the function
+sla_AIRMAS.
+<P>
+The refraction ``constants'' returned by
+sla_REFCO and
+sla_REFCOQ
+are slightly affected by colour, especially at the blue end
+of the spectrum.  Where values for more than one
+wavelength are needed, rather than calling
+sla_REFCO
+several times it is more efficient to call
+sla_REFCO
+just once, for a selected ``base'' wavelength, and then to call
+sla_ATMDSP
+once for each wavelength of interest.
+<P>
+All the SLALIB refraction routines work for radio wavelengths as well
+as the optical/IR band.  The radio refraction is very dependent on
+humidity, and an accurate value must be supplied.  There is no
+wavelength dependence, however.  The choice of optical/IR or
+radio is made by specifying a wavelength greater than <IMG WIDTH="51" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img307.gif"
+ ALT="$100\mu m$">for the radio case.
+<P>
+<BR> <HR>
+<A NAME="tex2html2593" HREF="node215.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2591" HREF="node213.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2585" HREF="node213.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2594" HREF="node215.html">Efficiency considerations</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2592" HREF="node213.html">Apparent Place to Observed Place</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2586" HREF="node213.html">Apparent Place to Observed Place</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

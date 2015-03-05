@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PAV - Position-Angle Between Two Directions</TITLE>
+<META NAME="description" CONTENT="SLA_PAV - Position-Angle Between Two Directions">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node140.html">
+<LINK REL="previous" HREF="node138.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node140.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1816" HREF="node140.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1814" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1808" HREF="node138.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1817" HREF="node140.html">SLA_PCD - Apply Radial Distortion</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1815" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1809" HREF="node138.html">SLA_PA - to Parallactic Angle</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004126000000000000000">SLA_PAV - Position-Angle Between Two Directions</A>
+<A NAME="xref_SLA_PAV">&#160;</A><A NAME="SLA_PAV">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Returns the bearing (position angle) of one celestial
+direction with respect to another (single precision).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>R&nbsp;=&nbsp;sla_PAV (V1, V2)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>V1</EM></TD>
+<TH ALIGN="LEFT"><B>R(3)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>direction cosines of one point</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>V2</EM></TD>
+<TD ALIGN="LEFT"><B>R(3)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>directions cosines of the other point</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>sla_PAV</EM></TD>
+<TH ALIGN="LEFT"><B>R</B></TH>
+<TD ALIGN="LEFT" NOWRAP>position-angle of 2nd point with respect to 1st</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The coordinate frames correspond to <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">,<IMG WIDTH="38" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.gif"
+ ALT="$[\lambda,\phi]$"> <I>etc.</I>.
+<DT>2.
+<DD>The result is the bearing (position angle), in radians,
+       of point V2 as seen
+       from point V1.  It is in the range <IMG WIDTH="25" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif"
+ ALT="$\pm \pi$">.  The sense
+       is such that if V2
+       is a small distance due east of V1 the result
+       is about <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.gif"
+ ALT="$+\pi/2$">. Zero is returned
+       if the two points are coincident.
+ <DT>3.
+<DD>The routine sla_BEAR performs an equivalent function except
+       that the points are specified in the form of spherical coordinates.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1816" HREF="node140.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1814" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1808" HREF="node138.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1817" HREF="node140.html">SLA_PCD - Apply Radial Distortion</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1815" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1809" HREF="node138.html">SLA_PA - to Parallactic Angle</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

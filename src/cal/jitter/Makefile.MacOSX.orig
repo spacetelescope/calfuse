@@ -1,0 +1,46 @@
+
+FITSVER=	2.470
+CALFUSEDIR=	${PWD}/../../..
+MACOSX_DEPLOYMENT_TARGET=       10.2
+
+# Symbols for include directories
+FUSEINCLDIR=	-I${CALFUSEDIR}/include
+
+# Symbols used for compiling
+CC=		cc
+OPT=            -O3 -Wall -DCFORTRAN -Dg77Fortran -Df2cFortran
+CFLAGS=		${OPT} ${FUSEINCLDIR}
+
+# Symbols used for creating shared binaries
+FUSEBINDIR=	${CALFUSEDIR}/bin
+FUSELIBDIR=	-L${CALFUSEDIR}/lib
+FUSELIBS=	-lsla -lcfitsio -lcf
+LIBS=           -lc -lm -ldl -L/sw/lib/ -lgfortran
+
+# Binaries to be made
+
+BINS=		cf_jitter_diag cf_jitter
+
+all:		${BINS}
+		chmod g+rw ${BINS}
+
+install:
+		MACOSX_DEPLOYMENT_TARGET="${MACOSX_DEPLOYMENT_TARGET}"; \
+		export MACOSX_DEPLOYMENT_TARGET; \
+		make all
+		/bin/cp ${BINS} ${FUSEBINDIR}
+
+clean:
+		/bin/rm -f *.o ${BINS}
+
+distclean:
+		/bin/rm -f *.o ${BINS}
+		cd ../../../bin; /bin/rm -f ${BINS}
+
+cf_jitter_diag:	cf_jitter_diag.c
+		${CC} ${CFLAGS} -o cf_jitter_diag cf_jitter_diag.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_jitter:	cf_jitter.c
+		${CC} ${CFLAGS} -o cf_jitter cf_jitter.c \
+		${FUSELIBDIR} ${LIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}

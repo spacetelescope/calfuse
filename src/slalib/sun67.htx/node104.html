@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_FK425 - FK4 to FK5</TITLE>
+<META NAME="description" CONTENT="SLA_FK425 - FK4 to FK5">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node105.html">
+<LINK REL="previous" HREF="node103.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node105.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1466" HREF="node105.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1464" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1458" HREF="node103.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1467" HREF="node105.html">SLA_FK45Z - FK4 to FK5, no P.M. or Parallax</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1465" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1459" HREF="node103.html">SLA_FITXY - Fit Linear Model to Two Sets</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000491000000000000000">SLA_FK425 - FK4 to FK5</A>
+<A NAME="xref_SLA_FK425">&#160;</A><A NAME="SLA_FK425">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Convert B1950.0 FK4 star data to J2000.0 FK5.
+This routine converts stars from the old, Bessel-Newcomb, FK4
+         system to the new, IAU&nbsp;1976, FK5, Fricke system.  The precepts
+         of Smith&nbsp;<I>et&nbsp;al.</I> (see reference&nbsp;1) are followed,
+         using the implementation
+         by Yallop&nbsp;<I>et&nbsp;al.</I> (reference&nbsp;2) of a matrix method
+         due to Standish.
+         Kinoshita's development of Andoyer's post-Newcomb precession is
+         used.  The numerical constants from 
+         Seidelmann&nbsp;<I>et&nbsp;al.</I>  (reference&nbsp;3) are used canonically.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_FK425 (
+         R1950,D1950,DR1950,DD1950,P1950,V1950,
+         R2000,D2000,DR2000,DD2000,P2000,V2000)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>R1950</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>B1950.0 <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>D1950</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>B1950.0 <IMG WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\delta$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DR1950</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>B1950.0 proper motion in <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">(radians per tropical year)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DD1950</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>B1950.0 proper motion in <IMG WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\delta$">(radians per tropical year)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>P1950</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>B1950.0 parallax (arcsec)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>V1950</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>B1950.0 radial velocity (km&nbsp;s<SUP>-1</SUP>, +ve = moving away)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>R2000</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>J2000.0 <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>D2000</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>J2000.0 <IMG WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\delta$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DR2000</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>J2000.0 proper motion in <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">(radians per Julian year)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DD2000</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>J2000.0 proper motion in <IMG WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\delta$">(radians per Julian year)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>P2000</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>J2000.0 parallax (arcsec)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>V2000</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>J2000.0 radial velocity (km&nbsp;s<SUP>-1</SUP>, +ve = moving away)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> proper motions are <IMG WIDTH="13" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img115.gif"
+ ALT="$\dot{\alpha}$"> rather than
+<IMG WIDTH="48" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img116.gif"
+ ALT="$\dot{\alpha}\cos\delta$">, and are per year rather than per century.
+<DT>2.
+<DD>Conversion from Besselian epoch 1950.0 to Julian epoch
+        2000.0 only is provided for.  Conversions involving other
+        epochs will require use of the appropriate precession,
+        proper motion, and E-terms routines before and/or after FK425
+        is called.
+  <DT>3.
+<DD>In the FK4 catalogue the proper motions of stars within
+        <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img117.gif"
+ ALT="$10^{\circ}$"> of the poles do not include the <I>differential
+        E-terms</I> effect and should, strictly speaking, be handled
+        in a different manner from stars outside these regions.
+        However, given the general lack of homogeneity of the star
+        data available for routine astrometry, the difficulties of
+        handling positions that may have been determined from
+        astrometric fields spanning the polar and non-polar regions,
+        the likelihood that the differential E-terms effect was not
+        taken into account when allowing for proper motion in past
+        astrometry, and the undesirability of a discontinuity in
+        the algorithm, the decision has been made in this routine to
+        include the effect of differential E-terms on the proper
+        motions for all stars, whether polar or not.  At epoch J2000,
+        and measuring on the sky rather than in terms of <IMG WIDTH="27" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img118.gif"
+ ALT="$\Delta\alpha$">,        the errors resulting from this simplification are less than
+        1&nbsp;milliarcsecond in position and 1&nbsp;milliarcsecond per
+        century in proper motion.
+  <DT>4.
+<DD>See also sla_FK45Z, sla_FK524, sla_FK54Z.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Smith, C.A. <I>et al.</I>, 1989.  <I>Astr.J.</I> <B>97</B>, 265.
+<DT>2.
+<DD>Yallop, B.D. <I>et al.</I>, 1989. <I>Astr.J.</I> <B>97</B>, 274.
+<DT>3.
+<DD>Seidelmann, P.K. (ed), 1992.  <I>Explanatory
+        Supplement to the Astronomical Almanac,</I> ISBN&nbsp;0-935702-68-7.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1466" HREF="node105.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1464" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1458" HREF="node103.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1467" HREF="node105.html">SLA_FK45Z - FK4 to FK5, no P.M. or Parallax</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1465" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1459" HREF="node103.html">SLA_FITXY - Fit Linear Model to Two Sets</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

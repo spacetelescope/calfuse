@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_REFZ - Apply Refraction to ZD</TITLE>
+<META NAME="description" CONTENT="SLA_REFZ - Apply Refraction to ZD">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node170.html">
+<LINK REL="previous" HREF="node168.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node170.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2116" HREF="node170.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2114" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2108" HREF="node168.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2117" HREF="node170.html">SLA_RVEROT - RV Corrn to Earth Centre</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2115" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2109" HREF="node168.html">SLA_REFV - Apply Refraction to Vector</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004156000000000000000">SLA_REFZ - Apply Refraction to ZD</A>
+<A NAME="xref_SLA_REFZ">&#160;</A><A NAME="SLA_REFZ">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Adjust an unrefracted zenith distance to include the effect of
+atmospheric refraction, using the simple
+         <IMG WIDTH="164" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img148.gif"
+ ALT="$\Delta \zeta = a \tan \zeta + b \tan^{3} \zeta$"> model.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_REFZ (ZU, REFA, REFB, ZR)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ZU</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>unrefracted zenith distance of the source (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>REFA</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="37" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img151.gif"
+ ALT="$\tan \zeta$"> coefficient (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>REFB</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="44" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img152.gif"
+ ALT="$\tan^{3} \zeta$"> coefficient (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ZR</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>refracted zenith distance (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>This routine applies the adjustment for refraction in the
+opposite sense to the usual one - it takes an unrefracted
+(<I>in vacuo</I>) position and produces an observed (refracted)
+        position, whereas the
+        <IMG WIDTH="164" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img148.gif"
+ ALT="$\Delta \zeta = a \tan \zeta + b \tan^{3} \zeta$">        model strictly
+        applies to the case where an observed position is to have the
+        refraction removed.  The unrefracted to refracted case is
+        harder, and requires an inverted form of the text-book
+        refraction models;  the formula used here is based on the
+        Newton-Raphson method.  For the utmost numerical consistency
+        with the refracted to unrefracted model, two iterations are
+        carried out, achieving agreement at the 10<SUP>-11</SUP>&nbsp;arcsecond level
+        for <IMG WIDTH="56" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img208.gif"
+ ALT="$\zeta=80^\circ$">.  The inherent accuracy of the model
+        is, of course, far worse than this - see the documentation for
+        sla_REFCO for more information.
+  <DT>2.
+<DD>At <IMG WIDTH="56" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img209.gif"
+ ALT="$\zeta=83^\circ$">, the rapidly-worsening
+        <IMG WIDTH="164" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img148.gif"
+ ALT="$\Delta \zeta = a \tan \zeta + b \tan^{3} \zeta$">        model is abandoned and an empirical formula takes over:
+<P>          
+<P ALIGN="CENTER"><IMG WIDTH="321" HEIGHT="49"
+ SRC="img210.gif"
+ ALT="\begin{displaymath}
+\Delta \zeta = F \left(
+ \frac{0^\circ\hspace{-0.37em}.\hspa...
+ ...hspace{0.02em}00202 E^2}
+ {1 + 0.28385 E +0.02390 E^2} \right) \end{displaymath}"></P>
+where <IMG WIDTH="113" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img211.gif"
+ ALT="$E=90^\circ-\zeta_{true}$">        and <I>F</I> is a factor chosen to meet the
+        <IMG WIDTH="164" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img148.gif"
+ ALT="$\Delta \zeta = a \tan \zeta + b \tan^{3} \zeta$">        formula at <IMG WIDTH="56" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img209.gif"
+ ALT="$\zeta=83^\circ$">.  Over a
+        wide range of observer heights and corresponding temperatures and
+        pressures, the following levels of accuracy are achieved,
+        relative to numerical integration through a model atmosphere:
+<P>        <DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="28" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img184.gif"
+ ALT="$\zeta_{obs}$"></TD>
+<TH ALIGN="CENTER" NOWRAP><I>error</I></TH>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img179.gif"
+ ALT="$80^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img185.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.4$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img186.gif"
+ ALT="$81^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.8$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img188.gif"
+ ALT="$82^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img212.gif"
+ ALT="$1\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.5$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img190.gif"
+ ALT="$83^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img213.gif"
+ ALT="$3\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.2$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img191.gif"
+ ALT="$84^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img214.gif"
+ ALT="$4\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.9$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img193.gif"
+ ALT="$85^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img215.gif"
+ ALT="$5\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.8$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img194.gif"
+ ALT="$86^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img216.gif"
+ ALT="$6\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.1$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img196.gif"
+ ALT="$87^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img217.gif"
+ ALT="$7\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.1$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img198.gif"
+ ALT="$88^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="25" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.gif"
+ ALT="$11\hspace{-0.05em}^{'\hspace{-0.1em}'}$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img200.gif"
+ ALT="$89^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="25" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img218.gif"
+ ALT="$21\hspace{-0.05em}^{'\hspace{-0.1em}'}$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$90^{\circ}$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="25" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img219.gif"
+ ALT="$43\hspace{-0.05em}^{'\hspace{-0.1em}'}$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img203.gif"
+ ALT="$91^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="25" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img220.gif"
+ ALT="$92\hspace{-0.05em}^{'\hspace{-0.1em}'}$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&lt; high-altitude</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img205.gif"
+ ALT="$92^\circ$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="33" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img221.gif"
+ ALT="$220\hspace{-0.05em}^{'\hspace{-0.1em}'}$"></TD>
+<TD ALIGN="LEFT" NOWRAP>&lt; sites only</TD>
+</TR>
+</TABLE></DIV>
+  <DT>3.
+<DD>See also the routine sla_REFV, which performs the adjustment in
+        <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$">, and with the emphasis on speed rather than numerical accuracy.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html2116" HREF="node170.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2114" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2108" HREF="node168.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2117" HREF="node170.html">SLA_RVEROT - RV Corrn to Earth Centre</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2115" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2109" HREF="node168.html">SLA_REFV - Apply Refraction to Vector</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

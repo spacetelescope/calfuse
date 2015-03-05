@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_ATMDSP - Atmospheric Dispersion</TITLE>
+<META NAME="description" CONTENT="SLA_ATMDSP - Atmospheric Dispersion">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node25.html">
+<LINK REL="previous" HREF="node23.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node25.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html666" HREF="node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html664" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html658" HREF="node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html667" HREF="node25.html">SLA_AV2M - Rotation Matrix from Axial Vector</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html665" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html659" HREF="node23.html">SLA_AOPQK - Quick Appt-to-Observed</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000411000000000000000">SLA_ATMDSP - Atmospheric Dispersion</A>
+<A NAME="xref_SLA_ATMDSP">&#160;</A><A NAME="SLA_ATMDSP">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Apply atmospheric-dispersion adjustments to refraction coefficients.
+<DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_ATMDSP (TDK, PMB, RH, WL1, A1, B1, WL2, A2, B2)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>TDK</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>ambient temperature at the observer (degrees K)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PMB</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>pressure at the observer (mB)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RH</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>relative humidity at the observer (range 0-1)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>WL1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>base wavelength (<IMG WIDTH="26" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif"
+ ALT="$\mu{\rm m}$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>A1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>refraction coefficient A for wavelength WL1 (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>B1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>refraction coefficient B for wavelength WL1 (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>WL2</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>wavelength for which adjusted A,B required (<IMG WIDTH="26" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif"
+ ALT="$\mu{\rm m}$">)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>A2</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>refraction coefficient A for wavelength WL2 (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>B2</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>refraction coefficient B for wavelength WL2 (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>To use this routine, first call sla_REFCO specifying WL1 as the
+wavelength.  This yields refraction coefficients A1, B1, correct
+for that wavelength.  Subsequently, calls to sla_ATMDSP specifying
+        different wavelengths will produce new, slightly adjusted
+        refraction coefficients A2, B2, which apply to the specified wavelength.
+  <DT>2.
+<DD>Most of the atmospheric dispersion happens between <IMG WIDTH="50" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.gif"
+ ALT="$0.7\,\mu{\rm m}$">        and the UV atmospheric cutoff, and the effect increases strongly
+        towards the UV end.  For this reason a blue reference wavelength
+        is recommended, for example <IMG WIDTH="50" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.gif"
+ ALT="$0.4\,\mu{\rm m}$">.  <DT>3.
+<DD>The accuracy, for this set of conditions: <BR>
+<BR>
+     <TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>height above sea level</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>2000m</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>latitude</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img36.gif"
+ ALT="$29^\circ$"></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>pressure</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>793mB</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>temperature</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="34" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img37.gif"
+ ALT="$290^\circ$">K</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>humidity</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>0.5 (50%)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>lapse rate</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="86" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img38.gif"
+ ALT="$0.0065^\circ m^{-1}$"></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>reference wavelength</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="50" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.gif"
+ ALT="$0.4\,\mu{\rm m}$"></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>star elevation</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img39.gif"
+ ALT="$15^\circ$"></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+is about 2.5mas RMS between 0.3 and <IMG WIDTH="50" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.gif"
+ ALT="$1.0\,\mu{\rm m}$">, and stays
+        within 4mas for the whole range longward of <IMG WIDTH="50" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif"
+ ALT="$0.3\,\mu{\rm m}$">        (compared with a total dispersion from 0.3 to <IMG WIDTH="45" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.gif"
+ ALT="$20\,\mu{\rm m}$">        of about <IMG WIDTH="25" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.gif"
+ ALT="$11\hspace{-0.05em}^{'\hspace{-0.1em}'}$">).  These errors are typical for ordinary
+        conditions;  in extreme conditions values a few times this size
+        may occur.
+  <DT>4.
+<DD>If either wavelength exceeds <IMG WIDTH="53" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.gif"
+ ALT="$100\,\mu{\rm m}$">, the radio case
+        is assumed and the returned refraction coefficients are the
+        same as the given ones.
+  <DT>5.
+<DD>The algorithm consists of calculation of the refractivity of the
+        air at the observer for the two wavelengths, using the methods
+        of the sla_REFRO routine, and then scaling of the two refraction
+        coefficients according to classical refraction theory.  This
+        amounts to scaling the A coefficient in proportion to <IMG WIDTH="53" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.gif"
+ ALT="$(\mu-1)$"> and
+        the B coefficient almost in the same ratio (see R.M.Green,
+        <I>Spherical Astronomy,</I> Cambridge University Press, 1985).
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html666" HREF="node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html664" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html658" HREF="node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html667" HREF="node25.html">SLA_AV2M - Rotation Matrix from Axial Vector</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html665" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html659" HREF="node23.html">SLA_AOPQK - Quick Appt-to-Observed</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

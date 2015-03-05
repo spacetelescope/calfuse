@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_ALTAZ - Velocities etc. for Altazimuth Mount</TITLE>
+<META NAME="description" CONTENT="SLA_ALTAZ - Velocities etc. for Altazimuth Mount">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node18.html">
+<LINK REL="previous" HREF="node16.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node18.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html596" HREF="node18.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html594" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html588" HREF="node16.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html597" HREF="node18.html">SLA_AMP - Apparent to Mean</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html595" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html589" HREF="node16.html">SLA_AIRMAS - Air Mass</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00044000000000000000">SLA_ALTAZ - Velocities <I>etc.</I> for Altazimuth Mount</A>
+<A NAME="xref_SLA_ALTAZ">&#160;</A><A NAME="SLA_ALTAZ">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Positions, velocities and accelerations for an altazimuth
+telescope mount tracking a star (double precision).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_ALTAZ (
+         HA, DEC, PHI,
+         AZ, AZD, AZDD, EL, ELD, ELDD, PA, PAD, PADD)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>HA</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>hour angle</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DEC</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>declination</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PHI</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>observatory latitude</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AZ</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>azimuth</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AZD</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>azimuth velocity</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AZDD</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>azimuth acceleration</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EL</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>elevation</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ELD</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>elevation velocity</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ELDD</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>elevation acceleration</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PA</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>parallactic angle</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PAD</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>parallactic angle velocity</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PADD</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>parallactic angle acceleration</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Natural units are used throughout.  HA, DEC, PHI, AZ, EL
+and ZD are in radians.  The velocities and accelerations
+assume constant declination and constant rate of change of
+        hour angle (as for tracking a star);  the units of AZD, ELD
+        and PAD are radians per radian of HA, while the units of AZDD,
+        ELDD and PADD are radians per radian of HA squared.  To
+        convert into practical degree- and second-based units:
+<P>        <DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>angles</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="66" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.gif"
+ ALT="$\times 360/2\pi$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.gif"
+ ALT="$\rightarrow$"></TD>
+<TD ALIGN="LEFT" NOWRAP>degrees</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>velocities</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="178" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="$\times (2\pi/86400) \times (360/2\pi)$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.gif"
+ ALT="$\rightarrow$"></TD>
+<TD ALIGN="LEFT" NOWRAP>degree/sec</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>accelerations</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="186" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif"
+ ALT="$\times (2\pi/86400)^2 \times (360/2\pi)$"></TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.gif"
+ ALT="$\rightarrow$"></TD>
+<TD ALIGN="LEFT" NOWRAP>degree/sec/sec</TD>
+</TR>
+</TABLE></DIV>
+<P>
+Note that the seconds here are sidereal rather than SI.  One
+        sidereal second is about 0.99727 SI seconds.
+<P>
+The velocity and acceleration factors assume the sidereal
+        tracking case.  Their respective numerical values are (exactly)
+        1/240 and (approximately) 1/3300236.9.
+  <DT>2.
+<DD>Azimuth is returned in the range <IMG WIDTH="50" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.gif"
+ ALT="$[\,0,2\pi\,]$">;  north is zero,
+        and east is <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.gif"
+ ALT="$+\pi/2$">.  Elevation and parallactic angle are
+        returned in the range <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.gif"
+ ALT="$\pm\pi/2$">.  Position angle is +ve
+        for a star west of the meridian and is the angle NP-star-zenith.
+  <DT>3.
+<DD>The latitude is geodetic as opposed to geocentric.  The
+        hour angle and declination are topocentric.  Refraction and
+        deficiencies in the telescope mounting are ignored.  The
+        purpose of the routine is to give the general form of the
+        quantities.  The details of a real telescope could profoundly
+        change the results, especially close to the zenith.
+  <DT>4.
+<DD>No range checking of arguments is carried out.
+  <DT>5.
+<DD>In applications which involve many such calculations, rather
+        than calling the present routine it will be more efficient to
+        use inline code, having previously computed fixed terms such
+        as sine and cosine of latitude, and (for tracking a star)
+        sine and cosine of declination.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html596" HREF="node18.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html594" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html588" HREF="node16.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html597" HREF="node18.html">SLA_AMP - Apparent to Mean</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html595" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html589" HREF="node16.html">SLA_AIRMAS - Air Mass</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

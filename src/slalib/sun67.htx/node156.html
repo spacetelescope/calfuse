@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PV2EL - Orbital Elements from Position/Velocity</TITLE>
+<META NAME="description" CONTENT="SLA_PV2EL - Orbital Elements from Position/Velocity">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node157.html">
+<LINK REL="previous" HREF="node155.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node157.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1986" HREF="node157.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1984" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1978" HREF="node155.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1987" HREF="node157.html">SLA_PV2UE - Position/Velocity to Universal Elements</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1985" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1979" HREF="node155.html">SLA_PRENUT - Precession/Nutation Matrix</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004143000000000000000">SLA_PV2EL - Orbital Elements from Position/Velocity</A>
+<A NAME="xref_SLA_PV2EL">&#160;</A><A NAME="SLA_PV2EL">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Heliocentric osculating elements obtained from instantaneous
+position and velocity.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_PV2EL (
+         PV, DATE, PMASS, JFORMR, JFORM, EPOCH, ORBINC,
+         ANODE, PERIH, AORQ, E, AORL, DM, JSTAT)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PV</EM></TD>
+<TH ALIGN="LEFT"><B>D(6)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>heliocentric <IMG WIDTH="106" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.gif"
+ ALT="$[\,x,y,z,\dot{x},\dot{y},\dot{z}\,]$">, equatorial, J2000</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  (AU, AU/s; Note&nbsp;1)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>date (TT Modified Julian Date = JD-2400000.5)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PMASS</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>mass of the planet (Sun = 1; Note&nbsp;2)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JFORMR</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>requested element set (1-3; Note&nbsp;3)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JFORM</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>element set actually returned (1-3; Note&nbsp;4)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EPOCH</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>epoch of elements (<I>t<SUB>0</SUB></I> or <I>T</I>, TT MJD)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ORBINC</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>inclination (<I>i</I>, radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ANODE</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>longitude of the ascending node (<IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$">, radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PERIH</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>longitude or argument of perihelion
+(<IMG WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img100.gif"
+ ALT="$\varpi$"> or <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$">,</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AORQ</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>mean distance or perihelion distance (<I>a</I> or <I>q</I>, AU)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>E</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>eccentricity (<I>e</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AORL</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>mean anomaly or longitude
+(<I>M</I> or <I>L</I>, radians,</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  JFORM=1,2 only)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DM</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>daily motion (<I>n</I>, radians, JFORM=1 only)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JSTAT</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -1 = illegal PMASS</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -2 = illegal JFORMR</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -3 = position/velocity out of allowed range</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The PV 6-vector is with respect to the mean equator and equinox of
+epoch J2000.  The orbital elements produced are with respect to
+the J2000 ecliptic and mean equinox.
+  <DT>2.
+<DD>The mass, PMASS, is important only for the larger planets.  For
+        most purposes (<I>e.g.</I>&nbsp;asteroids) use 0D0.  Values less than zero
+        are illegal.
+  <DT>3.
+<DD>Three different element-format options are supported, as
+        follows. <BR>
+<P>
+JFORM=1, suitable for the major planets:
+<P>        <PRE><TT>
+ 		 EPOCH 		 = 		 epoch of elements <I>t<SUB>0</SUB></I> (TT MJD)
+		 ORBINC 		 = 		 inclination <I>i</I> (radians)
+		 ANODE 		 = 		 longitude of the ascending node <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> (radians)
+		 PERIH 		 = 		 longitude of perihelion <IMG WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img100.gif"
+ ALT="$\varpi$"> (radians)
+		 AORQ 		 = 		 mean distance <I>a</I> (AU)
+		 E 		 = 		 eccentricity <I>e</I> <IMG WIDTH="83" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img106.gif"
+ ALT="$( 0 \leq e < 1 )$"> 
+		 AORL 		 = 		 mean longitude <I>L</I> (radians)
+		 DM 		 = 		 daily motion <I>n</I> (radians)        
+</TT></PRE>
+<P>
+JFORM=2, suitable for minor planets:
+<P>        <PRE><TT>
+ 		 EPOCH 		 = 		 epoch of elements <I>t<SUB>0</SUB></I> (TT MJD)
+		 ORBINC 		 = 		 inclination <I>i</I> (radians)
+		 ANODE 		 = 		 longitude of the ascending node <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> (radians)
+		 PERIH 		 = 		 argument of perihelion <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$"> (radians)
+		 AORQ 		 = 		 mean distance <I>a</I> (AU)
+		 E 		 = 		 eccentricity <I>e</I> <IMG WIDTH="83" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img106.gif"
+ ALT="$( 0 \leq e < 1 )$"> 
+		 AORL 		 = 		 mean anomaly <I>M</I> (radians)        
+</TT></PRE>
+<P>
+JFORM=3, suitable for comets:
+<P>        <PRE><TT>
+ 		 EPOCH 		 = 		 epoch of perihelion <I>T</I> (TT MJD)
+		 ORBINC 		 = 		 inclination <I>i</I> (radians)
+		 ANODE 		 = 		 longitude of the ascending node <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> (radians)
+		 PERIH 		 = 		 argument of perihelion <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$"> (radians)
+		 AORQ 		 = 		 perihelion distance <I>q</I> (AU)
+		 E 		 = 		 eccentricity <I>e</I> <IMG WIDTH="91" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img107.gif"
+ ALT="$( 0 \leq e \leq 10 )$"></TT></PRE>
+  <DT>4.
+<DD>It may not be possible to generate elements in the form
+        requested through JFORMR.  The caller is notified of the form
+        of elements actually returned by means of the JFORM argument:
+<P>        <PRE><TT>
+ 		 JFORMR 		 JFORM 		 meaning 
+&nbsp;
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 		 OK: elements are in the requested format
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 		 never happens
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 		 orbit not elliptical
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 		 never happens
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 		 OK: elements are in the requested format
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 		 orbit not elliptical
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 		 never happens
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 		 never happens
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 		 OK: elements are in the requested format        
+</TT></PRE>
+  <DT>5.
+<DD>The arguments returned for each value of JFORM (<I>cf</I> Note&nbsp;5:
+        JFORM may not be the same as JFORMR) are as follows:
+<P>        <PRE><TT>
+ 		 JFORM 		 1 		 2 		 3 
+&nbsp;
+		 EPOCH 		 <I>t<SUB>0</SUB></I> <I>t<SUB>0</SUB></I> <I>T</I> 
+		 ORBINC 		 <I>i</I> <I>i</I> <I>i</I> 
+		 ANODE 		 <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> 
+		 PERIH 		 <IMG WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img100.gif"
+ ALT="$\varpi$"> <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$"> <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$"> 
+		 AORQ 		 <I>a</I> <I>a</I> <I>q</I> 
+		 E 		 <I>e</I> <I>e</I> <I>e</I> 
+		 AORL 		 <I>L</I> <I>M</I> -
+		 DM 		 <I>n</I> - 		 -        
+</TT></PRE>
+<P>
+where:
+        <PRE><TT>
+ 		 <I>t<SUB>0</SUB></I> is the epoch of the elements (MJD, TT)
+		 <I>T</I> is the epoch of perihelion (MJD, TT)
+		 <I>i</I> is the inclination (radians)
+		 <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> is the longitude of the ascending node (radians)
+		 <IMG WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img100.gif"
+ ALT="$\varpi$"> is the longitude of perihelion (radians)
+		 <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$"> is the argument of perihelion (radians)
+		 <I>a</I> is the mean distance (AU)
+		 <I>q</I> is the perihelion distance (AU)
+		 <I>e</I> is the eccentricity
+		 <I>L</I> is the longitude (radians, <IMG WIDTH="48" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img143.gif"
+ ALT="$0-2\pi$">)		 <I>M</I> is the mean anomaly (radians, <IMG WIDTH="48" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img143.gif"
+ ALT="$0-2\pi$">)		 <I>n</I> is the daily motion (radians)
+		 - 		 means no value is set        
+</TT></PRE>
+  <DT>6.
+<DD>At very small inclinations, the longitude of the ascending node
+        ANODE becomes indeterminate and under some circumstances may be
+        set arbitrarily to zero.  Similarly, if the orbit is close to
+        circular, the true anomaly becomes indeterminate and under some
+        circumstances may be set arbitrarily to zero.  In such cases,
+        the other elements are automatically adjusted to compensate,
+        and so the elements remain a valid description of the orbit.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>Sterne, Theodore E., <I>An Introduction to Celestial Mechanics,</I>
+Interscience Publishers, 1960.
+     </DL>
+<BR> <HR>
+<A NAME="tex2html1986" HREF="node157.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1984" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1978" HREF="node155.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1987" HREF="node157.html">SLA_PV2UE - Position/Velocity to Universal Elements</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1985" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1979" HREF="node155.html">SLA_PRENUT - Precession/Nutation Matrix</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

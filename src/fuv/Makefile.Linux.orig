@@ -1,0 +1,75 @@
+
+CALFUSEDIR=	${PWD}/../..
+SHARED=		-shared
+FITSVER=	2.470
+
+# Symbols for include directories
+FUSEINCLDIR=	-I${CALFUSEDIR}/include
+
+# Symbols used for compiling
+CC=		cc
+OPT=		-g -Wall -DCFORTRAN -Dg77Fortran -Df2cFortran
+CFLAGS=		${OPT} ${FUSEINCLDIR}
+
+FUSEBINDIR=	${CALFUSEDIR}/bin
+FUSELIBDIR=	-L${CALFUSEDIR}/lib 
+FUSELIBS=	-lcfitsio-${FITSVER} -lsla -lcf
+LIBS=		-lc -lm -lnsl -ldl -lgfortran
+LDFLAGS=	-Wl,-R${CALFUSEDIR}/lib,-R${CALFUSEDIR}/src/libcf
+
+# Symbols used for creating shared libraries
+
+BINS=		cf_hist_init cf_ttag_init cf_convert_to_farf cf_remove_motions \
+                cf_assign_wavelength cf_screen_photons cf_flux_calibrate \
+		cf_extract_spectra cf_countmap cf_gainmap cf_bad_pixels
+
+all:		${BINS}
+		chmod g+w ${BINS}
+
+install:	all
+		/bin/cp -p ${BINS} ${FUSEBINDIR}
+
+clean: 
+	-	/bin/rm -f ${BINS}
+
+distclean: 
+	-	/bin/rm -f ${BINS}
+		cd ../../bin; /bin/rm -f ${BINS} calfuse
+
+cf_hist_init:
+		${CC} ${CFLAGS} -o cf_hist_init cf_hist_init.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+cf_ttag_init:
+		${CC} ${CFLAGS} -o cf_ttag_init cf_ttag_init.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+cf_convert_to_farf:
+		${CC} ${CFLAGS} -o cf_convert_to_farf cf_convert_to_farf.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+cf_remove_motions:
+		${CC} ${CFLAGS} -o cf_remove_motions cf_remove_motions.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+cf_assign_wavelength:
+		${CC} ${CFLAGS} -o cf_assign_wavelength \
+		cf_assign_wavelength.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+cf_screen_photons:
+		${CC} ${CFLAGS} -o cf_screen_photons cf_screen_photons.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+cf_flux_calibrate:
+		${CC} ${CFLAGS} -o cf_flux_calibrate cf_flux_calibrate.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+cf_extract_spectra:
+		${CC} ${CFLAGS} -o cf_extract_spectra cf_extract_spectra.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+cf_countmap:
+		${CC} ${CFLAGS} -o cf_countmap cf_countmap.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_gainmap:
+		${CC} ${CFLAGS} -o cf_gainmap cf_gainmap.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_bad_pixels:
+		${CC} ${CFLAGS} -o cf_bad_pixels cf_bad_pixels.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+

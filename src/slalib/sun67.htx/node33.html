@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_CLDJ - Calendar to MJD</TITLE>
+<META NAME="description" CONTENT="SLA_CLDJ - Calendar to MJD">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node34.html">
+<LINK REL="previous" HREF="node32.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node34.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html756" HREF="node34.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html754" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html748" HREF="node32.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html757" HREF="node34.html">SLA_CLYD - Calendar to Year, Day</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html755" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html749" HREF="node32.html">SLA_CD2TF - Days to Hour,Min,Sec</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000420000000000000000">SLA_CLDJ - Calendar to MJD</A>
+<A NAME="xref_SLA_CLDJ">&#160;</A><A NAME="SLA_CLDJ">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Gregorian Calendar to Modified Julian Date.
+<DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_CLDJ (IY, IM, ID, DJM, J)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>IY,IM,ID</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>year, month, day in Gregorian calendar</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DJM</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>modified Julian Date (JD-2400000.5) for <IMG WIDTH="18" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img49.gif"
+ ALT="$0^{\rm h}$"></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>J</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  1 = bad year</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  2 = bad month</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  3 = bad day</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>When an invalid year or month is supplied (status J&nbsp;=&nbsp;1&nbsp;or&nbsp;2)
+the MJD is <B>not</B> computed.  When an invalid day is supplied
+(status J&nbsp;=&nbsp;3) the MJD <B>is</B> computed.
+  <DT>2.
+<DD>The year must be -4699 (<I>i.e.</I> 4700BC) or later.
+        For year <I>n</I>BC use IY = -(<I>n</I>-1).
+  <DT>3.
+<DD>An alternative to the present routine is sla_CALDJ, which
+        accepts a year with the century missing.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>The algorithm is derived from that of Hatcher,
+<I>Q.Jl.R.astr.Soc.</I> (1984) <B>25</B>, 53-55.
+     </DL>
+<BR> <HR>
+<A NAME="tex2html756" HREF="node34.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html754" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html748" HREF="node32.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html757" HREF="node34.html">SLA_CLYD - Calendar to Year, Day</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html755" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html749" HREF="node32.html">SLA_CD2TF - Days to Hour,Min,Sec</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

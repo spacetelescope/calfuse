@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_CR2AF - Radians to Deg,Arcmin,Arcsec</TITLE>
+<META NAME="description" CONTENT="SLA_CR2AF - Radians to Deg,Arcmin,Arcsec">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node37.html">
+<LINK REL="previous" HREF="node35.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node37.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html786" HREF="node37.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html784" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html778" HREF="node35.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html787" HREF="node37.html">SLA_CR2TF - Radians to Hour,Min,Sec</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html785" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html779" HREF="node35.html">SLA_COMBN - Next Combination</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000423000000000000000">SLA_CR2AF - Radians to Deg,Arcmin,Arcsec</A>
+<A NAME="xref_SLA_CR2AF">&#160;</A><A NAME="SLA_CR2AF">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Convert an angle in radians to degrees, arcminutes,
+arcseconds (single precision).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_CR2AF (NDP, ANGLE, SIGN, IDMSF)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NDP</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>number of decimal places of arcseconds</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ANGLE</EM></TD>
+<TD ALIGN="LEFT"><B>R</B></TD>
+<TD ALIGN="LEFT" NOWRAP>angle in radians</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>SIGN</EM></TD>
+<TH ALIGN="LEFT"><B>C</B></TH>
+<TD ALIGN="LEFT" NOWRAP>`+' or `-'</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>IDMSF</EM></TD>
+<TD ALIGN="LEFT"><B>I(4)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>degrees, arcminutes, arcseconds, fraction</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>NDP less than zero is interpreted as zero.
+<DT>2.
+<DD>The largest useful value for NDP is determined by the size of
+ANGLE, the format of REAL floating-point numbers on the target
+        machine, and the risk of overflowing IDMSF(4).  For example,
+        on a VAX computer, for ANGLE up to <IMG WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img52.gif"
+ ALT="$2\pi$">, the available floating-point
+        precision corresponds roughly to NDP=3.  This is well below
+        the ultimate limit of NDP=9 set by the capacity of the 32-bit
+        integer IHMSF(4).
+  <DT>3.
+<DD>The absolute value of ANGLE may exceed <IMG WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img52.gif"
+ ALT="$2\pi$">.  In cases where it
+        does not, it is up to the caller to test for and handle the
+        case where ANGLE is very nearly <IMG WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img52.gif"
+ ALT="$2\pi$"> and rounds up to <IMG WIDTH="34" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img53.gif"
+ ALT="$360^{\circ}$">,        by testing for IDMSF(1)=360 and setting IDMSF(1-4) to zero.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html786" HREF="node37.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html784" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html778" HREF="node35.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html787" HREF="node37.html">SLA_CR2TF - Radians to Hour,Min,Sec</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html785" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html779" HREF="node35.html">SLA_COMBN - Next Combination</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

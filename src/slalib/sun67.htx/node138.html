@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PA - to Parallactic Angle</TITLE>
+<META NAME="description" CONTENT="SLA_PA - to Parallactic Angle">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node139.html">
+<LINK REL="previous" HREF="node137.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node139.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1806" HREF="node139.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1804" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1798" HREF="node137.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1807" HREF="node139.html">SLA_PAV - Position-Angle Between Two Directions</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1805" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1799" HREF="node137.html">SLA_OBS - Observatory Parameters</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004125000000000000000">&#160;</A><A NAME="xref_SLA_PA">&#160;</A><A NAME="SLA_PA">&#160;</A>
+<BR>
+SLA_PA - <IMG WIDTH="27" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif"
+ ALT="$h,\delta$"> to Parallactic Angle
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Hour angle and declination to parallactic angle
+(double precision).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>D&nbsp;=&nbsp;sla_PA (HA, DEC, PHI)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>HA</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>hour angle in radians (geocentric apparent)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DEC</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>declination in radians (geocentric apparent)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PHI</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>latitude in radians (geodetic)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>sla_PA</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>parallactic angle (radians, in the range <IMG WIDTH="25" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif"
+ ALT="$\pm \pi$">)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The parallactic angle at a point in the sky is the position
+angle of the vertical, <I>i.e.</I> the angle between the direction to
+the pole and to the zenith.  In precise applications care must
+        be taken only to use geocentric apparent <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> and to consider
+        separately the effects of atmospheric refraction and telescope
+        mount errors.
+  <DT>2.
+<DD>At the pole a zero result is returned.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1806" HREF="node139.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1804" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1798" HREF="node137.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1807" HREF="node139.html">SLA_PAV - Position-Angle Between Two Directions</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1805" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1799" HREF="node137.html">SLA_OBS - Observatory Parameters</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

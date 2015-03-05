@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_RVLSRD - RV Corrn to Dynamical LSR</TITLE>
+<META NAME="description" CONTENT="SLA_RVLSRD - RV Corrn to Dynamical LSR">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node174.html">
+<LINK REL="previous" HREF="node172.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node174.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2156" HREF="node174.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2154" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2148" HREF="node172.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2157" HREF="node174.html">SLA_RVLSRK - RV Corrn to Kinematical LSR</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2155" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2149" HREF="node172.html">SLA_RVLG - RV Corrn to Local Group</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004160000000000000000">SLA_RVLSRD - RV Corrn to Dynamical LSR</A>
+<A NAME="xref_SLA_RVLSRD">&#160;</A><A NAME="SLA_RVLSRD">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Velocity component in a given direction due to the Sun's
+motion with respect to the ``dynamical'' Local Standard of Rest.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>R&nbsp;=&nbsp;sla_RVLSRD (R2000, D2000)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>R2000,D2000</EM></TD>
+<TH ALIGN="LEFT"><B>R</B></TH>
+<TD ALIGN="LEFT" NOWRAP>J2000.0 mean <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>sla_RVLSRD</EM></TD>
+<TH ALIGN="LEFT"><B>R</B></TH>
+<TH ALIGN="LEFT" NOWRAP>Component of <I>peculiar</I> solar motion
+in direction R2000,D2000 (km&nbsp;s<SUP>-1</SUP>)</TH>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Sign convention: the result is positive when
+the Sun is receding from the given point on the sky.
+<DT>2.
+<DD>The Local Standard of Rest used here is the <I>dynamical</I> LSR,
+        a point in the vicinity of the Sun which is in a circular
+        orbit around the Galactic centre.  The Sun's motion with
+        respect to the dynamical LSR is called the <I>peculiar</I> solar
+        motion.
+  <DT>3.
+<DD>There is another type of LSR, called a <I>kinematical</I> LSR.  A
+        kinematical LSR is the mean standard of rest of specified star
+        catalogues or stellar populations, and several slightly
+        different kinematical LSRs are in use.  The Sun's motion with
+        respect to an agreed kinematical LSR is known as the
+        <I>standard</I> solar motion.
+        The dynamical LSR is seldom used by observational astronomers,
+        who conventionally use a kinematical LSR such as the one implemented
+        in the routine sla_RVLSRK.
+  <DT>4.
+<DD>The peculiar solar motion is from Delhaye (1965), in <I>Stars
+        and Stellar Systems</I>, vol&nbsp;5, p73:  in Galactic Cartesian
+        coordinates (+9,+12,+7)&nbsp;km&nbsp;s<SUP>-1</SUP>.
+        This corresponds to about 16.6&nbsp;km&nbsp;s<SUP>-1</SUP>
+        towards Galactic coordinates <IMG WIDTH="148" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img224.gif"
+ ALT="$l^{I\!I}=53^{\circ},b^{I\!I}=+25^{\circ}$">. </DL></DL>
+<BR> <HR>
+<A NAME="tex2html2156" HREF="node174.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2154" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2148" HREF="node172.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2157" HREF="node174.html">SLA_RVLSRK - RV Corrn to Kinematical LSR</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2155" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2149" HREF="node172.html">SLA_RVLG - RV Corrn to Local Group</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

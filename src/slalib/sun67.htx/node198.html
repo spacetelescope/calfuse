@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Spherical Trigonometry</TITLE>
+<META NAME="description" CONTENT="Spherical Trigonometry">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node200.html">
+<LINK REL="previous" HREF="node197.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node199.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2434" HREF="node199.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2432" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2426" HREF="node197.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2435" HREF="node199.html">Formatting angles</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2433" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2427" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00051000000000000000">
+Spherical Trigonometry</A>
+</H2>
+Celestial phenomena occur at such vast distances from the
+observer that for most practical purposes there is no need to
+work in 3D;  only the direction
+of a source matters, not how far away it is.  Things can
+therefore be viewed as if they were happening
+on the inside of sphere with the observer at the centre -
+the <I>celestial sphere</I>.  Problems involving
+positions and orientations in the sky can then be solved by
+using the formulae of <I>spherical trigonometry</I>, which
+apply to <I>spherical triangles</I>, the sides of which are
+<I>great circles</I>.
+<P>
+Positions on the celestial sphere may be specified by using
+a spherical polar coordinate system, defined in terms of
+some fundamental plane and a line in that plane chosen to
+represent zero longitude.  Mathematicians usually work with the
+co-latitude, with zero at the principal pole, whereas most
+astronomical coordinate systems use latitude, reckoned plus and
+minus from the equator.
+Astronomical coordinate systems may be either right-handed
+(<I>e.g.</I> right ascension and declination <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">,Galactic longitude and latitude <IMG WIDTH="59" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.gif"
+ ALT="$[\,l^{I\!I},b^{I\!I}\,]$">)or left-handed (<I>e.g.</I> hour angle and
+declination <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$">).  In some cases
+different conventions have been used in the past, a fruitful source of
+mistakes.  Azimuth and geographical longitude are examples;  azimuth
+is now generally reckoned north through east
+(making a left-handed system);  geographical longitude is now usually
+taken to increase eastwards (a right-handed system) but astronomers
+used to employ a west-positive convention.  In reports
+and program comments it is wise to spell out what convention
+is being used, if there is any possibility of confusion.
+<P>
+When applying spherical trigonometry formulae, attention must be
+paid to
+rounding errors (for example it is a bad idea to find a
+small angle through its cosine) and to the possibility of
+problems close to poles.
+Also, if a formulation relies on inspection to establish
+the quadrant of the result, it is an indication that a vector-related
+method might be preferable.
+<P>
+As well as providing many routines which work in terms of specific
+spherical coordinates such as <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">, SLALIB provides
+two routines which operate directly on generic spherical
+coordinates:
+sla_SEP
+computes the separation between
+two points (the distance along a great circle) and
+sla_BEAR
+computes the bearing (or <I>position angle</I>)
+of one point seen from the other.  The routines
+sla_DSEP
+and
+sla_DBEAR
+are double precision equivalents.  As a simple demonstration
+of SLALIB, we will use these facilities to estimate the distance from
+London to Sydney and the initial compass heading:
+<P><PRE>
+            IMPLICIT NONE
+
+      *  Degrees to radians
+            REAL D2R
+            PARAMETER (D2R=0.01745329252)
+
+      *  Longitudes and latitudes (radians) for London and Sydney
+            REAL AL,BL,AS,BS
+            PARAMETER (AL=-0.2*D2R,BL=51.5*D2R,AS=151.2*D2R,BS=-33.9*D2R)
+
+      *  Earth radius in km (spherical approximation)
+            REAL RKM
+            PARAMETER (RKM=6375.0)
+
+            REAL sla_SEP,sla_BEAR
+
+
+      *  Distance and initial heading (N=0, E=90)
+            WRITE (*,'(1X,I5,'' km,'',I4,'' deg'')')
+           :    NINT(sla_SEP(AL,BL,AS,BS)*RKM),NINT(sla_BEAR(AL,BL,AS,BS)/D2R)
+
+            END
+</PRE>
+<P>(The result is 17011&nbsp;km, <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img235.gif"
+ ALT="$61^\circ$">.)
+<P>
+The routines
+sla_PAV and
+sla_DPAV
+are equivalents of sla_BEAR and sla_DBEAR but starting from
+direction-cosines instead of spherical coordinates.
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html2436" HREF="node199.html#SECTION00051100000000000000">
+Formatting angles</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR> <HR>
+<A NAME="tex2html2434" HREF="node199.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2432" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2426" HREF="node197.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2435" HREF="node199.html">Formatting angles</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2433" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2427" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,9 @@
+*~
+Makefile
+autom4te.cache
+*.o
+*.dylib
+*.la
+*.a
+calfiles/
+!calfiles/.gitkeep

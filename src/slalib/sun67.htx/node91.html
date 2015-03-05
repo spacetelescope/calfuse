@@ -1,0 +1,330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_EL2UE - Conventional to Universal Elements</TITLE>
+<META NAME="description" CONTENT="SLA_EL2UE - Conventional to Universal Elements">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node92.html">
+<LINK REL="previous" HREF="node90.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node92.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1336" HREF="node92.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1334" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1328" HREF="node90.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1337" HREF="node92.html">SLA_EPB - MJD to Besselian Epoch</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1335" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1329" HREF="node90.html">SLA_EG50 - B1950 to Galactic</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000478000000000000000">SLA_EL2UE - Conventional to Universal Elements</A>
+<A NAME="xref_SLA_EL2UE">&#160;</A><A NAME="SLA_EL2UE">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Transform conventional osculating orbital elements
+into ``universal'' form.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_EL2UE (
+         DATE, JFORM, EPOCH, ORBINC, ANODE,
+         PERIH, AORQ, E, AORL, DM,
+         U, JSTAT)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>epoch (TT MJD) of osculation (Note&nbsp;3)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JFORM</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>choice of element set (1-3; Note&nbsp;6)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EPOCH</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>epoch of elements (<I>t<SUB>0</SUB></I> or <I>T</I>, TT MJD)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ORBINC</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>inclination (<I>i</I>, radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ANODE</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>longitude of the ascending node (<IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$">, radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PERIH</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>longitude or argument of perihelion
+(<IMG WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img100.gif"
+ ALT="$\varpi$"> or <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$">,</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AORQ</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>mean distance or perihelion distance (<I>a</I> or <I>q</I>, AU)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>E</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>eccentricity (<I>e</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AORL</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>mean anomaly or longitude
+(<I>M</I> or <I>L</I>, radians,</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  JFORM=1,2 only)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DM</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>daily motion (<I>n</I>, radians, JFORM=1 only)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>U</EM></TD>
+<TH ALIGN="LEFT"><B>D(13)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>universal orbital elements (Note&nbsp;1)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(1)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>combined mass (<I>M</I>+<I>m</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(2)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>total energy of the orbit (<IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(3)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>reference (osculating) epoch (<I>t<SUB>0</SUB></I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(4-6)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>position at reference epoch (<IMG WIDTH="17" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img102.gif"
+ ALT="${\rm \bf r}_0$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(7-9)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>velocity at reference epoch (<IMG WIDTH="19" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.gif"
+ ALT="${\rm \bf v}_0$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(10)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>heliocentric distance at reference epoch</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(11)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="39" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.gif"
+ ALT="${\rm \bf r}_0.{\rm \bf v}_0$"></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(12)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>date (<I>t</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(13)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>universal eccentric anomaly (<IMG WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif"
+ ALT="$\psi$">) of date,
+approx</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JSTAT</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>        0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>   -1 = illegal JFORM</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>    -2 = illegal E</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>    -3 = illegal AORQ</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>    -4 = illegal DM</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>    -5 = numerical error</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The ``universal'' elements are those which define the orbit for
+the purposes of the method of universal variables (see reference).
+They consist of the combined mass of the two bodies, an epoch,
+        and the position and velocity vectors (arbitrary reference frame)
+        at that epoch.  The parameter set used here includes also various
+        quantities that can, in fact, be derived from the other
+        information.  This approach is taken to avoiding unnecessary
+        computation and loss of accuracy.  The supplementary quantities
+        are (i)&nbsp;<IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">, which is proportional to the total energy of the
+        orbit, (ii)&nbsp;the heliocentric distance at epoch,
+        (iii)&nbsp;the outwards component of the velocity at the given epoch,
+        (iv)&nbsp;an estimate of <IMG WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif"
+ ALT="$\psi$">, the ``universal eccentric anomaly'' at a
+        given date and (v)&nbsp;that date.
+  <DT>2.
+<DD>The companion routine is sla_UE2PV.  This takes the set of numbers
+        that the present routine outputs and uses them to derive the
+        object's position and velocity.  A single prediction requires one
+        call to the present routine followed by one call to sla_UE2PV;
+        for convenience, the two calls are packaged as the routine
+        sla_PLANEL.  Multiple predictions may be made by again calling the
+        present routine once, but then calling sla_UE2PV multiple times,
+        which is faster than multiple calls to sla_PLANEL.
+  <DT>3.
+<DD>DATE is the epoch of osculation.  It is in the TT timescale
+        (formerly Ephemeris Time, ET) and is a Modified Julian Date
+        (JD-2400000.5).
+  <DT>4.
+<DD>The supplied orbital elements are with respect to the J2000
+        ecliptic and equinox.  The position and velocity parameters
+        returned in the array U are with respect to the mean equator and
+        equinox of epoch J2000, and are for the perihelion prior to the
+        specified epoch.
+  <DT>5.
+<DD>The universal elements returned in the array U are in canonical
+        units (solar masses, AU and canonical days).
+  <DT>6.
+<DD>Three different element-format options are supported, as
+        follows. <BR>
+<P>
+JFORM=1, suitable for the major planets:
+<P>        <PRE><TT>
+ 		 EPOCH 		 = 		 epoch of elements <I>t<SUB>0</SUB></I> (TT MJD)
+		 ORBINC 		 = 		 inclination <I>i</I> (radians)
+		 ANODE 		 = 		 longitude of the ascending node <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> (radians)
+		 PERIH 		 = 		 longitude of perihelion <IMG WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img100.gif"
+ ALT="$\varpi$"> (radians)
+		 AORQ 		 = 		 mean distance <I>a</I> (AU)
+		 E 		 = 		 eccentricity <I>e</I> <IMG WIDTH="83" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img106.gif"
+ ALT="$( 0 \leq e < 1 )$"> 
+		 AORL 		 = 		 mean longitude <I>L</I> (radians)
+		 DM 		 = 		 daily motion <I>n</I> (radians)        
+</TT></PRE>
+<P>
+JFORM=2, suitable for minor planets:
+<P>        <PRE><TT>
+ 		 EPOCH 		 = 		 epoch of elements <I>t<SUB>0</SUB></I> (TT MJD)
+		 ORBINC 		 = 		 inclination <I>i</I> (radians)
+		 ANODE 		 = 		 longitude of the ascending node <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> (radians)
+		 PERIH 		 = 		 argument of perihelion <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$"> (radians)
+		 AORQ 		 = 		 mean distance <I>a</I> (AU)
+		 E 		 = 		 eccentricity <I>e</I> <IMG WIDTH="83" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img106.gif"
+ ALT="$( 0 \leq e < 1 )$"> 
+		 AORL 		 = 		 mean anomaly <I>M</I> (radians)        
+</TT></PRE>
+<P>
+JFORM=3, suitable for comets:
+<P>        <PRE><TT>
+ 		 EPOCH 		 = 		 epoch of perihelion <I>T</I> (TT MJD)
+		 ORBINC 		 = 		 inclination <I>i</I> (radians)
+		 ANODE 		 = 		 longitude of the ascending node <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> (radians)
+		 PERIH 		 = 		 argument of perihelion <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$"> (radians)
+		 AORQ 		 = 		 perihelion distance <I>q</I> (AU)
+		 E 		 = 		 eccentricity <I>e</I> <IMG WIDTH="91" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img107.gif"
+ ALT="$( 0 \leq e \leq 10 )$"></TT></PRE>
+  <DT>7.
+<DD>Unused elements (DM for JFORM=2, AORL and DM for JFORM=3) are
+        not accessed.
+  <DT>8.
+<DD>The algorithm was originally adapted from the EPHSLA program of
+        D.H.P.Jones (private communication, 1996).  The method
+        is based on Stumpff's Universal Variables.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>Everhart, E. &amp; Pitkin, E.T., Am.&nbsp;J.&nbsp;Phys.&nbsp;51, 712, 1983.
+</DL>
+<BR> <HR>
+<A NAME="tex2html1336" HREF="node92.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1334" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1328" HREF="node90.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1337" HREF="node92.html">SLA_EPB - MJD to Besselian Epoch</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1335" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1329" HREF="node90.html">SLA_EG50 - B1950 to Galactic</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

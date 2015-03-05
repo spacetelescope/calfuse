@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PLANET - Planetary Ephemerides</TITLE>
+<META NAME="description" CONTENT="SLA_PLANET - Planetary Ephemerides">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node148.html">
+<LINK REL="previous" HREF="node146.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node148.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1896" HREF="node148.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1894" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1888" HREF="node146.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1897" HREF="node148.html">SLA_PLANTE - of Planet from Elements</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1895" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1889" HREF="node146.html">SLA_PLANEL - Planet Position from Elements</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004134000000000000000">SLA_PLANET - Planetary Ephemerides</A>
+<A NAME="xref_SLA_PLANET">&#160;</A><A NAME="SLA_PLANET">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Approximate heliocentric position and velocity of a planet.
+<DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_PLANET (DATE, NP, PV, JSTAT)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>Modified Julian Date (JD-2400000.5)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NP</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>planet:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  1=Mercury</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  2=Venus</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  3=Earth-Moon Barycentre</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  4=Mars</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  5=Jupiter</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  6=Saturn</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  7=Uranus</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  8=Neptune</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  9=Pluto</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PV</EM></TD>
+<TH ALIGN="LEFT"><B>D(6)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>heliocentric <IMG WIDTH="106" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.gif"
+ ALT="$[\,x,y,z,\dot{x},\dot{y},\dot{z}\,]$">, equatorial, J2000</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  (AU, AU/s)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JSTAT</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  +1 = warning: date outside of range</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -1 = illegal NP (outside 1-9)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -2 = solution didn't converge</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The epoch, DATE, is in the TDB timescale and is in the form
+of a Modified Julian Date (JD-2400000.5).
+<DT>2.
+<DD>The reference frame is equatorial and is with respect to
+        the mean equinox and ecliptic of epoch J2000.
+  <DT>3.
+<DD>If a planet number, NP, outside the range 1-9 is supplied, an error
+        status is returned (JSTAT&nbsp;=&nbsp;-1) and the PV vector
+        is set to zeroes.
+  <DT>4.
+<DD>The algorithm for obtaining the mean elements of the
+        planets from Mercury to Neptune is due to
+        J.L.Simon, P.Bretagnon, J.Chapront,
+        M.Chapront-Touze, G.Francou and J.Laskar (Bureau des
+        Longitudes, Paris, France).  The (completely different)
+        algorithm for calculating the ecliptic coordinates of
+        Pluto is by Meeus.
+  <DT>5.
+<DD>Comparisons of the present routine with the JPL DE200 ephemeris
+        give the following RMS errors over the interval 1960-2025:
+        <PRE><TT>
+ 		 		 <I>position (km)</I> 		 <I>speed (metre/sec)</I> 
+&nbsp;
+		 Mercury 		  334 		  0.437
+		 Venus 		  1060 		  0.855
+		 EMB 		  2010 		  0.815
+		 Mars 		  7690 		  1.98
+		 Jupiter 		  71700 		  7.70
+		 Saturn 		  199000 		  19.4
+		 Uranus 		  564000 		  16.4
+		 Neptune 		  158000 		  14.4
+		 Pluto 		  36400 		  0.137        
+</TT></PRE>
+        From comparisons with DE102, Simon <I>et al.</I> quote the following
+        longitude accuracies over the interval 1800-2200:
+        <PRE><TT>
+ 		 Mercury 		  <IMG WIDTH="17" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img130.gif"
+ ALT="$4\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> 
+		 Venus 		  <IMG WIDTH="17" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img131.gif"
+ ALT="$5\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> 
+		 EMB 		  <IMG WIDTH="17" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img132.gif"
+ ALT="$6\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> 
+		 Mars 		 <IMG WIDTH="25" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img133.gif"
+ ALT="$17\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> 
+		 Jupiter 		 <IMG WIDTH="25" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img134.gif"
+ ALT="$71\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> 
+		 Saturn 		 <IMG WIDTH="25" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img135.gif"
+ ALT="$81\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> 
+		 Uranus 		 <IMG WIDTH="25" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img136.gif"
+ ALT="$86\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> 
+		 Neptune 		 <IMG WIDTH="25" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.gif"
+ ALT="$11\hspace{-0.05em}^{'\hspace{-0.1em}'}$"></TT></PRE>
+        In the case of Pluto, Meeus quotes an accuracy of 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img137.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.6$"><P>
+in longitude and 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img76.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.2$">    in latitude for the period
+        1885-2099.
+<P>
+For all except Pluto, over the period 1000-3000,
+        the accuracy is better than 1.5
+        times that over 1800-2200.  Outside the interval 1000-3000 the
+        accuracy declines.  For Pluto the accuracy declines rapidly
+        outside the period 1885-2099.  Outside these ranges
+        (1885-2099 for Pluto, 1000-3000 for the rest) a ``date out
+        of range'' warning status (<TT>JSTAT=+1</TT>) is returned.
+  <DT>6.
+<DD>The algorithms for (i)&nbsp;Mercury through Neptune and
+        (ii)&nbsp;Pluto are completely independent.  In the Mercury
+        through Neptune case, the present SLALIB
+        implementation differs from the original
+        Simon <I>et al.</I> Fortran code in the following respects:
+        <UL>
+<LI> The date is supplied as a Modified Julian Date rather
+               a Julian Date (<IMG WIDTH="177" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img138.gif"
+ ALT="${\rm MJD} = ({\rm JD} - 2400000.5$">).
+<LI> The result is returned only in equatorial
+               Cartesian form;  the ecliptic
+               longitude, latitude and radius vector are not returned.
+<LI> The velocity is in AU per second, not AU per day.
+<LI> Different error/warning status values are used.
+<LI> Kepler's Equation is not solved inline.
+<LI> Polynomials in T are nested to minimize rounding errors.
+<LI> Explicit double-precision constants are used to avoid
+               mixed-mode expressions.
+<LI> There are other, cosmetic, changes to comply with
+               Starlink/SLALIB style guidelines.
+        </UL>
+        None of the above changes affects the result significantly.
+  <DT>7.
+<DD>NP=3 the result is for the Earth-Moon Barycentre.  To
+        obtain the heliocentric position and velocity of the Earth,
+        either use the SLALIB routine sla_EVP or call sla_DMOON and
+        subtract 0.012150581 times the geocentric Moon vector from
+        the EMB vector produced by the present routine.  (The Moon
+        vector should be precessed to J2000 first, but this can
+        be omitted for modern epochs without introducing significant
+        inaccuracy.)
+ </DL>
+<P>     <DL>
+<DT><STRONG>REFERENCES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Simon <I>et al.,</I>
+Astron. Astrophys. <B>282</B>, 663 (1994).
+<DT>2.
+<DD>Meeus, J.,
+        <I>Astronomical Algorithms,</I> Willmann-Bell (1991).
+ </DL></DL></DL>
+<BR> <HR>
+<A NAME="tex2html1896" HREF="node148.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1894" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1888" HREF="node146.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1897" HREF="node148.html">SLA_PLANTE - of Planet from Elements</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1895" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1889" HREF="node146.html">SLA_PLANEL - Planet Position from Elements</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

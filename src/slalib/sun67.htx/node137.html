@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_OBS - Observatory Parameters</TITLE>
+<META NAME="description" CONTENT="SLA_OBS - Observatory Parameters">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node138.html">
+<LINK REL="previous" HREF="node136.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node138.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1796" HREF="node138.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1794" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1788" HREF="node136.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1797" HREF="node138.html">SLA_PA - to Parallactic Angle</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1795" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1789" HREF="node136.html">SLA_OAPQK - Quick Observed to Apparent</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004124000000000000000">SLA_OBS - Observatory Parameters</A>
+<A NAME="xref_SLA_OBS">&#160;</A><A NAME="SLA_OBS">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Look up an entry in a standard list of
+groundbased observing stations parameters.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_OBS (N, C, NAME, W, P, H)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>N</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>number specifying observing station</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>GIVEN or RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>C</EM></TD>
+<TH ALIGN="LEFT"><B>C*(*)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>identifier specifying observing station</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NAME</EM></TD>
+<TH ALIGN="LEFT"><B>C*(*)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>name of specified observing station</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>W</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>longitude (radians, west +ve)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>P</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>geodetic latitude (radians, north +ve)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>H</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>height above sea level (metres)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Station identifiers C may be up to 10 characters long,
+and station names NAME may be up to 40 characters long.
+<DT>2.
+<DD>C and N are <I>alternative</I> ways of specifying the observing
+        station.  The C option, which is the most generally useful,
+        may be selected by specifying an N value of zero or less.
+        If N is 1 or more, the parameters of the Nth station
+        in the currently supported list are interrogated, and
+        the station identifier C is returned as well as NAME, W,
+        P and H.
+  <DT>3.
+<DD>If the station parameters are not available, either because
+        the station identifier C is not recognized, or because an
+        N value greater than the number of stations supported is
+        given, a name of `?' is returned and W, P and H are left in
+        their current states.
+  <DT>4.
+<DD>Programs can obtain a list of all currently supported
+        stations by calling the routine repeatedly, with N=1,2,3...
+        When NAME=`?' is seen, the list of stations has been
+        exhausted.  The stations at the time of writing are listed
+        below.
+  <DT>5.
+<DD>Station numbers, identifiers, names and other details are
+        subject to change and should not be hardwired into
+        application programs.
+  <DT>6.
+<DD>All station identifiers C are uppercase only;  lower case
+        characters must be converted to uppercase by the calling
+        program.  The station names returned may contain both upper-
+        and lowercase.  All characters up to the first space are
+        checked;  thus an abbreviated ID will return the parameters
+        for the first station in the list which matches the
+        abbreviation supplied, and no station in the list will ever
+        contain embedded spaces.  C must not have leading spaces.
+  <DT>7.
+<DD>IMPORTANT - BEWARE OF THE LONGITUDE SIGN CONVENTION.  The
+        longitude returned by sla_OBS is
+        <B>west-positive</B>, following the pre-1984 <I>Astronomical
+        Almanac</I>.  However, this sign convention is left-handed and is
+        the opposite of the one now used; elsewhere in
+        SLALIB the preferable east-positive convention is used.  In
+        particular, note that for use in sla_AOP, sla_AOPPA and
+        sla_OAP the sign of the longitude must be reversed.
+  <DT>8.
+<DD>Users are urged to inform the author of any improvements
+        they would like to see made.  For example:
+        <UL>
+<LI> typographical corrections
+<LI> more accurate parameters
+<LI> better station identifiers or names
+<LI> additional stations
+        </UL></DL>
+Stations supported by sla_OBS at the time of writing:
+<PRE><TT>
+<I>ID</I> 		 <I>NAME</I> 
+&nbsp;
+AAT 		 Anglo-Australian 3.9m Telescope 
+ANU2.3 		 Siding Spring 2.3 metre 
+APO3.5 		 Apache Point 3.5m 
+ARECIBO 		 Arecibo 1000 foot 
+ATCA 		 Australia Telescope Compact Array 
+BLOEMF 		 Bloemfontein 1.52 metre 
+BOSQALEGRE 		 Bosque Alegre 1.54 metre 
+CAMB1MILE 		 Cambridge 1 mile 
+CAMB5KM 		 Cambridge 5km 
+CATALINA61 		 Catalina 61 inch 
+CFHT 		 Canada-France-Hawaii 3.6m Telescope 
+CSO 		 Caltech Sub-mm Observatory, Mauna Kea 
+DAO72 		 DAO Victoria BC 1.85 metre 
+DUNLAP74 		 David Dunlap 74 inch 
+DUPONT 		 Du Pont 2.5m Telescope, Las Campanas 
+EFFELSBERG 		 Effelsberg 100 metre 
+ESO3.6 		 ESO 3.6 metre 
+ESONTT 		 ESO 3.5 metre NTT 
+ESOSCHM 		 ESO 1 metre Schmidt, La Silla 
+FCRAO 		 Five College Radio Astronomy Obs 
+FLAGSTF61 		 USNO 61 inch astrograph, Flagstaff 
+GBVA140 		 Greenbank 140 foot 
+GBVA300 		 Greenbank 300 foot 
+GEMININ 		 Gemini North 8-m telescope 
+HARVARD 		 Harvard College Observatory 1.55m 
+HPROV1.52 		 Haute Provence 1.52 metre 
+HPROV1.93 		 Haute Provence 1.93 metre 
+IRTF 		 NASA IR Telescope Facility, Mauna Kea 
+JCMT 		 JCMT 15 metre 
+JODRELL1 		 Jodrell Bank 250 foot 
+KECK1 		 Keck 10m Telescope 1 
+KECK2 		 Keck 10m Telescope 2 
+KISO 		 Kiso 1.05 metre Schmidt, Japan 
+KOTTAMIA 		 Kottamia 74 inch 
+KPNO158 		 Kitt Peak 158 inch 
+KPNO36FT 		 Kitt Peak 36 foot 
+KPNO84 		 Kitt Peak 84 inch 
+KPNO90 		 Kitt Peak 90 inch 
+LICK120 		 Lick 120 inch 
+LOWELL72 		 Perkins 72 inch, Lowell 
+LPO1 		 Jacobus Kapteyn 1m Telescope 
+LPO2.5 		 Isaac Newton 2.5m Telescope 
+LPO4.2 		 William Herschel 4.2m Telescope 
+MAUNAK88 		 Mauna Kea 88 inch 
+MCDONLD2.1 		 McDonald 2.1 metre 
+MCDONLD2.7 		 McDonald 2.7 metre 
+MMT 		 MMT, Mt Hopkins 
+MOPRA 		 ATNF Mopra Observatory 
+MTEKAR 		 Mt Ekar 1.82 metre 
+MTHOP1.5 		 Mt Hopkins 1.5 metre 
+MTLEMMON60 		 Mt Lemmon 60 inch 
+NOBEYAMA 		 Nobeyama 45 metre 
+OKAYAMA 		 Okayama 1.88 metre 
+PALOMAR200 		 Palomar 200 inch 
+PALOMAR48 		 Palomar 48-inch Schmidt 
+PALOMAR60 		 Palomar 60 inch 
+PARKES 		 Parkes 64 metre 
+QUEBEC1.6 		 Quebec 1.6 metre 
+SAAO74 		 Sutherland 74 inch 
+SANPM83 		 San Pedro Martir 83 inch 
+ST.ANDREWS 		 St Andrews University Observatory 
+STEWARD90 		 Steward 90 inch 
+STROMLO74 		 Mount Stromlo 74 inch 
+SUBARU 		 Subaru 8 metre 
+SUGARGROVE 		 Sugar Grove 150 foot 
+TAUTNBG 		 Tautenburg 2 metre 
+TAUTSCHM 		 Tautenberg 1.34 metre Schmidt 
+TIDBINBLA 		 Tidbinbilla 64 metre 
+TOLOLO1.5M 		 Cerro Tololo 1.5 metre 
+TOLOLO4M 		 Cerro Tololo 4 metre 
+UKIRT 		 UK Infra Red Telescope 
+UKST 		 UK 1.2 metre Schmidt, Siding Spring 
+USSR6 		 USSR 6 metre 
+USSR600 		 USSR 600 foot 
+VLA 		 Very Large Array
+</TT></PRE></DL>
+<BR> <HR>
+<A NAME="tex2html1796" HREF="node138.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1794" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1788" HREF="node136.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1797" HREF="node138.html">SLA_PA - to Parallactic Angle</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1795" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1789" HREF="node136.html">SLA_OAPQK - Quick Observed to Apparent</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

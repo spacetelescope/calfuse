@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PERMUT - Next Permutation</TITLE>
+<META NAME="description" CONTENT="SLA_PERMUT - Next Permutation">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node144.html">
+<LINK REL="previous" HREF="node142.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node144.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1856" HREF="node144.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1854" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1848" HREF="node142.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1857" HREF="node144.html">SLA_PERTEL - Perturbed Orbital Elements</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1855" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1849" HREF="node142.html">SLA_PDQ2H - H.A. for a Given P.A.</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004130000000000000000">SLA_PERMUT - Next Permutation</A>
+<A NAME="xref_SLA_PERMUT">&#160;</A><A NAME="SLA_PERMUT">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Generate the next permutation of a specified number of items.
+<DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_PERMUT (N, ISTATE, IORDER, J)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>N</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>number of items:  there will be N! permutations</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ISTATE</EM></TD>
+<TD ALIGN="LEFT"><B>I(N)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>state, ISTATE(1)=-1 to initialize</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ISTATE</EM></TD>
+<TH ALIGN="LEFT"><B>I(N)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>state, updated ready for next time</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>IORDER</EM></TD>
+<TD ALIGN="LEFT"><B>I(N)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>next permutation of numbers 1,2,...,N</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>J</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  -1 = illegal N (zero or less is illegal)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  +1 = no more permutations available</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>This routine returns, in the IORDER array, the integers 1 to N
+inclusive, in an order that depends on the current contents of
+the ISTATE array.  Before calling the routine for the first
+        time, the caller must set the first element of the ISTATE array
+        to -1 (any negative number will do) to cause the ISTATE array
+        to be fully initialized.
+  <DT>2.
+<DD>The first permutation to be generated is:
+        <BLOCKQUOTE>IORDER(1)=N, IORDER(2)=N-1, ..., IORDER(N)=1
+        </BLOCKQUOTE>
+        This is also the permutation returned for the ``finished'' (J=1) case.
+        The final permutation to be generated is:
+        <BLOCKQUOTE>IORDER(1)=1, IORDER(2)=2, ..., IORDER(N)=N
+        </BLOCKQUOTE>
+  <DT>3.
+<DD>If the ``finished'' (J=1) status is ignored, the routine continues
+        to deliver permutations, the pattern repeating every&nbsp;N!&nbsp;calls.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1856" HREF="node144.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1854" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1848" HREF="node142.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1857" HREF="node144.html">SLA_PERTEL - Perturbed Orbital Elements</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1855" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1849" HREF="node142.html">SLA_PDQ2H - H.A. for a Given P.A.</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

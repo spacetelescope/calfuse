@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_DAT - TAI-UTC</TITLE>
+<META NAME="description" CONTENT="SLA_DAT - TAI-UTC">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node45.html">
+<LINK REL="previous" HREF="node43.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node45.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html866" HREF="node45.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html864" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html858" HREF="node43.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html867" HREF="node45.html">SLA_DAV2M - Rotation Matrix from Axial Vector</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html865" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html859" HREF="node43.html">SLA_DAFIN - Sexagesimal character string to angle</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000431000000000000000">SLA_DAT - TAI-UTC</A>
+<A NAME="xref_SLA_DAT">&#160;</A><A NAME="SLA_DAT">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Increment to be applied to Coordinated Universal Time UTC to give
+International Atomic Time TAI.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>D&nbsp;=&nbsp;sla_DAT (UTC)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>UTC</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>UTC date as a modified JD (JD-2400000.5)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>sla_DAT</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>TAI-UTC in seconds</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The UTC is specified to be a date rather than a time to indicate
+that care needs to be taken not to specify an instant which lies
+within a leap second.  Though in most cases UTC can include the
+       fractional part, correct behaviour on the day of a leap second
+       can be guaranteed only up to the end of the second
+       <IMG WIDTH="82" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif"
+ ALT="$23^{\rm h}\,59^{\rm m}\,59^{\rm s}$">. <DT>2.
+<DD>UTC began at 1960 January 1.  To specify a UTC prior to this
+       date would be meaningless;  in such cases the parameters
+       for the year 1960 are used by default.
+ <DT>3.
+<DD>This routine has to be updated on each occasion that a
+       leap second is announced, and programs using it relinked.
+       Refer to the program source code for information on when the
+       most recent leap second was added.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html866" HREF="node45.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html864" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html858" HREF="node43.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html867" HREF="node45.html">SLA_DAV2M - Rotation Matrix from Axial Vector</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html865" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html859" HREF="node43.html">SLA_DAFIN - Sexagesimal character string to angle</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

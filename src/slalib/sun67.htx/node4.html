@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Example Application</TITLE>
+<META NAME="description" CONTENT="Example Application">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="node2.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html285" HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html283" HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html277" HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html286" HREF="node5.html">Scope</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html284" HREF="node2.html">INTRODUCTION</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html278" HREF="node3.html">Purpose</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00022000000000000000">
+Example Application</A>
+</H2>
+Here is a simple example of an application program written
+using SLALIB calls:
+<P><PRE>
+         PROGRAM FK4FK5
+   *
+   *  Read a B1950 position from I/O unit 5 and reply on I/O unit 6
+   *  with the J2000 equivalent.  Enter a period to quit.
+   *
+         IMPLICIT NONE
+         CHARACTER C*80,S
+         INTEGER I,J,IHMSF(4),IDMSF(4)
+         DOUBLE PRECISION R4,D4,R5,D5
+         LOGICAL BAD
+
+   *   Loop until a period is entered
+         C = ' '
+         DO WHILE (C(:1).NE.'.')
+
+   *     Read h m s d ' &quot;
+            READ (5,'(A)') C
+            IF (C(:1).NE.'.') THEN
+               BAD = .TRUE.
+
+   *        Decode the RA
+               I = 1
+               CALL sla_DAFIN(C,I,R4,J)
+               IF (J.EQ.0) THEN
+                  R4 = 15D0*R4
+
+   *           Decode the Dec
+                  CALL sla_DAFIN(C,I,D4,J)
+                  IF (J.EQ.0) THEN
+
+   *              FK4 to FK5
+                     CALL sla_FK45Z(R4,D4,1950D0,R5,D5)
+
+   *              Format and output the result
+                     CALL sla_DR2TF(2,R5,S,IHMSF)
+                     CALL sla_DR2AF(1,D5,S,IDMSF)
+                     WRITE (6,
+        :       '(1X,I2.2,2I3.2,''.'',I2.2,2X,A,I2.2,2I3.2,''.'',I1)')
+        :                                                     IHMSF,S,IDMSF
+                     BAD = .FALSE.
+                  END IF
+               END IF
+               IF (BAD) WRITE (6,'(1X,''?'')')
+            END IF
+         END DO
+
+         END
+</PRE>
+In this example, SLALIB not only provides the complicated FK4 to
+FK5 transformation but also
+simplifies the tedious and error-prone tasks
+of decoding and formatting angles
+expressed as hours, minutes <I>etc</I>.  The
+example incorporates range checking, and avoids the
+notorious ``minus zero'' problem (an often-perpetrated bug where
+declinations between <IMG WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$0^{\circ}$"> and <IMG WIDTH="30" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$-1^{\circ}$"> lose their minus
+sign).
+With a little extra elaboration and a few more calls to SLALIB,
+defaulting can be provided (enabling unused fields to
+be replaced with commas to avoid retyping), proper motions
+can be handled, different epochs can be specified, and
+so on.  See the program COCO (SUN/56) for further ideas.
+<P>
+<BR> <HR>
+<A NAME="tex2html285" HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html283" HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html277" HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html286" HREF="node5.html">Scope</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html284" HREF="node2.html">INTRODUCTION</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html278" HREF="node3.html">Purpose</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

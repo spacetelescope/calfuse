@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Focal-Plane Astrometry</TITLE>
+<META NAME="description" CONTENT="Focal-Plane Astrometry">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node227.html">
+<LINK REL="previous" HREF="node225.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node227.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2713" HREF="node227.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2711" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2705" HREF="node225.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2714" HREF="node227.html">Numerical Methods</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2712" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2706" HREF="node225.html">Radial Velocity and Light-Time Corrections</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000520000000000000000">
+Focal-Plane Astrometry</A>
+</H2>
+The relationship between the position of a star image in
+the focal plane of a telescope and the star's celestial
+coordinates is usually described in terms of the <I>tangent plane</I>
+or <I>gnomonic</I> projection.  This is the projection produced
+by a pin-hole camera and is a good approximation to the projection
+geometry of a traditional large <I>f</I>-ratio astrographic refractor.
+SLALIB includes a group of routines which transform
+star positions between their observed places on the celestial
+sphere and their <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> coordinates in the tangent plane.  The
+spherical coordinate system does not have to be <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> but
+usually is.  The so-called <I>standard coordinates</I> of a star
+are the tangent plane <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$">, in radians, with respect to an origin
+at the tangent point, with the <I>y</I>-axis pointing north and
+the <I>x</I>-axis pointing east (in the direction of increasing <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">).
+The factor relating the standard coordinates to
+the actual <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> coordinates in, say, millimetres is simply
+the focal length of the telescope.
+<P>
+Given the <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> of the <I>plate centre</I> (the tangent point)
+and the <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> of a star within the field, the standard
+coordinates can be determined by calling
+sla_S2TP
+(single precision) or
+sla_DS2TP
+(double precision).  The reverse transformation, where the
+<IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> is known and we wish to find the <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">, is carried out by calling
+sla_TP2S
+or
+sla_DTP2S.
+Occasionally we know the both the <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> and the <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> of a 
+star and need to deduce the <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> of the tangent point;  
+this can be done by calling
+sla_TPS2C
+or
+sla_DTPS2C.
+(All of these transformations apply not just to <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> but to
+other spherical coordinate systems, of course.)
+Equivalent (and faster)
+routines are provided which work directly in <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"> instead of
+spherical coordinates:
+sla_V2TP and
+sla_DV2TP,
+sla_TP2V and
+sla_DTP2V,
+sla_TPV2C and
+sla_DTPV2C.
+<P>
+Even at the best of times, the tangent plane projection is merely an
+approximation.  Some telescopes and cameras exhibit considerable pincushion
+or barrel distortion and some have a curved focal surface.
+For example, neither Schmidt cameras nor (especially)
+large reflecting telescopes with wide-field corrector lenses
+are adequately modelled by tangent-plane geometry.  In such
+cases, however, it is still possible to do most of the work
+using the (mathematically convenient) tangent-plane
+projection by inserting an extra step which applies or
+removes the distortion peculiar to the system concerned.
+A simple <I>r<SUB>1</SUB></I>=<I>r<SUB>0</SUB></I>(1+<I>Kr<SUB>0</SUB></I><SUP>2</SUP>) law works well in the
+majority of cases; <I>r<SUB>0</SUB></I> is the radial distance in the
+tangent plane, <I>r<SUB>1</SUB></I> is the radial distance after adding
+the distortion, and <I>K</I> is a constant which depends on the
+telescope (<IMG WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img298.gif"
+ ALT="$\theta$"> is unaffected).  The routine
+sla_PCD
+applies the distortion to an <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> and
+sla_UNPCD
+removes it.  For <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> in radians, <I>K</I> values range from -1/3 for the
+tiny amount of barrel distortion in Schmidt geometry to several
+hundred for the serious pincushion distortion
+produced by wide-field correctors in big reflecting telescopes
+(the AAT prime focus triplet corrector is about <I>K</I>=+178.6).
+<P>
+SLALIB includes a group of routines which can be put together
+to build a simple plate-reduction program.  The heart of the group is
+sla_FITXY,
+which fits a linear model to relate two sets of <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> coordinates,
+in the case of a plate reduction the measured positions of the
+images of a set of
+reference stars and the standard
+coordinates derived from their catalogue positions.  The
+model is of the form:
+
+<P ALIGN="CENTER">
+<I>x</I><SUB><I>p</I></SUB> = <I>a</I> + <I>bx</I><SUB><I>m</I></SUB> + <I>cy</I><SUB><I>m</I></SUB>
+</P>
+
+<P ALIGN="CENTER">
+<I>y</I><SUB><I>p</I></SUB> = <I>d</I> + <I>ex</I><SUB><I>m</I></SUB> + <I>fy</I><SUB><I>m</I></SUB>
+</P>
+<P>
+where the <I>p</I> subscript indicates ``predicted'' coordinates
+(the model's approximation to the ideal ``expected'' coordinates) and the
+<I>m</I> subscript indicates ``measured coordinates''.  The
+six coefficients <I>a-f</I> can optionally be
+constrained to represent a ``solid body rotation'' free of
+any squash or shear distortions.  Without this constraint
+the model can, to some extent, accommodate effects like refraction,
+allowing mean places to be used directly and
+avoiding the extra complications of a
+full mean-apparent-observed transformation for each star.
+Having obtained the linear model,
+sla_PXY
+can be used to process the set of measured and expected
+coordinates, giving the predicted coordinates and determining
+the RMS residuals in <I>x</I> and <I>y</I>.
+The routine
+sla_XY2XY
+transforms one <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> into another using the linear model.  A model
+can be inverted by calling
+sla_INVF,
+and decomposed into zero points, scales, <I>x</I>/<I>y</I> nonperpendicularity
+and orientation by calling
+sla_DCMPF.
+<P>
+<BR> <HR>
+<A NAME="tex2html2713" HREF="node227.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2711" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2705" HREF="node225.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2714" HREF="node227.html">Numerical Methods</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2712" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2706" HREF="node225.html">Radial Velocity and Light-Time Corrections</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

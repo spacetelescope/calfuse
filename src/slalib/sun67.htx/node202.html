@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Celestial Coordinate Systems</TITLE>
+<META NAME="description" CONTENT="Celestial Coordinate Systems">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node203.html">
+<LINK REL="previous" HREF="node200.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node203.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2472" HREF="node203.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2470" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2464" HREF="node201.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2473" HREF="node203.html">Precession and Nutation</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2471" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2465" HREF="node201.html">Using vectors</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00053000000000000000">
+Celestial Coordinate Systems</A>
+</H2>
+SLALIB has routines to perform transformations
+of celestial positions between different spherical
+coordinate systems, including those shown in the following table:
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TH ALIGN="LEFT" NOWRAP><I>system</I></TH>
+<TH ALIGN="CENTER" NOWRAP><I>symbols</I></TH>
+<TH ALIGN="CENTER" NOWRAP><I>longitude</I></TH>
+<TH ALIGN="CENTER" NOWRAP><I>latitude</I></TH>
+<TH ALIGN="CENTER" NOWRAP><I>x-y plane</I></TH>
+<TH ALIGN="CENTER" NOWRAP><I>long. zero</I></TH>
+<TH ALIGN="CENTER" NOWRAP><I>RH/LH</I></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>horizon</TD>
+<TD ALIGN="CENTER" NOWRAP>-</TD>
+<TD ALIGN="CENTER" NOWRAP>azimuth</TD>
+<TD ALIGN="CENTER" NOWRAP>elevation</TD>
+<TD ALIGN="CENTER" NOWRAP>horizontal</TD>
+<TD ALIGN="CENTER" NOWRAP>north</TD>
+<TD ALIGN="CENTER" NOWRAP>L</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>equatorial</TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="28" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.gif"
+ ALT="$\alpha,\delta$"></TD>
+<TD ALIGN="CENTER" NOWRAP>R.A.</TD>
+<TD ALIGN="CENTER" NOWRAP>Dec.</TD>
+<TD ALIGN="CENTER" NOWRAP>equator</TD>
+<TD ALIGN="CENTER" NOWRAP>equinox</TD>
+<TD ALIGN="CENTER" NOWRAP>R</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>local equ.</TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="27" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif"
+ ALT="$h,\delta$"></TD>
+<TD ALIGN="CENTER" NOWRAP>H.A.</TD>
+<TD ALIGN="CENTER" NOWRAP>Dec.</TD>
+<TD ALIGN="CENTER" NOWRAP>equator</TD>
+<TD ALIGN="CENTER" NOWRAP>meridian</TD>
+<TD ALIGN="CENTER" NOWRAP>L</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>ecliptic</TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="29" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img253.gif"
+ ALT="$\lambda,\beta$"></TD>
+<TD ALIGN="CENTER" NOWRAP>ecl. long.</TD>
+<TD ALIGN="CENTER" NOWRAP>ecl. lat.</TD>
+<TD ALIGN="CENTER" NOWRAP>ecliptic</TD>
+<TD ALIGN="CENTER" NOWRAP>equinox</TD>
+<TD ALIGN="CENTER" NOWRAP>R</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>galactic</TD>
+<TD ALIGN="CENTER" NOWRAP><IMG WIDTH="45" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img254.gif"
+ ALT="$l^{I\!I},b^{I\!I}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>gal. long.</TD>
+<TD ALIGN="CENTER" NOWRAP>gal. lat.</TD>
+<TD ALIGN="CENTER" NOWRAP>gal. equator</TD>
+<TD ALIGN="CENTER" NOWRAP>gal. centre</TD>
+<TD ALIGN="CENTER" NOWRAP>R</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>supergalactic</TD>
+<TD ALIGN="CENTER" NOWRAP>SGL,SGB</TD>
+<TD ALIGN="CENTER" NOWRAP>SG long.</TD>
+<TD ALIGN="CENTER" NOWRAP>SG lat.</TD>
+<TD ALIGN="CENTER" NOWRAP>SG equator</TD>
+<TD ALIGN="CENTER" NOWRAP>node w. gal. equ.</TD>
+<TD ALIGN="CENTER" NOWRAP>R</TD>
+</TR>
+</TABLE></DIV>
+Transformations between <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> and <IMG WIDTH="66" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$[\,Az,El~]$"> can be performed by
+calling
+sla_E2H
+and
+sla_H2E,
+or, in double precision,
+sla_DE2H
+and
+sla_DH2E.
+There is also a routine for obtaining
+zenith distance alone for a given <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$">,sla_ZD,
+and one for determining the parallactic angle,
+sla_PA.
+Three routines are included which relate to altazimuth telescope
+mountings.  For a given <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> and latitude,
+sla_ALTAZ
+returns the azimuth, elevation and parallactic angle, plus
+velocities and accelerations for sidereal tracking.
+The routines
+sla_PDA2H
+and
+sla_PDQ2H
+predict at what hour angle a given azimuth or
+parallactic angle will be reached.
+<P>
+The routines
+sla_EQECL
+and
+sla_ECLEQ
+transform between ecliptic
+coordinates and <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">; there is also a routine for generating the
+equatorial to ecliptic rotation matrix for a given date:
+sla_ECMAT.
+<P>
+For conversion between Galactic coordinates and <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> there are
+two sets of routines, depending on whether the <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> is
+old-style, B1950, or new-style, J2000;
+sla_EG50
+and
+sla_GE50
+are <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> to <IMG WIDTH="59" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.gif"
+ ALT="$[\,l^{I\!I},b^{I\!I}\,]$"> and <I>vice versa</I> for the B1950 case, while
+sla_EQGAL
+and
+sla_GALEQ
+are the J2000 equivalents.
+<P>
+Finally, the routines
+sla_GALSUP
+and
+sla_SUPGAL
+transform <IMG WIDTH="59" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.gif"
+ ALT="$[\,l^{I\!I},b^{I\!I}\,]$"> to de&nbsp;Vaucouleurs supergalactic longitude and latitude
+and <I>vice versa.</I>
+<P>
+It should be appreciated that the table, above, constitutes
+a gross oversimplification.   Apparently
+simple concepts such as equator, equinox <I>etc.</I> are apt to be very hard to
+pin down precisely (polar motion, orbital perturbations ...) and
+some have several interpretations, all subtly different.  The various
+frames move in complicated ways with respect to one another or to
+the stars (themselves in motion).  And in some instances the
+coordinate system is slightly distorted, so that the
+ordinary rules of spherical trigonometry no longer strictly apply.
+<P>
+These <I>caveats</I>
+apply particularly to the bewildering variety of different
+<IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> systems that are in use.  Figure&nbsp;1 shows how
+some of these systems are related, to one another and
+to the direction in which a celestial source actually
+appears in the sky.  At the top of the diagram are
+the various sorts of <I>mean place</I>
+found in star catalogues and papers;<A NAME="tex2html3" HREF="footnode.html#27724"><SUP><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="foot_motif.gif"></SUP></A> at the bottom is the
+<I>observed</I> <IMG WIDTH="66" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$[\,Az,El~]$">, where a perfect theodolite would
+be pointed to see the source;  and in the body of
+the diagram are
+the intermediate processing steps and coordinate
+systems.  To help
+understand this diagram, and the SLALIB routines that can
+be used to carry out the various calculations, we will look at the coordinate
+systems involved, and the astronomical phenomena that
+affect them.
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="27722">&#160;</A>
+<TABLE>
+<CAPTION><STRONG>Figure 1:</STRONG>
+Relationship Between Celestial Coordinates</CAPTION>
+<TR><TD><IMG WIDTH="450" HEIGHT="642"
+ SRC="img255.gif"
+ ALT="\begin{figure}
+\begin{center}
+\begin{tabular}
+{\vert cccccc\vert} \hline
+& & & &...
+ ...2000, all of the precession and E-terms corrections
+are superfluous.\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+<BR>
+<BR> <HR>
+<A NAME="tex2html2472" HREF="node203.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2470" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2464" HREF="node201.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2473" HREF="node203.html">Precession and Nutation</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2471" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2465" HREF="node201.html">Using vectors</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

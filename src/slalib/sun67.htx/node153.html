@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PRECES - Precession</TITLE>
+<META NAME="description" CONTENT="SLA_PRECES - Precession">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node154.html">
+<LINK REL="previous" HREF="node152.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node154.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1956" HREF="node154.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1954" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1948" HREF="node152.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1957" HREF="node154.html">SLA_PRECL - Precession Matrix (latest)</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1955" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1949" HREF="node152.html">SLA_PREC - Precession Matrix (FK5)</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004140000000000000000">SLA_PRECES - Precession</A>
+<A NAME="xref_SLA_PRECES">&#160;</A><A NAME="SLA_PRECES">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Precession - either the old ``FK4'' (Bessel-Newcomb, pre&nbsp;IAU&nbsp;1976)
+or new ``FK5'' (Fricke, post&nbsp;IAU&nbsp;1976) as required.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_PRECES (SYSTEM, EP0, EP1, RA, DC)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>SYSTEM</EM></TD>
+<TH ALIGN="LEFT"><B>C</B></TH>
+<TD ALIGN="LEFT" NOWRAP>precession to be applied: `FK4' or `FK5'</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EP0,EP1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>starting and ending epoch</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RA,DC</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">, mean equator &amp; equinox of epoch EP0</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RA,DC</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">, mean equator &amp; equinox of epoch EP1</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Lowercase characters in SYSTEM are acceptable.
+<DT>2.
+<DD>The epochs are Besselian if SYSTEM=`FK4' and Julian if `FK5'.
+For example, to precess coordinates in the old system from
+        equinox 1900.0 to 1950.0 the call would be:
+        <BLOCKQUOTE><TT>CALL sla_PRECES ('FK4', 1900D0, 1950D0, RA, DC)</TT>
+        </BLOCKQUOTE>
+  <DT>3.
+<DD>This routine will <B>NOT</B> correctly convert between the old and
+        the new systems - for example conversion from B1950 to J2000.
+        For these purposes see sla_FK425, sla_FK524, sla_FK45Z and
+        sla_FK54Z.
+  <DT>4.
+<DD>If an invalid SYSTEM is supplied, values of -99D0,-99D0 are
+        returned for both RA and DC.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1956" HREF="node154.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1954" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1948" HREF="node152.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1957" HREF="node154.html">SLA_PRECL - Precession Matrix (latest)</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1955" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1949" HREF="node152.html">SLA_PREC - Precession Matrix (FK5)</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

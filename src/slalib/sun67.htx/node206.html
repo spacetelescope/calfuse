@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Epoch</TITLE>
+<META NAME="description" CONTENT="Epoch">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node207.html">
+<LINK REL="previous" HREF="node205.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node207.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2511" HREF="node207.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2509" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2503" HREF="node205.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2512" HREF="node207.html">Proper Motion</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2510" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2504" HREF="node205.html">Mean Places</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00056000000000000000">
+Epoch</A>
+</H2>
+The word ``epoch'' just means a moment in time, and can be supplied
+in a variety of forms, using different calendar systems and timescales.
+<P>
+For the purpose of specifying the epochs associated with the
+mean place of a star, two conventions exist.  Both sorts of epoch
+superficially resemble years AD but are not tied to the civil
+(Gregorian) calendar;  to distinguish them from ordinary calendar-years
+there is often
+a ``.0'' suffix (as in ``1950.0''), although any other fractional
+part is perfectly legal (<I>e.g.</I> 1987.5).
+<P>
+The older system,
+<I>Besselian epoch</I>, is defined in such a way that its units are
+tropical years of about 365.2422&nbsp;days and its timescale is the
+obsolete <I>Ephemeris Time</I>.
+The start of the Besselian year is the moment
+when the ecliptic longitude of the mean Sun is
+<IMG WIDTH="34" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img167.gif"
+ ALT="$280^\circ$">;  this happens near the start of the
+calendar year (which is why <IMG WIDTH="34" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img167.gif"
+ ALT="$280^\circ$"> was chosen).
+<P>
+The new system, <I>Julian epoch</I>, was adopted as
+part of the IAU&nbsp;1976 revisions (about which more will be said
+in due course) and came formally into use at the
+beginning of 1984.  It uses the Julian year of exactly
+365.25&nbsp;days; Julian epoch 2000 is defined to be 2000&nbsp;January&nbsp;1.5 in the
+TT timescale.
+<P>
+For specifying mean places, various standard epochs are in use, the
+most common ones being Besselian epoch 1950.0 and Julian epoch 2000.0.
+To distinguish the two systems, Besselian epochs
+are now prefixed ``B'' and Julian epochs are prefixed ``J''.
+Epochs without an initial letter can be assumed to be Besselian
+if before 1984.0, otherwise Julian.  These details are supported by
+the SLALIB routines
+sla_DBJIN
+(decodes numbers from a
+character string, accepting an optional leading B or J),
+sla_KBJ
+(decides whether B or J depending on prefix or range) and
+sla_EPCO
+(converts one epoch to match another).
+<P>
+SLALIB has four routines for converting
+Besselian and Julian epochs into other forms.
+The functions
+sla_EPB2D
+and
+sla_EPJ2D
+convert Besselian and Julian epochs into MJD; the functions
+sla_EPB
+and
+sla_EPJ
+do the reverse.  For example, to express B1950 as a Julian epoch:
+<P><PRE>
+            DOUBLE PRECISION sla_EPJ,sla_EPB2D
+             :
+            WRITE (*,'(1X,''J'',F10.5)') sla_EPJ(sla_EPB2D(1950D0))
+</PRE>
+<P>(The answer is J1949.99979.)
+<P>
+<BR> <HR>
+<A NAME="tex2html2511" HREF="node207.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2509" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2503" HREF="node205.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2512" HREF="node207.html">Proper Motion</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2510" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2504" HREF="node205.html">Mean Places</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

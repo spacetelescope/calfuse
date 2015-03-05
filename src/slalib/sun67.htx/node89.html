@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_ECOR - RV &amp; Time Corrns to Sun</TITLE>
+<META NAME="description" CONTENT="SLA_ECOR - RV &amp; Time Corrns to Sun">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node90.html">
+<LINK REL="previous" HREF="node88.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node90.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1316" HREF="node90.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1314" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1308" HREF="node88.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1317" HREF="node90.html">SLA_EG50 - B1950 to Galactic</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1315" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1309" HREF="node88.html">SLA_ECMAT - Form Matrix</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000476000000000000000">SLA_ECOR - RV &amp; Time Corrns to Sun</A>
+<A NAME="xref_SLA_ECOR">&#160;</A><A NAME="SLA_ECOR">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Component of Earth orbit velocity and heliocentric
+light time in a given direction.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_ECOR (RM, DM, IY, ID, FD, RV, TL)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RM,DM</EM></TD>
+<TH ALIGN="LEFT"><B>R</B></TH>
+<TD ALIGN="LEFT" NOWRAP>mean <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> of date (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>IY</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>year</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ID</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>day in year (1 = Jan 1st)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>FD</EM></TD>
+<TD ALIGN="LEFT"><B>R</B></TD>
+<TD ALIGN="LEFT" NOWRAP>fraction of day</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RV</EM></TD>
+<TH ALIGN="LEFT"><B>R</B></TH>
+<TD ALIGN="LEFT" NOWRAP>component of Earth orbital velocity (km&nbsp;s<SUP>-1</SUP>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>TL</EM></TD>
+<TD ALIGN="LEFT"><B>R</B></TD>
+<TD ALIGN="LEFT" NOWRAP>component of heliocentric light time (s)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The date and time is TDB (loosely ET) in a Julian calendar
+which has been aligned to the ordinary Gregorian
+calendar for the interval 1900 March 1 to 2100 February 28.
+        The year and day can be obtained by calling sla_CALYD or
+        sla_CLYD.
+  <DT>2.
+<DD>Sign convention:
+        <UL>
+<LI> The velocity component is +ve when the
+               Earth is receding from
+               the given point on the sky.
+<LI> The light time component is +ve
+               when the Earth lies between the Sun and
+               the given point on the sky.
+        </UL>
+ <DT>3.
+<DD>Accuracy:
+       <UL>
+<LI> The velocity component is usually within 0.004&nbsp;km&nbsp;s<SUP>-1</SUP>
+              of the correct value and is never in error by more than
+              0.007&nbsp;km&nbsp;s<SUP>-1</SUP>.
+<LI> The error in light time correction is about
+              <IMG WIDTH="32" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img96.gif"
+ ALT="$0^{\rm s}\hspace{-0.3em}.03$"> at worst,
+              but is usually better than <IMG WIDTH="32" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img97.gif"
+ ALT="$0^{\rm s}\hspace{-0.3em}.01$">.       </UL>
+       For applications requiring higher accuracy, see the sla_EVP routine.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1316" HREF="node90.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1314" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1308" HREF="node88.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1317" HREF="node90.html">SLA_EG50 - B1950 to Galactic</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1315" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1309" HREF="node88.html">SLA_ECMAT - Form Matrix</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

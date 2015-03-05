@@ -1,0 +1,428 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_REFCOQ - Refraction Constants (fast)</TITLE>
+<META NAME="description" CONTENT="SLA_REFCOQ - Refraction Constants (fast)">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node167.html">
+<LINK REL="previous" HREF="node165.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node167.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2086" HREF="node167.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2084" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2078" HREF="node165.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2087" HREF="node167.html">SLA_REFRO - Refraction</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2085" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2079" HREF="node165.html">SLA_REFCO - Refraction Constants</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004153000000000000000">SLA_REFCOQ - Refraction Constants (fast)</A>
+<A NAME="xref_SLA_REFCOQ">&#160;</A><A NAME="SLA_REFCOQ">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Determine the constants <I>a</I> and <I>b</I> in the
+atmospheric refraction model
+         <IMG WIDTH="164" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img148.gif"
+ ALT="$\Delta \zeta = a \tan \zeta + b \tan^{3} \zeta$">,         where <IMG WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img149.gif"
+ ALT="$\zeta$"> is the <I>observed</I> zenith distance
+         (<I>i.e.</I> affected by refraction) and <IMG WIDTH="24" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img150.gif"
+ ALT="$\Delta \zeta$"> is
+         what to add to <IMG WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img149.gif"
+ ALT="$\zeta$"> to give the <I>topocentric</I>
+         (<I>i.e. in vacuo</I>) zenith distance. (This is a fast
+         alternative to the sla_REFCO routine - see notes.)
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_REFCOQ (TDK, PMB, RH, WL, REFA, REFB)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>TDK</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>ambient temperature at the observer (degrees K)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PMB</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>pressure at the observer (mB)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RH</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>relative humidity at the observer (range 0-1)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>WL</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>effective wavelength of the source (<IMG WIDTH="26" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif"
+ ALT="$\mu{\rm m}$">)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>REFA</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="37" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img151.gif"
+ ALT="$\tan \zeta$"> coefficient (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>REFB</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="44" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img152.gif"
+ ALT="$\tan^{3} \zeta$"> coefficient (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The radio refraction is chosen by specifying WL &gt;100&nbsp;<IMG WIDTH="26" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif"
+ ALT="$\mu{\rm m}$">.<DT>2.
+<DD>The model is an approximation, for moderate zenith distances,
+to the predictions of the sla_REFRO routine.  The approximation
+        is maintained across a range of conditions, and applies to
+        both optical/IR and radio.
+  <DT>3.
+<DD>The algorithm is a fast alternative to the sla_REFCO routine.
+        The latter calls the sla_REFRO routine itself:  this involves
+        integrations through a model atmosphere, and is costly in
+        processor time.  However, the model which is produced is precisely
+        correct for two zenith distances (<IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img154.gif"
+ ALT="$45^\circ$"> and <IMG WIDTH="40" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img161.gif"
+ ALT="$\sim\!76^\circ$">)        and at other zenith distances is limited in accuracy only by the
+        <IMG WIDTH="164" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img148.gif"
+ ALT="$\Delta \zeta = a \tan \zeta + b \tan^{3} \zeta$"> formulation
+        itself.  The present routine is not as accurate, though it
+        satisfies most practical requirements.
+  <DT>4.
+<DD>The model omits the effects of (i)&nbsp;height above sea level (apart
+        from the reduced pressure itself), (ii)&nbsp;latitude (<I>i.e.</I> the
+        flattening of the Earth) and (iii)&nbsp;variations in tropospheric
+        lapse rate.
+  <DT>5.
+<DD>The model has been tested using the following range of conditions:
+        <DL COMPACT>
+<DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>lapse rates 0.0055, 0.0065, 0.0075&nbsp;degrees K per metre
+<DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>latitudes <IMG WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$0^{\circ}$">, <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img162.gif"
+ ALT="$25^\circ$">, <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img163.gif"
+ ALT="$50^\circ$">, <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img164.gif"
+ ALT="$75^\circ$">        <DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>heights 0, 2500, 5000 metres above sea level
+        <DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>pressures mean for height -10% to +5% in steps of 5%
+        <DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>temperatures <IMG WIDTH="38" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img165.gif"
+ ALT="$-10^\circ$"> to <IMG WIDTH="38" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img166.gif"
+ ALT="$+20^\circ$"> with respect to
+              <IMG WIDTH="34" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img167.gif"
+ ALT="$280^\circ$">K at sea level
+        <DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>relative humidity 0, 0.5, 1
+        <DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>wavelength 0.4, 0.6, ... <IMG WIDTH="34" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img168.gif"
+ ALT="$2\mu{\rm m}$">, + radio
+        <DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>zenith distances <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img39.gif"
+ ALT="$15^\circ$">, <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img154.gif"
+ ALT="$45^\circ$">, <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img164.gif"
+ ALT="$75^\circ$"></DL>
+        For the above conditions, the comparison with sla_REFRO
+        was as follows:
+<P>        <BR>
+<BR>
+<BR>
+<P>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>&nbsp;</TD>
+<TH ALIGN="RIGHT" NOWRAP><I>worst</I></TH>
+<TH ALIGN="RIGHT" NOWRAP><I>RMS</I></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>optical/IR</TD>
+<TD ALIGN="RIGHT" NOWRAP>62</TD>
+<TD ALIGN="RIGHT" NOWRAP>8</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>radio</TD>
+<TD ALIGN="RIGHT" NOWRAP>319</TD>
+<TD ALIGN="RIGHT" NOWRAP>49</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>&nbsp;</TD>
+<TD ALIGN="RIGHT" NOWRAP>mas</TD>
+<TD ALIGN="RIGHT" NOWRAP>mas</TD>
+</TR>
+</TABLE>
+<P>        <BR>
+<BR>
+<BR>
+<BR>
+<P>
+For this particular set of conditions:
+        <DL COMPACT>
+<DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>lapse rate <IMG WIDTH="86" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img169.gif"
+ ALT="$6.5^\circ K km^{-1}$"><DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>latitude <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img163.gif"
+ ALT="$50^\circ$">        <DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>sea level
+        <DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>pressure 1005mB
+        <DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>temperature <IMG WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img170.gif"
+ ALT="$7^\circ$">C
+        <DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>humidity 80%
+        <DT><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><DD>wavelength 5740A
+        </DL>
+        the results were as follows:
+<P>        <BR>
+<BR>
+<BR>
+<P>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1><IMG WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img149.gif"
+ ALT="$\zeta$"></TD>
+<TD ALIGN="CENTER" NOWRAP COLSPAN=1>sla_REFRO</TD>
+<TD ALIGN="CENTER" NOWRAP COLSPAN=1>sla_REFCOQ</TD>
+<TD ALIGN="CENTER" NOWRAP COLSPAN=1>Saastamoinen</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>10</TD>
+<TD ALIGN="RIGHT" NOWRAP>10.27</TD>
+<TD ALIGN="RIGHT" NOWRAP>10.27</TD>
+<TD ALIGN="RIGHT" NOWRAP>10.27</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>20</TD>
+<TD ALIGN="RIGHT" NOWRAP>21.19</TD>
+<TD ALIGN="RIGHT" NOWRAP>21.20</TD>
+<TD ALIGN="RIGHT" NOWRAP>21.19</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>30</TD>
+<TD ALIGN="RIGHT" NOWRAP>33.61</TD>
+<TD ALIGN="RIGHT" NOWRAP>33.61</TD>
+<TD ALIGN="RIGHT" NOWRAP>33.60</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>40</TD>
+<TD ALIGN="RIGHT" NOWRAP>48.82</TD>
+<TD ALIGN="RIGHT" NOWRAP>48.83</TD>
+<TD ALIGN="RIGHT" NOWRAP>48.81</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>45</TD>
+<TD ALIGN="RIGHT" NOWRAP>58.16</TD>
+<TD ALIGN="RIGHT" NOWRAP>58.18</TD>
+<TD ALIGN="RIGHT" NOWRAP>58.16</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>50</TD>
+<TD ALIGN="RIGHT" NOWRAP>69.28</TD>
+<TD ALIGN="RIGHT" NOWRAP>69.30</TD>
+<TD ALIGN="RIGHT" NOWRAP>69.27</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>55</TD>
+<TD ALIGN="RIGHT" NOWRAP>82.97</TD>
+<TD ALIGN="RIGHT" NOWRAP>82.99</TD>
+<TD ALIGN="RIGHT" NOWRAP>82.95</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>60</TD>
+<TD ALIGN="RIGHT" NOWRAP>100.51</TD>
+<TD ALIGN="RIGHT" NOWRAP>100.54</TD>
+<TD ALIGN="RIGHT" NOWRAP>100.50</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>65</TD>
+<TD ALIGN="RIGHT" NOWRAP>124.23</TD>
+<TD ALIGN="RIGHT" NOWRAP>124.26</TD>
+<TD ALIGN="RIGHT" NOWRAP>124.20</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>70</TD>
+<TD ALIGN="RIGHT" NOWRAP>158.63</TD>
+<TD ALIGN="RIGHT" NOWRAP>158.68</TD>
+<TD ALIGN="RIGHT" NOWRAP>158.61</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>72</TD>
+<TD ALIGN="RIGHT" NOWRAP>177.32</TD>
+<TD ALIGN="RIGHT" NOWRAP>177.37</TD>
+<TD ALIGN="RIGHT" NOWRAP>177.31</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>74</TD>
+<TD ALIGN="RIGHT" NOWRAP>200.35</TD>
+<TD ALIGN="RIGHT" NOWRAP>200.38</TD>
+<TD ALIGN="RIGHT" NOWRAP>200.32</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>76</TD>
+<TD ALIGN="RIGHT" NOWRAP>229.45</TD>
+<TD ALIGN="RIGHT" NOWRAP>229.43</TD>
+<TD ALIGN="RIGHT" NOWRAP>229.42</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>78</TD>
+<TD ALIGN="RIGHT" NOWRAP>267.44</TD>
+<TD ALIGN="RIGHT" NOWRAP>267.29</TD>
+<TD ALIGN="RIGHT" NOWRAP>267.41</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>80</TD>
+<TD ALIGN="RIGHT" NOWRAP>319.13</TD>
+<TD ALIGN="RIGHT" NOWRAP>318.55</TD>
+<TD ALIGN="RIGHT" NOWRAP>319.10</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT" NOWRAP>deg</TD>
+<TD ALIGN="RIGHT" NOWRAP>arcsec</TD>
+<TD ALIGN="RIGHT" NOWRAP>arcsec</TD>
+<TD ALIGN="RIGHT" NOWRAP>arcsec</TD>
+</TR>
+</TABLE>
+<P>        <BR>
+<BR>
+<BR>
+<BR>
+<P>
+The values for Saastamoinen's formula (which includes terms
+        up to <IMG WIDTH="33" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img171.gif"
+ ALT="$\tan^5$">) are taken from Hohenkerk and Sinclair (1985).
+<P>
+The results from the much slower but more accurate sla_REFCO
+        routine have not been included in the tabulation as they are
+        identical to those in the sla_REFRO column to the 
+      <IMG WIDTH="31" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img158.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.01$"><P>
+resolution used.
+  <DT>6.
+<DD>Outlandish input parameters are silently limited
+        to mathematically safe values.  Zero pressure is permissible,
+        and causes zeroes to be returned.
+  <DT>7.
+<DD>The algorithm draws on several sources, as follows:
+        <UL>
+<LI> The formula for the saturation vapour pressure of water as
+              a function of temperature and temperature is taken from
+              expressions A4.5-A4.7 of Gill (1982).
+<LI> The formula for the water vapour pressure, given the
+              saturation pressure and the relative humidity is from
+              Crane (1976), expression 2.5.5.
+<LI> The refractivity of air is a function of temperature,
+              total pressure, water-vapour pressure and, in the case
+              of optical/IR but not radio, wavelength.  The formulae
+              for the two cases are developed from the Essen and Froome
+              expressions adopted in Resolution 1 of the 12th International
+              Geodesy Association General Assembly (1963).
+        </UL>
+        The above three items are as used in the sla_REFRO routine.
+        <UL>
+<LI> The formula for <IMG WIDTH="91" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img172.gif"
+ ALT="$\beta~(=H_0/r_0)$"> is
+              an adaption of expression 9 from Stone (1996).  The
+              adaptations, arrived at empirically, consist of (i)&nbsp;a
+              small adjustment to the coefficient and (ii)&nbsp;a humidity
+              term for the radio case only.
+<LI> The formulae for the refraction constants as a function of
+              <I>n</I>-1 and <IMG WIDTH="12" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img173.gif"
+ ALT="$\beta$"> are from Green (1987), expression 4.31.
+        </UL></DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Crane, R.K., Meeks, M.L. (ed), ``Refraction Effects in
+the Neutral Atmosphere'',
+<I>Methods of Experimental Physics: Astrophysics 12B,</I>
+        Academic Press, 1976.
+  <DT>2.
+<DD>Gill, Adrian E., <I>Atmosphere-Ocean Dynamics,</I>
+        Academic Press, 1982.
+  <DT>3.
+<DD>Hohenkerk, C.Y., &amp; Sinclair, A.T., NAO Technical Note
+        No.&nbsp;63, 1985.
+  <DT>4.
+<DD>International Geodesy Association General Assembly, Bulletin
+        G&#233;od&#233;sique <B>70</B> p390, 1963.
+  <DT>5.
+<DD>Stone, Ronald C., P.A.S.P.&nbsp;<B>108</B> 1051-1058, 1996.
+  <DT>6.
+<DD>Green, R.M., <I>Spherical Astronomy,</I> Cambridge
+        University Press, 1987.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html2086" HREF="node167.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2084" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2078" HREF="node165.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2087" HREF="node167.html">SLA_REFRO - Refraction</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2085" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2079" HREF="node165.html">SLA_REFCO - Refraction Constants</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

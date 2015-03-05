@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_DT - Approximate ET minus UT</TITLE>
+<META NAME="description" CONTENT="SLA_DT - Approximate ET minus UT">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node74.html">
+<LINK REL="previous" HREF="node72.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node74.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1156" HREF="node74.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1154" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1148" HREF="node72.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1157" HREF="node74.html">SLA_DTF2D - Hour,Min,Sec to Days</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1155" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1149" HREF="node72.html">SLA_DSEP - Angle Between 2 Points on Sphere</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000460000000000000000">SLA_DT - Approximate ET minus UT</A>
+<A NAME="xref_SLA_DT">&#160;</A><A NAME="SLA_DT">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Estimate <IMG WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\Delta$">T, the offset between dynamical time
+and Universal Time, for a given historical epoch.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>D&nbsp;=&nbsp;sla_DT (EPOCH)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EPOCH</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TH ALIGN="LEFT" NOWRAP>(Julian) epoch (<I>e.g.</I> 1850D0)</TH>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>sla_DT</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>approximate ET-UT (after 1984, TT-UT1) in seconds</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Depending on the epoch, one of three parabolic approximations
+is used:
+<PRE><TT>
+before AD 979 		 Stephenson &amp; Morrison's 390 BC to AD 948 model
+		 AD 979 to AD 1708 		 Stephenson &amp; Morrison's AD 948 to AD 1600 model
+		 after AD 1708 		 McCarthy &amp; Babcock's post-1650 model
+</TT></PRE>
+        The breakpoints are chosen to ensure continuity:  they occur
+        at places where the adjacent models give the same answer as
+        each other.
+  <DT>2.
+<DD>The accuracy is modest, with errors of up to <IMG WIDTH="24" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img86.gif"
+ ALT="$20^{\rm s}$"> during
+        the interval since 1650, rising to perhaps <IMG WIDTH="30" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img87.gif"
+ ALT="$30^{\rm m}$">        by 1000&nbsp;BC.  Comparatively accurate values from AD&nbsp;1600
+        are tabulated in
+        the <I>Astronomical Almanac</I> (see section K8 of the 1995
+        edition).
+  <DT>3.
+<DD>The use of <TT>DOUBLE PRECISION</TT> for both argument and result is
+        simply for compatibility with other SLALIB time routines.
+  <DT>4.
+<DD>The models used are based on a lunar tidal acceleration value
+        of 
+      <IMG WIDTH="52" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img88.gif"
+ ALT="$-26\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.00$">    per century.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>Seidelmann, P.K. (ed), 1992.  <I>Explanatory
+Supplement to the Astronomical Almanac,</I> ISBN&nbsp;0-935702-68-7.
+      This contains references to the papers by Stephenson &amp; Morrison
+      and by McCarthy &amp; Babcock which describe the models used here.
+     </DL>
+<BR> <HR>
+<A NAME="tex2html1156" HREF="node74.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1154" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1148" HREF="node72.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1157" HREF="node74.html">SLA_DTF2D - Hour,Min,Sec to Days</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1155" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1149" HREF="node72.html">SLA_DSEP - Angle Between 2 Points on Sphere</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

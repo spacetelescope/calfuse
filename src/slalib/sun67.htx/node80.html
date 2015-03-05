@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_DTT - TT minus UTC</TITLE>
+<META NAME="description" CONTENT="SLA_DTT - TT minus UTC">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node81.html">
+<LINK REL="previous" HREF="node79.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node81.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1226" HREF="node81.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1224" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1218" HREF="node79.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1227" HREF="node81.html">SLA_DV2TP - Direction Cosines to Tangent Plane</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1225" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1219" HREF="node79.html">SLA_DTPV2C - Plate centre from and x,y,z</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000467000000000000000">SLA_DTT - TT minus UTC</A>
+<A NAME="xref_SLA_DTT">&#160;</A><A NAME="SLA_DTT">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Compute <IMG WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\Delta$">TT, the increment to be applied to
+Coordinated Universal Time UTC to give
+         Terrestrial Time TT.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>D&nbsp;=&nbsp;sla_DTT (DJU)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DJU</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>UTC date as a modified JD (JD-2400000.5)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>sla_DTT</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>TT-UTC in seconds</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The UTC is specified to be a date rather than a time to indicate
+that care needs to be taken not to specify an instant which lies
+within a leap second.  Though in most cases UTC can include the
+        fractional part, correct behaviour on the day of a leap second
+        can be guaranteed only up to the end of the second
+        <IMG WIDTH="82" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif"
+ ALT="$23^{\rm h}\,59^{\rm m}\,59^{\rm s}$">.  <DT>2.
+<DD>Pre 1972 January 1 a fixed value of 10 + ET-TAI is returned.
+  <DT>3.
+<DD>TT is one interpretation of the defunct timescale
+        <I>Ephemeris Time</I>, ET.
+  <DT>4.
+<DD>See also the routine sla_DT, which roughly estimates ET-UT for
+        historical epochs.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1226" HREF="node81.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1224" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1218" HREF="node79.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1227" HREF="node81.html">SLA_DV2TP - Direction Cosines to Tangent Plane</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1225" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1219" HREF="node79.html">SLA_DTPV2C - Plate centre from and x,y,z</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

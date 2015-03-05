@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_EULER - Rotation Matrix from Euler Angles</TITLE>
+<META NAME="description" CONTENT="SLA_EULER - Rotation Matrix from Euler Angles">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node102.html">
+<LINK REL="previous" HREF="node100.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node102.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1436" HREF="node102.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1434" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1428" HREF="node100.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1437" HREF="node102.html">SLA_EVP - Earth Position &amp; Velocity</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1435" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1429" HREF="node100.html">SLA_ETRMS - E-terms of Aberration</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000488000000000000000">SLA_EULER - Rotation Matrix from Euler Angles</A>
+<A NAME="xref_SLA_EULER">&#160;</A><A NAME="SLA_EULER">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Form a rotation matrix from the Euler angles - three
+successive rotations about specified Cartesian axes
+         (single precision).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_EULER (ORDER, PHI, THETA, PSI, RMAT)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ORDER</EM></TD>
+<TH ALIGN="LEFT"><B>C*(*)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>specifies about which axes the rotations occur</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PHI</EM></TD>
+<TD ALIGN="LEFT"><B>R</B></TD>
+<TD ALIGN="LEFT" NOWRAP>1st rotation (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>THETA</EM></TD>
+<TD ALIGN="LEFT"><B>R</B></TD>
+<TD ALIGN="LEFT" NOWRAP>2nd rotation (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PSI</EM></TD>
+<TD ALIGN="LEFT"><B>R</B></TD>
+<TD ALIGN="LEFT" NOWRAP>3rd rotation (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RMAT</EM></TD>
+<TH ALIGN="LEFT"><B>R(3,3)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>rotation matrix</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>A rotation is positive when the reference frame rotates
+anticlockwise as seen looking towards the origin from the
+positive region of the specified axis.
+  <DT>2.
+<DD>The characters of ORDER define which axes the three successive
+        rotations are about.  A typical value is `ZXZ', indicating that
+        RMAT is to become the direction cosine matrix corresponding to
+        rotations of the reference frame through PHI radians about the
+        old <I>z</I>-axis, followed by THETA radians about the resulting
+        <I>x</I>-axis,
+        then PSI radians about the resulting <I>z</I>-axis.  In detail:
+        <UL>
+<LI> The axis names can be any of the following, in any order or
+               combination:  X, Y, Z, uppercase or lowercase, 1, 2, 3.  Normal
+               axis labelling/numbering conventions apply;
+               the <I>xyz</I> (<IMG WIDTH="44" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img67.gif"
+ ALT="$\equiv123$">)               triad is right-handed.  Thus, the `ZXZ' example given above
+               could be written `zxz' or `313' (or even `ZxZ' or `3xZ').
+<LI> ORDER is terminated by length or by the first unrecognized
+               character.
+<LI> Fewer than three rotations are acceptable, in which case
+               the later angle arguments are ignored.
+        </UL>
+  <DT>3.
+<DD>Zero rotations produces a unit RMAT.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1436" HREF="node102.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1434" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1428" HREF="node100.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1437" HREF="node102.html">SLA_EVP - Earth Position &amp; Velocity</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1435" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1429" HREF="node100.html">SLA_ETRMS - E-terms of Aberration</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

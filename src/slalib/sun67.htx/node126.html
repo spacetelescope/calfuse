@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_MAP - Mean to Apparent</TITLE>
+<META NAME="description" CONTENT="SLA_MAP - Mean to Apparent">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node127.html">
+<LINK REL="previous" HREF="node125.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node127.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1686" HREF="node127.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1684" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1678" HREF="node125.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1687" HREF="node127.html">SLA_MAPPA - Mean to Apparent Parameters</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1685" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1679" HREF="node125.html">SLA_M2AV - Rotation Matrix to Axial Vector</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004113000000000000000">SLA_MAP - Mean to Apparent</A>
+<A NAME="xref_SLA_MAP">&#160;</A><A NAME="SLA_MAP">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Transform star <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> from mean place to geocentric apparent.
+The reference frames and timescales used are post IAU&nbsp;1976.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_MAP (RM, DM, PR, PD, PX, RV, EQ, DATE, RA, DA)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RM,DM</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>mean <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PR,PD</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>proper motions:  <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> changes per Julian year</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PX</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>parallax (arcsec)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RV</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>radial velocity (km&nbsp;s<SUP>-1</SUP>, +ve if receding)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EQ</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>epoch and equinox of star data (Julian)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>TDB for apparent place (JD-2400000.5)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RA,DA</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>apparent <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>EQ is the Julian epoch specifying both the reference
+frame and the epoch of the position - usually 2000.
+For positions where the epoch and equinox are
+        different, use the routine sla_PM to apply proper
+        motion corrections before using this routine.
+  <DT>2.
+<DD>The distinction between the required TDB and TT is
+        always negligible.  Moreover, for all but the most
+        critical applications UTC is adequate.
+  <DT>3.
+<DD>The <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> proper motions are <IMG WIDTH="13" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img115.gif"
+ ALT="$\dot{\alpha}$"> rather than
+        <IMG WIDTH="48" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img116.gif"
+ ALT="$\dot{\alpha}\cos\delta$">, and are per year rather than per century.
+  <DT>4.
+<DD>This routine may be wasteful for some applications
+        because it recomputes the Earth position/velocity and
+        the precession/nutation matrix each time, and because
+        it allows for parallax and proper motion.  Where
+        multiple transformations are to be carried out for one
+        epoch, a faster method is to call the sla_MAPPA routine
+        once and then either the sla_MAPQK routine (which includes
+        parallax and proper motion) or sla_MAPQKZ (which assumes
+        zero parallax and FK5 proper motion).
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>1984 <I>Astronomical Almanac</I>, pp B39-B41.
+<DT>2.
+<DD>Lederle &amp; Schwan, 1984. <I>Astr.Astrophys.</I> <B>134</B>, 1-6.
+</DL></DL>
+<BR> <HR>
+<A NAME="tex2html1686" HREF="node127.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1684" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1678" HREF="node125.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1687" HREF="node127.html">SLA_MAPPA - Mean to Apparent Parameters</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1685" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1679" HREF="node125.html">SLA_M2AV - Rotation Matrix to Axial Vector</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

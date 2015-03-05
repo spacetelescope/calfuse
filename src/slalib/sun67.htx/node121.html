@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_IMXV - Apply 3D Reverse Rotation</TITLE>
+<META NAME="description" CONTENT="SLA_IMXV - Apply 3D Reverse Rotation">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node122.html">
+<LINK REL="previous" HREF="node120.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node122.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1636" HREF="node122.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1634" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1628" HREF="node120.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1637" HREF="node122.html">SLA_INTIN - Decode an Integer Number</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1635" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1629" HREF="node120.html">SLA_HFK5Z - Hipparcos to FK5, no P.M.</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004108000000000000000">SLA_IMXV - Apply 3D Reverse Rotation</A>
+<A NAME="xref_SLA_IMXV">&#160;</A><A NAME="SLA_IMXV">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Multiply a 3-vector by the inverse of a rotation
+matrix (single precision).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_IMXV (RM, VA, VB)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RM</EM></TD>
+<TH ALIGN="LEFT"><B>R(3,3)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>rotation matrix</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>VA</EM></TD>
+<TD ALIGN="LEFT"><B>R(3)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>vector to be rotated</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>VB</EM></TD>
+<TH ALIGN="LEFT"><B>R(3)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>result vector</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>This routine performs the operation:
+<BLOCKQUOTE><B>b</B> = <B>M</B><IMG WIDTH="17" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img70.gif"
+ ALT="$^{T}\cdot$"><B>a</B>
+</BLOCKQUOTE>
+        where <B>a</B> and <B>b</B> are the 3-vectors VA and VB
+        respectively, and <B>M</B> is the <IMG WIDTH="39" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif"
+ ALT="$3\times3$"> matrix RM.
+  <DT>2.
+<DD>The main function of this routine is apply an inverse
+        rotation;  under these circumstances, <IMG WIDTH="20" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img122.gif"
+ ALT="${\bf M}$"> is
+        <I>orthogonal</I>, with its inverse the same as its transpose.
+  <DT>3.
+<DD>To comply with the ANSI Fortran 77 standard, VA and VB must
+        <B>not</B> be the same array.  The routine is, in fact, coded
+        so as to work properly on the VAX and many other systems even
+        if this rule is violated, something that is <B>not</B>, however,
+        recommended.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1636" HREF="node122.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1634" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1628" HREF="node120.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1637" HREF="node122.html">SLA_INTIN - Decode an Integer Number</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1635" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1629" HREF="node120.html">SLA_HFK5Z - Hipparcos to FK5, no P.M.</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

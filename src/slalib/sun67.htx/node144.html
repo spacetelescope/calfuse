@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PERTEL - Perturbed Orbital Elements</TITLE>
+<META NAME="description" CONTENT="SLA_PERTEL - Perturbed Orbital Elements">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node145.html">
+<LINK REL="previous" HREF="node143.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node145.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1866" HREF="node145.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1864" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1858" HREF="node143.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1867" HREF="node145.html">SLA_PERTUE - Perturbed Universal Elements</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1865" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1859" HREF="node143.html">SLA_PERMUT - Next Permutation</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004131000000000000000">SLA_PERTEL - Perturbed Orbital Elements</A>
+<A NAME="xref_SLA_PERTEL">&#160;</A><A NAME="SLA_PERTEL">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Update the osculating elements of an asteroid or comet by
+applying planetary perturbations.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_PERTEL (
+         JFORM, DATE0, DATE1,
+         EPOCH0, ORBI0, ANODE0, PERIH0, AORQ0, E0, AM0,
+         EPOCH1, ORBI1, ANODE1, PERIH1, AORQ1, E1, AM1,
+         JSTAT)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN (format and dates):</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JFORM</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>choice of element set (2 or 3; Note&nbsp;1)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE0</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>date of osculation (TT MJD) for the given</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  elements</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>date of osculation (TT MJD) for the updated</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  elements</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>GIVEN (the unperturbed elements):</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EPOCH0</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>epoch of the given element set
+(<I>t<SUB>0</SUB></I> or <I>T</I>, TT MJD;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  Note&nbsp;2)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ORBI0</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>inclination (<I>i</I>, radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ANODE0</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>longitude of the ascending node (<IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$">, radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PERIH0</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>argument of perihelion
+(<IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$">, radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AORQ0</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>mean distance or perihelion distance (<I>a</I> or <I>q</I>, AU)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>E0</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>eccentricity (<I>e</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AM0</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>mean anomaly (<I>M</I>, radians, JFORM=2 only)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED (the updated elements):</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EPOCH1</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>epoch of the updated element set
+(<I>t<SUB>0</SUB></I> or <I>T</I>,</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  TT MJD; Note&nbsp;2)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ORBI1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>inclination (<I>i</I>, radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ANODE1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>longitude of the ascending node (<IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$">, radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PERIH1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>argument of perihelion
+(<IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$">, radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AORQ1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>mean distance or perihelion distance (<I>a</I> or <I>q</I>, AU)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>E1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>eccentricity (<I>e</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AM1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>mean anomaly (<I>M</I>, radians, JFORM=2 only)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED (status flag):</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JSTAT</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP> +102 = warning, distant epoch</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP> +101 = warning, large timespan
+(&gt;100 years)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP> +1 to +8 = coincident with major planet
+(Note&nbsp;6)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>        0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     -1 = illegal JFORM</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     -2 = illegal E0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     -3 = illegal AORQ0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     -4 = internal error</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     -5 = numerical error</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Two different element-format options are supported, as follows. <BR>
+JFORM=2, suitable for minor planets:
+<PRE><TT>
+ 		 EPOCH 		 = 		 epoch of elements <I>t<SUB>0</SUB></I> (TT MJD)
+		 ORBINC 		 = 		 inclination <I>i</I> (radians)
+		 ANODE 		 = 		 longitude of the ascending node <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> (radians)
+		 PERIH 		 = 		 argument of perihelion <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$"> (radians)
+		 AORQ 		 = 		 mean distance <I>a</I> (AU)
+		 E 		 = 		 eccentricity <I>e</I> <IMG WIDTH="83" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img106.gif"
+ ALT="$( 0 \leq e < 1 )$"> 
+		 AORL 		 = 		 mean anomaly <I>M</I> (radians)        
+</TT></PRE>
+<P>
+JFORM=3, suitable for comets:
+<P>        <PRE><TT>
+ 		 EPOCH 		 = 		 epoch of perihelion <I>T</I> (TT MJD)
+		 ORBINC 		 = 		 inclination <I>i</I> (radians)
+		 ANODE 		 = 		 longitude of the ascending node <IMG WIDTH="14" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img99.gif"
+ ALT="$\Omega$"> (radians)
+		 PERIH 		 = 		 argument of perihelion <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\omega$"> (radians)
+		 AORQ 		 = 		 perihelion distance <I>q</I> (AU)
+		 E 		 = 		 eccentricity <I>e</I> <IMG WIDTH="91" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img107.gif"
+ ALT="$( 0 \leq e \leq 10 )$"></TT></PRE>
+ <DT>2.
+<DD>DATE0, DATE1, EPOCH0 and EPOCH1 are all instants of time in
+       the TT timescale (formerly Ephemeris Time, ET), expressed
+       as Modified Julian Dates (JD-2400000.5).
+       <UL>
+<LI> DATE0 is the instant at which the given
+             (<I>i.e.</I> unperturbed) osculating elements are correct.
+<LI> DATE1 is the specified instant at which the updated osculating
+             elements are correct.
+<LI> EPOCH0 and EPOCH1 will be the same as DATE0 and DATE1
+             (respectively) for the JFORM=2 case, normally used for minor
+             planets.  For the JFORM=3 case, the two epochs will refer to
+             perihelion passage and so will not, in general, be the same as
+             DATE0 and/or DATE1 though they may be similar to one another.
+       </UL>
+ <DT>3.
+<DD>The elements are with respect to the J2000 ecliptic and mean equinox.
+ <DT>4.
+<DD>Unused elements (AM0 and AM1 for JFORM=3) are not accessed.
+ <DT>5.
+<DD>See the sla_PERTUE routine for details of the algorithm used.
+ <DT>6.
+<DD>This routine is not intended to be used for major planets, which
+       is why JFORM=1 is not available and why there is no opportunity
+       to specify either the longitude of perihelion or the daily
+       motion.  However, if JFORM=2 elements are somehow obtained for a
+       major planet and supplied to the routine, sensible results will,
+       in fact, be produced.  This happens because the sla_PERTUE routine
+       that is called to perform the calculations checks the separation
+       between the body and each of the planets and interprets a
+       suspiciously small value (0.001&nbsp;AU) as an attempt to apply it to
+       the planet concerned.  If this condition is detected, the
+       contribution from that planet is ignored, and the status is set to
+       the planet number (Mercury=1,...,Neptune=8) as a warning.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>Sterne, Theodore E., <I>An Introduction to Celestial Mechanics,</I>
+Interscience Publishers, 1960.  Section 6.7, p199.
+     </DL>
+<BR> <HR>
+<A NAME="tex2html1866" HREF="node145.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1864" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1858" HREF="node143.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1867" HREF="node145.html">SLA_PERTUE - Perturbed Universal Elements</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1865" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1859" HREF="node143.html">SLA_PERMUT - Next Permutation</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

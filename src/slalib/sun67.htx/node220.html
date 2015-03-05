@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Sidereal Time: GMST, LAST</TITLE>
+<META NAME="description" CONTENT="Sidereal Time: GMST, LAST">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node221.html">
+<LINK REL="previous" HREF="node219.html">
+<LINK REL="up" HREF="node217.html">
+<LINK REL="next" HREF="node221.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2655" HREF="node221.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2653" HREF="node217.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2647" HREF="node219.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2656" HREF="node221.html">Dynamical Time: TT, TDB</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2654" HREF="node217.html">Timescales</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2648" HREF="node219.html">Universal Time: UTC, UT1</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H3><A NAME="SECTION000515300000000000000">
+Sidereal Time: GMST, LAST</A>
+</H3>
+Sidereal Time is the ``time of day'' relative to the
+stars rather than to the Sun.  After
+one sidereal day the stars come back to the same place in the
+sky, apart from sub-arcsecond precession effects.  Because the Earth
+rotates faster relative to the stars than to the Sun by one day
+per year, the sidereal second is shorter than the solar
+second; the ratio is about 0.9973.
+<P>
+The <I>Greenwich Mean Sidereal Time</I> GMST is
+linked to UT1 by a numerical formula which
+is implemented in the SLALIB routines
+sla_GMST
+and
+sla_GMSTA.
+There are, of course, no leap seconds in GMST, but the second
+changes in length along with the UT1 second, and also varies
+over long periods of time because of slow changes in the Earth's
+orbit.  This makes the timescale unsuitable for everything except
+predicting the apparent directions of celestial sources.
+<P>
+The <I>Local Apparent Sidereal Time</I> LAST is the apparent right
+ascension of the local meridian, from which the hour angle of any
+star can be determined knowing its <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">.  It can be obtained from the
+GMST by adding the east longitude (corrected for polar motion
+in precise work) and the <I>equation of the equinoxes</I>.  The
+latter, already described, is an aspect of the nutation effect
+and can be predicted by calling the SLALIB routine
+sla_EQEQX
+or, neglecting certain very small terms, by calling
+sla_NUTC
+and using the expression <IMG WIDTH="61" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img310.gif"
+ ALT="$\Delta\psi\cos\epsilon$">.<P>
+<BR> <HR>
+<A NAME="tex2html2655" HREF="node221.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2653" HREF="node217.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2647" HREF="node219.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2656" HREF="node221.html">Dynamical Time: TT, TDB</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2654" HREF="node217.html">Timescales</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2648" HREF="node219.html">Universal Time: UTC, UT1</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

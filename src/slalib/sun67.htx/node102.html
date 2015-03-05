@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_EVP - Earth Position &amp; Velocity</TITLE>
+<META NAME="description" CONTENT="SLA_EVP - Earth Position &amp; Velocity">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node103.html">
+<LINK REL="previous" HREF="node101.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node103.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1446" HREF="node103.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1444" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1438" HREF="node101.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1447" HREF="node103.html">SLA_FITXY - Fit Linear Model to Two Sets</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1445" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1439" HREF="node101.html">SLA_EULER - Rotation Matrix from Euler Angles</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000489000000000000000">SLA_EVP - Earth Position &amp; Velocity</A>
+<A NAME="xref_SLA_EVP">&#160;</A><A NAME="SLA_EVP">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Barycentric and heliocentric velocity and position of the Earth.
+<DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_EVP (DATE, DEQX, DVB, DPB, DVH, DPH)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>TDB (formerly ET) as a Modified Julian Date
+(JD-2400000.5)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DEQX</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>Julian Epoch (<I>e.g.</I> 2000D0) of mean equator and
+equinox of the vectors returned.  If DEQX&nbsp;&lt;0,
+all vectors are referred to the mean equator and
+equinox (FK5) of date DATE.</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DVB</EM></TD>
+<TH ALIGN="LEFT"><B>D(3)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>barycentric <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img111.gif"
+ ALT="$[\,\dot{x},\dot{y},\dot{z}\,]$">, AU&nbsp;s<SUP>-1</SUP></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DPB</EM></TD>
+<TD ALIGN="LEFT"><B>D(3)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>barycentric <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$">, AU</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DVH</EM></TD>
+<TD ALIGN="LEFT"><B>D(3)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>heliocentric <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img111.gif"
+ ALT="$[\,\dot{x},\dot{y},\dot{z}\,]$">, AU&nbsp;s<SUP>-1</SUP></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DPH</EM></TD>
+<TD ALIGN="LEFT"><B>D(3)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>heliocentric <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$">, AU</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>This routine is used when accuracy is more important
+than CPU time, yet the extra complication of reading a
+pre-computed ephemeris is not justified.  The maximum
+        deviations from the JPL&nbsp;DE96 ephemeris are as follows:
+        <UL>
+<LI> velocity (barycentric or heliocentric): 420&nbsp;mm&nbsp;s<SUP>-1</SUP>
+<LI> position (barycentric): 6900&nbsp;km
+<LI> position (heliocentric): 1600&nbsp;km
+        </UL>
+  <DT>2.
+<DD>The routine is an adaption of the BARVEL and BARCOR
+        subroutines of P.Stumpff, which are described in
+        <I>Astr.Astrophys.Suppl.Ser.</I> <B>41</B>, 1-8 (1980).
+        Most of the changes are merely cosmetic and do not affect
+        the results at all.  However, some adjustments have been
+        made so as to give results that refer to the new (IAU 1976
+        `FK5') equinox and precession, although the differences these
+        changes make relative to the results from Stumpff's original
+        `FK4' version are smaller than the inherent accuracy of the
+        algorithm.  One minor shortcoming in the original routines
+        that has <B>not</B> been corrected is that slightly better
+        numerical accuracy could be achieved if the various polynomial
+        evaluations were to be so arranged that the smallest terms were
+        computed first.  Note also that one of Stumpff's precession
+        constants differs by 
+      <IMG WIDTH="39" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img112.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.001$">    from the value given in the
+        <I>Explanatory Supplement</I>.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1446" HREF="node103.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1444" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1438" HREF="node101.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1447" HREF="node103.html">SLA_FITXY - Fit Linear Model to Two Sets</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1445" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1439" HREF="node101.html">SLA_EULER - Rotation Matrix from Euler Angles</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

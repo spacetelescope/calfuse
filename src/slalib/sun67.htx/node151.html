@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PREBN - Precession Matrix (FK4)</TITLE>
+<META NAME="description" CONTENT="SLA_PREBN - Precession Matrix (FK4)">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node152.html">
+<LINK REL="previous" HREF="node150.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node152.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1936" HREF="node152.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1934" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1928" HREF="node150.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1937" HREF="node152.html">SLA_PREC - Precession Matrix (FK5)</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1935" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1929" HREF="node150.html">SLA_POLMO - Polar Motion</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004138000000000000000">SLA_PREBN - Precession Matrix (FK4)</A>
+<A NAME="xref_SLA_PREBN">&#160;</A><A NAME="SLA_PREBN">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Generate the matrix of precession between two epochs,
+using the old, pre IAU&nbsp;1976, Bessel-Newcomb model, in
+         Andoyer's formulation.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_PREBN (BEP0, BEP1, RMATP)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>BEP0</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>beginning Besselian epoch</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>BEP1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>ending Besselian epoch</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RMATP</EM></TD>
+<TH ALIGN="LEFT"><B>D(3,3)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>precession matrix</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTE:</STRONG>
+<DD>The matrix is in the sense:
+<BLOCKQUOTE><B>v</B><SUB>1</SUB> =  <B>M</B><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><B>v</B><SUB>0</SUB></BLOCKQUOTE>
+       where <B>v</B><SUB>1</SUB> is the star vector relative to the
+       mean equator and equinox of epoch BEP1, <B>M</B> is the
+       <IMG WIDTH="39" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif"
+ ALT="$3\times3$"> matrix RMATP and
+       <B>v</B><SUB>0</SUB> is the star vector relative to the
+       mean equator and equinox of epoch BEP0.
+      </DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>Smith <I>et al.</I>, 1989. <I>Astr.J.</I> <B>97</B>, 269.
+</DL>
+<BR> <HR>
+<A NAME="tex2html1936" HREF="node152.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1934" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1928" HREF="node150.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1937" HREF="node152.html">SLA_PREC - Precession Matrix (FK5)</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1935" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1929" HREF="node150.html">SLA_POLMO - Polar Motion</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,122 @@
+Trying 128.183.234.87...
+Connected to oig1.gsfc.nasa.gov.
+Escape character is '^]'.
+HTTP/1.0 200 OK
+Server: Microsoft-IIS/3.0
+Date: Mon, 01 Dec 2003 16:18:01 GMT
+Content-type: text/html
+
+<HTML>
+<HEAD>
+<TITLE>OIG Registered user login ok</TITLE>
+</HEAD>
+<H3><LEFT>Registered User Login OK</LEFT></H3>
+<H4><LEFT>2003/12/01 16:18:01 Session time remaining: 02:00:00</LEFT></H4>
+<HR>
+<BODY>
+<PRE>
+
+<B>This account will expire if not accessed at least once every 90 days.</B>
+
+You have sucessfully logged in as registered user: 
+  <B>Mary L. Romelfanger</B>
+
+Please select => <A HREF="/scripts/foxweb.exe/favorhome@app01?tdac=1JT4H2A7I2EJKMM9BXVO">[Continue]</A>
+</PRE>
+<HR>
+<FONT SIZE="-1"><B>&copy 2003  National Aeronautics and Space Administration (NASA). All rights reserved.</B></FONT>
+</BODY>
+</HTML>*** 
+ Starting User's Home Page output page 
+***
+
+Trying 128.183.234.87...
+Connected to oig1.gsfc.nasa.gov.
+Escape character is '^]'.
+HTTP/1.0 200 OK
+Server: Microsoft-IIS/3.0
+Date: Mon, 01 Dec 2003 16:18:02 GMT
+Content-type: text/html
+
+<HTML>
+<HEAD>
+<TITLE>OIG User home page</TITLE>
+</HEAD>
+<H3><CENTER>User Home Page</CENTER></H3>
+<H4><CENTER>2003/12/01 16:18:01 Session time remaining: 02:00:00</CENTER></H4>
+<HR><BODY><PRE>
+<B><center>Due to the existing National Security Restrictions all users must be
+an approved registered user to access data on this site. 10/01/2001
+</center></B>
+
+
+</PRE><HR>
+<PRE>
+<P><LI><A HREF="/scripts/foxweb.exe/ftleadhoc@app01?tdac=OLOW8A0XDA7LVBBJ49TI">TLE Query</A>
+     One time query for TLE's</LI>
+<P><LI><A HREF="/scripts/foxweb.exe/tlarq@app01?tdac=3AROP6H1C6SA5VV2TZUG">TLE Historical Request Form</A></LI>
+<P><LI><A HREF="/scripts/foxweb.exe/syspage@app01?tdac=UJT4H2A7I2EJKMM9BXVO">TLE Format (Standard and Obsolete)</A>
+     Break-out of a Two Line Element.</LI>
+<P><LI><A HREF="/scripts/foxweb.exe/favtle@app01?tdac=JF6A5YKG8YRF4ZZQ2CWH">Favorite TLE Query</A>
+     (the query limit is for any continuous 24 hour period)</LI>
+<P><LI><A HREF="/scripts/foxweb.exe/favtlec@app01?tdac=W0GI3H8ZQH10UTTAO2RC">Favorite TLE Query Configuration</A></LI>
+<P><LI><A HREF="/scripts/foxweb.exe/favhomec@app01?tdac=MZ5VI4W3R4PZ0YY1KSNU">User Home Page Configuration</A>
+     Select to modify what links will appear on this page.</LI>
+<P><LI><A HREF="/scripts/foxweb.exe/supappl@app01?tdac=DT3E9URY1ULTDHHV8KPS">Super-User Application</A>
+     Application to access all daily TLE(s)</LI></PRE>
+<HR><PRE>
+This is your home page configured links area!
+
+No user home page configured links.
+
+<B>You must select "User Home Page Configuration" to
+access other links on this site.</B></PRE><HR><PRE>
+<P><LI><A HREF="/scripts/foxweb.exe/syspage@app01?tdac=H7YF4S1HVS67JCCEQ8LK">General Information</A>
+     Formerly Main Home Page.</LI>
+<P><LI><A HREF="/scripts/foxweb.exe/msglist@app01?tdac=6XKMW1Z8T1HXLQQ7FEYV">Messages</A>
+     Messages to and from System Administrator</LI>
+<P><LI><A HREF="/scripts/foxweb.exe/changepw@app01?tdac=U5QP1E7AME25GIIND0CF">Change Password</A></LI></PRE><HR><FONT SIZE="-1"><B>&copy 2003  National Aeronautics and Space Administration (NASA). All rights reserved.</B></FONT>
+</BODY></HTML>Trying 128.183.234.87...
+Connected to oig1.gsfc.nasa.gov.
+Escape character is '^]'.
+HTTP/1.0 200 OK
+Server: Microsoft-IIS/3.0
+Date: Mon, 01 Dec 2003 16:18:02 GMT
+Content-type: text/html
+
+<HTML>
+<HEAD>
+<TITLE>OIG TLE Query</TITLE>
+</HEAD>
+<H3><CENTER>TLE Query</CENTER></H3>
+<H4><CENTER>2003/12/01 16:18:02 Session time remaining: 01:59:59</CENTER></H4>
+<HR><BODY><PRE>
+In this section you should select up to a maximum of 100 satellite catalog
+numbers, for which you can download the latest set of Two-Line elements.  Enter
+the satellite catalog numbers that you would like to query on, and click on
+submit.
+
+
+Enter the object numbers in the area below separated by spaces.
+Select the desired options.
+Select "Submit".
+(the query limit is for any continuous 24 hour period)</PRE><HR><FORM ACTION="/scripts/foxweb.exe/ftleadhocr@app01?" METHOD="POST">
+<INPUT TYPE="HIDDEN" NAME="tdac" VALUE="N1NKOB4PUBD1ALLSY305">
+<PRE>Enter satellite object numbers:
+<TEXTAREA name=ffv01 ROWS=10 COLS=75>
+</TEXTAREA>
+Format: 
+  <INPUT TYPE=RADIO NAME="ffv02" VALUE="standard"CHECKED>Standard
+  <INPUT TYPE=RADIO NAME="ffv02" VALUE="older">Obsolete<BR>
+Sort on: 
+  <INPUT TYPE=RADIO NAME="ffv03" VALUE="catno"CHECKED>Catalog number
+  <INPUT TYPE=RADIO NAME="ffv03" VALUE="intldes">Internationl designator<BR>
+Number of TLE(s): 
+  <INPUT TYPE=RADIO NAME="ffv04" VALUE="last"CHECKED>Latest One (1)
+  <INPUT TYPE=RADIO NAME="ffv04" VALUE="five">Latest Five (5)<BR>
+<P><INPUT TYPE="SUBMIT" VALUE="Submit"> <INPUT TYPE="RESET"><BR></P>
+</FORM>
+<A HREF="/scripts/foxweb.exe/favorhome@app01?tdac=1JT4H2A7I2EJKMM9BXVO">[ User home page ]</A>
+
+</PRE><HR><FONT SIZE="-1"><B>&copy 2003  National Aeronautics and Space Administration (NASA). All rights reserved.</B></FONT>
+</BODY></HTML>

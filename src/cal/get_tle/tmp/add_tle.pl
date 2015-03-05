@@ -1,0 +1,182 @@
+#!/usr/local/bin/perl
+use FileHandle;
+
+# ***************************************************
+# add_tle.pl
+# 
+# This Perl module will read in the latest five orbital elements
+# from the file five.tle (which was created by get_tle.pl) and
+# add any new orbital elements to the file FUSE.TLE.  The file
+# FUSE.TLE is in descending order (i.e. the most recent elements
+# are first).  In order to prepend the new TLE onto the old list
+# I found it was easiest to store everything in a temporary file
+# TEMP.TLE and rewrite FUSE.TLE.
+#
+# Author: Ed Murphy
+#
+# History:  Written  July 27, 1999
+#
+# ***************************************************
+
+# Define the file names.  old_maintle_filename is not actually opened,
+# but is used in a system call at the end of the program. 
+
+$input_filename = "five.tle";
+$maintle_filename = "FUSE.TLE";
+$old_maintle_filename = "FUSE.OLD";
+$temp_filename = "TEMP.TLE";
+
+# Open the files.
+open (TLE_INFILE, "<$input_filename") || die "Cannot open $input_filename";
+open (TLE_TEMPFILE, ">$temp_filename") || die "Cannot open $temp_filename";
+open (TLE_MAINFILE, "<$maintle_filename") || die "Cannot open $maintle_filename";
+
+# Read the first two lines from the maintle file to get the date of the
+# most recent set of TLEs.  Save these lines for later output.
+    $lineout1 = <TLE_MAINFILE>;
+    $lineout2 = <TLE_MAINFILE>;
+    $last_date = substr($lineout2,18,14);
+
+# get rid of the blank line at the beginning of five.tle file
+    $line = <TLE_INFILE>;  
+
+# Cycle through the five.tle file and look for files more recent than
+# last_date.  
+    while ($line1 = <TLE_INFILE>) {
+        $sat_name = substr($line1,0,4);
+        $line2 = <TLE_INFILE>;
+        $line3 = <TLE_INFILE>;
+        $tle_date = substr($line2,18,14);
+        $id2 = substr($line2, 2, 5);
+        $id3 = substr($line3, 2, 5);
+        # if the TLE is more recent, print it out to the TEMP file.
+        if (($tle_date > $last_date+0.05) && ($sat_name eq "FUSE") && ($id2 == 25791) && ($id3 == 25791)) {
+            &check_tle;
+            print TLE_TEMPFILE $line1;
+            print TLE_TEMPFILE $line2;
+            print TLE_TEMPFILE $line3;
+            # Send this output to screen to make sure TLEs look OK
+            if ($tle_flag != 0) {
+		print STDOUT "ERROR: Possible error in TLE:\n";
+            }
+            print STDOUT "The new TLEs are:\n";
+            print STDOUT $line1;
+            print STDOUT $line2;
+            print STDOUT $line3;
+	}
+
+    }
+
+# Now add the MAINTLE file to the end of the TEMPFILE
+    print TLE_TEMPFILE $lineout1;
+    print TLE_TEMPFILE $lineout2;
+    while ($line1 = <TLE_MAINFILE>) {
+            print TLE_TEMPFILE $line1;
+    }
+ 
+    close (TLE_INFILE);
+    close (TLE_MAINFILE);
+    close (TLE_TEMPFILE);
+
+# Move the MAINFILE into the old_maintle filename
+# Move the TEMPFILE to be the MAINFILE
+# Remove the five.tle file.
+    system("mv $maintle_filename $old_maintle_filename");
+    system("mv $temp_filename $maintle_filename");
+    system("chmod ug+rw $maintle_filename");
+    system("chgrp sdp $maintle_filename");
+    system("rm -f $input_filename");
+
+### end of Perl script
+
+sub check_tle {
+
+    $tle_flag = 0;
+
+    &parse_lines;
+
+    &calculate_a0;
+
+    &calculate_orbs;
+
+    if (($mean_mot > 14.391) || ($mean_mot < 14.389)) {
+	$tle_flag = 1;
+        print STDOUT "Possible error in mean motion $mean_mot \n";
+    }
+    if (($incl > 24.990) || ($incl < 24.975)) {
+	$tle_flag = 1;
+        print STDOUT "Possible error in inclination $incl \n";
+    }
+    if (($eccen > 0.00120) || ($eccen < 0.00108)) {
+	$tle_flag = 1;
+        print STDOUT "Possible error in eccentricity $eccen \n";
+    }
+    if (($semiax > 7145.0) || ($semiax < 7143.0)) {
+	$tle_flag = 1;
+        print STDOUT "Possible error in semi-major axis $semia \n";
+    }
+    if (($apogee > 777.0) || ($apogee < 773.0)) {
+	$tle_flag = 1;
+        print STDOUT "Possible error in apogee $apogee \n";
+    }
+    if (($perigee > 760.0) || ($perigee < 756.0)) {
+	$tle_flag = 1;
+        print STDOUT "Possible error in perigee $perigee \n";
+    }
+
+}
+
+sub parse_lines {
+$year = substr($line2, 18, 2);
+$doy = substr($line2, 20, 3);
+$dayfrac = substr($line2, 23, 9);
+$epoch = $year.$doy.$dayfrac;
+$incl = substr($line3, 9, 8);
+$raan = substr($line3, 17,8);
+$eccen = substr($line3, 26, 7);
+$eccen = "0." . $eccen;
+$mean_mot = substr($line3, 52, 11);
+$mean_anom = substr($line3, 43, 8);
+$arg_perig = substr($line3, 34, 8);
+
+
+if ($year > 50) {
+    $year += 1900;
+} else {
+    $year += 2000;
+}
+
+$dayfrac = "0".$dayfrac;
+
+}
+
+sub calculate_a0 {
+
+$mu = 3.986005E5;
+$pi = 3.14159265358979;
+$radian = 0.0174532925200;
+
+$mm=2.0*$pi*$mean_mot/(24.0*60.0);
+$ke=0.74366916E-1;
+$k2=5.413080E-4;
+$a1=($ke/$mm)**(2.0/3.0);
+$inrad = $incl * $radian;
+
+$d1=3.0/2.0*$k2/($a1*$a1)*(3.0*cos($inrad)*cos($inrad)-1.0)/((1.0-$eccen*$eccen)
+**(3.0/2.0));
+$a0=$a1*(1.0-$d1/3.0-$d1*$d1-134.0/81.0*$d1*$d1*$d1);
+$d0=3.0/2.0*$k2/($a0*$a0)*(3.0*cos($inrad)*cos($inrad)-1.0)/((1.0-$eccen*$eccen)
+**(3.0/2.0));
+$semiax=$a0/(1-$d0)*6378.135;
+
+}
+
+sub calculate_orbs {
+
+$period = 60.0*24.0/($mean_mot/(1+$d0));
+$cax=$eccen*$semiax;
+$perigee=$semiax-$cax-6378.1;
+$apogee=$semiax+$cax-6378.1;
+
+}
+

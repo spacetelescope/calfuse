@@ -1,0 +1,489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SUBPROGRAM SPECIFICATIONS</TITLE>
+<META NAME="description" CONTENT="SUBPROGRAM SPECIFICATIONS">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node197.html">
+<LINK REL="previous" HREF="node12.html">
+<LINK REL="up" HREF="sun67.html">
+<LINK REL="next" HREF="node14.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html373" HREF="node14.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html371" HREF="sun67.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html365" HREF="node12.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html374" HREF="node14.html">SLA_ADDET - Add E-terms of Aberration</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html372" HREF="sun67.html">SLALIB   Positional Astronomy Library</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html366" HREF="node12.html">LINKING</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H1><A NAME="SECTION00040000000000000000">
+SUBPROGRAM SPECIFICATIONS</A>
+</H1>
+<P>      <BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html375" HREF="node14.html#SECTION00041000000000000000">
+SLA_ADDET - Add E-terms of Aberration</A>
+<LI><A NAME="tex2html376" HREF="node15.html#SECTION00042000000000000000">
+SLA_AFIN - Sexagesimal character string to angle</A>
+<LI><A NAME="tex2html377" HREF="node16.html#SECTION00043000000000000000">
+SLA_AIRMAS - Air Mass</A>
+<LI><A NAME="tex2html378" HREF="node17.html#SECTION00044000000000000000">
+SLA_ALTAZ - Velocities <I>etc.</I> for Altazimuth Mount</A>
+<LI><A NAME="tex2html379" HREF="node18.html#SECTION00045000000000000000">
+SLA_AMP - Apparent to Mean</A>
+<LI><A NAME="tex2html380" HREF="node19.html#SECTION00046000000000000000">
+SLA_AMPQK - Quick Apparent to Mean</A>
+<LI><A NAME="tex2html381" HREF="node20.html#SECTION00047000000000000000">
+SLA_AOP - Apparent to Observed</A>
+<LI><A NAME="tex2html382" HREF="node21.html#SECTION00048000000000000000">
+SLA_AOPPA - Appt-to-Obs Parameters</A>
+<LI><A NAME="tex2html383" HREF="node22.html#SECTION00049000000000000000">
+SLA_AOPPAT - Update Appt-to-Obs Parameters</A>
+<LI><A NAME="tex2html384" HREF="node23.html#SECTION000410000000000000000">
+SLA_AOPQK - Quick Appt-to-Observed</A>
+<LI><A NAME="tex2html385" HREF="node24.html#SECTION000411000000000000000">
+SLA_ATMDSP - Atmospheric Dispersion</A>
+<LI><A NAME="tex2html386" HREF="node25.html#SECTION000412000000000000000">
+SLA_AV2M - Rotation Matrix from Axial Vector</A>
+<LI><A NAME="tex2html387" HREF="node26.html#SECTION000413000000000000000">
+SLA_BEAR - Direction Between Points on a Sphere</A>
+<LI><A NAME="tex2html388" HREF="node27.html#SECTION000414000000000000000">
+SLA_CAF2R - Deg,Arcmin,Arcsec to Radians</A>
+<LI><A NAME="tex2html389" HREF="node28.html#SECTION000415000000000000000">
+SLA_CALDJ - Calendar Date to MJD</A>
+<LI><A NAME="tex2html390" HREF="node29.html#SECTION000416000000000000000">
+SLA_CALYD - Calendar to Year, Day</A>
+<LI><A NAME="tex2html391" HREF="node30.html#SECTION000417000000000000000">
+SLA_CC2S - Cartesian to Spherical</A>
+<LI><A NAME="tex2html392" HREF="node31.html#SECTION000418000000000000000">
+SLA_CC62S - Cartesian 6-Vector to Spherical</A>
+<LI><A NAME="tex2html393" HREF="node32.html#SECTION000419000000000000000">
+SLA_CD2TF - Days to Hour,Min,Sec</A>
+<LI><A NAME="tex2html394" HREF="node33.html#SECTION000420000000000000000">
+SLA_CLDJ - Calendar to MJD</A>
+<LI><A NAME="tex2html395" HREF="node34.html#SECTION000421000000000000000">
+SLA_CLYD - Calendar to Year, Day</A>
+<LI><A NAME="tex2html396" HREF="node35.html#SECTION000422000000000000000">
+SLA_COMBN - Next Combination</A>
+<LI><A NAME="tex2html397" HREF="node36.html#SECTION000423000000000000000">
+SLA_CR2AF - Radians to Deg,Arcmin,Arcsec</A>
+<LI><A NAME="tex2html398" HREF="node37.html#SECTION000424000000000000000">
+SLA_CR2TF - Radians to Hour,Min,Sec</A>
+<LI><A NAME="tex2html399" HREF="node38.html#SECTION000425000000000000000">
+SLA_CS2C - Spherical to Cartesian</A>
+<LI><A NAME="tex2html400" HREF="node39.html#SECTION000426000000000000000">
+SLA_CS2C6 - Spherical Pos/Vel to Cartesian</A>
+<LI><A NAME="tex2html401" HREF="node40.html#SECTION000427000000000000000">
+SLA_CTF2D - Hour,Min,Sec to Days</A>
+<LI><A NAME="tex2html402" HREF="node41.html#SECTION000428000000000000000">
+SLA_CTF2R - Hour,Min,Sec to Radians</A>
+<LI><A NAME="tex2html403" HREF="node42.html#SECTION000429000000000000000">
+SLA_DAF2R - Deg,Arcmin,Arcsec to Radians</A>
+<LI><A NAME="tex2html404" HREF="node43.html#SECTION000430000000000000000">
+SLA_DAFIN - Sexagesimal character string to angle</A>
+<LI><A NAME="tex2html405" HREF="node44.html#SECTION000431000000000000000">
+SLA_DAT - TAI-UTC</A>
+<LI><A NAME="tex2html406" HREF="node45.html#SECTION000432000000000000000">
+SLA_DAV2M - Rotation Matrix from Axial Vector</A>
+<LI><A NAME="tex2html407" HREF="node46.html#SECTION000433000000000000000">
+SLA_DBEAR - Direction Between Points on a Sphere</A>
+<LI><A NAME="tex2html408" HREF="node47.html#SECTION000434000000000000000">
+SLA_DBJIN - Decode String to B/J Epoch (DP)</A>
+<LI><A NAME="tex2html409" HREF="node48.html#SECTION000435000000000000000">
+SLA_DC62S - Cartesian 6-Vector to Spherical</A>
+<LI><A NAME="tex2html410" HREF="node49.html#SECTION000436000000000000000">
+SLA_DCC2S - Cartesian to Spherical</A>
+<LI><A NAME="tex2html411" HREF="node50.html#SECTION000437000000000000000">
+SLA_DCMPF - Interpret Linear Fit</A>
+<LI><A NAME="tex2html412" HREF="node51.html#SECTION000438000000000000000">
+SLA_DCS2C - Spherical to Cartesian</A>
+<LI><A NAME="tex2html413" HREF="node52.html#SECTION000439000000000000000">
+SLA_DD2TF - Days to Hour,Min,Sec</A>
+<LI><A NAME="tex2html414" HREF="node53.html#SECTION000440000000000000000">
+SLA_DE2H - <IMG WIDTH="27" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif"
+ ALT="$h,\delta$"> to Az,El</A>
+<LI><A NAME="tex2html415" HREF="node54.html#SECTION000441000000000000000">
+SLA_DEULER - Euler Angles to Rotation Matrix</A>
+<LI><A NAME="tex2html416" HREF="node55.html#SECTION000442000000000000000">
+SLA_DFLTIN - Decode a Double Precision Number</A>
+<LI><A NAME="tex2html417" HREF="node56.html#SECTION000443000000000000000">
+SLA_DH2E - Az,El to <IMG WIDTH="27" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif"
+ ALT="$h,\delta$"></A>
+<LI><A NAME="tex2html418" HREF="node57.html#SECTION000444000000000000000">
+SLA_DIMXV - Apply 3D Reverse Rotation</A>
+<LI><A NAME="tex2html419" HREF="node58.html#SECTION000445000000000000000">
+SLA_DJCAL - MJD to Gregorian for Output</A>
+<LI><A NAME="tex2html420" HREF="node59.html#SECTION000446000000000000000">
+SLA_DJCL - MJD to Year,Month,Day,Frac</A>
+<LI><A NAME="tex2html421" HREF="node60.html#SECTION000447000000000000000">
+SLA_DM2AV - Rotation Matrix to Axial Vector</A>
+<LI><A NAME="tex2html422" HREF="node61.html#SECTION000448000000000000000">
+SLA_DMAT - Solve Simultaneous Equations</A>
+<LI><A NAME="tex2html423" HREF="node62.html#SECTION000449000000000000000">
+SLA_DMOON - Approx Moon Pos/Vel</A>
+<LI><A NAME="tex2html424" HREF="node63.html#SECTION000450000000000000000">
+SLA_DMXM - Multiply <IMG WIDTH="39" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif"
+ ALT="$3\times3$"> Matrices</A>
+<LI><A NAME="tex2html425" HREF="node64.html#SECTION000451000000000000000">
+SLA_DMXV - Apply 3D Rotation</A>
+<LI><A NAME="tex2html426" HREF="node65.html#SECTION000452000000000000000">
+SLA_DPAV - Position-Angle Between Two Directions</A>
+<LI><A NAME="tex2html427" HREF="node66.html#SECTION000453000000000000000">
+SLA_DR2AF - Radians to Deg,Min,Sec,Frac</A>
+<LI><A NAME="tex2html428" HREF="node67.html#SECTION000454000000000000000">
+SLA_DR2TF - Radians to Hour,Min,Sec,Frac</A>
+<LI><A NAME="tex2html429" HREF="node68.html#SECTION000455000000000000000">
+SLA_DRANGE - Put Angle into Range <IMG WIDTH="25" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif"
+ ALT="$\pm \pi$"></A>
+<LI><A NAME="tex2html430" HREF="node69.html#SECTION000456000000000000000">
+SLA_DRANRM - Put Angle into Range <IMG WIDTH="43" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.gif"
+ ALT="$0\!-\!2\pi$"></A>
+<LI><A NAME="tex2html431" HREF="node70.html#SECTION000457000000000000000">
+SLA_DS2C6 - Spherical Pos/Vel to Cartesian</A>
+<LI><A NAME="tex2html432" HREF="node71.html#SECTION000458000000000000000">
+SLA_DS2TP - Spherical to Tangent Plane</A>
+<LI><A NAME="tex2html433" HREF="node72.html#SECTION000459000000000000000">
+SLA_DSEP - Angle Between 2 Points on Sphere</A>
+<LI><A NAME="tex2html434" HREF="node73.html#SECTION000460000000000000000">
+SLA_DT - Approximate ET minus UT</A>
+<LI><A NAME="tex2html435" HREF="node74.html#SECTION000461000000000000000">
+SLA_DTF2D - Hour,Min,Sec to Days</A>
+<LI><A NAME="tex2html436" HREF="node75.html#SECTION000462000000000000000">
+SLA_DTF2R - Hour,Min,Sec to Radians</A>
+<LI><A NAME="tex2html437" HREF="node76.html#SECTION000463000000000000000">
+SLA_DTP2S - Tangent Plane to Spherical</A>
+<LI><A NAME="tex2html438" HREF="node77.html#SECTION000464000000000000000">
+SLA_DTP2V - Tangent Plane to Direction Cosines</A>
+<LI><A NAME="tex2html439" HREF="node78.html#SECTION000465000000000000000">
+SLA_DTPS2C - Plate centre from <IMG WIDTH="26" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img90.gif"
+ ALT="$\xi,\eta$"> and <IMG WIDTH="28" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.gif"
+ ALT="$\alpha,\delta$"></A>
+<LI><A NAME="tex2html440" HREF="node79.html#SECTION000466000000000000000">
+SLA_DTPV2C - Plate centre from <IMG WIDTH="26" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img90.gif"
+ ALT="$\xi,\eta$"> and <I>x</I>,<I>y</I>,<I>z</I></A>
+<LI><A NAME="tex2html441" HREF="node80.html#SECTION000467000000000000000">
+SLA_DTT - TT minus UTC</A>
+<LI><A NAME="tex2html442" HREF="node81.html#SECTION000468000000000000000">
+SLA_DV2TP - Direction Cosines to Tangent Plane</A>
+<LI><A NAME="tex2html443" HREF="node82.html#SECTION000469000000000000000">
+SLA_DVDV - Scalar Product</A>
+<LI><A NAME="tex2html444" HREF="node83.html#SECTION000470000000000000000">
+SLA_DVN - Normalize Vector</A>
+<LI><A NAME="tex2html445" HREF="node84.html#SECTION000471000000000000000">
+SLA_DVXV - Vector Product</A>
+<LI><A NAME="tex2html446" HREF="node85.html#SECTION000472000000000000000">
+SLA_E2H - <IMG WIDTH="27" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif"
+ ALT="$h,\delta$"> to Az,El</A>
+<LI><A NAME="tex2html447" HREF="node86.html#SECTION000473000000000000000">
+SLA_EARTH - Approx Earth Pos/Vel</A>
+<LI><A NAME="tex2html448" HREF="node87.html#SECTION000474000000000000000">
+SLA_ECLEQ - Ecliptic to Equatorial</A>
+<LI><A NAME="tex2html449" HREF="node88.html#SECTION000475000000000000000">
+SLA_ECMAT - Form <IMG WIDTH="81" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img95.gif"
+ ALT="$\alpha,\delta\rightarrow\lambda,\beta$"> Matrix</A>
+<LI><A NAME="tex2html450" HREF="node89.html#SECTION000476000000000000000">
+SLA_ECOR - RV &amp; Time Corrns to Sun</A>
+<LI><A NAME="tex2html451" HREF="node90.html#SECTION000477000000000000000">
+SLA_EG50 - B1950 <IMG WIDTH="28" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.gif"
+ ALT="$\alpha,\delta$"> to Galactic</A>
+<LI><A NAME="tex2html452" HREF="node91.html#SECTION000478000000000000000">
+SLA_EL2UE - Conventional to Universal Elements</A>
+<LI><A NAME="tex2html453" HREF="node92.html#SECTION000479000000000000000">
+SLA_EPB - MJD to Besselian Epoch</A>
+<LI><A NAME="tex2html454" HREF="node93.html#SECTION000480000000000000000">
+SLA_EPB2D - Besselian Epoch to MJD</A>
+<LI><A NAME="tex2html455" HREF="node94.html#SECTION000481000000000000000">
+SLA_EPCO - Convert Epoch to B or J</A>
+<LI><A NAME="tex2html456" HREF="node95.html#SECTION000482000000000000000">
+SLA_EPJ - MJD to Julian Epoch</A>
+<LI><A NAME="tex2html457" HREF="node96.html#SECTION000483000000000000000">
+SLA_EPJ2D - Julian Epoch to MJD</A>
+<LI><A NAME="tex2html458" HREF="node97.html#SECTION000484000000000000000">
+SLA_EQECL - J2000 <IMG WIDTH="28" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.gif"
+ ALT="$\alpha,\delta$"> to Ecliptic</A>
+<LI><A NAME="tex2html459" HREF="node98.html#SECTION000485000000000000000">
+SLA_EQEQX - Equation of the Equinoxes</A>
+<LI><A NAME="tex2html460" HREF="node99.html#SECTION000486000000000000000">
+SLA_EQGAL - J2000 <IMG WIDTH="28" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.gif"
+ ALT="$\alpha,\delta$"> to Galactic</A>
+<LI><A NAME="tex2html461" HREF="node100.html#SECTION000487000000000000000">
+SLA_ETRMS - E-terms of Aberration</A>
+<LI><A NAME="tex2html462" HREF="node101.html#SECTION000488000000000000000">
+SLA_EULER - Rotation Matrix from Euler Angles</A>
+<LI><A NAME="tex2html463" HREF="node102.html#SECTION000489000000000000000">
+SLA_EVP - Earth Position &amp; Velocity</A>
+<LI><A NAME="tex2html464" HREF="node103.html#SECTION000490000000000000000">
+SLA_FITXY - Fit Linear Model to Two <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> Sets</A>
+<LI><A NAME="tex2html465" HREF="node104.html#SECTION000491000000000000000">
+SLA_FK425 - FK4 to FK5</A>
+<LI><A NAME="tex2html466" HREF="node105.html#SECTION000492000000000000000">
+SLA_FK45Z - FK4 to FK5, no P.M. or Parallax</A>
+<LI><A NAME="tex2html467" HREF="node106.html#SECTION000493000000000000000">
+SLA_FK524 - FK5 to FK4</A>
+<LI><A NAME="tex2html468" HREF="node107.html#SECTION000494000000000000000">
+SLA_FK52H - FK5 to Hipparcos</A>
+<LI><A NAME="tex2html469" HREF="node108.html#SECTION000495000000000000000">
+SLA_FK54Z - FK5 to FK4, no P.M. or Parallax</A>
+<LI><A NAME="tex2html470" HREF="node109.html#SECTION000496000000000000000">
+SLA_FK5HZ - FK5 to Hipparcos, no P.M.</A>
+<LI><A NAME="tex2html471" HREF="node110.html#SECTION000497000000000000000">
+SLA_FLOTIN - Decode a Real Number</A>
+<LI><A NAME="tex2html472" HREF="node111.html#SECTION000498000000000000000">
+SLA_GALEQ - Galactic to J2000 <IMG WIDTH="28" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.gif"
+ ALT="$\alpha,\delta$"></A>
+<LI><A NAME="tex2html473" HREF="node112.html#SECTION000499000000000000000">
+SLA_GALSUP - Galactic to Supergalactic</A>
+<LI><A NAME="tex2html474" HREF="node113.html#SECTION0004100000000000000000">
+SLA_GE50 - Galactic to B1950 <IMG WIDTH="28" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.gif"
+ ALT="$\alpha,\delta$"></A>
+<LI><A NAME="tex2html475" HREF="node114.html#SECTION0004101000000000000000">
+SLA_GEOC - Geodetic to Geocentric</A>
+<LI><A NAME="tex2html476" HREF="node115.html#SECTION0004102000000000000000">
+SLA_GMST - UT to GMST</A>
+<LI><A NAME="tex2html477" HREF="node116.html#SECTION0004103000000000000000">
+SLA_GMSTA - UT to GMST (extra precision)</A>
+<LI><A NAME="tex2html478" HREF="node117.html#SECTION0004104000000000000000">
+SLA_GRESID - Gaussian Residual</A>
+<LI><A NAME="tex2html479" HREF="node118.html#SECTION0004105000000000000000">
+SLA_H2E - Az,El to <IMG WIDTH="27" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif"
+ ALT="$h,\delta$"></A>
+<LI><A NAME="tex2html480" HREF="node119.html#SECTION0004106000000000000000">
+SLA_H2FK5 - Hipparcos to FK5</A>
+<LI><A NAME="tex2html481" HREF="node120.html#SECTION0004107000000000000000">
+SLA_HFK5Z - Hipparcos to FK5, no P.M.</A>
+<LI><A NAME="tex2html482" HREF="node121.html#SECTION0004108000000000000000">
+SLA_IMXV - Apply 3D Reverse Rotation</A>
+<LI><A NAME="tex2html483" HREF="node122.html#SECTION0004109000000000000000">
+SLA_INTIN - Decode an Integer Number</A>
+<LI><A NAME="tex2html484" HREF="node123.html#SECTION0004110000000000000000">
+SLA_INVF - Invert Linear Model</A>
+<LI><A NAME="tex2html485" HREF="node124.html#SECTION0004111000000000000000">
+SLA_KBJ - Select Epoch Prefix</A>
+<LI><A NAME="tex2html486" HREF="node125.html#SECTION0004112000000000000000">
+SLA_M2AV - Rotation Matrix to Axial Vector</A>
+<LI><A NAME="tex2html487" HREF="node126.html#SECTION0004113000000000000000">
+SLA_MAP - Mean to Apparent</A>
+<LI><A NAME="tex2html488" HREF="node127.html#SECTION0004114000000000000000">
+SLA_MAPPA - Mean to Apparent Parameters</A>
+<LI><A NAME="tex2html489" HREF="node128.html#SECTION0004115000000000000000">
+SLA_MAPQK - Quick Mean to Apparent</A>
+<LI><A NAME="tex2html490" HREF="node129.html#SECTION0004116000000000000000">
+SLA_MAPQKZ - Quick Mean-Appt, no PM <I>etc.</I></A>
+<LI><A NAME="tex2html491" HREF="node130.html#SECTION0004117000000000000000">
+SLA_MOON - Approx Moon Pos/Vel</A>
+<LI><A NAME="tex2html492" HREF="node131.html#SECTION0004118000000000000000">
+SLA_MXM - Multiply <IMG WIDTH="39" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif"
+ ALT="$3\times3$"> Matrices</A>
+<LI><A NAME="tex2html493" HREF="node132.html#SECTION0004119000000000000000">
+SLA_MXV - Apply 3D Rotation</A>
+<LI><A NAME="tex2html494" HREF="node133.html#SECTION0004120000000000000000">
+SLA_NUT - Nutation Matrix</A>
+<LI><A NAME="tex2html495" HREF="node134.html#SECTION0004121000000000000000">
+SLA_NUTC - Nutation Components</A>
+<LI><A NAME="tex2html496" HREF="node135.html#SECTION0004122000000000000000">
+SLA_OAP - Observed to Apparent</A>
+<LI><A NAME="tex2html497" HREF="node136.html#SECTION0004123000000000000000">
+SLA_OAPQK - Quick Observed to Apparent</A>
+<LI><A NAME="tex2html498" HREF="node137.html#SECTION0004124000000000000000">
+SLA_OBS - Observatory Parameters</A>
+<LI><A NAME="tex2html499" HREF="node138.html#SECTION0004125000000000000000">
+SLA_PA - <IMG WIDTH="27" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif"
+ ALT="$h,\delta$"> to Parallactic Angle</A>
+<LI><A NAME="tex2html500" HREF="node139.html#SECTION0004126000000000000000">
+SLA_PAV - Position-Angle Between Two Directions</A>
+<LI><A NAME="tex2html501" HREF="node140.html#SECTION0004127000000000000000">
+SLA_PCD - Apply Radial Distortion</A>
+<LI><A NAME="tex2html502" HREF="node141.html#SECTION0004128000000000000000">
+SLA_PDA2H - H.A. for a Given Azimuth</A>
+<LI><A NAME="tex2html503" HREF="node142.html#SECTION0004129000000000000000">
+SLA_PDQ2H - H.A. for a Given P.A.</A>
+<LI><A NAME="tex2html504" HREF="node143.html#SECTION0004130000000000000000">
+SLA_PERMUT - Next Permutation</A>
+<LI><A NAME="tex2html505" HREF="node144.html#SECTION0004131000000000000000">
+SLA_PERTEL - Perturbed Orbital Elements</A>
+<LI><A NAME="tex2html506" HREF="node145.html#SECTION0004132000000000000000">
+SLA_PERTUE - Perturbed Universal Elements</A>
+<LI><A NAME="tex2html507" HREF="node146.html#SECTION0004133000000000000000">
+SLA_PLANEL - Planet Position from Elements</A>
+<LI><A NAME="tex2html508" HREF="node147.html#SECTION0004134000000000000000">
+SLA_PLANET - Planetary Ephemerides</A>
+<LI><A NAME="tex2html509" HREF="node148.html#SECTION0004135000000000000000">
+SLA_PLANTE - <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> of Planet from Elements</A>
+<LI><A NAME="tex2html510" HREF="node149.html#SECTION0004136000000000000000">
+SLA_PM - Proper Motion</A>
+<LI><A NAME="tex2html511" HREF="node150.html#SECTION0004137000000000000000">
+SLA_POLMO - Polar Motion</A>
+<LI><A NAME="tex2html512" HREF="node151.html#SECTION0004138000000000000000">
+SLA_PREBN - Precession Matrix (FK4)</A>
+<LI><A NAME="tex2html513" HREF="node152.html#SECTION0004139000000000000000">
+SLA_PREC - Precession Matrix (FK5)</A>
+<LI><A NAME="tex2html514" HREF="node153.html#SECTION0004140000000000000000">
+SLA_PRECES - Precession</A>
+<LI><A NAME="tex2html515" HREF="node154.html#SECTION0004141000000000000000">
+SLA_PRECL - Precession Matrix (latest)</A>
+<LI><A NAME="tex2html516" HREF="node155.html#SECTION0004142000000000000000">
+SLA_PRENUT - Precession/Nutation Matrix</A>
+<LI><A NAME="tex2html517" HREF="node156.html#SECTION0004143000000000000000">
+SLA_PV2EL - Orbital Elements from Position/Velocity</A>
+<LI><A NAME="tex2html518" HREF="node157.html#SECTION0004144000000000000000">
+SLA_PV2UE - Position/Velocity to Universal Elements</A>
+<LI><A NAME="tex2html519" HREF="node158.html#SECTION0004145000000000000000">
+SLA_PVOBS - Observatory Position &amp; Velocity</A>
+<LI><A NAME="tex2html520" HREF="node159.html#SECTION0004146000000000000000">
+SLA_PXY - Apply Linear Model</A>
+<LI><A NAME="tex2html521" HREF="node160.html#SECTION0004147000000000000000">
+SLA_RANDOM - Random Number</A>
+<LI><A NAME="tex2html522" HREF="node161.html#SECTION0004148000000000000000">
+SLA_RANGE - Put Angle into Range <IMG WIDTH="25" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif"
+ ALT="$\pm \pi$"></A>
+<LI><A NAME="tex2html523" HREF="node162.html#SECTION0004149000000000000000">
+SLA_RANORM - Put Angle into Range <IMG WIDTH="43" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.gif"
+ ALT="$0\!-\!2\pi$"></A>
+<LI><A NAME="tex2html524" HREF="node163.html#SECTION0004150000000000000000">
+SLA_RCC - Barycentric Coordinate Time</A>
+<LI><A NAME="tex2html525" HREF="node164.html#SECTION0004151000000000000000">
+SLA_RDPLAN - Apparent <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> of Planet</A>
+<LI><A NAME="tex2html526" HREF="node165.html#SECTION0004152000000000000000">
+SLA_REFCO - Refraction Constants</A>
+<LI><A NAME="tex2html527" HREF="node166.html#SECTION0004153000000000000000">
+SLA_REFCOQ - Refraction Constants (fast)</A>
+<LI><A NAME="tex2html528" HREF="node167.html#SECTION0004154000000000000000">
+SLA_REFRO - Refraction</A>
+<LI><A NAME="tex2html529" HREF="node168.html#SECTION0004155000000000000000">
+SLA_REFV - Apply Refraction to Vector</A>
+<LI><A NAME="tex2html530" HREF="node169.html#SECTION0004156000000000000000">
+SLA_REFZ - Apply Refraction to ZD</A>
+<LI><A NAME="tex2html531" HREF="node170.html#SECTION0004157000000000000000">
+SLA_RVEROT - RV Corrn to Earth Centre</A>
+<LI><A NAME="tex2html532" HREF="node171.html#SECTION0004158000000000000000">
+SLA_RVGALC - RV Corrn to Galactic Centre</A>
+<LI><A NAME="tex2html533" HREF="node172.html#SECTION0004159000000000000000">
+SLA_RVLG - RV Corrn to Local Group</A>
+<LI><A NAME="tex2html534" HREF="node173.html#SECTION0004160000000000000000">
+SLA_RVLSRD - RV Corrn to Dynamical LSR</A>
+<LI><A NAME="tex2html535" HREF="node174.html#SECTION0004161000000000000000">
+SLA_RVLSRK - RV Corrn to Kinematical LSR</A>
+<LI><A NAME="tex2html536" HREF="node175.html#SECTION0004162000000000000000">
+SLA_S2TP - Spherical to Tangent Plane</A>
+<LI><A NAME="tex2html537" HREF="node176.html#SECTION0004163000000000000000">
+SLA_SEP - Angle Between 2 Points on Sphere</A>
+<LI><A NAME="tex2html538" HREF="node177.html#SECTION0004164000000000000000">
+SLA_SMAT - Solve Simultaneous Equations</A>
+<LI><A NAME="tex2html539" HREF="node178.html#SECTION0004165000000000000000">
+SLA_SUBET - Remove E-terms</A>
+<LI><A NAME="tex2html540" HREF="node179.html#SECTION0004166000000000000000">
+SLA_SUPGAL - Supergalactic to Galactic</A>
+<LI><A NAME="tex2html541" HREF="node180.html#SECTION0004167000000000000000">
+SLA_SVD - Singular Value Decomposition</A>
+<LI><A NAME="tex2html542" HREF="node181.html#SECTION0004168000000000000000">
+SLA_SVDCOV - Covariance Matrix from SVD</A>
+<LI><A NAME="tex2html543" HREF="node182.html#SECTION0004169000000000000000">
+SLA_SVDSOL - Solution Vector from SVD</A>
+<LI><A NAME="tex2html544" HREF="node183.html#SECTION0004170000000000000000">
+SLA_TP2S - Tangent Plane to Spherical</A>
+<LI><A NAME="tex2html545" HREF="node184.html#SECTION0004171000000000000000">
+SLA_TP2V - Tangent Plane to Direction Cosines</A>
+<LI><A NAME="tex2html546" HREF="node185.html#SECTION0004172000000000000000">
+SLA_TPS2C - Plate centre from <IMG WIDTH="26" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img90.gif"
+ ALT="$\xi,\eta$"> and <IMG WIDTH="28" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.gif"
+ ALT="$\alpha,\delta$"></A>
+<LI><A NAME="tex2html547" HREF="node186.html#SECTION0004173000000000000000">
+SLA_TPV2C - Plate centre from <IMG WIDTH="26" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img90.gif"
+ ALT="$\xi,\eta$"> and <I>x</I>,<I>y</I>,<I>z</I></A>
+<LI><A NAME="tex2html548" HREF="node187.html#SECTION0004174000000000000000">
+SLA_UE2EL - Universal to Conventional Elements</A>
+<LI><A NAME="tex2html549" HREF="node188.html#SECTION0004175000000000000000">
+SLA_UE2PV - Pos/Vel from Universal Elements</A>
+<LI><A NAME="tex2html550" HREF="node189.html#SECTION0004176000000000000000">
+SLA_UNPCD - Remove Radial Distortion</A>
+<LI><A NAME="tex2html551" HREF="node190.html#SECTION0004177000000000000000">
+SLA_V2TP - Direction Cosines to Tangent Plane</A>
+<LI><A NAME="tex2html552" HREF="node191.html#SECTION0004178000000000000000">
+SLA_VDV - Scalar Product</A>
+<LI><A NAME="tex2html553" HREF="node192.html#SECTION0004179000000000000000">
+SLA_VN - Normalize Vector</A>
+<LI><A NAME="tex2html554" HREF="node193.html#SECTION0004180000000000000000">
+SLA_VXV - Vector Product</A>
+<LI><A NAME="tex2html555" HREF="node194.html#SECTION0004181000000000000000">
+SLA_WAIT - Time Delay</A>
+<LI><A NAME="tex2html556" HREF="node195.html#SECTION0004182000000000000000">
+SLA_XY2XY - Apply Linear Model to an <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"></A>
+<LI><A NAME="tex2html557" HREF="node196.html#SECTION0004183000000000000000">
+SLA_ZD - <IMG WIDTH="27" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif"
+ ALT="$h,\delta$"> to Zenith Distance</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR> <HR>
+<A NAME="tex2html373" HREF="node14.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html371" HREF="sun67.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html365" HREF="node12.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html374" HREF="node14.html">SLA_ADDET - Add E-terms of Aberration</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html372" HREF="sun67.html">SLALIB   Positional Astronomy Library</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html366" HREF="node12.html">LINKING</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

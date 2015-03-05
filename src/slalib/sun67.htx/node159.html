@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_PXY - Apply Linear Model</TITLE>
+<META NAME="description" CONTENT="SLA_PXY - Apply Linear Model">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node160.html">
+<LINK REL="previous" HREF="node158.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node160.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2016" HREF="node160.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2014" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2008" HREF="node158.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2017" HREF="node160.html">SLA_RANDOM - Random Number</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2015" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2009" HREF="node158.html">SLA_PVOBS - Observatory Position &amp; Velocity</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004146000000000000000">SLA_PXY - Apply Linear Model</A>
+<A NAME="xref_SLA_PXY">&#160;</A><A NAME="SLA_PXY">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Given arrays of <I>expected</I> and <I>measured</I>
+<IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> coordinates, and a
+         linear model relating them (as produced by sla_FITXY), compute
+         the array of <I>predicted</I> coordinates and the RMS residuals.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_PXY (NP,XYE,XYM,COEFFS,XYP,XRMS,YRMS,RRMS)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>NP</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>number of samples</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XYE</EM></TD>
+<TD ALIGN="LEFT"><B>D(2,NP)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>expected <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> for each sample</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XYM</EM></TD>
+<TD ALIGN="LEFT"><B>D(2,NP)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>measured <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> for each sample</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>COEFFS</EM></TD>
+<TD ALIGN="LEFT"><B>D(6)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>coefficients of model (see below)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XYP</EM></TD>
+<TH ALIGN="LEFT"><B>D(2,NP)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>predicted <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> for each sample</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XRMS</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>RMS in X</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>YRMS</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>RMS in Y</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RRMS</EM></TD>
+<TD ALIGN="LEFT"><B>D </B></TD>
+<TD ALIGN="LEFT" NOWRAP>total RMS (vector sum of XRMS and YRMS)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The model is supplied in the array COEFFS.  Naming the
+six elements of COEFFS <I>a</I>,<I>b</I>,<I>c</I>,<I>d</I>,<I>e</I> &amp; <I>f</I>,
+the model transforms <I>measured</I> coordinates
+        <IMG WIDTH="63" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img113.gif"
+ ALT="$[x_{m},y_{m}\,]$"> into <I>predicted</I> coordinates
+        <IMG WIDTH="53" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img144.gif"
+ ALT="$[x_{p},y_{p}\,]$"> as follows:
+        <BLOCKQUOTE><I>x</I><SUB><I>p</I></SUB> = <I>a</I> + <I>bx</I><SUB><I>m</I></SUB> + <I>cy</I><SUB><I>m</I></SUB> <BR>
+         <I>y</I><SUB><I>p</I></SUB> = <I>d</I> + <I>ex</I><SUB><I>m</I></SUB> + <I>fy</I><SUB><I>m</I></SUB></BLOCKQUOTE>
+  <DT>2.
+<DD>The residuals are (<I>x</I><SUB><I>p</I></SUB>-<I>x</I><SUB><I>e</I></SUB>) and (<I>y</I><SUB><I>p</I></SUB>-<I>y</I><SUB><I>e</I></SUB>).
+  <DT>3.
+<DD>If NP is less than or equal to zero, no coordinates are
+        transformed, and the RMS residuals are all zero.
+  <DT>4.
+<DD>See also sla_FITXY, sla_INVF, sla_XY2XY, sla_DCMPF
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html2016" HREF="node160.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2014" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2008" HREF="node158.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2017" HREF="node160.html">SLA_RANDOM - Random Number</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2015" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2009" HREF="node158.html">SLA_PVOBS - Observatory Position &amp; Velocity</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

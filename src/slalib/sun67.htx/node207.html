@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Proper Motion</TITLE>
+<META NAME="description" CONTENT="Proper Motion">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node208.html">
+<LINK REL="previous" HREF="node206.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node208.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2521" HREF="node208.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2519" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2513" HREF="node206.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2522" HREF="node208.html">Parallax and Radial Velocity</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2520" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2514" HREF="node206.html">Epoch</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00057000000000000000">
+Proper Motion</A>
+</H2>
+Stars in catalogues usually have, in addition to the 
+<IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">  coordinates, a <I>proper motion</I> <IMG WIDTH="54" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img264.gif"
+ ALT="$[\mu_\alpha,\mu_\delta]$">.This is an intrinsic motion
+of the star across the background.  Very few stars have a
+proper motion which exceeds <IMG WIDTH="17" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img140.gif"
+ ALT="$1\hspace{-0.05em}^{'\hspace{-0.1em}'}$">/year, and most are
+far below this level.  A star observed as part of normal
+astronomy research will, as a rule, have a proper motion
+which is unknown.
+<P>
+Mean <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> and rate of change are not sufficient to pin
+down a star;  the epoch at which the <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> was or will
+be correct is also needed.  Note the distinction
+between the epoch which specifies the
+coordinate system and the epoch at which the star passed
+through the given <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">.  The full specification for a star
+is <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">, proper motions, equinox and epoch (plus something to
+identify which set of models for the precession <I>etc.</I> is 
+being used - see the next section).
+For convenience, coordinates given in star catalogues are almost
+always adjusted to make the equinox and epoch the same - for
+example B1950 in the case of the SAO&nbsp;catalogue.
+<P>
+SLALIB provides one routine to handle proper motion on its own,
+sla_PM.
+Proper motion is also allowed for in various other
+routines as appropriate, for example
+sla_MAP
+and
+sla_FK425.
+Note that in all SLALIB routines which involve proper motion
+the units are radians per year and the
+<IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> component is in the form <IMG WIDTH="13" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img115.gif"
+ ALT="$\dot{\alpha}$"> (<I>i.e.</I> big
+numbers near the poles).
+Some star catalogues have proper motion per century, and
+in some catalogues the <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> component is in the form
+<IMG WIDTH="48" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img116.gif"
+ ALT="$\dot{\alpha}\cos\delta$"> (<I>i.e.</I> angle on the sky).
+<P>
+<BR> <HR>
+<A NAME="tex2html2521" HREF="node208.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2519" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2513" HREF="node206.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2522" HREF="node208.html">Parallax and Radial Velocity</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2520" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2514" HREF="node206.html">Epoch</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

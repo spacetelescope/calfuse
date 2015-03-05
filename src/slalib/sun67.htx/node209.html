@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Aberration</TITLE>
+<META NAME="description" CONTENT="Aberration">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node210.html">
+<LINK REL="previous" HREF="node208.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node210.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2541" HREF="node210.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2539" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2533" HREF="node208.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2542" HREF="node210.html">Different Sorts of Mean Place</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2540" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2534" HREF="node208.html">Parallax and Radial Velocity</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00059000000000000000">
+Aberration</A>
+</H2>
+The finite speed of light combined with the motion of the observer
+around the Sun during the year causes apparent displacements of
+the positions of the stars.  The effect is called
+the <I>annual aberration</I> (or ``stellar''
+aberration).  Its maximum size, about 
+      <IMG WIDTH="31" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img265.gif"
+ ALT="$20\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.5$">   ,
+occurs for stars <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$90^{\circ}$"> from the point towards which
+the Earth is headed as it orbits the Sun;  a star exactly in line with
+the Earth's motion is not displaced.  To receive the light of
+a star, the telescope has to be offset slightly in the direction of
+the Earth's motion.  A familiar analogy is the need to tilt your
+umbrella forward when on the move, to avoid getting wet.  This
+Newtonian model is,
+in fact, highly misleading in the context of light as opposed
+to rain, but happens to give the same answer as a relativistic
+treatment to first order (better than 1&nbsp;milliarcsecond).
+<P>
+Before the IAU 1976 resolutions, different
+values for the approximately
+<P>      <IMG WIDTH="31" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img265.gif"
+ ALT="$20\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.5$">    <I>aberration constant</I> were employed
+at different times, and this can complicate comparisons
+between different catalogues.  Another complication comes from
+the so-called <I>E-terms of aberration</I>,
+that small part of the annual aberration correction that is a
+function of the eccentricity of the Earth's orbit.  The E-terms,
+maximum amplitude about 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img32.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.3$">   ,
+happen to be approximately constant for a given star, and so they
+used to be incorporated in the catalogue <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">to reduce the labour of converting to and from apparent place.
+The E-terms can be removed from a catalogue <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> by
+calling
+sla_SUBET
+or applied (for example to allow a pulsar
+timing-position to be plotted on a B1950 finding chart)
+by calling
+sla_ADDET;
+the E-terms vector itself can be obtained by calling
+sla_ETRMS.
+Star positions post IAU 1976 are free of these distortions, and to
+apply corrections for annual aberration involves the actual
+barycentric velocity of the Earth rather than the use of
+canonical circular-orbit models.
+<P>
+The annual aberration is the aberration correction for
+an imaginary observer at the Earth's centre.
+The motion of a real observer around the Earth's rotation axis in
+the course of the day makes a small extra contribution to the total
+aberration effect called the <I>diurnal aberration</I>.  Its
+maximum amplitude is about 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img76.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.2$">   .
+<P>
+No SLALIB routine is provided for calculating the aberration on
+its own, though the required velocity vectors can be
+generated using
+sla_EVP
+and
+sla_GEOC.
+Annual and diurnal aberration are allowed for where required, for example in
+sla_MAP
+<I>etc</I>. and
+sla_AOP
+<I>etc</I>.  Note that this sort
+of aberration is different from the <I>planetary
+aberration</I>, which is the apparent displacement of a solar-system
+body, with respect to the ephemeris position, as a consequence
+of the motion of <I>both</I> the Earth and the source.  The
+planetary aberration can be computed either by correcting the
+position of the solar-system body for light-time, followed by
+the ordinary stellar aberration correction, or more
+directly by expressing the position and velocity of the source
+in the observer's frame and correcting for light-time alone.
+<P>
+<BR> <HR>
+<A NAME="tex2html2541" HREF="node210.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2539" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2533" HREF="node208.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2542" HREF="node210.html">Different Sorts of Mean Place</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2540" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2534" HREF="node208.html">Parallax and Radial Velocity</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

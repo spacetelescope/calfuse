@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_DCMPF - Interpret Linear Fit</TITLE>
+<META NAME="description" CONTENT="SLA_DCMPF - Interpret Linear Fit">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node51.html">
+<LINK REL="previous" HREF="node49.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node51.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html926" HREF="node51.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html924" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html918" HREF="node49.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html927" HREF="node51.html">SLA_DCS2C - Spherical to Cartesian</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html925" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html919" HREF="node49.html">SLA_DCC2S - Cartesian to Spherical</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000437000000000000000">SLA_DCMPF - Interpret Linear Fit</A>
+<A NAME="xref_SLA_DCMPF">&#160;</A><A NAME="SLA_DCMPF">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Decompose an <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> linear fit into its constituent parameters:
+zero points, scales, nonperpendicularity and orientation.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_DCMPF (COEFFS,XZ,YZ,XS,YS,PERP,ORIENT)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>COEFFS</EM></TD>
+<TH ALIGN="LEFT"><B>D(6)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>transformation coefficients (see note)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XZ</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TH ALIGN="LEFT" NOWRAP><I>x</I> zero point</TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>YZ</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP><I>y</I> zero point</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>XS</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP><I>x</I> scale</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>YS</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP><I>y</I> scale</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PERP</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>nonperpendicularity (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>ORIENT</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>orientation (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The model relates two sets of <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$[\,x,y\,]$"> coordinates as follows.
+Naming the six elements of COEFFS <I>a</I>,<I>b</I>,<I>c</I>,<I>d</I>,<I>e</I> &amp; <I>f</I>,
+the model transforms coordinates <IMG WIDTH="53" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img55.gif"
+ ALT="$[x_{1},y_{1}\,]$"> into coordinates
+        <IMG WIDTH="53" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img56.gif"
+ ALT="$[x_{2},y_{2}\,]$"> as follows:
+        <BLOCKQUOTE><I>x<SUB>2</SUB></I> = <I>a</I> + <I>bx<SUB>1</SUB></I> + <I>cy<SUB>1</SUB></I> <BR>
+         <I>y<SUB>2</SUB></I> = <I>d</I> + <I>ex<SUB>1</SUB></I> + <I>fy<SUB>1</SUB></I></BLOCKQUOTE>
+        The sla_DCMPF routine decomposes this transformation
+        into four steps:
+        <DL COMPACT>
+<DT>(a)
+<DD>Zero points:
+<BLOCKQUOTE><IMG WIDTH="96" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img57.gif"
+ ALT="$x' = x_{1} + {\rm XZ}$"> <BR>
+               <IMG WIDTH="94" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img58.gif"
+ ALT="$y' = y_{1} + {\rm YZ}$"></BLOCKQUOTE>
+        <DT>(b)
+<DD>Scales:
+              <BLOCKQUOTE><IMG WIDTH="76" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img59.gif"
+ ALT="$x'' = x' {\rm XS}$"> <BR>
+               <IMG WIDTH="74" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img60.gif"
+ ALT="$y'' = y' {\rm YS}$"></BLOCKQUOTE>
+        <DT>(c)
+<DD>Nonperpendicularity:
+              <BLOCKQUOTE><IMG WIDTH="287" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img61.gif"
+ ALT="$x''' = + x'' \cos {\rm PERP}/2 + y'' \sin {\rm PERP}/2$"> <BR>
+               <IMG WIDTH="286" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img62.gif"
+ ALT="$y''' = + x'' \sin {\rm PERP}/2 + y'' \cos {\rm PERP}/2$"></BLOCKQUOTE>
+        <DT>(d)
+<DD>Orientation:
+              <BLOCKQUOTE><IMG WIDTH="298" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img63.gif"
+ ALT="$x_{2} = + x''' \cos {\rm ORIENT} +
+ y''' \sin {\rm ORIENT}$"> <BR>
+               <IMG WIDTH="297" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img64.gif"
+ ALT="$y_{2} = - x''' \sin {\rm ORIENT} +
+ y''' \cos {\rm ORIENT}$"></BLOCKQUOTE></DL>
+  <DT>2.
+<DD>See also sla_FITXY, sla_PXY, sla_INVF, sla_XY2XY.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html926" HREF="node51.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html924" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html918" HREF="node49.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html927" HREF="node51.html">SLA_DCS2C - Spherical to Cartesian</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html925" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html919" HREF="node49.html">SLA_DCC2S - Cartesian to Spherical</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

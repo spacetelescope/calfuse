@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Geocentric Coordinates</TITLE>
+<META NAME="description" CONTENT="Geocentric Coordinates">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node224.html">
+<LINK REL="previous" HREF="node222.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node224.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2683" HREF="node224.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2681" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2675" HREF="node222.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2684" HREF="node224.html">Ephemerides</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2682" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2676" HREF="node222.html">Calendars</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000517000000000000000">
+Geocentric Coordinates</A>
+</H2>
+The location of the observer on the Earth is significant in a
+number of ways.  The most obvious, of course, is the effect of latitude
+on the observed <IMG WIDTH="66" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$[\,Az,El~]$"> of a star.  Less obvious is the need to
+allow for geocentric parallax when finding the Moon with a
+telescope (and when doing high-precision work involving the
+Sun or planets), and the need to correct observed radial
+velocities and apparent pulsar periods for the effects
+of the Earth's rotation.
+<P>
+The SLALIB routine
+sla_OBS
+supplies details of groundbased observatories from an internal
+list.  This is useful when writing applications that apply to
+more than one observatory;  the user can enter a brief name,
+or browse through a list, and be spared the trouble of typing
+in the full latitude, longitude <I>etc</I>.  The following
+Fortran code returns the full name, longitude and latitude
+of a specified observatory:
+<P><PRE>
+            CHARACTER IDENT*10,NAME*40
+            DOUBLE PRECISION W,P,H
+             :
+            CALL sla_OBS(0,IDENT,NAME,W,P,H)
+            IF (NAME.EQ.'?') ...             (not recognized)
+</PRE>
+<P>(Beware of the longitude sign convention, which is west +ve
+for historical reasons.)  The following lists all
+the supported observatories:
+<P><PRE>
+             :
+            INTEGER N
+             :
+            N=1
+            NAME=' '
+            DO WHILE (NAME.NE.'?')
+               CALL sla_OBS(N,IDENT,NAME,W,P,H)
+               IF (NAME.NE.'?') THEN
+                  WRITE (*,'(1X,I3,4X,A,4X,A)') N,IDENT,NAME
+                  N=N+1
+               END IF
+            END DO
+</PRE>
+<P>
+The routine
+sla_GEOC
+converts a <I>geodetic latitude</I>
+(one referred to the local horizon) to a geocentric position,
+taking into account the Earth's oblateness and also the height
+above sea level of the observer.  The results are expressed in
+vector form, namely as the distance of the observer from
+the spin axis and equator respectively.  The <I>geocentric
+latitude</I> can be found be evaluating ATAN2 of the
+two numbers.  A full 3-D vector description of the position
+and velocity of the observer is available through the routine
+sla_PVOBS.
+For a specified geodetic latitude, height above
+sea level, and local sidereal time,
+sla_PVOBS
+generates a 6-element vector containing the position and
+velocity with respect to the true equator and equinox of
+date (<I>i.e.</I> compatible with apparent <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">).  For
+some applications it will be necessary to convert to a
+mean <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> frame (notably FK5, J2000) by multiplying
+elements 1-3 and 4-6 respectively with the appropriate
+precession matrix.  (In theory an additional correction to the
+velocity vector is needed to allow for differential precession,
+but this correction is always negligible.)
+<P>
+See also the discussion of the routine
+sla_RVEROT,
+later.
+<P>
+<BR> <HR>
+<A NAME="tex2html2683" HREF="node224.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2681" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2675" HREF="node222.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2684" HREF="node224.html">Ephemerides</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2682" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2676" HREF="node222.html">Calendars</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

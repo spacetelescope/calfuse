@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_SVDSOL - Solution Vector from SVD</TITLE>
+<META NAME="description" CONTENT="SLA_SVDSOL - Solution Vector from SVD">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node183.html">
+<LINK REL="previous" HREF="node181.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node183.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2246" HREF="node183.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2244" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2238" HREF="node181.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2247" HREF="node183.html">SLA_TP2S - Tangent Plane to Spherical</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2245" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2239" HREF="node181.html">SLA_SVDCOV - Covariance Matrix from SVD</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004169000000000000000">SLA_SVDSOL - Solution Vector from SVD</A>
+<A NAME="xref_SLA_SVDSOL">&#160;</A><A NAME="SLA_SVDSOL">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>From a given vector and the SVD of a matrix (as obtained from
+the sla_SVD routine), obtain the solution vector.
+         This routine solves the equation:
+         <PRE><TT>
+ 		 <B>A</B> <IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"> <B>x</B> = <B>b</B>         
+</TT></PRE>
+         where:
+         <PRE><TT>
+ 		 <B>A</B> 		 is a given <I>m</I> (rows) <IMG WIDTH="25" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.gif"
+ ALT="$\times n$"> (columns)                       matrix, where <IMG WIDTH="48" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img227.gif"
+ ALT="$m \geq n$"> 
+		 <B>x</B> 		 is the <I>n</I>-vector we wish to find, and
+		 <B>b</B> 		 is a given <I>m</I>-vector         
+</TT></PRE>
+         by means of the <I>Singular Value Decomposition</I> method (SVD).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_SVDSOL (M, N, MP, NP, B, U, W, V, WORK, X)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>M,N</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TH ALIGN="LEFT" NOWRAP><I>m</I>, <I>n</I>, the numbers of rows and columns in matrix <B>A</B></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>MP,NP</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>physical dimensions of array containing matrix <B>A</B></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>B</EM></TD>
+<TD ALIGN="LEFT"><B>D(M)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>known vector <B>b</B></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>U</EM></TD>
+<TD ALIGN="LEFT"><B>D(MP,NP)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>array containing <IMG WIDTH="46" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img228.gif"
+ ALT="$m \times n$"> matrix <B>U</B></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>W</EM></TD>
+<TD ALIGN="LEFT"><B>D(N)</B></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="42" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif"
+ ALT="$n \times n$"> diagonal matrix <B>W</B>
+(diagonal elements only)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>V</EM></TD>
+<TD ALIGN="LEFT"><B>D(NP,NP)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>array containing <IMG WIDTH="42" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif"
+ ALT="$n \times n$"> orthogonal matrix <B>V</B></TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>WORK</EM></TD>
+<TH ALIGN="LEFT"><B>D(N)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>workspace</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>X</EM></TD>
+<TD ALIGN="LEFT"><B>D(N)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>unknown vector <B>x</B></TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>In the Singular Value Decomposition method (SVD),
+the matrix <B>A</B> is first factorized (for example by
+the routine sla_SVD) into the following components:
+        <PRE><TT>
+ 		 <B>A</B> = <B>U</B> <IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"> <B>W</B> <IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"> <B>V</B><SUP><I>T</I></SUP>
+</TT></PRE>
+        where:
+        <PRE><TT>
+ 		 <B>A</B> 		 is any <I>m</I> (rows) <IMG WIDTH="25" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.gif"
+ ALT="$\times n$"> (columns) matrix,                      where <I>m</I> &gt; <I>n</I> 
+		 <B>U</B> 		 is an <IMG WIDTH="46" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img228.gif"
+ ALT="$m \times n$"> column-orthogonal matrix
+		 <B>W</B> 		 is an <IMG WIDTH="42" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif"
+ ALT="$n \times n$"> diagonal matrix with                      <IMG WIDTH="54" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img229.gif"
+ ALT="$w_{ii} \geq 0$"> 
+		 <B>V</B><SUP><I>T</I></SUP> is the transpose of an <IMG WIDTH="42" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif"
+ ALT="$n \times n$">                            orthogonal matrix        
+</TT></PRE>
+        Note that <I>m</I> and <I>n</I> are the <I>logical</I> dimensions of the
+        matrices and vectors concerned, which can be located in
+        arrays of larger <I>physical</I> dimensions MP and NP.
+        The solution is then found from the expression:
+        <PRE><TT>
+ 		 <B>x</B> = <B>V</B> <IMG WIDTH="71" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img230.gif"
+ ALT="$\cdot~[diag(1/$"><B>W</B><IMG WIDTH="38" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img231.gif"
+ ALT="$_{j})]
+ \cdot ($"><B>U</B><IMG WIDTH="17" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img70.gif"
+ ALT="$^{T}\cdot$"><B>b</B>)        
+</TT></PRE>
+  <DT>2.
+<DD>If matrix <B>A</B> is square, and if the diagonal matrix <B>W</B> is not
+        altered, the method is equivalent to conventional solution
+        of simultaneous equations.
+  <DT>3.
+<DD>If <I>m</I> &gt; <I>n</I>, the result is a least-squares fit.
+  <DT>4.
+<DD>If the solution is poorly determined, this shows up in the
+        SVD factorization as very small or zero <B>W</B><SUB><I>j</I></SUB> values.  Where
+        a <B>W</B><SUB><I>j</I></SUB> value is small but non-zero it can be set to zero to
+        avoid ill effects.  The present routine detects such zero
+        <B>W</B><SUB><I>j</I></SUB> values and produces a sensible solution, with highly
+        correlated terms kept under control rather than being allowed
+        to elope to infinity, and with meaningful values for the
+       other terms.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD><I>Numerical Recipes</I>, section 2.9.
+</DL>
+<BR> <HR>
+<A NAME="tex2html2246" HREF="node183.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2244" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2238" HREF="node181.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2247" HREF="node183.html">SLA_TP2S - Tangent Plane to Spherical</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2245" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2239" HREF="node181.html">SLA_SVDCOV - Covariance Matrix from SVD</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

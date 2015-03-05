@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_AMP - Apparent to Mean</TITLE>
+<META NAME="description" CONTENT="SLA_AMP - Apparent to Mean">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node19.html">
+<LINK REL="previous" HREF="node17.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node19.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html606" HREF="node19.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html604" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html598" HREF="node17.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html607" HREF="node19.html">SLA_AMPQK - Quick Apparent to Mean</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html605" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html599" HREF="node17.html">SLA_ALTAZ - Velocities etc. for Altazimuth Mount</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00045000000000000000">SLA_AMP - Apparent to Mean</A>
+<A NAME="xref_SLA_AMP">&#160;</A><A NAME="SLA_AMP">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Convert star <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> from geocentric apparent to
+mean place (post IAU 1976).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_AMP (RA, DA, DATE, EQ, RM, DM)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RA,DA</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>apparent <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>TDB for apparent place (JD-2400000.5)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EQ</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>equinox:  Julian epoch of mean place</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RM,DM</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>mean <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The distinction between the required TDB and TT is
+always negligible.  Moreover, for all but the most
+critical applications UTC is adequate.
+  <DT>2.
+<DD>The accuracy is limited by the routine sla_EVP, called
+        by sla_MAPPA, which computes the Earth position and
+        velocity using the methods of Stumpff.  The maximum
+        error is about 0.3&nbsp;milliarcsecond.
+  <DT>3.
+<DD>Iterative techniques are used for the aberration and
+        light deflection corrections so that the routines
+        sla_AMP (or sla_AMPQK) and sla_MAP (or sla_MAPQK) are
+        accurate inverses;  even at the edge of the Sun's disc
+        the discrepancy is only about 1&nbsp;nanoarcsecond.
+  <DT>4.
+<DD>Where multiple apparent places are to be converted to
+        mean places, for a fixed date and equinox, it is more
+        efficient to use the sla_MAPPA routine to compute the
+        required parameters once, followed by one call to
+        sla_AMPQK per star.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>1984 <I>Astronomical Almanac</I>, pp B39-B41.
+<DT>2.
+<DD>Lederle &amp; Schwan, 1984. <I>Astr.Astrophys.</I> <B>134</B>, 1-6.
+</DL></DL>
+<BR> <HR>
+<A NAME="tex2html606" HREF="node19.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html604" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html598" HREF="node17.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html607" HREF="node19.html">SLA_AMPQK - Quick Apparent to Mean</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html605" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html599" HREF="node17.html">SLA_ALTAZ - Velocities etc. for Altazimuth Mount</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

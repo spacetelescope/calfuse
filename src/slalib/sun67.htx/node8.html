@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>C Version</TITLE>
+<META NAME="description" CONTENT="C Version">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node9.html">
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="node2.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html325" HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html323" HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html317" HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html326" HREF="node9.html">Future Versions</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html324" HREF="node2.html">INTRODUCTION</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html318" HREF="node7.html">Fortran Version</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00026000000000000000">
+C Version</A>
+</H2>
+An ANSI C version of SLALIB is available from the author
+but is not part of the Starlink release.
+The functionality of this (proprietary) C version closely matches
+that of the Starlink Fortran SLALIB, partly for the convenience of
+existing users of the Fortran version, some of whom have in the past
+implemented C ``wrappers''.  The function names
+cannot be the same as the Fortran versions because of potential
+linking problems when
+both forms of the library are present; the C routine which
+is the equivalent of (for example) <TT>SLA_REFRO</TT> is <TT>slaRefro</TT>.
+The types of arguments follow the Fortran version, except
+that integers are <TT>int</TT> rather than <TT>long</TT>.
+Argument passing is by value
+(except for arrays and strings of course)
+for given arguments and by pointer for returned arguments.
+All the C functions are re-entrant.
+<P>
+The Fortran routines <TT>sla_GRESID</TT>, <TT>sla_RANDOM</TT> and
+<TT>sla_WAIT</TT> have no C counterparts.
+<P>
+Further details of the C version of SLALIB are available
+from the author.  The definitive guide to
+the calling sequences is the file <TT>slalib.h</TT>.
+<P>
+<BR> <HR>
+<A NAME="tex2html325" HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html323" HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html317" HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html326" HREF="node9.html">Future Versions</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html324" HREF="node2.html">INTRODUCTION</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html318" HREF="node7.html">Fortran Version</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

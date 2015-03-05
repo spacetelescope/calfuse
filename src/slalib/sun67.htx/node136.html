@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_OAPQK - Quick Observed to Apparent</TITLE>
+<META NAME="description" CONTENT="SLA_OAPQK - Quick Observed to Apparent">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node137.html">
+<LINK REL="previous" HREF="node135.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node137.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html1786" HREF="node137.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1784" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1778" HREF="node135.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1787" HREF="node137.html">SLA_OBS - Observatory Parameters</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1785" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1779" HREF="node135.html">SLA_OAP - Observed to Apparent</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004123000000000000000">SLA_OAPQK - Quick Observed to Apparent</A>
+<A NAME="xref_SLA_OAPQK">&#160;</A><A NAME="SLA_OAPQK">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Quick observed to apparent place.
+<DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_OAPQK (TYPE, OB1, OB2, AOPRMS, RAP, DAP)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>TYPE</EM></TD>
+<TH ALIGN="LEFT"><B>C*(*)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>type of coordinates - `R', `H' or `A' (see below)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>OB1</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>observed Az, HA or RA (radians; Az is N=0, E=<IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$90^{\circ}$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>OB2</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>observed zenith distance or <IMG WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\delta$"> (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AOPRMS</EM></TD>
+<TD ALIGN="LEFT"><B>D(14)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>star-independent apparent-to-observed parameters:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(1)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>geodetic latitude (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(2,3)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>sine and cosine of geodetic latitude</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(4)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>magnitude of diurnal aberration vector</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(5)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>height (HM)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(6)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>ambient temperature (TDK)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(7)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>pressure (PMB)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(8)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>relative humidity (RH)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(9)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>wavelength (WL)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(10)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>lapse rate (TLR)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(11,12)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>refraction constants A and B (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(13)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>longitude + eqn of equinoxes +
+``sidereal <IMG WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\Delta$">UT'' (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(14)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>local apparent sidereal time (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RAP,DAP</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>geocentric apparent <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"></TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Only the first character of the TYPE argument is significant.
+`R' or `r' indicates that OBS1 and OBS2 are the observed Right
+Ascension and Declination;  `H' or `h' indicates that they are
+        Hour Angle (west +ve) and Declination; anything else (`A' or
+        `a' is recommended) indicates that OBS1 and OBS2 are Azimuth
+        (north zero, east is <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$90^{\circ}$">) and Zenith Distance.  (Zenith
+        distance is used rather than elevation in order to reflect the
+        fact that no allowance is made for depression of the horizon.)
+  <DT>2.
+<DD>The accuracy of the result is limited by the corrections for
+        refraction.  Providing the meteorological parameters are
+        known accurately and there are no gross local effects, the
+        predicted azimuth and elevation should be within about
+<P>      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img25.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.1$">    for <IMG WIDTH="56" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.gif"
+ ALT="$\zeta<70^{\circ}$">.  Even
+        at a topocentric zenith distance of
+        <IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$90^{\circ}$">, the accuracy in elevation should be better than
+        1&nbsp;arcminute;  useful results are available for a further
+        <IMG WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img27.gif"
+ ALT="$3^{\circ}$">, beyond which the sla_REFRO routine returns a
+        fixed value of the refraction.  The complementary
+        routines sla_AOP (or sla_AOPQK) and sla_OAP (or sla_OAPQK)
+        are self-consistent to better than 1&nbsp;microarcsecond all over
+        the celestial sphere.
+  <DT>3.
+<DD>It is advisable to take great care with units, as even
+        unlikely values of the input parameters are accepted and
+        processed in accordance with the models used.
+  <DT>4.
+<DD><I>Observed</I> <IMG WIDTH="66" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$[\,Az,El~]$"> means the position that would be seen by a
+        perfect theodolite located at the observer.  This is
+        related to the observed <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> via the standard rotation, using
+        the geodetic latitude (corrected for polar motion), while the
+        observed HA and RA are related simply through the local
+        apparent ST.  <I>Observed</I> <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> or <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> thus means the
+        position that would be seen by a perfect equatorial located
+        at the observer and with its polar axis aligned to the
+        Earth's axis of rotation (<I>n.b.</I> not to the refracted pole).
+        By removing from the observed place the effects of
+        atmospheric refraction and diurnal aberration, the
+        geocentric apparent <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> is obtained.
+  <DT>5.
+<DD>Frequently, <I>mean</I> rather than <I>apparent</I>
+        <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> will be required,
+        in which case further transformations will be necessary.  The
+        sla_AMP <I>etc.</I> routines will convert
+        the apparent <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> produced
+        by the present routine into an FK5 J2000 mean place, by
+        allowing for the Sun's gravitational lens effect, annual
+        aberration, nutation and precession.  Should FK4 B1950
+        coordinates be needed, the routines sla_FK524 <I>etc.</I> will also
+        need to be applied.
+  <DT>6.
+<DD>To convert to apparent <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> the coordinates read from a
+        real telescope, corrections would have to be applied for
+        encoder zero points, gear and encoder errors, tube flexure,
+        the position of the rotator axis and the pointing axis
+        relative to it, non-perpendicularity between the mounting
+        axes, and finally for the tilt of the azimuth or polar axis
+        of the mounting (with appropriate corrections for mount
+        flexures).  Some telescopes would, of course, exhibit other
+        properties which would need to be accounted for at the
+        appropriate point in the sequence.
+  <DT>7.
+<DD>The star-independent apparent-to-observed-place parameters
+        in AOPRMS may be computed by means of the sla_AOPPA routine.
+        If nothing has changed significantly except the time, the
+        sla_AOPPAT routine may be used to perform the requisite
+        partial recomputation of AOPRMS.
+  <DT>8.
+<DD>The azimuths <I>etc.</I> used by the present routine are with
+        respect to the celestial pole.  Corrections from the terrestrial pole
+        can be computed using sla_POLMO.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html1786" HREF="node137.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html1784" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html1778" HREF="node135.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1787" HREF="node137.html">SLA_OBS - Observatory Parameters</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html1785" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html1779" HREF="node135.html">SLA_OAP - Observed to Apparent</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

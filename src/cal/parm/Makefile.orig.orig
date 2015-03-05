@@ -1,0 +1,52 @@
+VERSION=	v1.8
+
+CALFUSEDIR=	$(PWD)/../../..
+
+# Symbols for include directories
+FUSEINCLDIR=	$(CALFUSEDIR)/include
+
+# Symbols used for creating shared libraries
+O=		.a
+LDSTATIC=	ld
+
+# Symbols used for creating shared libraries
+SO=		.so
+LDSHARED=	ld
+CCSHARED=	-G
+
+# Symbols used for compiling
+CC=		cc
+#  Romelfanger's optimizations
+# OPT=		-fast -xO5 -xtarget=ultra2 -xarch=v8plusa
+#
+#  SunWorld's optimizations
+# OPT=		-p -v -xO2 -xdepend -xchip=ultra -xarch=generic
+OPT=		-O -KPIC -DSOLARIS -DCFORTRAN
+CFLAGS=		$(OPT) -I$(FUSEINCLDIR)
+
+# Symbols used for creating shared binaries
+FUSELIBDIR=	$(CALFUSEDIR)/lib
+FUSEBINDIR=	$(CALFUSEDIR)/bin
+LIBDIR=		/opt/SUNWspro/lib
+#FUSELIBS=	-lcf -lsla -lcalfits -lcfitsio
+FUSELIBS=	-lsla -lcfitsio -lcf
+LIBS=		-lsocket -lnsl -ldl -lsunmath -lm -lc -lM77 -lF77
+LDFLAGS=	
+
+# binaries to be made
+
+BINS=		make_parm_file
+
+all:		$(BINS)
+		chmod g+rw $(BINS)
+
+install:	all
+		/bin/cp $(BINS) $(FUSEBINDIR)
+
+clean:		
+		/bin/rm -f $(BINS)
+
+make_parm_file:
+		$(CC) $(CFLAGS) -o make_parm_file make_parm_file.c \
+		-L$(FUSELIBDIR) -L$(LIBDIR) $(FUSELIBS) $(LIBS) $(LDFLAGS)
+

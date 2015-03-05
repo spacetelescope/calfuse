@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_REFCO - Refraction Constants</TITLE>
+<META NAME="description" CONTENT="SLA_REFCO - Refraction Constants">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node166.html">
+<LINK REL="previous" HREF="node164.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node166.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2076" HREF="node166.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2074" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2068" HREF="node164.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2077" HREF="node166.html">SLA_REFCOQ - Refraction Constants (fast)</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2075" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2069" HREF="node164.html">SLA_RDPLAN - Apparent of Planet</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004152000000000000000">SLA_REFCO - Refraction Constants</A>
+<A NAME="xref_SLA_REFCO">&#160;</A><A NAME="SLA_REFCO">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Determine the constants <I>a</I> and <I>b</I> in the
+atmospheric refraction model
+         <IMG WIDTH="164" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img148.gif"
+ ALT="$\Delta \zeta = a \tan \zeta + b \tan^{3} \zeta$">,         where <IMG WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img149.gif"
+ ALT="$\zeta$"> is the <I>observed</I> zenith distance
+         (<I>i.e.</I> affected by refraction) and <IMG WIDTH="24" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img150.gif"
+ ALT="$\Delta \zeta$"> is
+         what to add to <IMG WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img149.gif"
+ ALT="$\zeta$"> to give the <I>topocentric</I>
+         (<I>i.e. in vacuo</I>) zenith distance.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_REFCO (HM, TDK, PMB, RH, WL, PHI, TLR, EPS, REFA, REFB)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>HM</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>height of the observer above sea level (metre)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>TDK</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>ambient temperature at the observer (degrees K)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PMB</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>pressure at the observer (mB)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>RH</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>relative humidity at the observer (range 0-1)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>WL</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>effective wavelength of the source (<IMG WIDTH="26" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif"
+ ALT="$\mu{\rm m}$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PHI</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>latitude of the observer (radian, astronomical)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>TLR</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>temperature lapse rate in the troposphere
+(degrees K per metre)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EPS</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>precision required to terminate iteration (radian)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>REFA</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="37" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img151.gif"
+ ALT="$\tan \zeta$"> coefficient (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>REFB</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="44" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img152.gif"
+ ALT="$\tan^{3} \zeta$"> coefficient (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Suggested values for the TLR and EPS arguments are 0.0065D0 and
+1D-8 respectively.
+<DT>2.
+<DD>The radio refraction is chosen by specifying WL &gt;100&nbsp;<IMG WIDTH="26" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif"
+ ALT="$\mu{\rm m}$">.  <DT>3.
+<DD>The routine is a slower but more accurate alternative to the
+        sla_REFCOQ routine.  The constants it produces give perfect
+        agreement with sla_REFRO at zenith distances
+        <IMG WIDTH="54" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img153.gif"
+ ALT="$\tan^{-1} 1$"> (<IMG WIDTH="26" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img154.gif"
+ ALT="$45^\circ$">) and <IMG WIDTH="54" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img155.gif"
+ ALT="$\tan^{-1} 4$"> (<IMG WIDTH="43" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img156.gif"
+ ALT="$\sim 76^\circ$">).
+        At other zenith distances, the model achieves:
+<P>      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img83.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.5$">    accuracy for <IMG WIDTH="56" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img157.gif"
+ ALT="$\zeta<80^{\circ}$">,<P>      <IMG WIDTH="31" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img158.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.01$">    accuracy for <IMG WIDTH="56" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img159.gif"
+ ALT="$\zeta<60^{\circ}$">, and
+<P>      <IMG WIDTH="39" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img112.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.001$">    accuracy for <IMG WIDTH="56" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img160.gif"
+ ALT="$\zeta<45^{\circ}$">. </DL></DL>
+<BR> <HR>
+<A NAME="tex2html2076" HREF="node166.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2074" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2068" HREF="node164.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2077" HREF="node166.html">SLA_REFCOQ - Refraction Constants (fast)</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2075" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2069" HREF="node164.html">SLA_RDPLAN - Apparent of Planet</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

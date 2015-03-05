@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Precession and Nutation</TITLE>
+<META NAME="description" CONTENT="Precession and Nutation">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node205.html">
+<LINK REL="previous" HREF="node202.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node204.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2482" HREF="node204.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2480" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2474" HREF="node202.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2483" HREF="node204.html">SLALIB support for precession and nutation</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2481" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2475" HREF="node202.html">Celestial Coordinate Systems</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION00054000000000000000">
+Precession and Nutation</A>
+</H2>
+<I>Right ascension and declination</I>, (<IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">), are the names
+of the longitude and latitude in a spherical
+polar coordinate system based on the Earth's axis of rotation.
+The zero point of <IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$"> is the point of intersection of
+the <I>celestial
+equator</I> and the <I>ecliptic</I> (the apparent path of the Sun
+through the year) where the Sun moves into the northern
+hemisphere.  This point is called the
+<I>first point of Aries</I>,
+the <I>vernal equinox</I> (with apologies to
+southern-hemisphere readers) or simply the <I>equinox</I>.<A NAME="tex2html4" HREF="footnode.html#27833"><SUP><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="foot_motif.gif"></SUP></A>
+<P>
+This simple picture is unfortunately
+complicated by the difficulty of defining
+a suitable equator and equinox.  One problem is that the
+Sun's apparent motion is not completely regular, due to the
+ellipticity of the Earth's orbit and its continuous disturbance
+by the Moon and planets.  This is dealt with by
+separating the motion into (i)&nbsp;a smooth and steady <I>mean Sun</I>
+and (ii)&nbsp;a set of periodic corrections and perturbations; only the former
+is involved in establishing reference frames and timescales.
+A second, far larger problem, is that
+the celestial equator and the ecliptic
+are both moving with respect to the stars.
+These motions arise because of the gravitational
+interactions between the Earth and the other solar-system bodies.
+<P>
+By far the largest effect is the
+so-called ``precession of the equinoxes'', where the Earth's
+rotation axis sweeps out a cone centred on the ecliptic
+pole, completing one revolution in about 26,000 years.  The
+cause of the motion is the torque exerted on the distorted and
+spinning Earth by the Sun and the Moon.  Consider the effect of the
+Sun alone, at or near the northern summer solstice.  The Sun
+`sees' the top (north pole) of the Earth tilted towards it
+(by about <IMG WIDTH="33" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img256.gif"
+ ALT="$23^{\circ}
+ \hspace{-0.37em}.\hspace{0.02em}5$">, the <I>obliquity of the
+ecliptic</I>),
+and sees the nearer part of the Earth's equatorial bulge
+below centre and the further part above centre.
+Although the Earth is in free fall,
+the gravitational force on the nearer part of the
+equatorial bulge is greater than that on the further part, and
+so there is a net torque acting
+as if to eliminate the tilt.  Six months later the same thing
+is happening in reverse, except that the torque is still
+trying to eliminate the tilt.  In between (at the equinoxes) the
+torque shrinks to zero.  A torque acting on a spinning body
+is gyroscopically translated
+into a precessional motion of the spin axis at right-angles to the torque,
+and this happens to the Earth.
+The motion varies during the
+year, going through two maxima, but always acts in the
+same direction.  The Moon produces the same effect,
+adding a contribution to the precession which peaks twice
+per month.  The Moon's proximity to the Earth more than compensates
+for its smaller mass and gravitational attraction, so that it
+in fact contributes most of the precessional effect.
+<P>
+The complex interactions between the three bodies produce a
+precessional motion that is wobbly rather than completely smooth.
+However, the main 26,000-year component is on such a grand scale that
+it dwarfs the remaining terms, the biggest of
+which has an amplitude of only <IMG WIDTH="25" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img133.gif"
+ ALT="$17\hspace{-0.05em}^{'\hspace{-0.1em}'}$"> and a period of
+about 18.6&nbsp;years.  This difference of scale makes it convenient to treat
+these two components of the motion separately.  The main 26,000-year
+effect is called <I>luni-solar precession</I>;  the smaller,
+faster, periodic terms are called the <I>nutation</I>.
+<P>
+Note that precession and nutation are simply
+different frequency components of the same physical effect.  It is
+a common misconception that precession is caused
+by the Sun and nutation is caused by the Moon.  In fact
+the Moon is responsible for two-thirds of the precession, and,
+while it is true that much of the complex detail of the nutation is
+a reflection of the intricacies of the lunar orbit, there are
+nonetheless important solar terms in the nutation.
+<P>
+In addition to and quite separate
+from the precession/nutation effect, the orbit of the Earth-Moon system
+is not fixed in orientation, a result of the attractions of the
+planets.  This slow (about 
+      <IMG WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img83.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.5$">   &nbsp;per&nbsp;year)
+secular rotation of the ecliptic about a slowly-moving diameter is called,
+confusingly, <I>planetary
+precession</I> and, along with the luni-solar precession is
+included in the <I>general precession</I>.  The equator and
+ecliptic as affected by general precession
+are what define the various ``mean'' <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> reference frames.
+<P>
+The models for precession and nutation come from a combination
+of observation and theory, and are subject to continuous
+refinement.  Nutation models in particular have reached a high
+degree of sophistication, taking into account such things as
+the non-rigidity of the Earth and the effects of
+the planets; SLALIB's nutation
+model (IAU&nbsp;1980) involves 106 terms in each of <IMG WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif"
+ ALT="$\psi$"> (longitude)
+and <IMG WIDTH="9" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img257.gif"
+ ALT="$\epsilon$"> (obliquity), some as small as 
+      <IMG WIDTH="47" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img258.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.0001$">   .
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html2484" HREF="node204.html#SECTION00054100000000000000">
+SLALIB support for precession and nutation</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR> <HR>
+<A NAME="tex2html2482" HREF="node204.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2480" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2474" HREF="node202.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2483" HREF="node204.html">SLALIB support for precession and nutation</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2481" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2475" HREF="node202.html">Celestial Coordinate Systems</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

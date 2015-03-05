@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Using vectors</TITLE>
+<META NAME="description" CONTENT="Using vectors">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="previous" HREF="node200.html">
+<LINK REL="up" HREF="node200.html">
+<LINK REL="next" HREF="node202.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2462" HREF="node202.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2460" HREF="node200.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2456" HREF="node200.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2463" HREF="node202.html">Celestial Coordinate Systems</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2461" HREF="node200.html">Vectors and Matrices</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2457" HREF="node200.html">Vectors and Matrices</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H3><A NAME="SECTION00052100000000000000">
+Using vectors</A>
+</H3>
+SLALIB provides conversions between spherical and vector
+form
+(sla_CS2C,
+sla_CC2S
+<I>etc.</I>), plus an assortment
+of standard vector and matrix operations
+(sla_VDV,
+sla_MXV
+<I>etc.</I>).
+There are also routines
+(sla_EULER
+<I>etc.</I>) for creating a rotation matrix
+from three <I>Euler angles</I> (successive rotations about
+specified Cartesian axes).  Instead of Euler angles, a rotation
+matrix can be expressed as an <I>axial vector</I> (the pole of the rotation,
+and the amount of rotation), and routines are provided for this
+(sla_AV2M,
+sla_M2AV
+<I>etc.</I>).
+<P>
+Here is an example where spherical coordinates <TT>P1</TT> and <TT>Q1</TT>
+undergo a coordinate transformation and become <TT>P2</TT> and <TT>Q2</TT>;
+the transformation consists of a rotation of the coordinate system
+through angles <TT>A</TT>, <TT>B</TT> and <TT>C</TT> about the
+<I>z</I>, new <I>y</I> and new <I>z</I> axes respectively:
+<P><PRE>
+            REAL A,B,C,R(3,3),P1,Q1,V1(3),V2(3),P2,Q2
+             :
+      *  Create rotation matrix
+            CALL sla_EULER('ZYZ',A,B,C,R)
+
+      *  Transform position (P,Q) from spherical to Cartesian
+            CALL sla_CS2C(P1,Q1,V1)
+
+      *  Multiply by rotation matrix
+            CALL sla_MXV(R,V1,V2)
+
+      *  Back to spherical
+            CALL sla_CC2S(V2,P2,Q2)
+</PRE>
+<P>
+Small adjustments to the direction of a position
+vector are often most conveniently described in terms of
+<IMG WIDTH="99" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img239.gif"
+ ALT="$[\,\Delta x,\Delta y, \Delta z\,]$">.  Adding the correction
+vector needs careful handling if the position
+vector is to remain of length unity, an advisable precaution which
+ensures that
+the <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"> components are always available to mean the cosines of
+the angles between the vector and the axis concerned.  Two types
+of shifts are commonly used,
+the first where a small vector of arbitrary direction is
+added to the unit vector, and the second where there is a displacement
+in the latitude coordinate (declination, elevation <I>etc.</I>) alone.
+<P>
+For a shift produced by adding a small <IMG WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$[\,x,y,z\,]$"> vector <IMG WIDTH="17" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img240.gif"
+ ALT="${\bf D}$"> to a
+unit vector <IMG WIDTH="26" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img241.gif"
+ ALT="${\bf V1}$">, the resulting vector <IMG WIDTH="26" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img242.gif"
+ ALT="${\bf V2}$"> has direction
+<IMG WIDTH="95" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img243.gif"
+ ALT="$<{\bf V1}+{\bf D}\gt$"> but is no longer of unit length.  A better approximation
+is available if the result is multiplied by a scaling factor of
+<IMG WIDTH="93" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img244.gif"
+ ALT="$(1-{\bf D}\cdot{\bf V1})$">, where the dot
+means scalar product.  In Fortran:
+<P><PRE>
+            F = (1D0-(DX*V1X+DY*V1Y+DZ*V1Z))
+            V2X = F*(V1X+DX)
+            V2Y = F*(V1Y+DY)
+            V2Z = F*(V1Z+DZ)
+</PRE>
+<P>
+The correction for diurnal aberration (discussed later) is
+an example of this form of shift.
+<P>
+As an example of the second kind of displacement
+we will apply a small change in elevation <IMG WIDTH="23" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img245.gif"
+ ALT="$\delta E$"> to an
+<IMG WIDTH="66" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$[\,Az,El~]$"> direction vector.  The direction of the
+result can be obtained by making the allowable approximation
+<IMG WIDTH="92" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img246.gif"
+ ALT="${\tan \delta E\approx\delta E}$"> and adding a adjustment
+vector of length <IMG WIDTH="23" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img245.gif"
+ ALT="$\delta E$"> normal
+to the direction vector in the vertical plane containing the direction
+vector.  The <I>z</I>-component of the adjustment vector is
+<IMG WIDTH="64" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img247.gif"
+ ALT="$\delta E \cos E$">,and the horizontal component is
+<IMG WIDTH="62" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img248.gif"
+ ALT="$\delta E \sin E$"> which has then to be
+resolved into <I>x</I> and <I>y</I> in proportion to their current sizes. To
+approximate a unit vector more closely, a correction factor of
+<IMG WIDTH="48" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img249.gif"
+ ALT="$\cos \delta E$"> can then be applied, which is nearly
+<IMG WIDTH="88" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img250.gif"
+ ALT="$(1-\delta E^2 /2)$"> for
+small <IMG WIDTH="23" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img245.gif"
+ ALT="$\delta E$">.  Expressed in Fortran, for initial vector
+<TT>V1X,V1Y,V1Z</TT>, change in elevation <TT>DEL</TT>
+(+ve <IMG WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img251.gif"
+ ALT="$\equiv$"> upwards), and result
+vector <TT>V2X,V2Y,V2Z</TT>:
+<P><PRE>
+            COSDEL = 1D0-DEL*DEL/2D0
+            R1 = SQRT(V1X*V1X+V1Y*V1Y)
+            F = COSDEL*(R1-DEL*V1Z)/R1
+            V2X = F*V1X
+            V2Y = F*V1Y
+            V2Z = COSDEL*(V1Z+DEL*R1)
+</PRE>
+<P>
+An example of this type of shift is the correction for atmospheric
+refraction (see later).
+Depending on the relationship between <IMG WIDTH="23" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img245.gif"
+ ALT="$\delta E$"> and <I>E</I>, special
+handling at the pole (the zenith for our example) may be required.
+<P>
+SLALIB includes routines for the case where both a position
+and a velocity are involved.  The routines
+sla_CS2C6
+and
+sla_CC62S
+convert from <IMG WIDTH="69" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img252.gif"
+ ALT="$[\theta,\phi,\dot{\theta},\dot{\phi}]$">to <IMG WIDTH="106" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.gif"
+ ALT="$[\,x,y,z,\dot{x},\dot{y},\dot{z}\,]$"> and back;
+sla_DCS26
+and
+sla_DC62S
+are double precision equivalents.
+<P>
+<BR> <HR>
+<A NAME="tex2html2462" HREF="node202.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2460" HREF="node200.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2456" HREF="node200.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2463" HREF="node202.html">Celestial Coordinate Systems</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2461" HREF="node200.html">Vectors and Matrices</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2457" HREF="node200.html">Vectors and Matrices</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

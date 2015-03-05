@@ -1,0 +1,42 @@
+
+CALFUSEDIR=	${PWD}/../../..
+
+# Symbols for include directories
+FUSEINCLDIR=	-I${CALFUSEDIR}/include
+
+# Symbols used for compiling
+CC=		cc
+OPT=		-g -Wall -DCFORTRAN -Dg77Fortran -Df2cFortran
+CFLAGS=		${OPT} ${FUSEINCLDIR}
+
+# Symbols used for creating shared binaries
+FUSEBINDIR=	${CALFUSEDIR}/bin
+FUSELIBDIR=	-L${CALFUSEDIR}/lib
+FUSELIBS=	-lsla -lcf
+LIBS=		-lc -lm -lnsl -ldl -lgfortran -lcfitsio
+LDFLAGS=	-Wl,-R${CALFUSEDIR}/lib
+
+# binaries to be made
+
+BINS=		cf_jitter_diag cf_jitter
+
+all:		${BINS}
+		chmod g+rw ${BINS}
+
+install:	all
+		/bin/cp ${BINS} ${FUSEBINDIR}
+
+clean:
+		/bin/rm -f *.o ${BINS}
+
+distclean:
+		/bin/rm -f *.o ${BINS}
+		cd ../../../bin; /bin/rm -f ${BINS}
+
+cf_jitter_diag:	cf_jitter_diag.c
+		${CC} ${CFLAGS} -o cf_jitter_diag cf_jitter_diag.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}
+
+cf_jitter:	cf_jitter.c
+		${CC} ${CFLAGS} -o cf_jitter cf_jitter.c \
+		${FUSELIBDIR} ${FUSELIBS} ${LIBS} ${LDFLAGS}

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_DE2H - to Az,El</TITLE>
+<META NAME="description" CONTENT="SLA_DE2H - to Az,El">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node54.html">
+<LINK REL="previous" HREF="node52.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node54.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html956" HREF="node54.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html954" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html948" HREF="node52.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html957" HREF="node54.html">SLA_DEULER - Euler Angles to Rotation Matrix</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html955" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html949" HREF="node52.html">SLA_DD2TF - Days to Hour,Min,Sec</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000440000000000000000">&#160;</A><A NAME="xref_SLA_DE2H">&#160;</A><A NAME="SLA_DE2H">&#160;</A>
+<BR>
+SLA_DE2H - <IMG WIDTH="27" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif"
+ ALT="$h,\delta$"> to Az,El
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Equatorial to horizon coordinates
+(double precision).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_DE2H (HA, DEC, PHI, AZ, EL)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>HA</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>hour angle (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DEC</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>declination (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PHI</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>latitude (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>AZ</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>azimuth (radians)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>EL</EM></TD>
+<TD ALIGN="LEFT"><B>D</B></TD>
+<TD ALIGN="LEFT" NOWRAP>elevation (radians)</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>Azimuth is returned in the range <IMG WIDTH="43" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.gif"
+ ALT="$0\!-\!2\pi$">;  north is zero,
+and east is <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.gif"
+ ALT="$+\pi/2$">.  Elevation is returned in the range
+<IMG WIDTH="25" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif"
+ ALT="$\pm \pi$">.  <DT>2.
+<DD>The latitude must be geodetic.  In critical applications,
+        corrections for polar motion should be applied.
+  <DT>3.
+<DD>In some applications it will be important to specify the
+        correct type of hour angle and declination in order to
+        produce the required type of azimuth and elevation.  In
+        particular, it may be important to distinguish between
+        elevation as affected by refraction, which would
+        require the <I>observed</I> <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$">, and the elevation
+        <I>in vacuo</I>, which would require the <I>topocentric</I>
+        <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$">.        If the effects of diurnal aberration can be neglected, the
+        <I>apparent</I> <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$"> may be used instead of the topocentric
+        <IMG WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$[\,h,\delta\,]$">.  <DT>4.
+<DD>No range checking of arguments is carried out.
+  <DT>5.
+<DD>In applications which involve many such calculations, rather
+        than calling the present routine it will be more efficient to
+        use inline code, having previously computed fixed terms such
+        as sine and cosine of latitude, and (for tracking a star)
+        sine and cosine of declination.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html956" HREF="node54.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html954" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html948" HREF="node52.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html957" HREF="node54.html">SLA_DEULER - Euler Angles to Rotation Matrix</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html955" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html949" HREF="node52.html">SLA_DD2TF - Days to Hour,Min,Sec</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

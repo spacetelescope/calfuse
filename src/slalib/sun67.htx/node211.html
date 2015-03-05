@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Mean Place Transformations</TITLE>
+<META NAME="description" CONTENT="Mean Place Transformations">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node212.html">
+<LINK REL="previous" HREF="node210.html">
+<LINK REL="up" HREF="node197.html">
+<LINK REL="next" HREF="node212.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2561" HREF="node212.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2559" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2553" HREF="node210.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2562" HREF="node212.html">Mean Place to Apparent Place</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2560" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2554" HREF="node210.html">Different Sorts of Mean Place</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION000511000000000000000">
+Mean Place Transformations</A>
+</H2>
+Figure&nbsp;1 is based upon three varieties of mean <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> all of which are
+of practical significance to observing astronomers in the present era:
+<UL>
+<LI> Old style (FK4) with known proper motion in the FK4
+         system, and with parallax and radial velocity either
+         known or assumed zero.
+<LI> Old style (FK4) with zero proper motion in FK5,
+         and with parallax and radial velocity assumed zero.
+<LI> New style (FK5) with proper motion, parallax and
+         radial velocity either known or assumed zero.
+</UL>
+The figure outlines the steps required to convert positions in
+any of these systems to a J2000 <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> for the current
+epoch, as might be required in a telescope-control
+program for example.
+Most of the steps can be carried out by calling a single
+SLALIB routines;  there are other SLALIB routines which
+offer set-piece end-to-end transformation routines for common cases.
+Note, however, that SLALIB does not set out to provide the capability
+for arbitrary transformations of star-catalogue data
+between all possible systems of mean <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$">.Only in the (common) cases of FK4, equinox and epoch B1950,
+to FK5, equinox and epoch J2000, and <I>vice versa</I> are
+proper motion, parallax and radial velocity transformed
+along with the star position itself, the
+focus of SLALIB support.
+<P>
+As an example of using SLALIB to transform mean places, here is
+a program which implements the top-left path of Figure&nbsp;1.
+An FK4 <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> of arbitrary equinox and epoch and with
+known proper motion and
+parallax is transformed into an FK5 J2000 <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> for the current
+epoch.  As a test star we will use <IMG WIDTH="30" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img285.gif"
+ ALT="$\alpha=$"><IMG WIDTH="104" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img286.gif"
+ ALT="$16^{h}\,09^{m}\,55^{s}.13$">,<IMG WIDTH="28" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img287.gif"
+ ALT="$\delta=$"><IMG WIDTH="102" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img288.gif"
+ ALT="$-75^{\circ}\,59^{'}\,27^{''}.2$">, equinox 1900, epoch 1963.087,
+<IMG WIDTH="38" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img289.gif"
+ ALT="$\mu_\alpha=$"><IMG WIDTH="61" HEIGHT="26" ALIGN="MIDDLE" BORDER="0"
+ SRC="img290.gif"
+ ALT="$-0^{\rm s}\hspace{-0.3em}.0312$">/<I>y</I>, <IMG WIDTH="36" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img291.gif"
+ ALT="$\mu_\delta=$">      <IMG WIDTH="52" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img292.gif"
+ ALT="$+0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.103$">   /<I>y</I>,
+parallax = 
+      <IMG WIDTH="39" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img293.gif"
+ ALT="$0\hspace{-0.05em}^{'\hspace{-0.1em}'}\hspace{-0.4em}.062$">   , radial velocity = -34.22&nbsp;km/s.  The
+epoch of observation is 1994.35.
+<P><PRE>
+            IMPLICIT NONE
+            DOUBLE PRECISION AS2R,S2R
+            PARAMETER (AS2R=4.8481368110953599D-6,S2R=7.2722052166430399D-5)
+            INTEGER J,I
+            DOUBLE PRECISION R0,D0,EQ0,EP0,PR,PD,PX,RV,EP1,R1,D1,R2,D2,R3,D3,
+           :                 R4,D4,R5,D5,R6,D6,EP1D,EP1B,W(3),EB(3),PXR,V(3)
+            DOUBLE PRECISION sla_EPB,sla_EPJ2D
+
+      *  RA, Dec etc of example star
+            CALL sla_DTF2R(16,09,55.13D0,R0,J)
+            CALL sla_DAF2R(75,59,27.2D0,D0,J)
+            D0=-D0
+            EQ0=1900D0
+            EP0=1963.087D0
+            PR=-0.0312D0*S2R
+            PD=+0.103D0*AS2R
+            PX=0.062D0
+            RV=-34.22D0
+            EP1=1994.35D0
+
+      *  Epoch of observation as MJD and Besselian epoch
+            EP1D=sla_EPJ2D(EP1)
+            EP1B=sla_EPB(EP1D)
+
+      *  Space motion to the current epoch
+            CALL sla_PM(R0,D0,PR,PD,PX,RV,EP0,EP1B,R1,D1)
+
+      *  Remove E-terms of aberration for the original equinox
+            CALL sla_SUBET(R1,D1,EQ0,R2,D2)
+
+      *  Precess to B1950
+            R3=R2
+            D3=D2
+            CALL sla_PRECES('FK4',EQ0,1950D0,R3,D3)
+
+      *  Add E-terms for the standard equinox B1950
+            CALL sla_ADDET(R3,D3,1950D0,R4,D4)
+
+      *  Transform to J2000, no proper motion
+            CALL sla_FK45Z(R4,D4,EP1B,R5,D5)
+
+      *  Parallax
+            CALL sla_EVP(sla_EPJ2D(EP1),2000D0,W,EB,W,W)
+            PXR=PX*AS2R
+            CALL sla_DCS2C(R5,D5,V)
+            DO I=1,3
+               V(I)=V(I)-PXR*EB(I)
+            END DO
+            CALL sla_DCC2S(V,R6,D6)
+             :
+</PRE>
+<P>
+It is interesting to look at how the <IMG WIDTH="42" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$[\,\alpha,\delta\,]$"> changes during the
+course of the calculation:
+<PRE><TT>
+		 <TT>16 09 55.130 -75 59 27.20</TT> 		 		 <I>original equinox and epoch</I>
+		 <TT>16 09 54.155 -75 59 23.98</TT> 		 		 <I>with space motion</I>
+		 <TT>16 09 54.229 -75 59 24.18</TT> 		 		 <I>with old E-terms removed</I>
+		 <TT>16 16 28.213 -76 06 54.57</TT> 		 		 <I>precessed to 1950.0</I>
+		 <TT>16 16 28.138 -76 06 54.37</TT> 		 		 <I>with new E-terms</I>
+		 <TT>16 23 07.901 -76 13 58.87</TT> 		 		 <I>J2000, current epoch</I>
+		 <TT>16 23 07.907 -76 13 58.92</TT> 		 		 <I>including parallax</I>
+</TT></PRE>
+<P>
+Other remarks about the above (unusually complicated) example:
+<UL>
+<LI> If the original equinox and epoch were B1950, as is quite
+      likely, then it would be unnecessary to treat space motions
+      and E-terms explicitly.  Transformation to FK5 J2000 could
+      be accomplished simply by calling
+sla_FK425, after which
+      a call to
+sla_PM and the parallax code would complete the
+      work.
+<LI> The rigorous treatment of the E-terms
+      has only a small effect on the result.  Such refinements
+      are, nevertheless, worthwhile in order to facilitate comparisons and
+      to increase the chances that star positions from different
+      suppliers are compatible.
+<LI> The FK4 to FK5 transformations,
+sla_FK425
+      and
+sla_FK45Z,
+      are not as is sometimes assumed simply 50 years of precession,
+      though this indeed accounts for most of the change.  The
+      transformations also include adjustments
+      to the equinox, a revised precession model, elimination of the
+      E-terms, a change to the proper-motion time unit and so on.
+      The reason there are two routines rather than just one
+      is that the FK4 frame rotates relative to the background, whereas
+      the FK5 frame is a much better approximation to an
+      inertial frame, and zero proper
+      motion in FK4 does not, therefore, mean zero proper motion in FK5.
+      SLALIB also provides two routines,
+sla_FK524
+      and
+sla_FK54Z,
+      to perform the inverse transformations.
+<LI> Some star catalogues (FK4 itself is one) were constructed using slightly
+      different procedures for the polar regions compared with
+      elsewhere.  SLALIB ignores this inhomogeneity and always
+      applies the standard
+      transformations irrespective of location on the celestial sphere.
+</UL>
+<BR> <HR>
+<A NAME="tex2html2561" HREF="node212.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2559" HREF="node197.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2553" HREF="node210.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2562" HREF="node212.html">Mean Place to Apparent Place</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2560" HREF="node197.html">EXPLANATION AND EXAMPLES</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2554" HREF="node210.html">Different Sorts of Mean Place</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

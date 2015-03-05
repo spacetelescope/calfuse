@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_UE2PV - Pos/Vel from Universal Elements</TITLE>
+<META NAME="description" CONTENT="SLA_UE2PV - Pos/Vel from Universal Elements">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node189.html">
+<LINK REL="previous" HREF="node187.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node189.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2306" HREF="node189.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2304" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2298" HREF="node187.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2307" HREF="node189.html">SLA_UNPCD - Remove Radial Distortion</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2305" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2299" HREF="node187.html">SLA_UE2EL - Universal to Conventional Elements</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004175000000000000000">SLA_UE2PV - Pos/Vel from Universal Elements</A>
+<A NAME="xref_SLA_UE2PV">&#160;</A><A NAME="SLA_UE2PV">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Heliocentric position and velocity of a planet, asteroid or comet,
+starting from orbital elements in the ``universal variables'' form.
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_UE2PV (DATE, U, PV, JSTAT)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>DATE</EM></TD>
+<TH ALIGN="LEFT"><B>D</B></TH>
+<TD ALIGN="LEFT" NOWRAP>date (TT Modified Julian Date = JD-2400000.5)</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>GIVEN and RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>U</EM></TD>
+<TH ALIGN="LEFT"><B>D(13)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>universal orbital elements (updated; Note&nbsp;1)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(1)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>combined mass (<I>M</I>+<I>m</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(2)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>total energy of the orbit (<IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(3)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>reference (osculating) epoch (<I>t<SUB>0</SUB></I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(4-6)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>position at reference epoch (<IMG WIDTH="17" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img102.gif"
+ ALT="${\rm \bf r}_0$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(7-9)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>velocity at reference epoch (<IMG WIDTH="19" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.gif"
+ ALT="${\rm \bf v}_0$">)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(10)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>heliocentric distance at reference epoch</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(11)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG WIDTH="39" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.gif"
+ ALT="${\rm \bf r}_0.{\rm \bf v}_0$"></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(12)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>date (<I>t</I>)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP COLSPAN=1>(13)</TD>
+<TD></TD>
+<TD ALIGN="LEFT" NOWRAP>universal eccentric anomaly (<IMG WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif"
+ ALT="$\psi$">) of date, approx</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>PV</EM></TD>
+<TH ALIGN="LEFT"><B>D(6)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>heliocentric <IMG WIDTH="106" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.gif"
+ ALT="$[\,x,y,z,\dot{x},\dot{y},\dot{z}\,]$">, equatorial, J2000</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>  (AU, AU/s; Note&nbsp;1)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JSTAT</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>status:</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>       0 = OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     -1 = radius vector zero</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM></EM></TD>
+<TD ALIGN="LEFT"><B></B></TD>
+<TD ALIGN="LEFT" NOWRAP>     -2 = failed to converge</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>The ``universal'' elements are those which define the orbit for the
+purposes of the method of universal variables (see reference).
+They consist of the combined mass of the two bodies, an epoch,
+        and the position and velocity vectors (arbitrary reference frame)
+        at that epoch.  The parameter set used here includes also various
+        quantities that can, in fact, be derived from the other
+        information.  This approach is taken to avoiding unnecessary
+        computation and loss of accuracy.  The supplementary quantities
+        are (i)&nbsp;<IMG WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.gif"
+ ALT="$\alpha$">, which is proportional to the total energy of the
+        orbit, (ii)&nbsp;the heliocentric distance at epoch,
+        (iii)&nbsp;the outwards component of the velocity at the given epoch,
+        (iv)&nbsp;an estimate of <IMG WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif"
+ ALT="$\psi$">, the ``universal eccentric anomaly'' at a
+        given date and (v)&nbsp;that date.
+  <DT>2.
+<DD>The companion routine is sla_EL2UE.  This takes the conventional
+        orbital elements and transforms them into the set of numbers
+        needed by the present routine.  A single prediction requires one
+        one call to sla_EL2UE followed by one call to the present routine;
+        for convenience, the two calls are packaged as the routine
+        sla_PLANEL.  Multiple predictions may be made by again
+        calling sla_EL2UE once, but then calling the present routine
+        multiple times, which is faster than multiple calls to sla_PLANEL.
+<P>
+It is not obligatory to use sla_EL2UE to obtain the parameters.
+        However, it should be noted that because sla_EL2UE performs its
+        own validation, no checks on the contents of the array U are made
+        by the present routine.
+  <DT>3.
+<DD>DATE is the instant for which the prediction is required.  It is
+        in the TT timescale (formerly Ephemeris Time, ET) and is a
+        Modified Julian Date (JD-2400000.5).
+  <DT>4.
+<DD>The universal elements supplied in the array U are in canonical
+        units (solar masses, AU and canonical days).  The position and
+        velocity are not sensitive to the choice of reference frame.  The
+        sla_EL2UE routine in fact produces coordinates with respect to the
+        J2000 equator and equinox.
+  <DT>5.
+<DD>The algorithm was originally adapted from the EPHSLA program of
+        D.H.P.Jones (private communication, 1996).  The method
+        is based on Stumpff's Universal Variables.
+ </DL></DL>
+<P>     <DL>
+<DT><STRONG>REFERENCE:</STRONG>
+<DD>Everhart, E. &amp; Pitkin, E.T., Am.&nbsp;J.&nbsp;Phys.&nbsp;51, 712, 1983.
+</DL>
+<BR> <HR>
+<A NAME="tex2html2306" HREF="node189.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2304" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2298" HREF="node187.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2307" HREF="node189.html">SLA_UNPCD - Remove Radial Distortion</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2305" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2299" HREF="node187.html">SLA_UE2EL - Universal to Conventional Elements</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>

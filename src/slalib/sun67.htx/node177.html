@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SLA_SMAT - Solve Simultaneous Equations</TITLE>
+<META NAME="description" CONTENT="SLA_SMAT - Solve Simultaneous Equations">
+<META NAME="keywords" CONTENT="sun67">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="sun67.css">
+<LINK REL="next" HREF="node178.html">
+<LINK REL="previous" HREF="node176.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node178.html">
+</HEAD>
+<BODY >
+<BR> <HR>
+<A NAME="tex2html2196" HREF="node178.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2194" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2188" HREF="node176.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2197" HREF="node178.html">SLA_SUBET - Remove E-terms</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2195" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2189" HREF="node176.html">SLA_SEP - Angle Between 2 Points on Sphere</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<H2><A NAME="SECTION0004164000000000000000">SLA_SMAT - Solve Simultaneous Equations</A>
+<A NAME="xref_SLA_SMAT">&#160;</A><A NAME="SLA_SMAT">&#160;</A>
+</H2>
+       <DL>
+<DT><STRONG>ACTION:</STRONG>
+<DD>Matrix inversion and solution of simultaneous equations
+(single precision).
+<P>    <DT><STRONG>CALL:</STRONG>
+<DD><TT>CALL sla_SMAT (N, A, Y, D, JF, IW)</TT>
+<P>       </DL>
+<P>     <DL>
+<DT><STRONG>GIVEN:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>N</EM></TD>
+<TH ALIGN="LEFT"><B>I</B></TH>
+<TD ALIGN="LEFT" NOWRAP>number of unknowns</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>A</EM></TD>
+<TD ALIGN="LEFT"><B>R(N,N)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>matrix</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>Y</EM></TD>
+<TD ALIGN="LEFT"><B>R(N)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>vector</TD>
+</TR>
+</TABLE></DL>
+<P>     <DL>
+<DT><STRONG>RETURNED:</STRONG>
+<DD>
+<BR>
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>A</EM></TD>
+<TH ALIGN="LEFT"><B>R(N,N)</B></TH>
+<TD ALIGN="LEFT" NOWRAP>matrix inverse</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>Y</EM></TD>
+<TD ALIGN="LEFT"><B>R(N)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>solution</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>D</EM></TD>
+<TD ALIGN="LEFT"><B>R</B></TD>
+<TD ALIGN="LEFT" NOWRAP>determinant</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>JF</EM></TD>
+<TD ALIGN="LEFT"><B>I</B></TD>
+<TD ALIGN="LEFT" NOWRAP>singularity flag: 0=OK</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT"><EM>IW</EM></TD>
+<TD ALIGN="LEFT"><B>I(N)</B></TD>
+<TD ALIGN="LEFT" NOWRAP>workspace</TD>
+</TR>
+</TABLE></DL>
+<P>      <DL>
+<DT><STRONG>NOTES:</STRONG>
+<DD><DL COMPACT>
+<DT>1.
+<DD>For the set of <I>n</I> simultaneous linear equations in <I>n</I> unknowns:
+<BLOCKQUOTE><B>A</B><IMG WIDTH="7" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\cdot$"><B>y</B> = <B>x</B>
+</BLOCKQUOTE>
+        where:
+        <UL>
+<LI> <B>A</B> is a non-singular <IMG WIDTH="42" HEIGHT="25" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif"
+ ALT="$n \times n$"> matrix,
+<LI> <B>y</B> is the vector of <I>n</I> unknowns, and
+<LI> <B>x</B> is the known vector,
+        </UL>
+        sla_SMAT computes:
+        <UL>
+<LI> the inverse of matrix <B>A</B>,
+<LI> the determinant of matrix <B>A</B>, and
+<LI> the vector of <I>n</I> unknowns <B>y</B>.
+        </UL>
+        Argument N is the order <I>n</I>, A (given) is the matrix <B>A</B>,
+        Y (given) is the vector <B>x</B> and Y (returned)
+        is the vector <B>y</B>.
+        The argument A (returned) is the inverse matrix <B>A</B><SUP>-1</SUP>,
+        and D is <I>det</I>(<B>A</B>).
+  <DT>2.
+<DD>JF is the singularity flag.  If the matrix is non-singular,
+        JF=0 is returned.  If the matrix is singular, JF=-1
+        and D=0.0 are returned.  In the latter case, the contents
+        of array A on return are undefined.
+  <DT>3.
+<DD>The algorithm is Gaussian elimination with partial pivoting.
+        This method is very fast;  some much slower algorithms can give
+        better accuracy, but only by a small factor.
+  <DT>4.
+<DD>This routine replaces the obsolete sla_SMATRX.
+ </DL></DL>
+<BR> <HR>
+<A NAME="tex2html2196" HREF="node178.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html2194" HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html2188" HREF="node176.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   <A HREF="sun67.html#stardoccontents"><IMG  ALIGN="BOTTOM" BORDER="0"
+ SRC="contents_motif.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html2197" HREF="node178.html">SLA_SUBET - Remove E-terms</A>
+<BR>
+<B>Up:</B> <A NAME="tex2html2195" HREF="node13.html">SUBPROGRAM SPECIFICATIONS</A>
+<BR>
+<B> Previous:</B> <A NAME="tex2html2189" HREF="node176.html">SLA_SEP - Angle Between 2 Points on Sphere</A>
+<BR> <HR> <P>
+<P><!--End of Navigation Panel-->
+<ADDRESS>
+<I>SLALIB --- Positional Astronomy Library<BR>Starlink User Note 67<BR>P. T. Wallace<BR>12 October 1999<BR>E-mail:ptw@star.rl.ac.uk</I>
+</ADDRESS>
+</BODY>
+</HTML>
