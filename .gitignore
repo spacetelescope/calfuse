@@ -4,6 +4,7 @@ autom4te.cache
 config.h
 *.tar.gz
 *.o
+*.lo
 *.dylib
 *.la
 *.a
