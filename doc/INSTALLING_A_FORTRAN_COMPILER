@@ -1,0 +1,259 @@
+
+-------------------------------------------------------------------------------
+                       INSTALLING A FORTRAN COMPILER
+-------------------------------------------------------------------------------
+
+Please note that these are solutions that we tried and therefore recommend,
+especially since they worked on every machine we tried, but there might be other
+solutions if none of this works for you.  Just google fortran and your machine
+specs and you should find some ideas.
+
+
+FORTRAN for Solaris:
+--------------------
+
+	CalFUSE has been compiled and tested on Solaris with the Fortran
+	compilers provided by SUN (f77 and f90) and GNU (g77 and gfortran).
+	Both are available for free, so even if you already have another fortran
+	compiler, you should get one of these.  Other Fortran compilers may
+	work, but we cannot guarantee your results.
+
+    ->  We recommend that you first try the Sun Studio Compilers from Sun's
+	development website:
+	http://developers.sun.com/sunstudio/downloads/index.jsp
+	CalFUSE compiles properly with version 12.
+
+    ->  An old version of Fortran may already exist on your machine.  Look for
+	the old 'libF77.so' and 'libM77.so' libraries in one of these
+	directories: '/usr/4lib' and '/opt/SUNWspro/lib/'.  They would probably
+	have a name with a version number at the end.  If so, you can try to
+	create symbolic links to these two (with the command 'ln -s <library>
+	<link>') using their exact names 'libF77.so' and 'libM77.so'.  Then add
+	to your LD_LIBRARY_PATH environment variable the directory in which you
+	created the two links.  Also add '/opt/SUNWspro/bin/' to your PATH and
+	try again to run the CalFUSE configure routine.
+
+    ->  Otherwise, you can try to install 'g77' from the GNU compilers by
+	installing the package 'gcc-3.4.6'.  (We were unable to make 'gfortran'
+	from GCC version 4 and higher work on Solaris.)  You will need root
+	access to do so.
+
+	First type the command 'iconv' in your shell.  If it returns "command
+	not found", then you must first install the package libiconv as well.
+
+	You can retrieve packages for various versions of Solaris (7 to 10) and
+	different CPU architectures (Sparc or Intel) from this website (select
+	the appropriate system/CPU combination in the menu on the right side):
+	http://www.sunfreeware.com
+
+	If the web page download fails, you can access the packages by ftp
+	( where  <CPU> = sparc or intel  and  <V> = 7, 8, 9 or 10 ):
+	   ftp ftp.sunfreeware.com
+	   login: anonymous
+	   password: <your_email_address>
+	   binary			   
+	   cd pub/freeware/<CPU>/<V>/
+	   get gcc-3.4.6-sol<V>-<CPU>-local.gz
+	   get libiconv-1.11-sol<V>-<CPU>-local.gz    (if iconv is missing)
+	   bye
+
+	When you have the necessary packages, first add '/usr/local/bin' to your
+	PATH environment variable and '/usr/local/man' to your MANPATH.  Then
+	unzip the packages with 'gunzip' and, as root, type the following
+	commands:
+	   > pkgadd -d libiconv-1.9.2-sol<V>-<CPU>-local (if iconv is missing)
+	   > pkgadd -d gcc-3.4.6-sol<V>-<CPU>-local
+
+    ->  You can also try to recompile the GCC compilers yourself from the source
+	available on the GNU website:
+	http://ftp.gnu.org/gnu/gcc/
+	But this is a very long (it took us 10 hours) and complicated process,
+	and we recommend that you install the package as described above.
+
+	If you really have to compile the code by hand, for example because
+	you cannot get root permission, follow these instructions:
+	- Choose the latest 3.x.x version available.  (We were unable to
+	install fortran version 4.x.x because the necessary libraries were
+	missing.)
+	- Create three directories, none of them a subdirectory of another: 
+	srcdir - to contain the source archive
+	bindir - where the binaries will be installed 
+	insdir - from which you will do the install
+	For example, I had respectively '/home/ooghe/gcc/src/',
+	'/home/ooghe/gcc/bin/' and '/home/ooghe/gcc/install/'.
+	- Unzip and untar the downloaded archive in 'srcdir'
+	- Echo your 'PATH' environment variable and remove '/usr/ucb/bin'
+	from it if it is present. Add '/usr/sfw/bin' if it is not.
+	For example:
+	   > export PATH=/usr/bin:/etc:/usr/sbin:/usr/sfw/bin:/usr/ccs/bin:.
+	- Do the following:
+	   > export CONFIG_SHELL=/bin/ksh
+	- Go to 'insdir' and do the following:
+	   > 'srcdir'/configure --prefix='bindir' --enable-languages=c,fortran
+	where 'srcdir' and 'gccdir' should be complete path directories, e.g.,
+	'/home/username/gcc/src' and '/home/username/gcc/bin'
+	- Bootstrap and finally install the compiler:
+	   > gmake bootstrap
+	   > gmake install
+	- Add 'bindir'/bin to your PATH environment variable, and
+	'bindir'/lib to your LD_LIBRARY_PATH one.
+
+
+===============================================================================
+
+FORTRAN for Linux:
+------------------
+
+	CalFUSE has been compiled and tested on Linux with the Fortran compilers
+	provided by GNU (g77 and gfortran).  They are available for free, so
+	even if you already have another fortran compiler, you should get one of
+	these.  You can try to make CalFUSE work with another compiler, but we
+	cannot guarantee your results.
+
+	Most Linux distributions include one of the GNU Fortran compilers, but
+	if it is not on yours, you should first try to get a binary for your
+	machine.
+
+    ->  If your Linux is based on a distribution like Debian, Fedora or SUSE,
+	look for a binary on this web page:
+	http://gcc.gnu.org/wiki/GFortranDistros
+
+    ->  Otherwise, you can try to install the latest binary from this web page,
+	but we do not recommend it because the latest compilers may still contain
+	some bugs:
+	http://gcc.gnu.org/wiki/GFortranBinaries
+
+    ->  If you do not have any other solution, you should recompile GCC from the
+	source by following the instructions available on 
+	http://gcc.gnu.org/wiki/GFortranBinaries
+	
+
+===============================================================================
+
+FORTRAN for MAC OS X:
+---------------------
+
+	
+	CalFUSE has been compiled and tested on MAC OS X with the Fortran
+	compilers provided by GNU (g77 and gfortran).  They are available for
+	free, so even if you already have another Fortran compiler (like ifort
+	from Intel or f77 from ABSoft), you should get one of these.  You can
+	try to make CalFUSE work with another compiler, but we cannot guarantee
+	your results.
+
+	There are many ways to install the GNU compilers on a MAC;
+	here are some suggestions:
+
+    ->	For Mac OS X 10.4 (Tiger) or higher, we know that the installation
+	provided on this web page works well: 
+        http://www.macresearch.org/xcode_gfortran_contest_winner_damien_bobillot
+  	Just download the gfortran compiler corresponding to your CPU
+	architecture (Intel or PowerPC) and follow the "gfortran compiler
+	instructions".
+
+        If this web page is down, you can get the same archives from the
+	CalFUSE FTP site:
+
+	   ftp fuse.pha.jhu.edu
+	   login: anonymous
+	   password: <your_email_address>
+
+	   cd fuseftp/calfuse
+	   binary
+  (PPC)	   get macos-gfortran-intel-bin.tar.gz
+ (Intel)   get macos-gfortran-ppc-bin.tar.gz
+	   bye
+
+	When you have the appropriate package, install the compiler
+	using the following command:
+  (PPC)    sudo tar -zxvf macos-gfortran-ppc-bin.tar.gz -C /
+ (Intel)   sudo tar -zxvf macos-gfortran-intel-bin.tar.gz -C /
+
+	Note: It is possible that /usr/local/bin is not in your default
+	PATH environment variable.  If the command 'gfortran' does not work,
+	then, assuming you're using the default bash shell, type
+	(or include in /etc/profile):
+	   > export PATH=/usr/local/bin:$PATH
+
+    ->  Otherwise, you can try to find more recent versions of these
+	packages on these different websites, but we don't recommend them
+	because they usually still have a few development bugs:
+	http://hpc.sourceforge.net/
+	http://www.macresearch.org/xcode_gfortran_plugin_update
+	http://gcc.gnu.org/wiki/GFortranBinariesMacOS
+
+    ->  You can also try to install yourself a version of gfortran or
+	g77 from one of GCC releases at this address:
+	http://ftp.gnu.org/gnu/gcc/
+	This might be the only solution if you are using Mac OS X 10.3
+	or lower.
+ 	In this specific case, we recommend that you try first to install
+	'g77' from 'gcc-3.3.3', following Jeff's instructions as follows: 
+
+-------------------------------------------------------------------------------
+Jeff Kruk
+31 May 2004
+
+Hi All-
+
+I have successfully installed GNU fortran on my Mac laptop.
+It is not part of the Apple Developer tools (at least not anymore),
+so you have to get it directly from GNU.  The instructions from GNU
+state that you need the whole source tree to compile the compilers,
+so you have to ignore the portions of the GCC package that are provided
+by Apple with their developers toolkit.
+
+After reading through lots of instructions, I concluded that all the
+default options were just fine.  So, here is a boiled-down set of
+instructions.
+
+You will need 3 different directories:
+srcdir:  where you put all the files from GNU
+objdir:  where you do the build
+installdir:  this defaults to /usr/local, which is what I used.
+(You may have to do this as root to put things in /usr/local)
+
+The one complication is that GNU "strongly recommends" that none of
+these directories be subdirectories of one another.
+So I put the downloaded files in /Users/kruk/Desktop/gcc-3.3.3
+and I did the build in /Users/kruk/gcc/bin.
+
+Here's the sequence of commands needed:
+
+1) Use your browser to go to
+http://ftp.gnu.org/gnu/gcc/releases/gcc-3.3.3
+click on gcc-3.3.3.tar.gz
+unpack this in 'srcdir' (in my case this was ~/Desktop/gcc-3.3.3)
+
+2) Make the directory where you will do the build.  In my case this was:
+> cd ~
+> mkdir gcc
+> mkdir bin
+> cd gcc/bin
+
+3) Configure all the files:
+> ~/Desktop/gcc-3.3.3/configure
+
+4) Make the compilers:
+> gnumake bootstrap
+(I think the default 'make' is the same as gnumake, but I wasn't taking
+any chances)
+When this completes, there are no files in /usr/local yet!
+
+5) Do the actual install:
+> gnumake install
+
+[This can take a long time -- up to 90 minutes.  - Ed.]
+
+That's it!
+
+Note: If you are using an Intel-based Mac, also follow these instructions
+      from Vincent Hénault-Brunet: "I recently compiled CalFUSE on my Mac
+      Intel laptop. The problem had to do with g77.  I didn't know, but g77
+      doesn't work on Mac Intel. It will compile but doesn't work properly.
+      I had to patch the power-pcc version of g77 (patch found at
+      http://www1.gly.bris.ac.uk/~wookey/MEFTLG/g77.htm ), and CalFUSE 
+      compiled without any problem."
+
+
+- Van Dixon, Bernard Godard, Jeff Kruk and Benjamin Ooghe-Tabanou

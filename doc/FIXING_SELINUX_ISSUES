@@ -1,0 +1,84 @@
+
+-------------------------------------------------------------------------------
+			Fixing issues due to SELinux
+-------------------------------------------------------------------------------
+
+While installing CalFUSE 3.2.0 on Scientific Linux V 5.0 the following
+SELinux issues came up. SELinux points to these web pages for a more
+detailed explanation of the issues:
+http://people.redhat.com/drepper/selinux-mem.html  and
+http://people.redhat.com/drepper/textrelocs.html
+
+A suggestion from the http://people.redhat.com/drepper/textrelocs.html
+web page is to compile the c libraries with -fpic or -fPIC.
+
+The first SELinux issue maybe related to this being a new install of Scientific Linux and
+not truly related to CalFUSE. 
+
+
+Summary
+-------
+
+SELinux is preventing access to files with the label, file_t.
+
+Detailed Description
+
+SELinux permission checks on files labeled file_t are being
+denied. file_t is the context the SELinux kernel gives to files that do not have a label.
+This indicates a serious labeling problem. No files on an SELinux box should ever be
+labeled file_t. If you have just
+added a new disk drive to the system you can relabel it using the restorecon command.
+Otherwise you should relabel the entire files system.
+
+Allowing Access
+
+You can execute the following command as root to relabel your computer
+system:
+
+touch /.autorelabel; reboot
+
+Note that this will reboot your computer system.
+
+
+Summary
+-------
+
+SELinux is preventing /calfuse/v3.2/bin/cf_hist_init from loading
+/calfuse/v3.2/lib/libcf.so,
+/calfuse/v3.2/lib/libsla.so, and
+/calfuse/v3.2/lib/libcfitsio-2.470.so
+which require text relocation.
+
+
+Detailed Description
+
+The /calfuse/v3.2/bin/cf_hist_init application attempted to load
+/calfuse/v3.2/lib/libcf.so,
+/calfuse/v3.2/lib/libsla.so, and
+/calfuse/v3.2/lib/libcfitsio-2.470.so
+which require text relocation. This is a potential security problem. Most libraries do
+not need this permission.  Libraries are sometimes coded incorrectly and request this
+permission. The SELinux Memory Protection Tests web page explains how to remove this
+requirement. You can configure SELinux temporarily to allow
+/calfuse/v3.2/lib/libcf.so,
+/calfuse/v3.2/lib/libsla.so, and
+/calfuse/v3.2/lib/libcfitsio-2.470.so
+to use relocation as a workaround, until the libraries are fixed.
+Please file a bug report against this package.
+
+Allowing Access
+
+If you trust
+/calfuse/v3.2/lib/libcf.so,
+/calfuse/v3.2/lib/libsla.so, and
+/calfuse/v3.2/lib/libcfitsio-2.470.so
+to run correctly, you can change the file context to textrel_shlib_t.
+
+The following commands will allow this access:
+
+chcon -t textrel_shlib_t /calfuse/v3.2/lib/libcf.so
+chcon -t textrel_shlib_t /calfuse/v3.2/lib/libsla.so
+chcon -t textrel_shlib_t /calfuse/v3.2/lib/libcfitsio-2.470.so
+
+
+- Michael E. Van Steenberg

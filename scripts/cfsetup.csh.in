@@ -1,0 +1,9 @@
+# To execute, type "source cfsetup.csh"
+#
+set CF_DIR="@PREFIX@"
+set CF_VERSION="@VERSION@"
+setenv PATH "@PREFIX@/bin:${PATH}"
+setenv CF_CALDIR "@DATADIR@/calfiles"
+setenv CF_PARMDIR "@DATADIR@/parmfiles"
+setenv CF_IDLDIR "@DATADIR@/idl"
+
