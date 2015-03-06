@@ -157,7 +157,7 @@ am_libsla_la_OBJECTS = addet.lo afin.lo airmas.lo altaz.lo amp.lo \
 	rverot.lo rvgalc.lo rvlg.lo rvlsrd.lo rvlsrk.lo s2tp.lo sep.lo \
 	smat.lo subet.lo supgal.lo svd.lo svdcov.lo svdsol.lo tp2s.lo \
 	tp2v.lo tps2c.lo tpv2c.lo ue2el.lo ue2pv.lo unpcd.lo v2tp.lo \
-	vdv.lo vn.lo vxv.lo xy2xy.lo zd.lo
+	vdv.lo vn.lo vxv.lo xy2xy.lo zd.lo gresid.lo random.lo wait.lo
 libsla_la_OBJECTS = $(am_libsla_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -527,9 +527,12 @@ libsla_la_SOURCES = \
         vn.f     \
         vxv.f    \
         xy2xy.f  \
-        zd.f
+        zd.f     \
+		gresid.f \
+		random.f \
+		wait.f
 
-AM_CFLAGS = -I$(top_srcdir)/include -I./
+AM_CFLAGS = -I$(srcdir)/include -I./
 all: all-am
 
 .SUFFIXES:

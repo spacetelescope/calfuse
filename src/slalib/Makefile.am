@@ -182,6 +182,9 @@ libsla_la_SOURCES = \
         vn.f     \
         vxv.f    \
         xy2xy.f  \
-        zd.f
+        zd.f     \
+		gresid.f \
+		random.f \
+		wait.f
 
-AM_CFLAGS = -I$(top_srcdir)/include -I./
+AM_CFLAGS = -I$(srcdir)/include -I./
