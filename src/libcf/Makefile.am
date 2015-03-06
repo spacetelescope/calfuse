@@ -34,5 +34,7 @@ libcf_la_SOURCES = \
 libcf_la_LDFLAGS = -lm -lgfortran
 libcf_la_CFLAGS = $(cfitsio_CFLAGS)
 libcf_la_LIBADD = $(cfitsio_LIBS)
-AM_CFLAGS = -I$(top_srcdir)/include
+#AM_CFLAGS = -I$(srcdir)/include
+#AM_CFLAGS = -I$(pkgincludedir)/include
+AM_CFLAGS = -I$(srcdir)/include
 

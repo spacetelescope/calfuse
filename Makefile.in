@@ -13,6 +13,7 @@
 # PARTICULAR PURPOSE.
 
 @SET_MAKE@
+
 VPATH = @srcdir@
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \
@@ -95,7 +96,7 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(top_srcdir)/configure \
-	$(am__configure_deps) $(am__DIST_COMMON)
+	$(am__configure_deps) $(noinst_HEADERS) $(am__DIST_COMMON)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
@@ -129,6 +130,7 @@ am__can_run_installinfo = \
     n|no|NO) false;; \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
+HEADERS = $(noinst_HEADERS)
 RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
   distclean-recursive maintainer-clean-recursive
 am__recursive_targets = \
@@ -331,7 +333,7 @@ top_srcdir = @top_srcdir@
 SUBDIRS = . src scripts doc
 ACLOCAL_AMFLAGS = -I m4
 DATADIRS = calfiles parmfiles idl
-EXTRA_DIST = $(DATADIRS) \
+INCLUDE_FILES = \
 			 src/fes/cf_calfes.h \
 			 src/include/calfitsio.h \
 			 src/include/calfuse.h \
@@ -354,6 +356,8 @@ EXTRA_DIST = $(DATADIRS) \
 			 src/include/slalib.h \
 			 src/include/slamac.h
 
+noinst_HEADERS = $(INCLUDE_FILES)
+EXTRA_DIST = $(DATADIRS)
 all: all-recursive
 
 .SUFFIXES:
@@ -711,7 +715,7 @@ distcleancheck: distclean
 	       exit 1; } >&2
 check-am: all-am
 check: check-recursive
-all-am: Makefile
+all-am: Makefile $(HEADERS)
 installdirs: installdirs-recursive
 installdirs-am:
 install: install-recursive
@@ -835,16 +839,6 @@ uninstall-am:
 
 .PRECIOUS: Makefile
 
-
-#			 scripts/calfuse.wavecal \
-#			 scripts/cf_make_900_obs.csh \
-#			 scripts/cf_make_all.csh \
-#			 scripts/cf_make_all_obs.csh \
-#			 scripts/idl_obsplot.pl \
-#			 scripts/idlplot_rate.pl \
-#			 scripts/idlplot_spex.pl \
-#			 scripts/listhead \
-#			 scripts/listtra
 
 install-data-local: $(DATADIRS)
 	mkdir -p $(DESTDIR)$(pkgdatadir)

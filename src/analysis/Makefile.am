@@ -51,4 +51,4 @@ ttag_lightcurve_mjd2hmjd_SOURCES = ttag_lightcurve_mjd2hmjd.c gethmjd.c
 ttag_lightcurve_periodogram_SOURCES = ttag_lightcurve_periodogram.c
 
 LDADD = ../libcf/libcf.la ../slalib/libsla.la $(cfitsio_LIBS)
-AM_CFLAGS = -I$(top_srcdir)/include -I./ -DCFORTRAN -Df2cFortran
+AM_CFLAGS = -I$(srcdir)/include -I./ -DCFORTRAN -Df2cFortran
