@@ -5,4 +5,5 @@ cf_calfes_SOURCES = \
 		cf_fes_cal.c cf_fes_get_cal_image.c cf_limbang.c \
 		cf_fes_apply_bias.c cf_fes_apply_flat.c cf_fes_apply_mask.c
 cf_calfes_LDADD = ../slalib/libsla.la ../libcf/libcf.la
-cf_calfes_CFLAGS = -I$(srcdir)/include -I./
+cf_calfes_CFLAGS = $(cfitsio_CFLAGS) -I$(srcdir)/include -I./
+cf_calfes_LDFLAGS = $(cfitsio_LIBS)

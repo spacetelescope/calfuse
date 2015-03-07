@@ -1,4 +1,5 @@
-lib_LTLIBRARIES = libsla.la
+lib_LTLIBRARIES = libsla.la libslarandom.la
+libslarandom_la_SOURCES = rtl_random.c
 libsla_la_SOURCES = \
         addet.f  \
         afin.f   \
@@ -183,8 +184,8 @@ libsla_la_SOURCES = \
         vxv.f    \
         xy2xy.f  \
         zd.f     \
-		gresid.f \
-		random.f \
-		wait.f
+	gresid.f \
+	random.f \
+	wait.f
 
-AM_CFLAGS = -I$(srcdir)/include -I./
+libsla_la_CFLAGS = -I$(srcdir)/include -I./

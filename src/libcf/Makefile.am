@@ -32,9 +32,8 @@ libcf_la_SOURCES = \
         cf_init_support.c cf_modify_hist_pha.c \
         cf_fes_proc_check.c cf_fes_proc_update.c
 libcf_la_LDFLAGS = -lm -lgfortran
-libcf_la_CFLAGS = $(cfitsio_CFLAGS)
-libcf_la_LIBADD = $(cfitsio_LIBS)
+libcf_la_CFLAGS = $(cfitsio_CFLAGS) -I$(srcdir)/include -DCFORTRAN -Df2cFortran
+libcf_la_LIBADD = $(cfitsio_LIBS) ../slalib/libslarandom.la
 #AM_CFLAGS = -I$(srcdir)/include
 #AM_CFLAGS = -I$(pkgincludedir)/include
-AM_CFLAGS = -I$(srcdir)/include
 

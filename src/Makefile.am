@@ -1,1 +1,1 @@
-SUBDIRS = libcf slalib fes fuv analysis cal
+SUBDIRS = slalib libcf fes fuv analysis cal

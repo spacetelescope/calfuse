@@ -1,11 +1,11 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.69])
+AC_PREREQ([2.6])
 AC_INIT([calfuse], [3.2.3], [archive@stsci.edu])
 AM_INIT_AUTOMAKE([foreign])
 LT_INIT
-AC_CONFIG_MACRO_DIRS([m4])
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([src])
 AC_CONFIG_HEADERS([src/include/config.h])
 
@@ -21,7 +21,7 @@ AC_FUNC_ALLOCA
 AC_CHECK_HEADERS([fcntl.h limits.h malloc.h stddef.h stdlib.h string.h strings.h unistd.h])
 PKG_CHECK_MODULES([cfitsio], [cfitsio >= 3])
 # Checks for typedefs, structures, and compiler characteristics.
-AC_CHECK_HEADER_STDBOOL
+#AC_CHECK_HEADER_STDBOOL
 AC_TYPE_SIZE_T
 
 # Checks for library functions.
