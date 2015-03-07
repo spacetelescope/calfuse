@@ -10,9 +10,7 @@ bin_SCRIPTS = \
 			cfsetup.sh \
 			idl_obsplot.pl \
 			idlplot_rate.pl \
-			idlplot_spex.pl \
-			listhead \
-			listtra
+			idlplot_spex.pl
 
 EXTRA_DIST = \
 			cfsetup.csh.in \
@@ -25,9 +23,7 @@ EXTRA_DIST = \
 			cf_make_all_obs.csh \
 			idl_obsplot.pl \
 			idlplot_rate.pl \
-			idlplot_spex.pl \
-			listhead \
-			listtra
+			idlplot_spex.pl
 
 CLEANFILES = cfsetup.csh \
 			 cfsetup.sh
