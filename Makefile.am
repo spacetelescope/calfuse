@@ -30,6 +30,11 @@ noinst_HEADERS = $(INCLUDE_FILES)
 EXTRA_DIST = $(DATADIRS)
 
 install-data-local: $(DATADIRS)
-	mkdir -p $(DESTDIR)$(pkgdatadir)
-	cp -a $(DATADIRS) $(DESTDIR)$(pkgdatadir)
+	install -d -m 0755 $(DESTDIR)$(pkgdatadir)
+	for d in "$(DATADIRS)"; do \
+		install -d -m 0755 $(DESTDIR)$(pkgdatadir)$d ; \
+		for f in $d; do \
+			install -m 0644 $$f $(DESTDIR)$(pkgdatadir)$f ; \
+		done ; \
+	done
 
