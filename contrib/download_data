@@ -14,7 +14,7 @@ if [ -z "$(which tar 2>/dev/null)" ]; then
 fi
 
 if [ -f "$tarball" ]; then
-	echo '$tarball' already exists. Delete it and re-run this script.
+	echo $tarball already exists. Delete it and re-run this script.
 	exit 1
 fi
 
