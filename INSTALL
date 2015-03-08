@@ -1,0 +1,8 @@
+# Abridged installation
+
+./autogen.sh
+./configure --prefix=$HOME/calfuse
+make download-data  # If you require calibration data
+make
+make install
+source $HOME/calfuse/bin/cfsetup.[sh|csh]
