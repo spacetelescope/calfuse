@@ -21,6 +21,9 @@
 /* Define to 1 if you have the <fcntl.h> header file. */
 #undef HAVE_FCNTL_H
 
+/* Define to 1 if you have the <fitsio.h> header file. */
+#undef HAVE_FITSIO_H
+
 /* Define to 1 if you have the `floor' function. */
 #undef HAVE_FLOOR
 

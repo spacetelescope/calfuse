@@ -18,8 +18,8 @@ AC_PROG_LN_S
 
 # Checks for header files.
 AC_FUNC_ALLOCA
-AC_CHECK_HEADERS([fcntl.h limits.h malloc.h stddef.h stdlib.h string.h strings.h unistd.h])
-PKG_CHECK_MODULES([cfitsio], [cfitsio >= 3])
+PKG_CHECK_MODULES([cfitsio], [cfitsio >= 2.7])
+AC_CHECK_HEADERS([fcntl.h limits.h malloc.h stddef.h stdlib.h string.h strings.h unistd.h fitsio.h])
 # Checks for typedefs, structures, and compiler characteristics.
 #AC_CHECK_HEADER_STDBOOL
 AC_TYPE_SIZE_T

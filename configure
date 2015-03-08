@@ -16177,19 +16177,6 @@ _ACEOF
 
 fi
 
-for ac_header in fcntl.h limits.h malloc.h stddef.h stdlib.h string.h strings.h unistd.h
-do :
-  as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
-ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
-if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
-  cat >>confdefs.h <<_ACEOF
-#define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
-_ACEOF
-
-fi
-
-done
-
 
 
 
@@ -16319,12 +16306,12 @@ if test -n "$cfitsio_CFLAGS"; then
     pkg_cv_cfitsio_CFLAGS="$cfitsio_CFLAGS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"cfitsio >= 3\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "cfitsio >= 3") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"cfitsio >= 2.7\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "cfitsio >= 2.7") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_cfitsio_CFLAGS=`$PKG_CONFIG --cflags "cfitsio >= 3" 2>/dev/null`
+  pkg_cv_cfitsio_CFLAGS=`$PKG_CONFIG --cflags "cfitsio >= 2.7" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes
 else
   pkg_failed=yes
@@ -16336,12 +16323,12 @@ if test -n "$cfitsio_LIBS"; then
     pkg_cv_cfitsio_LIBS="$cfitsio_LIBS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"cfitsio >= 3\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "cfitsio >= 3") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"cfitsio >= 2.7\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "cfitsio >= 2.7") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_cfitsio_LIBS=`$PKG_CONFIG --libs "cfitsio >= 3" 2>/dev/null`
+  pkg_cv_cfitsio_LIBS=`$PKG_CONFIG --libs "cfitsio >= 2.7" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes
 else
   pkg_failed=yes
@@ -16362,14 +16349,14 @@ else
         _pkg_short_errors_supported=no
 fi
         if test $_pkg_short_errors_supported = yes; then
-	        cfitsio_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "cfitsio >= 3" 2>&1`
+	        cfitsio_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "cfitsio >= 2.7" 2>&1`
         else
-	        cfitsio_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "cfitsio >= 3" 2>&1`
+	        cfitsio_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "cfitsio >= 2.7" 2>&1`
         fi
 	# Put the nasty error message in config.log where it belongs
 	echo "$cfitsio_PKG_ERRORS" >&5
 
-	as_fn_error $? "Package requirements (cfitsio >= 3) were not met:
+	as_fn_error $? "Package requirements (cfitsio >= 2.7) were not met:
 
 $cfitsio_PKG_ERRORS
 
@@ -16401,6 +16388,19 @@ else
 $as_echo "yes" >&6; }
 
 fi
+for ac_header in fcntl.h limits.h malloc.h stddef.h stdlib.h string.h strings.h unistd.h fitsio.h
+do :
+  as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
+ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
+if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
+  cat >>confdefs.h <<_ACEOF
+#define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
+_ACEOF
+
+fi
+
+done
+
 # Checks for typedefs, structures, and compiler characteristics.
 #AC_CHECK_HEADER_STDBOOL
 ac_fn_c_check_type "$LINENO" "size_t" "ac_cv_type_size_t" "$ac_includes_default"

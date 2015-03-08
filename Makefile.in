@@ -161,8 +161,8 @@ CTAGS = ctags
 CSCOPE = cscope
 DIST_SUBDIRS = $(SUBDIRS)
 am__DIST_COMMON = $(srcdir)/Makefile.in \
-	$(top_srcdir)/src/include/config.h.in compile config.guess \
-	config.sub depcomp install-sh ltmain.sh missing
+	$(top_srcdir)/src/include/config.h.in COPYING INSTALL compile \
+	config.guess config.sub depcomp install-sh ltmain.sh missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -357,7 +357,7 @@ INCLUDE_FILES = \
 			 src/include/slamac.h
 
 noinst_HEADERS = $(INCLUDE_FILES)
-EXTRA_DIST = $(DATADIRS)
+EXTRA_DIST = $(DATADIRS) contrib
 all: all-recursive
 
 .SUFFIXES:
@@ -843,6 +843,10 @@ uninstall-am:
 install-data-local: $(DATADIRS)
 	mkdir -p $(DESTDIR)$(pkgdatadir) ; \
 	find $(DATADIRS) -type f | xargs -I{} install -D -m 644 {} $(DESTDIR)$(pkgdatadir)/{}
+
+download-data:
+	( cd $(srcdir) ; \
+	contrib/download_data; )
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

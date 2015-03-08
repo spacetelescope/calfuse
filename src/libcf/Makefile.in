@@ -132,7 +132,7 @@ am__installdirs = "$(DESTDIR)$(libdir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libcf_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	../slalib/libslarandom.la
+	../slalib/libslarandom.la ../slalib/libsla.la
 am_libcf_la_OBJECTS = libcf_la-calfits.lo libcf_la-sgp4.lo \
 	libcf_la-eclipse.lo libcf_la-saa.lo libcf_la-state_limb.lo \
 	libcf_la-state_geod.lo libcf_la-space_vel.lo \
@@ -411,7 +411,7 @@ libcf_la_SOURCES = \
 
 libcf_la_LDFLAGS = -lm -lgfortran
 libcf_la_CFLAGS = $(cfitsio_CFLAGS) -I$(srcdir)/include -DCFORTRAN -Df2cFortran
-libcf_la_LIBADD = $(cfitsio_LIBS) ../slalib/libslarandom.la
+libcf_la_LIBADD = $(cfitsio_LIBS) ../slalib/libslarandom.la ../slalib/libsla.la
 all: all-am
 
 .SUFFIXES:
