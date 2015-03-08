@@ -28,7 +28,12 @@ INCLUDE_FILES = \
 noinst_HEADERS = $(INCLUDE_FILES)
 
 EXTRA_DIST = $(DATADIRS)
+EXTRA_DIST += contrib
 
 install-data-local: $(DATADIRS)
 	mkdir -p $(DESTDIR)$(pkgdatadir) ; \
 	find $(DATADIRS) -type f | xargs -I{} install -D -m 644 {} $(DESTDIR)$(pkgdatadir)/{}
+
+download-data:
+	( cd $(srcdir) ; \
+	contrib/download_data; )
