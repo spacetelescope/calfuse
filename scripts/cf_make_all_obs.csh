@@ -78,14 +78,6 @@ set cf_nvo = cf_nvo
 set idl_obsplot = idl_obsplot.pl
 set modhead = modhead
 
-#set cf_xcorr = /home/vela/civeit/Work/CalFuse/Xcorr/New/cf_xcorr
-#set cf_combine = /home/vela/civeit/Work/CalFuse/Shiftexp/cf_combine
-#set cf_pack = /home/vela/civeit/Work/CalFuse/Pack/cf_pack
-#set cf_nvo = /home/vela/civeit/Work/CalFuse/Nvo/cf_nvo
-#set modhead = /home/vela/civeit/local/bin/modhead
-
-#set cf_obsplot = /data1/fuse/calfuse/v3.1/idl/cf_obsplot.pro
-
 # Init var list
 set detector = (1a 2b)
 set channel = (lif sic)

@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 use FileHandle;
 use IPC::Open2;
 
@@ -17,7 +17,7 @@ use IPC::Open2;
 ##$passwd = "bdr529";
 
 $login = "mromelfanger";
-$passwd = "fusejhu";
+$passwd = "FuseJHU1";
 $output_filename = "/data1/fuse/calfuse/caltemp/five.tle";
 $log_filename = "/data1/fuse/calfuse/caltemp/get_tle.logfile";
 
@@ -34,7 +34,7 @@ open(OUT,">$log_filename") || die "Could not open output file";
 
 # The following logs in to OIG and gets the first "continue" code
 
-$host = "oig1.gsfc.nasa.gov";
+$host = "www.space-track.org";
 #$url = "scripts/foxweb.dll/loginok\@app01?tdac=&ffv01=$login&ffv02=$passwd";
 $url = "scripts/foxweb.exe/loginok\@app01?tdac=&ffv01=$login&ffv02=$passwd";
 

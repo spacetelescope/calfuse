@@ -16531,7 +16531,7 @@ fi
 done
 
 
-ac_config_files="$ac_config_files Makefile src/Makefile src/libcf/Makefile src/slalib/Makefile src/fes/Makefile src/fuv/Makefile src/analysis/Makefile src/cal/Makefile src/cal/jitter/Makefile scripts/Makefile doc/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile src/libcf/Makefile src/slalib/Makefile src/fes/Makefile src/fuv/Makefile src/analysis/Makefile src/cal/Makefile src/cal/jitter/Makefile src/cal/parm/Makefile src/cal/saa/Makefile src/cal/screen/Makefile src/cal/get_tle/Makefile src/cal/geom/Makefile scripts/Makefile doc/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -17629,6 +17629,11 @@ do
     "src/analysis/Makefile") CONFIG_FILES="$CONFIG_FILES src/analysis/Makefile" ;;
     "src/cal/Makefile") CONFIG_FILES="$CONFIG_FILES src/cal/Makefile" ;;
     "src/cal/jitter/Makefile") CONFIG_FILES="$CONFIG_FILES src/cal/jitter/Makefile" ;;
+    "src/cal/parm/Makefile") CONFIG_FILES="$CONFIG_FILES src/cal/parm/Makefile" ;;
+    "src/cal/saa/Makefile") CONFIG_FILES="$CONFIG_FILES src/cal/saa/Makefile" ;;
+    "src/cal/screen/Makefile") CONFIG_FILES="$CONFIG_FILES src/cal/screen/Makefile" ;;
+    "src/cal/get_tle/Makefile") CONFIG_FILES="$CONFIG_FILES src/cal/get_tle/Makefile" ;;
+    "src/cal/geom/Makefile") CONFIG_FILES="$CONFIG_FILES src/cal/geom/Makefile" ;;
     "scripts/Makefile") CONFIG_FILES="$CONFIG_FILES scripts/Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
 

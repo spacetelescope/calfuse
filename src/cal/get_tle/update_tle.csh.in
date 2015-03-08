@@ -20,29 +20,30 @@
 #*			0		successful execution
 #* 
 #* History:     07/27/99        emm     Begin work.
+#*              10/23/00        mlr     changed path from v1.4 to current
 #******************************************************************************/
 
 set tlestat=0
 
 # Step 1
-/usr/local/fusesw/calfuse/current/src/cal/get_tle/get_tle.pl
+java -classpath @DATADIR@/java GetTLE
 set cfstat=$status
 
 # Step 2
 if !({$cfstat}) then
-    /usr/local/fusesw/calfuse/current/src/cal/get_tle/add_tle.pl
+    add_tle.pl
     set cfstat=$status
 endif
 
 # Step 3
 if !({$cfstat}) then
-    /usr/local/fusesw/calfuse/current/src/cal/get_tle/make_cvzramtool.pl
+    make_cvzramtool.pl
     set cfstat=$status
 endif
 
 # Step 4
 if !({$cfstat}) then
-    /usr/local/fusesw/calfuse/current/src/cal/get_tle/make_orbit.pl
+    make_orbit.pl
     set cfstat=$status
 endif
 

@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 use FileHandle;
 use IPC::Open2;
 
@@ -35,7 +35,8 @@ open(OUT,">$log_filename") || die "Could not open output file";
 # The following logs in to OIG and gets the first "continue" code
 
 $host = "oig1.gsfc.nasa.gov";
-$url = "scripts/foxweb.dll/loginok\@app01?tdac=&ffv01=$login&ffv02=$passwd";
+#$url = "scripts/foxweb.dll/loginok\@app01?tdac=&ffv01=$login&ffv02=$passwd";
+$url = "scripts/foxweb.exe/loginok\@app01?tdac=&ffv01=$login&ffv02=$passwd";
 
 open2 (\*Reader, \*Writer, "telnet $host 80") || die "Error opening connection";
 Writer->autoflush();
@@ -56,7 +57,8 @@ close(Writer);
 print OUT "*** \n Starting User's Home Page output page \n***\n\n";
 
 # This url accesses the next screen (user home page)
-$url = "scripts/foxweb.dll/favorhome\@app01?tdac=" . $continuecode;
+#$url = "scripts/foxweb.dll/favorhome\@app01?tdac=" . $continuecode;
+$url = "scripts/foxweb.exe/favorhome\@app01?tdac=" . $continuecode;
 # print $url; # debug print
 
 open2 (\*Reader, \*Writer, "telnet $host 80") || die "Error opening connection";
@@ -79,7 +81,8 @@ while (<Reader>) {
 }
 # close(HOMEPAGE);
 # This access is to the "TLE ad hoc query" web page.
-$url = "scripts/foxweb.dll/ftleadhoc\@app01?tdac=" . $tlequerycode;
+#$url = "scripts/foxweb.dll/ftleadhoc\@app01?tdac=" . $tlequerycode;
+$url = "scripts/foxweb.exe/ftleadhoc\@app01?tdac=" . $tlequerycode;
 
 open2 (\*Reader, \*Writer, "telnet $host 80") || die "Error opening connection";
 Writer->autoflush();
@@ -100,7 +103,8 @@ close(Reader);
 close(Writer);
 
 # Compose the TLE query and submit it
-$url = "scripts/foxweb.dll/ftleadhoc\@app01?tdac=" . $gotcode2;
+#$url = "scripts/foxweb.dll/ftleadhoc\@app01?tdac=" . $gotcode2;
+$url = "scripts/foxweb.exe/ftleadhoc\@app01?tdac=" . $gotcode2;
 $url .= "&ffv01=" . $satstoget . "&ffv02=standard&ffv03=catno&ffv04=five";
 
 # print "$url\n";  # debug print

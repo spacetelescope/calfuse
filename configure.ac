@@ -29,8 +29,20 @@ AC_FUNC_ERROR_AT_LINE
 AC_FUNC_MALLOC
 AC_CHECK_FUNCS([floor memchr memset modf pow sqrt strcasecmp strerror strncasecmp strrchr strtol])
 
-AC_OUTPUT([Makefile src/Makefile src/libcf/Makefile src/slalib/Makefile \
-		   src/fes/Makefile src/fuv/Makefile src/analysis/Makefile \
-		   src/cal/Makefile src/cal/jitter/Makefile scripts/Makefile \
-	       doc/Makefile])
+AC_OUTPUT([Makefile \
+		   src/Makefile \
+		   src/libcf/Makefile \
+		   src/slalib/Makefile \
+		   src/fes/Makefile \
+		   src/fuv/Makefile \
+		   src/analysis/Makefile \
+		   src/cal/Makefile \
+		   src/cal/jitter/Makefile \
+		   src/cal/parm/Makefile \
+		   src/cal/saa/Makefile \
+		   src/cal/screen/Makefile \
+		   src/cal/get_tle/Makefile \
+		   src/cal/geom/Makefile \
+		   scripts/Makefile \
+		   doc/Makefile])
 

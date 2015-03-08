@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 use FileHandle;
 
 # This program will read in the latest FUSE TLE and recreate the 
@@ -10,7 +10,7 @@ open (OUTF, ">$output_filename") || die "Cannot open cvz_ram_tool.html file";
 system("chmod ug+rw $output_filename");
 system("chgrp www $output_filename");
 
-$input_filename = "/data1/fuse/calfuse/calfiles/FUSE.TLE";
+$input_filename = "@DATADIR@/calfiles/FUSE.TLE";
 open (INP_TLE, "<$input_filename") || die "Cannot open FUSE.TLE file";
 
 $line1 = <INP_TLE>;

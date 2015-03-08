@@ -30,11 +30,5 @@ noinst_HEADERS = $(INCLUDE_FILES)
 EXTRA_DIST = $(DATADIRS)
 
 install-data-local: $(DATADIRS)
-	install -d -m 0755 $(DESTDIR)$(pkgdatadir)
-	for d in "$(DATADIRS)"; do \
-		install -d -m 0755 $(DESTDIR)$(pkgdatadir)$d ; \
-		for f in $d; do \
-			install -m 0644 $$f $(DESTDIR)$(pkgdatadir)$f ; \
-		done ; \
-	done
-
+	mkdir -p $(DESTDIR)$(pkgdatadir) ; \
+	find $(DATADIRS) -type f | xargs -I{} install -D -m 644 {} $(DESTDIR)$(pkgdatadir)/{}

@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 use FileHandle;
 
 # ***************************************************
@@ -21,10 +21,10 @@ use FileHandle;
 # Define the file names.  old_maintle_filename is not actually opened,
 # but is used in a system call at the end of the program. 
 
-$input_filename = "five.tle";
-$maintle_filename = "FUSE.TLE";
-$old_maintle_filename = "FUSE.OLD";
-$temp_filename = "TEMP.TLE";
+$input_filename = "/data1/fuse/calfuse/caltemp/five.tle";
+$maintle_filename = "@DATADIR@/calfiles/FUSE.TLE";
+$old_maintle_filename = "/data1/fuse/calfuse/caltemp/FUSE.OLD";
+$temp_filename = "/data1/fuse/calfuse/caltemp/TEMP.TLE";
 
 # Open the files.
 open (TLE_INFILE, "<$input_filename") || die "Cannot open $input_filename";

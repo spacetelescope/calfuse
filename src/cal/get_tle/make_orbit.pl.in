@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 use FileHandle;
 
 # Ed Murphy's program to rewrite the orbit page
@@ -10,7 +10,7 @@ open (OUTF, ">$output_filename") || die "Cannot open $output_filename file";
 system("chmod ug+rw $output_filename");
 system("chgrp www $output_filename");
 
-$input_filename = "/data1/fuse/calfuse/calfiles/FUSE.TLE";
+$input_filename = "@DATADIR@/calfiles/FUSE.TLE";
 open (INP_TLE, "<$input_filename") || die "Cannot open $input_filename file";
 
 $satid = 25791;

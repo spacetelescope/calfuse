@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 use FileHandle;
 use IPC::Open2;
 
@@ -18,8 +18,8 @@ use IPC::Open2;
 
 $login = "mromelfanger";
 $passwd = "fusejhu";
-$output_filename = "five.tle";
-$log_filename = "get_tle.logfile";
+$output_filename = "/data1/fuse/calfuse/caltemp/five.tle";
+$log_filename = "/data1/fuse/calfuse/caltemp/get_tle.logfile";
 
 ### (end of configure section)
 
