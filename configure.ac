@@ -13,6 +13,7 @@ AC_CONFIG_HEADERS([src/include/config.h])
 AC_PROG_CC
 AC_PROG_F77
 AC_PROG_LN_S
+AC_CHECK_PROG(HAVE_JAVAC, javac, [`which javac`], [javac not found])
 
 # Checks for libraries.
 
