@@ -128,8 +128,8 @@ am__uninstall_files_from_dir = { \
     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
-am__installdirs = "$(DESTDIR)$(bindir)"
-SCRIPTS = $(bin_SCRIPTS) $(noinst_SCRIPTS)
+am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(javadir)"
+SCRIPTS = $(bin_SCRIPTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -149,6 +149,9 @@ am__can_run_installinfo = \
     n|no|NO) false;; \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
+JAVAC = javac
+CLASSPATH_ENV = CLASSPATH=$(JAVAROOT):$(srcdir)/$(JAVAROOT)$${CLASSPATH:+":$$CLASSPATH"}
+am__java_sources = $(java_JAVA)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 am__DIST_COMMON = $(srcdir)/Makefile.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -276,6 +279,9 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+DATADIR = $(pkgdatadir)-$(VERSION)
+javadir = $(DATADIR)/java
+JAVAROOT = $(builddir)
 bin_SCRIPTS = \
 	add_tle.pl \
 	check_tle.pl \
@@ -286,12 +292,8 @@ bin_SCRIPTS = \
 	test_get_tle.pl \
 	update_tle.csh
 
-noinst_SCRIPTS = \
-	GetTLE.class \
-	GetTLE.java
-
+java_JAVA = GetTLE.java
 EXTRA_DIST = \
-	GetTLE.class.in \
 	GetTLE.java.in \
 	add_tle.pl.in \
 	check_tle.pl.in \
@@ -314,7 +316,7 @@ CLEANFILES = \
 	test_get_tle.pl \
 	update_tle.csh
 
-do_subst = sed -e 's,[@]DATADIR[@],$(pkgdatadir)-$(VERSION),g' \
+do_subst = sed -e 's,[@]DATADIR[@],$(DATADIR),g' \
 		   		   -e 's,[@]PREFIX[@],$(prefix),g' \
 				   -e 's,[@]VERSION[@],$(VERSION),g'
 
@@ -391,6 +393,35 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
+
+classjava.stamp: $(am__java_sources)
+	@list1='$?'; list2=; if test -n "$$list1"; then \
+	  for p in $$list1; do \
+	    if test -f $$p; then d=; else d="$(srcdir)/"; fi; \
+	    list2="$$list2 $$d$$p"; \
+	  done; \
+	  echo '$(CLASSPATH_ENV) $(JAVAC) -d $(JAVAROOT) $(AM_JAVACFLAGS) $(JAVACFLAGS) '"$$list2"; \
+	  $(CLASSPATH_ENV) $(JAVAC) -d $(JAVAROOT) $(AM_JAVACFLAGS) $(JAVACFLAGS) $$list2; \
+	else :; fi
+	echo timestamp > $@
+install-javaJAVA: classjava.stamp
+	@$(NORMAL_INSTALL)
+	@test -n "$(java_JAVA)" && test -n "$(javadir)" || exit 0; \
+	echo " $(MKDIR_P) '$(DESTDIR)$(javadir)'"; \
+	$(MKDIR_P) "$(DESTDIR)$(javadir)"; \
+	set x *.class; shift; test "$$1" != "*.class" || exit 0; \
+	echo " $(INSTALL_DATA)" "$$@" "'$(DESTDIR)$(javadir)/$$p'"; \
+	$(INSTALL_DATA) "$$@" "$(DESTDIR)$(javadir)"
+
+uninstall-javaJAVA:
+	@$(NORMAL_UNINSTALL)
+	@test -n "$(java_JAVA)" && test -n "$(javadir)" || exit 0; \
+	set x *.class; shift; test "$$1" != "*.class" || exit 0; \
+	echo " ( cd '$(DESTDIR)$(javadir)' && rm -f" "$$@" ")"; \
+	cd "$(DESTDIR)$(javadir)" && rm -f "$$@"
+
+clean-javaJAVA:
+	-rm -f *.class classjava.stamp
 tags TAGS:
 
 ctags CTAGS:
@@ -430,9 +461,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(SCRIPTS)
+all-am: Makefile $(SCRIPTS) classjava.stamp
 installdirs:
-	for dir in "$(DESTDIR)$(bindir)"; do \
+	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(javadir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -468,7 +499,7 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-generic clean-libtool mostlyclean-am
+clean-am: clean-generic clean-javaJAVA clean-libtool mostlyclean-am
 
 distclean: distclean-am
 	-rm -f Makefile
@@ -486,7 +517,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-data-local
+install-data-am: install-data-local install-javaJAVA
 
 install-dvi: install-dvi-am
 
@@ -530,29 +561,26 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-binSCRIPTS
+uninstall-am: uninstall-binSCRIPTS uninstall-javaJAVA
 
 .MAKE: install-am install-strip
 
-.PHONY: all all-am check check-am clean clean-generic clean-libtool \
-	cscopelist-am ctags-am distclean distclean-generic \
-	distclean-libtool distdir dvi dvi-am html html-am info info-am \
-	install install-am install-binSCRIPTS install-data \
-	install-data-am install-data-local install-dvi install-dvi-am \
-	install-exec install-exec-am install-html install-html-am \
-	install-info install-info-am install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am tags-am uninstall \
-	uninstall-am uninstall-binSCRIPTS
+.PHONY: all all-am check check-am clean clean-generic clean-javaJAVA \
+	clean-libtool cscopelist-am ctags-am distclean \
+	distclean-generic distclean-libtool distdir dvi dvi-am html \
+	html-am info info-am install install-am install-binSCRIPTS \
+	install-data install-data-am install-data-local install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am install-javaJAVA \
+	install-man install-pdf install-pdf-am install-ps \
+	install-ps-am install-strip installcheck installcheck-am \
+	installdirs maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-generic mostlyclean-libtool pdf pdf-am \
+	ps ps-am tags-am uninstall uninstall-am uninstall-binSCRIPTS \
+	uninstall-javaJAVA
 
 .PRECIOUS: Makefile
 
-
-GetTLE.class: GetTLE.class.in Makefile
-	$(do_subst) < GetTLE.class.in > GetTLE.class
-		chmod 644 GetTLE.class
 
 GetTLE.java: GetTLE.java.in Makefile
 	$(do_subst) < GetTLE.java.in > GetTLE.java
@@ -590,10 +618,8 @@ update_tle.csh: update_tle.csh.in Makefile
 	$(do_subst) < update_tle.csh.in > update_tle.csh
 		chmod +x update_tle.csh
 
-install-data-local: GetTLE.class GetTLE.java
-	mkdir -p $(DESTDIR)$(pkgdatadir)-$(VERSION)/java
-	install -D -m 644 GetTLE.class $(DESTDIR)$(pkgdatadir)-$(VERSION)/java
-	install -D -m 644 GetTLE.java $(DESTDIR)$(pkgdatadir)-$(VERSION)/java
+install-data-local:
+	$(INSTALL) -D -m 644 GetTLE.class $(DESTDIR)$(pkgdatadir)-$(VERSION)/java
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

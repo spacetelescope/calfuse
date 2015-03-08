@@ -6,4 +6,4 @@ setenv PATH "${CF_DIR}/bin:${PATH}"
 setenv CF_CALDIR "@DATADIR@/calfiles"
 setenv CF_PARMDIR "@DATADIR@/parmfiles"
 setenv CF_IDLDIR "@DATADIR@/idl"
-
+setenv CF_HISTDIR `pwd`

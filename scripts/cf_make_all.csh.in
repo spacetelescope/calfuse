@@ -54,7 +54,7 @@ set modhead = modhead
 #set cf_nvo = /home/vela/civeit/Work/CalFuse/Nvo/cf_nvo
 #set modhead = /home/vela/civeit/local/bin/modhead
 
-set cf_obsplot = /data1/fuse/calfuse/v3.1/idl/cf_obsplot.pro
+set cf_obsplot = @DATADIR@/idl/cf_obsplot.pro
 
 
 # Init var list

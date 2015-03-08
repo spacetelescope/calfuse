@@ -28,8 +28,9 @@ public class GetTLE {
     static final String username="mromelfanger";
     static final String password="FuseJHU1";
   
-    static final String outputFile = "/data1/fuse/calfuse/caltemp/five.tle";
-    static final String logFile = "/data1/fuse/calfuse/caltemp/get_tle.logfile";
+    static final String curdir = System.getProperty("user.dir");
+    static final String outputFile = curdir + "/five.tle";
+    static final String logFile = curdir + "/get_tle.logfile";
 /*
     static final String outputFile = "/caltemp/five.tle";
     static final String logFile = "/caltemp/get_tle.logfile";

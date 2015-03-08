@@ -1,3 +1,7 @@
+DATADIR = $(pkgdatadir)-$(VERSION)
+javadir = $(DATADIR)/java
+JAVAROOT = $(builddir)
+
 bin_SCRIPTS = \
 	add_tle.pl \
 	check_tle.pl \
@@ -8,12 +12,9 @@ bin_SCRIPTS = \
 	test_get_tle.pl \
 	update_tle.csh
 
-noinst_SCRIPTS = \
-	GetTLE.class \
-	GetTLE.java
+java_JAVA = GetTLE.java
 
 EXTRA_DIST = \
-	GetTLE.class.in \
 	GetTLE.java.in \
 	add_tle.pl.in \
 	check_tle.pl.in \
@@ -36,13 +37,9 @@ CLEANFILES = \
 	test_get_tle.pl \
 	update_tle.csh
 
-do_subst = sed -e 's,[@]DATADIR[@],$(pkgdatadir)-$(VERSION),g' \
+do_subst = sed -e 's,[@]DATADIR[@],$(DATADIR),g' \
 		   		   -e 's,[@]PREFIX[@],$(prefix),g' \
 				   -e 's,[@]VERSION[@],$(VERSION),g'
-
-GetTLE.class: GetTLE.class.in Makefile
-	$(do_subst) < GetTLE.class.in > GetTLE.class
-		chmod 644 GetTLE.class
 
 GetTLE.java: GetTLE.java.in Makefile
 	$(do_subst) < GetTLE.java.in > GetTLE.java
@@ -80,7 +77,5 @@ update_tle.csh: update_tle.csh.in Makefile
 	$(do_subst) < update_tle.csh.in > update_tle.csh
 		chmod +x update_tle.csh
 
-install-data-local: GetTLE.class GetTLE.java
-	mkdir -p $(DESTDIR)$(pkgdatadir)-$(VERSION)/java
-	install -D -m 644 GetTLE.class $(DESTDIR)$(pkgdatadir)-$(VERSION)/java
-	install -D -m 644 GetTLE.java $(DESTDIR)$(pkgdatadir)-$(VERSION)/java
+install-data-local:
+	$(INSTALL) -D -m 644 GetTLE.class $(DESTDIR)$(pkgdatadir)-$(VERSION)/java

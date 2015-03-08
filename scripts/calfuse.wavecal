@@ -63,10 +63,10 @@ set ttag    = `echo $froot | grep -c ttag`
 
 # Put a time stamp in the log file (the OPUS trailer file).
 if $ttag then
-    echo `date '+%Y %b %e %T'` "calfuse.wavecal-1.15: Begin  TTAG file $1"
+    echo `date '+%Y %b %e %T'` "calfuse.wavecal-1.15: Begin TTAG file $1"
     echo `date '+%Y %b %e %T'` "calfuse.wavecal-1.15: Begin TTAG file $1" >>& $logfile
 else
-    echo `date '+%Y %b %e %T'` "calfuse.wavecal-1.15: Begin  HIST file $1"
+    echo `date '+%Y %b %e %T'` "calfuse.wavecal-1.15: Begin HIST file $1"
     echo `date '+%Y %b %e %T'` "calfuse.wavecal-1.15: Begin HIST file $1" >>& $logfile
 endif
 
