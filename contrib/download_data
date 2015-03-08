@@ -1,0 +1,23 @@
+#!/bin/sh
+
+url=https://bitbucket.org/jhunkeler/calfuse/downloads/calfuse-data.tar.bz2
+tarball=$(basename $url)
+
+if [ -z "$(which wget 2>/dev/null)" ]; then
+	echo Please install 'wget'.
+	exit 1
+fi
+
+if [ -z "$(which tar 2>/dev/null)" ]; then
+	echo Please install 'tar'.
+	exit 1
+fi
+
+if [ -f "$tarball" ]; then
+	echo '$tarball' already exists. Delete it and re-run this script.
+	exit 1
+fi
+
+wget $url
+echo Extracting $tarball ...
+tar -xf $tarball
