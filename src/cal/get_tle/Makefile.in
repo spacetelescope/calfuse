@@ -518,7 +518,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-data-local install-javaJAVA
+install-data-am: install-javaJAVA
 
 install-dvi: install-dvi-am
 
@@ -570,14 +570,14 @@ uninstall-am: uninstall-binSCRIPTS uninstall-javaJAVA
 	clean-libtool cscopelist-am ctags-am distclean \
 	distclean-generic distclean-libtool distdir dvi dvi-am html \
 	html-am info info-am install install-am install-binSCRIPTS \
-	install-data install-data-am install-data-local install-dvi \
-	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-info install-info-am install-javaJAVA \
-	install-man install-pdf install-pdf-am install-ps \
-	install-ps-am install-strip installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-generic mostlyclean-libtool pdf pdf-am \
-	ps ps-am tags-am uninstall uninstall-am uninstall-binSCRIPTS \
+	install-data install-data-am install-dvi install-dvi-am \
+	install-exec install-exec-am install-html install-html-am \
+	install-info install-info-am install-javaJAVA install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags-am uninstall uninstall-am uninstall-binSCRIPTS \
 	uninstall-javaJAVA
 
 .PRECIOUS: Makefile
@@ -618,9 +618,6 @@ test_get_tle.pl: test_get_tle.pl.in Makefile
 update_tle.csh: update_tle.csh.in Makefile
 	$(do_subst) < update_tle.csh.in > update_tle.csh
 		chmod +x update_tle.csh
-
-install-data-local:
-	$(INSTALL) -D -m 644 GetTLE.class $(DESTDIR)$(pkgdatadir)-$(VERSION)/java
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

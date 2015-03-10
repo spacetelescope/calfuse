@@ -77,5 +77,3 @@ update_tle.csh: update_tle.csh.in Makefile
 	$(do_subst) < update_tle.csh.in > update_tle.csh
 		chmod +x update_tle.csh
 
-install-data-local:
-	$(INSTALL) -D -m 644 GetTLE.class $(DESTDIR)$(pkgdatadir)-$(VERSION)/java
