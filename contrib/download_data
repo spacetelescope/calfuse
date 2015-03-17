@@ -18,6 +18,12 @@ if [ -f "$tarball" ]; then
 	exit 1
 fi
 
-wget $url
+wget --no-check-certificate $url
+
+if [ $? -ne 0 ]; then
+	echo Aborting. Failed to download $tarball.
+	exit 1
+fi
+
 echo Extracting $tarball ...
 tar -xf $tarball
