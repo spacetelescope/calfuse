@@ -843,7 +843,8 @@ uninstall-am:
 
 install-data-local: $(DATADIRS)
 	mkdir -p $(DESTDIR)$(pkgdatadir) ; \
-	find $(DATADIRS) -type f | xargs -I{} install -D -m 644 {} $(DESTDIR)$(pkgdatadir)/{}
+		for d in $(DATADIRS); do mkdir -p "$(DESTDIR)$(pkgdatadir)/$$d"; done ; \
+		find $(DATADIRS) -type f | xargs -I{} install -m 644 {} $(DESTDIR)$(pkgdatadir)/{}
 
 download-data:
 	( cd $(srcdir) ; \
