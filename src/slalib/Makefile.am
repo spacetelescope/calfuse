@@ -189,3 +189,4 @@ libsla_la_SOURCES = \
 	wait.f
 
 libsla_la_CFLAGS = -I$(srcdir)/include -I./
+libsla_la_LIBADD = libslarandom.la
