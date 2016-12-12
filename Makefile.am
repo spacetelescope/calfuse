@@ -38,3 +38,6 @@ install-data-local: $(DATADIRS)
 download-data:
 	( cd $(srcdir) ; \
 	contrib/download_data; )
+
+test: check
+
