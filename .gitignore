@@ -2,6 +2,8 @@
 Makefile
 autom4te.cache
 config.h
+config.log
+config.status
 *.tar.gz
 *.o
 *.lo
@@ -13,3 +15,6 @@ calfiles/*.dat
 calfiles/*.TLE
 parmfiles/*.fit
 parmfiles/*.dat
+.deps
+calfuse-data.tar.bz2
+._parmfiles
