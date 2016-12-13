@@ -7,6 +7,7 @@ os:
   - osx
 
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y gfortran default-jdk cfitsio-dev
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update; sudo apt-get install -y gfortran default-jdk cfitsio-dev; fi
+
+install:
   - ./autogen.sh
