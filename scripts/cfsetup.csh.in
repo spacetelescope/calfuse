@@ -1,9 +1,10 @@
 # To execute, type "source cfsetup.csh"
 #
 set CF_DIR="@PREFIX@"
+set CF_DATADIR="${CF_DIR}/share"
 set CF_VERSION="@VERSION@"
 setenv PATH "${CF_DIR}/bin:${PATH}"
-setenv CF_CALDIR "@DATADIR@/calfiles"
-setenv CF_PARMDIR "@DATADIR@/parmfiles"
-setenv CF_IDLDIR "@DATADIR@/idl"
+setenv CF_CALDIR "${CF_DATADIR}/calfiles"
+setenv CF_PARMDIR "${CF_DATADIR}/parmfiles"
+setenv CF_IDLDIR "${CF_DATADIR}/idl"
 setenv CF_HISTDIR `pwd`
