@@ -4,7 +4,8 @@ compiler: gcc
 
 os:
   - linux
-  - osx
+  # Until we can figure a viable way...
+  #- osx
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update; sudo apt-get install -y gfortran default-jdk cfitsio-dev; fi
