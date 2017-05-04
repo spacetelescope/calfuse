@@ -1,8 +1,36 @@
 sudo: true
-language: c
-compiler: gcc
+language: generic
+
+compiler:
+  - gcc
+  - clang
+
+env:
+  global:
+    - PREFIX=/tmp/calfuse
+
+matrix:
+  fast_finish: true
+  include:
+    - os: linux
+      env:
+        - CC=gcc
+
+    - os: linux
+      env:
+        - CC=clang
 
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y gfortran default-jdk cfitsio-dev
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update; sudo apt-get install -y gfortran default-jdk cfitsio-dev; fi
+
+install:
   - ./autogen.sh
+  - ./configure --prefix=$PREFIX
+  - make
+  - make install
+
+after_success:
+  - export PATH=$PREFIX/bin:$PATH
+  - source cfsetup.sh
+  - printenv | grep CF_
+  - find $PREFIX -type f
