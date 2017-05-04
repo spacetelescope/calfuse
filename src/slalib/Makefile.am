@@ -1,4 +1,4 @@
-lib_LTLIBRARIES = libsla.la libslarandom.la
+lib_LTLIBRARIES = libslarandom.la libsla.la
 libslarandom_la_SOURCES = rtl_random.c
 libsla_la_SOURCES = \
         addet.f  \
