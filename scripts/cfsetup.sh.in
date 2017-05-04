@@ -1,9 +1,9 @@
 # To execute, type "source cfsetup.sh"
 #
-CF_DIR="@PREFIX@"
-CF_DATADIR="${CF_DIR}/share"
-CF_VERSION="@VERSION@"
+export CF_DIR="@PREFIX@"
 export PATH="${CF_DIR}/bin:${PATH}"
+
+export CF_DATADIR="${CF_DIR}/share/@PACKAGE@-@VERSION@"
 export CF_CALDIR="${CF_DATADIR}/calfiles"
 export CF_PARMDIR="${CF_DATADIR}/parmfiles"
 export CF_IDLDIR="${CF_DATADIR}/idl"

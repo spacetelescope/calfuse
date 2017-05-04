@@ -31,7 +31,8 @@ CLEANFILES = cfsetup.csh \
 
 do_subst = sed -e 's,[@]DATADIR[@],$(pkgdatadir)-$(VERSION),g' \
 		   -e 's,[@]PREFIX[@],$(prefix),g' \
-		   -e 's,[@]VERSION[@],$(VERSION),g' 
+		   -e 's,[@]PACKAGE[@],$(PACKAGE),g' \
+		   -e 's,[@]VERSION[@],$(VERSION),g'
 
 cfsetup.csh: cfsetup.csh.in Makefile
 	$(do_subst) < cfsetup.csh.in > cfsetup.csh
